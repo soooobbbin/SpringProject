@@ -20,6 +20,18 @@ spring:
   servlet:    multipart: #파일업로드 설정      max-file-size: 50MB
       max-request-size: 50MB
       
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: qook4510@gmail.com
+    password: "cyhywrrjyxavztwg"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true 
+      
 mybatis: #mybatis 설정  type-aliases-package: kr.spring.**.vo
   mapper-locations: kr/spring/**/dao/*.xml
   
@@ -32,8 +44,6 @@ server:  port: 8080
       enabled: true
       force: true                    
     
-  
-  
   
   
   

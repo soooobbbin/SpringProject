@@ -53,8 +53,11 @@ div#main_footer{
 .logout, .home, .cart, .wish{
 	width:35px;
 	height:35px;
+	margin:-5px 10px;
 }
-
+.wish{
+	margin-right:50px;
+}
 
 /*=========메뉴바=======*/
 #menu{
@@ -73,7 +76,7 @@ div#main_footer{
     border-bottom: 1px solid #e8e8e8;
     z-index: 999;
 }
-#header_center:hover #menu {
+#main_header:hover #menu {
   	display:block;
 	transform-origin: 100% 0%;
 	-webkit-animation: fadeIn 0.5s ease-in-out;
@@ -100,6 +103,7 @@ a#eco4u, a#store, a#fashion, a#beauty, a#living, a#communication, a#QnA   {
 	font-size:15pt;
 	font-weight:lighter;
 }
+/*----------*/
 
 /*==========메시지======*/
 .result-display{

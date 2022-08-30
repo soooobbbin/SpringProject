@@ -34,7 +34,7 @@ public interface MemberMapper {
 	@Select("SELECT * FROM member WHERE id=#{id}") 
 	public MemberVO selectCheckkakaoMember(String id); 
 	
-	@Select("SELECT m.mem_num,m.id,m.auth,d.mem_cell,"
+	@Select("SELECT m.mem_num,m.id,m.auth,d.mem_pw,d.mem_cell,"
 			+ "d.mem_email FROM "
 			+ "member m LEFT OUTER JOIN "
 			+ "member_detail d ON m.mem_num=d.mem_num "

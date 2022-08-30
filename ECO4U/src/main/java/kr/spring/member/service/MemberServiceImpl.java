@@ -43,6 +43,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public MemberVO selectCheckNameMember(String name) {
+		// TODO Auto-generated method stub
+		return memberMapper.selectCheckNameMember(name);
+	}
+	
+	@Override
 	public MemberVO selectMember(Integer mem_num) {
 		return memberMapper.selectMember(mem_num);
 	}
@@ -59,6 +65,12 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
+	@Override
+	public void updatefindPassword(Integer mem_num,String mem_pw) {
+		// TODO Auto-generated method stub
+		memberMapper.updatefindPassword(mem_num,mem_pw);
+	}
+	
 	@Override
 	public void deleteMember(Integer mem_num) {
 		// TODO Auto-generated method stub

@@ -44,6 +44,22 @@ public class MemberVO {
 		}
 		return false;
 	}
+	
+	//=========전화번호 일치 여부 체크===========//
+	public boolean isCheckedcall(String userCall) {
+		if(auth > 1 && mem_cell.equals(userCall)) {
+			return true;
+		}
+		return false;
+	}
+	
+	//=========이에일 일치 여부 체크===========//
+	public boolean isCheckedemail(String userEmail) {
+		if(auth > 1 && mem_email.equals(userEmail)) {
+			return true;
+		}
+		return false;
+	}	
 
 	public int getMem_num() {
 		return mem_num;

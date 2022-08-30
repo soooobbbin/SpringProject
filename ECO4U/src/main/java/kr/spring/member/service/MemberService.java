@@ -12,9 +12,11 @@ public interface MemberService {
 	public void insertkakaoMember(MemberVO member,String id);
 	public MemberVO selectCheckkakaoMember(String id);
 	public MemberVO selectCheckMember(String id);
+	public MemberVO selectCheckNameMember(String name);
 	public MemberVO selectMember(Integer mem_num);
 	public void updateMember(MemberVO member);
 	public void updatePassword(MemberVO member);
+	public void updatefindPassword(Integer mem_num,String mem_pw);
 	public void deleteMember(Integer mem_num);
 
 	//프로필 이미지 업데이트

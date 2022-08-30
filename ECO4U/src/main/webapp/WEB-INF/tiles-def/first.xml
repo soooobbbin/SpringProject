@@ -15,9 +15,14 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberLogin.jsp"/>                   
     </definition>
-        <definition name="findPasswd" extends="main">
+    <definition name="findPasswd" extends="main">
     	<put-attribute name="title" value="비밀번호찾기"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/findPasswd.jsp"/>                   
+    </definition>
+    <definition name="findId" extends="main">
+    	<put-attribute name="title" value="아이디찾기"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/findId.jsp"/>                   
     </definition>
 </tiles-definitions>

@@ -217,7 +217,7 @@ public class MemberController {
 			return findpasswd();
 		}
 		
-		//로그인 체크
+		//메일 인증 체크
 		MemberVO member = null;
 		try {
 			member = memberService.selectCheckMember(memberVO.getId());
@@ -225,7 +225,7 @@ public class MemberController {
 					
 			if(member!=null) {
 				//전화번호 일치 여부 체크
-				check = member.isCheckedPasswd(memberVO.getMem_cell());
+				check = member.isCheckedcall(memberVO.getMem_cell());
 			}
 			if(check) {
 				//인증 성공, 메일발송 처리		
@@ -233,16 +233,19 @@ public class MemberController {
 				logger.debug("<<id>> : " + member.getId());
 				
 				String email = member.getMem_email();
-				String title = "신규 이메일 보내드립니다.";
+				String title = "신규 비밀번호를 보내드립니다.";
 				
-				String body = String.valueOf((int)(Math.random() * 10000));
+				String mem_pw = String.valueOf((int)(Math.random() * 10000));
+				String body = "신규 비밀번호는 " + mem_pw + "입니다. 확인 후 비밀번호 변경부탁드립니다.";
 				
 				Map<String, Object> sendRs = mailService.send(email, title, body);
 				
-				model.addAttribute("accessMsg", "메일발송이 완료되었습니다.");
+				model.addAttribute("accessMsg", "메일발송이 완료되었습니다. 확인 후 비밀번호를 변경해주세요.");
+				
+				//생성한 난수로 비밀번호 변경
+				memberService.updatefindPassword(member.getMem_num(),mem_pw);
 			
 				return "common/notice";
-				//return (String) sendRs.get("msg");
 			}
 					
 			//인증실패
@@ -273,20 +276,63 @@ public class MemberController {
 		return "redirect:/main/main.do";
 	}
 	
-	//==========MY페이지===========//
-	@RequestMapping("/member/myPage.do")
-	public String myPage(HttpSession session,Model model) {
-		//session에 저장된 정보 읽기
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		
-		//1건의 레코드 읽기
-		MemberVO member = memberService.selectMember(user.getMem_num());
-		
-		logger.debug("<<회원상세정보>> : " + member);
-		                   //속성명     속성값 
-		model.addAttribute("member", member);		
-		
-		return "memberView";
+	//=========아이디찾기============//
+	@GetMapping("/member/findid.do")
+	public String findid() {
+		return "findId";
 	}
+	@RequestMapping("/member/doSendid.do")
+	public String doSendid(@Valid MemberVO memberVO, BindingResult result, Model model) {
+		
+		logger.debug("<<아이디 찾기>> : " + memberVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		//id와 email 필드만 체크
+		if(result.hasFieldErrors("name") || 
+				result.hasFieldErrors("email")) {
+			return findid();
+		}
+		
+		//아이디 체크
+		MemberVO member = null;
+		try {
+			member = memberService.selectCheckNameMember(memberVO.getMem_name());
+			boolean check = false;
+					
+			if(member!=null) {
+				//이메일 일치 여부 체크
+				check = member.isCheckedemail(memberVO.getMem_email());
+			}
+			if(check) {
+				//인증 성공, 아이디 조회		
+				logger.debug("<<인증 성공>>");
+				logger.debug("<<id>> : " + member.getId());
+				
+				
+				String id = member.getId().substring(0,member.getId().length()-3);
+			
 	
+				model.addAttribute("accessMsg", "고객님의 아이디는" + id + "***입니다.");
+				
+				return "common/notice";
+			}
+					
+			//인증실패
+			throw new AuthCheckException();
+					
+		}catch(AuthCheckException e) {
+			//인증 실패로 로그인 폼 호출
+			if(member!=null && member.getAuth()==1) {
+				//정지회원 메시지 표시
+				result.reject("noAuthority");
+			}else {
+				result.reject("invalidIdOrEmail");
+			}
+					
+			logger.debug("<<인증 실패>>");
+					
+			return findid();
+		}
+		
+	}
 }

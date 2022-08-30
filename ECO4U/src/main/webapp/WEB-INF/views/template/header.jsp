@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 상단 시작 -->
 <h2 class="align-center">SpringPage</h2>
 <div class="align-right">
 	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
-<%-- 	<c:if test="${!empty user && !empty user.photo}">
+	<%-- 	<c:if test="${!empty user && !empty user.photo}">
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
 	</c:if>
 	<c:if test="${!empty user && empty user.photo}">

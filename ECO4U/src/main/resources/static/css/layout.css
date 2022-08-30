@@ -43,7 +43,15 @@ div#main_footer{
 	font-size:10pt;
     margin: 20px;
 }
-
+.login{
+	width:35px;
+	height:35px;
+	margin: -10px 100px 0px 0px;
+}
+.logout, .home, .cart, .wish{
+	width:35px;
+	height:35px;
+}
 
 /*==========메시지======*/
 .result-display{

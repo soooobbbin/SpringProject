@@ -51,10 +51,10 @@
 		<a href="${pageContext.request.contextPath}/member/myPage.do"> <img
 			src="${pageContext.request.contextPath}/images/home.png" class="home">
 		</a>
-		<a href="${pageContext.request.contextPath}/member/myPage.do"> <img
+		<a href="${pageContext.request.contextPath}/cart/cart.do"> <img
 			src="${pageContext.request.contextPath}/images/cart.png" class="cart">
 		</a>
-		<a href="${pageContext.request.contextPath}/member/myPage.do"> <img
+		<a href="${pageContext.request.contextPath}/cart/wishList.do"> <img
 			src="${pageContext.request.contextPath}/images/wish.png" class="wish">
 		</a>
 	</c:if>

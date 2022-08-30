@@ -290,10 +290,3 @@ public class MemberController {
 	}
 	
 }
-
-
-
-
-
-
-

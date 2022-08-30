@@ -4,7 +4,7 @@
 <!-- 내용 시작 -->
 <div class="page-main">
 	<h2>회원 비밀번호찾기</h2>
-	<form:form id="findpasswd_form" action="doSend.do" modelAttribute="memberVO">
+	<form:form id="findpasswd_form" action="findPasswd.do" modelAttribute="memberVO">
 		<form:errors element="div" cssClass="error-color"/>
 			<ul>
 				<li>
@@ -13,9 +13,9 @@
 					<form:errors path="id" cssClass="error-color"/>
 				</li>
 				<li>
-					<label for="phone">핸드폰번호</label>
-					<form:input path="phone"/>
-					<form:errors path="phone" cssClass="error-color"/>
+					<label for="mem_cell">핸드폰번호</label>
+					<form:input path="mem_cell"/>
+					<form:errors path="mem_cell" cssClass="error-color"/>
 				</li>
 			</ul>
 		<div class="align-center">

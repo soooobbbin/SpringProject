@@ -25,3 +25,4 @@ public interface MemberService {
 	public int selectRowCount(Map<String,Object> map);
 	public void updateByAdmin(MemberVO member);
 }
+

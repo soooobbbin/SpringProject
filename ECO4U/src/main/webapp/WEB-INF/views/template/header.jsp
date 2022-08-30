@@ -2,8 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 상단 시작 -->
-<h2 class="align-center">SpringPage</h2>
-<div class="align-right">
+<a href="${pageContext.request.contextPath}/main/main.do">
+<img src="${pageContext.request.contextPath}/images/main_logo.png" class="main_logo">
+</a>
+<div class="align-center" id="header_center">
+<a href="${pageContext.request.contextPath}/intro/list.do">Intro</a>
+<a href="${pageContext.request.contextPath}/product/list.do">Product</a>
+<a href="${pageContext.request.contextPath}/community/list.do">Community</a>
+</div>
+<div class="align-right" id="header_right" >
 	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
 	<c:if test="${!empty user && !empty user.photo}">
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
@@ -27,8 +34,8 @@
 	<c:if test="${!empty user && user.auth == 2}">
 		<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 	</c:if>
-	<a href="${pageContext.request.contextPath}/main/main.do">홈으로</a>
 </div>
+
 <!-- 상단 끝 -->
 
 

@@ -2,7 +2,6 @@ package kr.spring.mail.service;
 
 import java.util.Map;
 
-import org.apache.groovy.util.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;

@@ -28,7 +28,7 @@ div#main_footer{
 .main_logo{
 	width: 180px;
     height: 160px;
-	margin:-55px 10px;
+	margin:-55px 80px;
 }
 
 /*=========헤더=======*/
@@ -38,6 +38,8 @@ div#main_footer{
 }
 #header_center a{
 	margin: 100px;
+	width:100px;
+	height:50px;
 }
 #header_right{
 	font-size:10pt;
@@ -51,6 +53,52 @@ div#main_footer{
 .logout, .home, .cart, .wish{
 	width:35px;
 	height:35px;
+}
+
+
+/*=========메뉴바=======*/
+#menu{
+	display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    border-top: 1px solid #e0e0e0;
+    background: url(/images/leaf.png) repeat-y 80px #f3f3f3;
+    background-size:200px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 999;
+}
+#header_center:hover #menu {
+  	display:block;
+	transform-origin: 100% 0%;
+	-webkit-animation: fadeIn 0.5s ease-in-out;
+	animation: fadeIn 0.5s ease-in-out;
+}
+.intro2 {
+	height:150px;
+	float:left;
+	margin:50px 0px 50px 500px;
+}
+.product2{
+ 	width:150px;
+	height:150px;
+	float:left;
+	margin: 30px 120px 0px 0px;
+ }
+.community2{
+	width:150px;
+	height:150px;
+	float:left;
+	margin:50px 0px;
+ }
+a#eco4u, a#store, a#fashion, a#beauty, a#living, a#communication, a#QnA   {
+	font-size:15pt;
+	font-weight:lighter;
 }
 
 /*==========메시지======*/

@@ -5,10 +5,10 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="faqList" extends="main">
-    	<put-attribute name="title" value="QnA게시판"/>
+    <definition name="test7" extends="main">
+    	<put-attribute name="title" value="게시판목록"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/faq/faqList.jsp"/>                   
+    	  value="/WEB-INF/views/board/boardList.jsp"/>                   
     </definition>
 </tiles-definitions>
 

@@ -5,10 +5,15 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="test6" extends="main">
-    	<put-attribute name="title" value="게시판목록"/>
+    <definition name="list" extends="main">
+    	<put-attribute name="title" value="상품목록"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/board/boardList.jsp"/>                   
+    	  value="/WEB-INF/views/product/list.jsp"/>                   
+    </definition>
+	<definition name="detail" extends="main">
+    	<put-attribute name="title" value="상품상세"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/product/detail.jsp"/>                   
     </definition>
 </tiles-definitions>
 

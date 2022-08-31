@@ -39,9 +39,10 @@ public class CommunityServiceImpl implements CommunityService{
 		return communityMapper.selectCommunity(c_num);
 	}
 
+
 	@Override
-	public void updateHit(Integer c_num) {
-		communityMapper.updateHit(c_num);
+	public void updateC_hit(Integer c_num) {
+		communityMapper.updateC_hit(c_num);
 	}
 
 	@Override
@@ -62,6 +63,7 @@ public class CommunityServiceImpl implements CommunityService{
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 	/*
 	@Override

@@ -5,11 +5,16 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="test4" extends="main">
-    	<put-attribute name="title" value="게시판목록"/>
+    <definition name="communityList" extends="main">
+    	<put-attribute name="title" value="Community"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/board/boardList.jsp"/>                   
+    	  value="/WEB-INF/views/community/communityList.jsp"/>                   
     </definition>
+	<definition name="communityWrite" extends="main">
+    	<put-attribute name="title" value="글쓰기"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/community/communityWrite.jsp"/>   
+ 	</definition>
 </tiles-definitions>
 
 

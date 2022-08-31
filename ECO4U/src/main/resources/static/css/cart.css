@@ -15,3 +15,12 @@
 td.cart-category{
 	border:1px solid gray;
 }
+.cart-left{
+	float:left;	
+}
+.cart-right1{
+	float:right;	
+}
+.cart-right2{
+	float:right;	
+}

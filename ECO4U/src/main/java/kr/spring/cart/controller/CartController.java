@@ -12,9 +12,5 @@ public class CartController {
 		return "cart";
 	}
 	
-	@RequestMapping("/cart/wishList.do")
-	public String main2() {
-				//타일스 설정 식별자
-		return "wishList";
-	}
+	
 }

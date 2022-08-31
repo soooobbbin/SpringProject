@@ -1,63 +1,264 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<style>
+#id{
+	width:70%;
+	font-size: 15px;
+}
+#mem_name{
+	font-size: 15px;
+}
+#mem_pw{
+	font-size: 15px;
+}
+#mem_cell{
+	font-size: 15px;
+}
+#mem_eamil{
+	font-size: 15px;
+}
+.zipcode{
+	font-size: 15px;
+}
+.address1{
+	font-size: 15px;
+}
+.address2{
+	font-size: 15px;
+}
+#sub_btn{
+	color:white;
+	font-size: 25px;
+	background-color: gray;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding: 12px;
+	border: none;
+	border-radius: 5px;
+	width: 90%;
+	font-weight: bold;
+	cursor:pointer;
+}
+#confirmId{
+	color:white;
+	font-size: 11px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	cursor:pointer;
+}
+#confirmzipcode{
+	color:white;
+	font-size: 11px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	cursor:pointer;
+}
+/*체크 박스*/
+.checks {
+	position: relative;
+	margin-left: 40px;
+	margin-top: 30px;
+}
+.checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0
+}
+.checks input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.checks input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
+  content: ' ';
+  display: inline-block;
+  width: 21px;  /* 체크박스의 너비를 지정 */
+  height: 21px;  /* 체크박스의 높이를 지정 */
+  line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
+  margin: -2px 8px 0 0;
+  text-align: center; 
+  vertical-align: middle;
+  background: #fafafa;
+  border: 1px solid #cacece;
+  border-radius : 3px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+}
+.checks input[type="checkbox"] + label:active:before,
+.checks input[type="checkbox"]:checked + label:active:before {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+.checks input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
+  content: '\2714';  /* 체크표시 유니코드 사용 */
+  color: #99a1a7;
+  text-shadow: 1px 1px #fff;
+  background: #e9ecee;
+  border-color: #adb8c0;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+}
+</style>        
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
-<div class="page-main">
-	<h2>회원가입</h2>
-	<form:form id="register_form" action="registerUser.do" 
-	                            modelAttribute="memberVO">
+<div class="page-main" style="height:1100px;">
+	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
+		<h1>ECO4U에 오신 것을 환영합니다.</h1>
+	</div>
+	<form:form id="register_form" action="registerUser.do" modelAttribute="memberVO" style="border:1px solid white; border-radius:10px; width:35%; height:950px; background-color:white;">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<label for="id">아이디</label>
-				<form:input path="id" placeholder="영문,숫자만 4~12자" autocomplete="off"/>
+				<label for="id" id="id" style="margin-top: 25px;">아이디</label><br>
 				<input type="button" id="confirmId" value="ID중복체크">
 				<span id="message_id"></span>
-				<form:errors path="id" cssClass="error-color"/>                      
 			</li>
+		</ul>
+		<ul>
 			<li>
-				<label for="mem_name">이름</label>
-				<form:input path="mem_name"/>
-				<form:errors path="mem_name" cssClass="error-color"/>                      
+			<div style="position:relative;">
+				<form:input path="id" placeholder="아이디를 입력해주세요" autocomplete="off" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:errors path="id" cssClass="error-color"/>
+				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
+					<img src="${pageContext.request.contextPath}/images/member/member_id.svg" width="20" height="20">
+				</div>
+			</div>
 			</li>
+		</ul>
+		<ul>
 			<li>
-				<label for="mem_pw">비밀번호</label>
-				<form:password path="mem_pw" placeholder="영문,숫자만 4~12자"/>
-				<form:errors path="mem_pw" cssClass="error-color"/>                      
+				<label for="mem_name" id="mem_name">이름</label><br>
 			</li>
+		</ul>
+		<ul>
 			<li>
-				<label for="mem_cell">전화번호</label>
-				<form:input path="mem_cell"/>
-				<form:errors path="mem_cell" cssClass="error-color"/>                      
+			<div style="position:relative;">
+				<form:input path="mem_name" placeholder="이름을 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:errors path="mem_name" cssClass="error-color"/>
+				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
+					<img src="${pageContext.request.contextPath}/images/member/member_name.svg" width="20" height="20">
+				</div>
+			</div>
 			</li>
+		</ul>
+		<ul>
 			<li>
-				<label for="mem_email">이메일</label>
-				<form:input path="mem_email"/>
-				<form:errors path="mem_email" cssClass="error-color"/>                      
+				<label for="mem_pw" id="mem_pw">비밀번호</label><br>
 			</li>
+		</ul>
+		<ul>
 			<li>
-				<label for="zipcode">우편번호</label>
-				<form:input path="zipcode"/>
-				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-				<form:errors path="zipcode" cssClass="error-color"/>                      
+			<div style="position:relative;">
+				<form:input path="mem_pw" placeholder="비밀번호를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:errors path="mem_pw" cssClass="error-color"/>
+				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
+					<img src="${pageContext.request.contextPath}/images/member/member_pw.svg" width="20" height="20">
+				</div>
+			</div>
 			</li>
+		</ul>
+		<ul>
 			<li>
-				<label for="address1">주소</label>
-				<form:input path="address1"/>
-				<form:errors path="address1" cssClass="error-color"/>                      
+				<label for="mem_cell" id="mem_cell">전화번호</label><br>
 			</li>
+		</ul>
+		<ul>
 			<li>
-				<label for="address2">상세주소</label>
-				<form:input path="address2"/>
-				<form:errors path="address2" cssClass="error-color"/>                      
+			<div style="position:relative;">
+				<form:input path="mem_cell" placeholder="전화번호를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:errors path="mem_cell" cssClass="error-color"/>
+				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
+					<img src="${pageContext.request.contextPath}/images/member/member_cell.svg" width="20" height="20">
+				</div>
+			</div>
 			</li>
-		</ul> 
+		</ul>
+		<ul>
+			<li>
+				<label for="mem_email" id="mem_eamil">이메일</label><br>
+			</li>
+		</ul>
+		<ul>
+			<li>
+			<div style="position:relative;">
+				<form:input path="mem_email" placeholder="이메일을 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:errors path="mem_email" cssClass="error-color"/>
+				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
+					<img src="${pageContext.request.contextPath}/images/member/member_email.svg" width="20" height="20">
+				</div>
+			</div>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<label for="zipcode" class="zipcode" style="margin-top: 25px; width: 70%;">우편번호</label><br>
+				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" id="confirmzipcode">
+			</li>
+		</ul>
+		<ul>
+			<li>
+			<div style="position:relative;">
+				<form:input path="zipcode" placeholder="우편번호" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:errors path="zipcode" cssClass="error-color"/>
+				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
+					<img src="${pageContext.request.contextPath}/images/member/member_zipcode.svg" width="20" height="20">
+				</div>
+			</div>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<label for="address1" class="address1">주소</label><br>
+			</li>
+		</ul>
+		<ul>
+			<li>
+			<div style="position:relative;">
+				<form:input path="address1" placeholder="주소를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:errors path="address1" cssClass="error-color"/>
+				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
+					<img src="${pageContext.request.contextPath}/images/member/member_address.svg" width="20" height="20">
+				</div>
+			</div>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<label for="address2" class="address2">상세주소</label><br>
+			</li>
+		</ul>
+		<ul>
+			<li>
+			<div style="position:relative;">
+				<form:input path="address2" placeholder="상세주소를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:errors path="address2" cssClass="error-color"/>
+				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
+					<img src="${pageContext.request.contextPath}/images/member/member_address.svg" width="20" height="20">
+				</div>
+			</div>
+			</li>
+		</ul>
+		<div class="checks">
+  			<input type="checkbox" id="ex_chk"> 
+  			
+		</div>
 		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="홈으로"
-			  onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			<form:button id="sub_btn">회원가입</form:button>
 		</div>                           
 	</form:form>
 </div>

@@ -23,12 +23,15 @@
 	</table>
 	
 	<div class="wish-choice">
-		<input type="checkbox" name="cart" value="전체 선택">전체 선택
-		| 선택 삭제
+		<div>
+		<span><input type="checkbox" name="cart" value="전체 선택">전체 선택</span>
+		<span> | 선택 삭제</span>
+		</div>
+		
 	</div>
 	<c:forEach var="wish" items="${list}">
 	<div class="content-main">
-		찜번호 : ${wish.w_num}
+		상품번호 : ${wish.p_num}
 	</div>
 	</c:forEach>
 	

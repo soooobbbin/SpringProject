@@ -1,5 +1,100 @@
-/*faq 메인 페이지*/
+/*faqList 페이지*/
 .faq_main{
-	background: rgba(244,249,242);
+	margin: 95px 300px 90px 300px;
 }
-/*end faq_main*/
+.faq_main h2{
+	margin-bottom: 90px;
+	cursor:pointer;
+}
+#faq_main_img01{
+	margin-right: 10px;
+	width: 35px;
+	height: 35px;
+	float: left;
+}
+#faq_list_table{
+   width:100%;
+   border-collapse:collapse;
+   margin-top:35px;
+   border:none;
+   font-size:16px;
+}
+#faq-arrow{
+	margin-right: 20px;
+	width: 13px;
+	height: 13px;
+	cursor:pointer;
+}
+#faq-arrow2{
+	margin-right: 20px;
+	width: 13px;
+	height: 13px;
+	cursor:pointer;
+}
+#faq_main_img02{
+	width: 65px;
+	height: 65px;
+}
+#faqspan1{
+	font-weight:bold;
+	font-size:16px;
+	margin-right: 15px;
+	cursor:pointer;
+}
+#faqspan2{
+	font-weight:bold;
+	font-size:16px;
+	margin-right: 15px;
+	cursor:pointer;
+}
+#faqspan3{
+	font-weight:bold;
+	font-size:16px;
+	margin-right: 15px;
+	cursor:pointer;
+}
+#faqspan1:hover{
+	font-weight:bold;
+	font-size:16px;
+	margin-right: 15px;
+	cursor:pointer;
+    border-bottom: 3px solid #7c8f83;
+}
+#faqspan2:hover{
+	font-weight:bold;
+	font-size:16px;
+	margin-right: 15px;
+	cursor:pointer;
+    border-bottom: 3px solid #7c8f83;
+}
+#faqspan3:hover{
+	font-weight:bold;
+	font-size:16px;
+	margin-right: 15px;
+	cursor:pointer;
+    border-bottom: 3px solid #7c8f83;
+}
+#faq_main_qna{
+	float: right;
+	cursor:pointer;
+}
+#faq_btn01{
+	width:65px;
+	height:30px;
+	background-color: #7c8f83;
+	color:white;
+	border: none;
+	border-radius: 7px;
+	font-size: 15px;
+	cursor:pointer;
+}
+.faq_btn02{
+	width:40px;
+	height:23px;
+	background-color: #7c8f83;
+	color:white;
+	border: none;
+	border-radius: 5px;
+	cursor:pointer;
+}
+/*end faqList.jsp*/

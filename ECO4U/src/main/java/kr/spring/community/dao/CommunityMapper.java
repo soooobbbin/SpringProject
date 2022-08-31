@@ -28,13 +28,13 @@ public interface CommunityMapper{
 				+ "USING(c_num) JOIN member_detail d "
 				+ "USING(c_num) WHERE b.c_num=#{c_num}")
 		public CommunityVO selectCommunity(Integer c_num);
-		@Update("UPDATE spboard SET hit=hit+1 WHERE board_num=#{board_num}")
-		public void updateHit(Integer c_num);
+		@Update("UPDATE community SET c_hit=c_hit+1 WHERE c_num=#{c_num}")
+		public void updateC_hit(Integer c_num);
 		public void updateCommunity(CommunityVO community);
-		@Delete("DELETE FROM spboard WHERE board_num=#{board_num}")
+		@Delete("DELETE FROM community WHERE c_num=#{c_num}")
 		public void deleteCommunity(Integer c_num);
-		@Update("UPDATE spboard SET uploadfile='',"
-				+ "filename='' WHERE board_num=#{board_num}")
+		@Update("UPDATE community SET uploadc_file='',"
+				+ "c_filename='' WHERE c_num=#{c_num}")
 		public void deleteFile(Integer c_num);
 		/*
 		//부모글 좋아요

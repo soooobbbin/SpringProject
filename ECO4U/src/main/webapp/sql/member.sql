@@ -48,6 +48,8 @@ create table store(
  s_zipcode varchar2(7) not null,
  s_addr1 varchar2(100) not null,
  s_addr2 varchar2(100) not null,
+ photo blob,
+ photo_name varchar2(100),
  reg_date date default sysdate not null,
  modify_date date,
  constraint store_pk primary key (s_num)

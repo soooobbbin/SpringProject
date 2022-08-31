@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.store.dao.StoreMapper">  
+	<select id="selectList" parameterType="map" resultType="StoreVO">
+		SELECT 
+		  *
+		 FROM (SELECT
+		 		a.*,
+		 		rownum rnum
+		 	   FROM (SELECT
+		 	   			s_name,
+		 	   			photo,
+		 	   		 FROM store
+		 	   		 ORDER BY s_num DESC)a)
+		 <![CDATA[
+		 WHERE rnum >= #{start} AND rnum <= #{end}
+		 ]]>
+	</select>
+	
+
+</mapper>
+
+
+
+
+
+
+

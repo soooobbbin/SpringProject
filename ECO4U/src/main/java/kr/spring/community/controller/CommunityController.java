@@ -181,8 +181,8 @@ public class CommunityController {
 	public String formUpdate(
 			@RequestParam int c_num,
 			                         Model model) {
-		CommunityVO boardVO = 
-				communityService.selectBoard(c_num);
+		CommunityVO communityVO = 
+				communityService.selectCommunity(c_num);
 		
 		model.addAttribute("communityVO", communityVO);
 		
@@ -204,7 +204,7 @@ public class CommunityController {
 			CommunityVO vo = communityService.selectCommunity(
 					communityVO.getC_num());
 			communityVO.setFilename(vo.getFilename());
-			return "boardModify";
+			return "communityModify";
 		}
 		
 		
@@ -229,7 +229,7 @@ public class CommunityController {
 		logger.debug("<<글삭제>> : " + c_num);
 		
 		//글삭제
-		boardService.deleteCommunity(c_num);
+		communityService.deleteCommunity(c_num);
 		
 		//View에 표시할 메시지
 		model.addAttribute("message", "글삭제 완료!!");

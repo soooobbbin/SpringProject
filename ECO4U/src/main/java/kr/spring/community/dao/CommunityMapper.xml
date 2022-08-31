@@ -6,5 +6,28 @@
   	<select id="selectRowCount" parameterType="map"
   	                    resultType="integer">
 
+
+		SELECT
+		  COUNT(*)
+		FROM community b JOIN member m
+		ON b.mem_num = m.mem_num
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					b.c_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					m.id LIKE '%' || #{keyword} || '%' 
+				</if>
+				<if test="keyfield == 3">
+					b.c_content LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					b.c_title LIKE '%' || #{keyword} || '%' OR
+					b.c_content LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>  	
+
 </select>
 </mapper>

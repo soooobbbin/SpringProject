@@ -6,13 +6,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 <div class="page-main">
-	<h2>관심 상품</h2>
-	<table class="cart-category">
-		<td>전체</td>
-		<td>패션</td>
-		<td>뷰티</td>
-		<td>리빙</td>
-	</table>
+	<div class="cart-header">
+		<h2 class="cart-left">장바구니</h2>
+		<p class="cart-right1">장바구니</p>
+		<p class="cart-right2"> > 주문/결제 > 주문완료</p>
+		
+	</div>
+
 	<div class="content-main">
 		
 	</div>

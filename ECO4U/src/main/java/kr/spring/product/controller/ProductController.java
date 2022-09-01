@@ -73,10 +73,6 @@ public class ProductController {
 	}
 	
 	//===========상품 목록============//
-	@GetMapping("/product/list.do")
-	public String productForm() {
-		return "list";
-	}
 	@RequestMapping("/product/list.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1")
@@ -106,6 +102,7 @@ public class ProductController {
 			map.put("end", page.getEndRow());
 
 			list = productService.selectList(map);
+		
 		}
 
 		ModelAndView mav = new ModelAndView();

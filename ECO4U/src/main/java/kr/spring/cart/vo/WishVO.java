@@ -1,4 +1,4 @@
-package kr.spring.wish.vo;
+package kr.spring.cart.vo;
 
 import java.sql.Date;
 

@@ -5,12 +5,13 @@
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/store.css">
 <div class="page-main">
 	<h2>오프라인 가게 등록</h2>
-	<form:form id="register_form" action="storeRegister.do" modelAttribute="storeVO">
+	<form:form id="register_form" action="register.do" modelAttribute="storeVO" enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color"/>
 		<%-- 가게 이미지 등록 --%>
-			<div class="store-photo">
+			<div class="photoUpload">
 				<ul>
 					<li>
 						<c:if test="${empty store.photo_name}">
@@ -21,10 +22,8 @@
 						</c:if>
 					</li>
 					<li>
-					<div id="photo_choice" >
-						<input type="file" id="upload" accept="image/gif,image/png,image/jpeg"><br>
-					</div>	
-						
+						<label for="upload">파일업로드</label>
+						<input type="file" name="upload" id="upload"><br>
 					</li>
 				</ul>
 			</div>

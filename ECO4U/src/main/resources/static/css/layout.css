@@ -242,3 +242,42 @@ a:hover{
 	padding:10px;
 }
 
+/*CKEditor 사용시 등록,수정폼*/
+.page-main form#register_form, .page-main form#update_form{
+	width:700px;
+}
+.page-main ul{
+	list-style:none;
+}
+.page-main label{
+	width:130px;
+	float:left;
+}
+.page-main input[type="text"],.page-main input[type="password"],.page-main input[type="email"]{
+	width:200px;
+}
+.page-main #register_form input[id="id"]{
+	width:113px;
+}
+.page-main input[id="zipcode"]{
+	width:95px;
+}
+.page-main .form-notice{
+	margin-left:130px;
+}
+
+.page-main ul.paging-button{
+	overflow:hidden;
+}
+.page-main li.paging-num{
+	float:left;
+	list-style:none;
+	padding:10px;
+	cursor:pointer;
+}
+.page-main li.paging-current{
+	float:left;
+	list-style:none;
+	padding:10px;
+}
+

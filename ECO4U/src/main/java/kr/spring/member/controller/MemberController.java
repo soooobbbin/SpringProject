@@ -61,7 +61,7 @@ public class MemberController {
 			return form();
 		}
 		
-		//회원가입
+		//회원가입-member테이블,zipcode테이블
 		memberService.insertMember(memberVO);
 		
 		model.addAttribute("accessMsg", "회원가입이 완료되었습니다.");
@@ -288,8 +288,7 @@ public class MemberController {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		//id와 email 필드만 체크
-		if(result.hasFieldErrors("name") || 
-				result.hasFieldErrors("email")) {
+		if(result.hasFieldErrors("name") || result.hasFieldErrors("email")) {
 			return findid();
 		}
 		

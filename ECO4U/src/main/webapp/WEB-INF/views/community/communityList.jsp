@@ -2,12 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/community.js"></script>
 
 <div class="page-main">
-	<h2 onclick="location.href='list.do'">Community</h2>
 
-		<ul class="search">
-			<li>
+	<div class="align-center">
+		<h2 onclick="location.href='list.do'">Community</h2>
+	</div>
+	
+	
+				<a href="./community?c_category=1">TIP</a>
+				<a href="./community?c_category=2" >함께해요</a>
+				<a href="./community?c_category=3">친환경 소식</a>
+			
+			<div class="align-right">
 				<select name="keyfield" id="keyfield">
 					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
 					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>작성자 ID</option>
@@ -17,19 +25,16 @@
 				<input type="search" name="keyword" id="keyword"
 				               value="${param.keyword}">
 			<input type="submit" value="찾기">
-				
-			</li>
-		</ul>
-	
+			
 	
 <!-- 글쓰기 버튼 -->
 <c:if test="${!empty user}">
-	<div class="align-right">
+	
 		<input type="button" value="글쓰기"
 		          onclick="location.href='write.do'">
-	</div>
-</c:if>
-
+	
+</c:if></div>
+</div>
 <!-- 게시글 목록 -->
 <c:if test="${count == 0}">
 	<div class="result-display">표시할 게시물이 없습니다.</div>	

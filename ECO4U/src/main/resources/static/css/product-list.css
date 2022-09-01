@@ -1,1 +1,36 @@
-@charset "UTF-8";
+
+body{
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+.row{
+	margin-bottom: 50px;
+}
+
+hr.bhr{
+	margin-bottom: 80px;
+}
+
+.category{
+	float:left;
+}
+
+.cate{
+	margin:0 30px 0 0;
+}
+
+.order{
+	position:relative;
+	left:790px;
+}
+
+.p_name{
+	font-size: 16px;
+}
+
+.price{
+	font-size: 14px;
+	margin:100px 0;
+}
+

@@ -73,6 +73,10 @@ public class ProductController {
 	}
 	
 	//===========상품 목록============//
+	@GetMapping("/product/list.do")
+	public String productForm() {
+		return "list";
+	}
 	@RequestMapping("/product/list.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1")
@@ -105,7 +109,7 @@ public class ProductController {
 		}
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("productList");
+		mav.setViewName("product/list");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());

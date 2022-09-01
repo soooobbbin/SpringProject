@@ -4,5 +4,22 @@
 	margin: 0 400px;
 }
 h1{
-	margin: 80px auto;
+	margin-top:80px;
+}
+h2{
+	margin: 30px 180px;
+}
+p{
+	font-size:17pt;
+}
+.store{
+	float:left;
+	margin: 0px 30px; 
+}
+span{
+	clear:both;
+	display:block;
+}
+#register{
+	margin:0px 30px 50px 0px;
 }

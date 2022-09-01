@@ -102,10 +102,11 @@ public class ProductController {
 			map.put("end", page.getEndRow());
 
 			list = productService.selectList(map);
+		
 		}
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("productList");
+		mav.setViewName("product/list");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());

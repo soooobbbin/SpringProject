@@ -10,12 +10,12 @@ import kr.spring.store.vo.StoreVO;
 
 public interface StoreService {
 	//가게관리 - 관리자
-	public int selectS_num();
 	public void insertStore(StoreVO store);
 	public StoreVO selectStore(Integer s_num);
 	public void updateStore(StoreVO store);
 	public void deleteStore(Integer s_num);
 	
+	public int selectRowCount(Map<String,Object> map);
 	public List<StoreVO> selectList(Map<String,Object> map);
 
 }

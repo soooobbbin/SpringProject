@@ -65,6 +65,7 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	
+	
 	/*
 	@Override
 	public void deleteFile(Integer c_num) {

@@ -28,6 +28,26 @@
 				</if>
 			</if>
 		</where>  	
+		
+		<!-- 카테고리 번호당 1.TIP 2.함께해요 3.친환경소식 -->
+		<!--  SELECT
+		  COUNT(*)
+		FROM community b JOIN member m
+		ON b.mem_num = m.mem_num
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="c_category == 1">
+					b.c_category LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="c_category == 2">
+					b.c_category LIKE '%' || #{keyword} || '%' 
+				</if>
+				<if test="c_category == 3">
+					b.c_category LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>  	 -->
+
 
 </select>
 </mapper>

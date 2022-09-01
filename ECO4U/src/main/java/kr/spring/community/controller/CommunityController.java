@@ -48,8 +48,10 @@ public class CommunityController {
 	
 	//===========게시판 글 등록============//
 	//등록 폼
+
+	
 	@GetMapping("/community/write.do")
-	public String form() {
+	public String communitywriteform() {
 		return "communityWrite";
 	}
 	//등록 폼에서 전송된 데이터 처리
@@ -64,7 +66,7 @@ public class CommunityController {
 		
 		//유효성 검사 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
-			return form();
+			return communitywriteform();
 		}
 		
 		MemberVO user = 
@@ -93,7 +95,14 @@ public class CommunityController {
 			@RequestParam(value="keyfield",defaultValue="")
 			String keyfield,
 			@RequestParam(value="keyword",defaultValue="")
-			String keyword) {
+			String keyword)
+	
+	
+	
+	{
+		
+		
+		
 		
 		Map<String,Object> map = 
 				    new HashMap<String,Object>();

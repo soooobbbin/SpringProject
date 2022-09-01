@@ -36,6 +36,7 @@ public interface CommunityMapper{
 		@Update("UPDATE community SET uploadc_file='',"
 				+ "c_filename='' WHERE c_num=#{c_num}")
 		public void deleteFile(Integer c_num);
+		
 		/*
 		//부모글 좋아요
 		@Select("SELECT * FROM community_like "

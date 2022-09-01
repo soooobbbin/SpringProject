@@ -32,7 +32,6 @@
 					  p_quantity,
 					  p_brand,
 					  p_photoname,
-					  p_categorty,
 					  reg_date,
 					  modify_date
 		            FROM product

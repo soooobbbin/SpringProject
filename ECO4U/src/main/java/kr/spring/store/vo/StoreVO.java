@@ -17,11 +17,11 @@ public class StoreVO {
 	@NotEmpty
 	private String s_tel;
 	@Size(min=5,max=5)
-	private String s_zipcode;
+	private String zipcode;
 	@NotEmpty
-	private String s_addr1;
+	private String address1;
 	@NotEmpty
-	private String s_addr2;
+	private String address2;
 	private byte[] photo;
 	private String photo_name;
 	private Date reg_date;
@@ -60,24 +60,31 @@ public class StoreVO {
 	public void setS_tel(String s_tel) {
 		this.s_tel = s_tel;
 	}
-	public String getS_zipcode() {
-		return s_zipcode;
+	
+	public String getZipcode() {
+		return zipcode;
 	}
-	public void setS_zipcode(String s_zipcode) {
-		this.s_zipcode = s_zipcode;
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
-	public String getS_addr1() {
-		return s_addr1;
+
+	public String getAddress1() {
+		return address1;
 	}
-	public void setS_addr1(String s_addr1) {
-		this.s_addr1 = s_addr1;
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
 	}
-	public String getS_addr2() {
-		return s_addr2;
+
+	public String getAddress2() {
+		return address2;
 	}
-	public void setS_addr2(String s_addr2) {
-		this.s_addr2 = s_addr2;
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
 	}
+
 	public byte[] getPhoto() {
 		return photo;
 	}
@@ -110,9 +117,11 @@ public class StoreVO {
 	@Override
 	public String toString() {
 		return "StoreVO [s_num=" + s_num + ", s_name=" + s_name + ", s_content=" + s_content + ", s_tel=" + s_tel
-				+ ", s_zipcode=" + s_zipcode + ", s_addr1=" + s_addr1 + ", s_addr2=" + s_addr2 + ", reg_date="
-				+ reg_date + ", modify_date=" + modify_date + "]";
+				+ ", zipcode=" + zipcode + ", address1=" + address1 + ", address2=" + address2 + ", photo_name="
+				+ photo_name + ", reg_date=" + reg_date + ", modify_date=" + modify_date + "]";
 	}
+	
+
 
 
 }

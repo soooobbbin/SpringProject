@@ -3,15 +3,20 @@ package kr.spring.store.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.spring.store.dao.StoreMapper;
 import kr.spring.store.vo.StoreVO;
 
 @Service
 @Transactional
 public class StoreServiceImpl implements StoreService{
 
+	@Autowired
+	StoreMapper storeMapper;
+	
 	@Override
 	public int selectS_num() {
 		// TODO Auto-generated method stub
@@ -20,8 +25,7 @@ public class StoreServiceImpl implements StoreService{
 
 	@Override
 	public void insertStore(StoreVO store) {
-		// TODO Auto-generated method stub
-		
+		storeMapper.insertStore(store);
 	}
 
 	@Override

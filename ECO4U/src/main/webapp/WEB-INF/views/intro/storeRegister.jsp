@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
@@ -16,14 +17,12 @@
 						<img src="${pageContext.request.contextPath}/images/no_image.png" width="130" height="160" class="my-photo">
 						</c:if>
 						<c:if test="${!empty store.photo_name}">
-						<img src="${pageContext.request.contextPath}/store/photoView.do" width="130" height="160" class="my-photo">
+						<img src="${pageContext.request.contextPath}/image_upload/${store.photo}" width="130" height="160" class="my-photo">
 						</c:if>
 					</li>
 					<li>
 					<div id="photo_choice" >
 						<input type="file" id="upload" accept="image/gif,image/png,image/jpeg"><br>
-						<input type="button" value="전송" id="photo_submit">
-						<input type="button" value="취소" id="photo_reset">
 					</div>	
 						
 					</li>
@@ -48,29 +47,28 @@
 				<form:errors path="s_tel" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="s_zipcode">우편번호</label>
-				<form:input path="s_zipcode"/>
+				<label for="zipcode">우편번호</label>
+				<form:input path="zipcode"/>
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기">
-				<form:errors path="s_zipcode" cssClass="error-color"/>
+				<form:errors path="zipcode" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="s_addr1">주소</label>
-				<form:input path="s_addr1"/>
-				<form:errors path="s_addr1" cssClass="error-color"/>
+				<label for="address1">주소</label>
+				<form:input path="address1"/>
+				<form:errors path="address1" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="s_addr2">주소</label>
-				<form:input path="s_addr2"/>
-				<form:errors path="s_addr2" cssClass="error-color"/>
+				<label for="address2">주소</label>
+				<form:input path="address2"/>
+				<form:errors path="address2" cssClass="error-color"/>
 			</li>
 		</ul>
 		</div>
 		<div class="align-center">
 			<form:button>전송</form:button>
 			<input type="button" value="홈으로" 
-			onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+			onclick="location.href='${pageContext.request.contextPath}/intro/store.do'">
 		</div>
-		
 	</form:form>
 </div>
 <!-- 우편번호 검색 시작 -->

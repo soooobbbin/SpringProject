@@ -39,7 +39,7 @@ public class MemberVO {
 	
 	//=========비밀번호 일치 여부 체크===========//
 	public boolean isCheckedPasswd(String userPasswd) {
-		if(auth > 1 && mem_pw.equals(userPasswd)) {
+		if(auth > 0 && mem_pw.equals(userPasswd)) {
 			return true;
 		}
 		return false;
@@ -47,7 +47,7 @@ public class MemberVO {
 	
 	//=========전화번호 일치 여부 체크===========//
 	public boolean isCheckedcall(String userCall) {
-		if(auth > 1 && mem_cell.equals(userCall)) {
+		if(auth > 0 && mem_cell.equals(userCall)) {
 			return true;
 		}
 		return false;
@@ -55,7 +55,7 @@ public class MemberVO {
 	
 	//=========이에일 일치 여부 체크===========//
 	public boolean isCheckedemail(String userEmail) {
-		if(auth > 1 && mem_email.equals(userEmail)) {
+		if(auth > 0 && mem_email.equals(userEmail)) {
 			return true;
 		}
 		return false;

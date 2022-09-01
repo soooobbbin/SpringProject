@@ -61,7 +61,7 @@ public class MemberController {
 			return form();
 		}
 		
-		//회원가입
+		//회원가입-member테이블,zipcode테이블
 		memberService.insertMember(memberVO);
 		
 		model.addAttribute("accessMsg", "회원가입이 완료되었습니다.");
@@ -112,7 +112,7 @@ public class MemberController {
 			
 		}catch(AuthCheckException e) {
 			//인증 실패로 로그인 폼 호출
-			if(member!=null && member.getAuth()==1) {
+			if(member!=null && member.getAuth()==0) {
 				//정지회원 메시지 표시
 				result.reject("noAuthority");
 			}else {
@@ -157,7 +157,7 @@ public class MemberController {
 				logger.debug("<<카카오회원 로그인 성공>>");
 			} else {
 				//회원 상태 확인
-				if(member.getAuth() != 2) {
+				if(member.getAuth() != 0) {
 					check = false;
 				}
 			}
@@ -182,7 +182,7 @@ public class MemberController {
 			
 		}catch(AuthCheckException e) {
 			//인증 실패로 로그인 폼 호출
-			if(member!=null && member.getAuth()==1) {
+			if(member!=null && member.getAuth()==0) {
 				//정지회원 메시지 표시
 				result.reject("noAuthority");
 			}
@@ -253,7 +253,7 @@ public class MemberController {
 					
 		}catch(AuthCheckException e) {
 			//인증 실패로 로그인 폼 호출
-			if(member!=null && member.getAuth()==1) {
+			if(member!=null && member.getAuth()==0) {
 				//정지회원 메시지 표시
 				result.reject("noAuthority");
 			}else {
@@ -288,8 +288,7 @@ public class MemberController {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		//id와 email 필드만 체크
-		if(result.hasFieldErrors("name") || 
-				result.hasFieldErrors("email")) {
+		if(result.hasFieldErrors("name") || result.hasFieldErrors("email")) {
 			return findid();
 		}
 		
@@ -322,7 +321,7 @@ public class MemberController {
 					
 		}catch(AuthCheckException e) {
 			//인증 실패로 로그인 폼 호출
-			if(member!=null && member.getAuth()==1) {
+			if(member!=null && member.getAuth()==0) {
 				//정지회원 메시지 표시
 				result.reject("noAuthority");
 			}else {

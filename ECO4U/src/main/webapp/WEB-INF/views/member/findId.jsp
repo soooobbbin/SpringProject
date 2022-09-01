@@ -3,10 +3,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
 #mem_name{
+	width:15%;
 	font-size: 15px;
-	margin-top: 20px;
 }
 #mem_email{
+	width:15%;
 	font-size: 15px;
 }
 .submit-btn{
@@ -28,28 +29,28 @@
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
 		<h1>아이디 찾기</h1>
 	</div>
-	<form:form id="findid_form" action="doSendid.do" modelAttribute="memberVO" style="border:1px solid white; border-radius:10px; height:450px; background-color:white;">
+	<form:form id="findid_form" action="doSendid.do" modelAttribute="memberVO" style="box-shadow: 3px 3px 10px gray; border:1px solid white; border-radius:10px; height:400px; background-color:white; padding-top:30px;">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<label for="mem_name" id="mem_name">이름</label><br>
+				<label for="mem_name" id="mem_name">이름</label>
+				<form:errors path="mem_name" cssClass="error-color"/><br>
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<form:input path="mem_name" placeholder="이름을 입력해주세요" autocomplete="off" style="width:90%; height:30px; border-radius:5px; border:1px solid gray;"/>
-				<form:errors path="mem_name" cssClass="error-color"/>
+				<form:input path="mem_name" placeholder="이름을 입력해주세요" autocomplete="off" style="width:90%; height:30px; border-radius:5px; border:1px solid gray; padding-left: 0.6rem;"/>
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<label for="mem_email" id="mem_email">이메일</label><br>
+				<label for="mem_email" id="mem_email">이메일</label>
+				<form:errors path="mem_email" cssClass="error-color"/><br>
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<form:input path="mem_email" placeholder="이메일을 입력해주세요" style="width:90%; height:30px; border-radius:5px; border:1px solid gray;"/>
-				<form:errors path="mem_email" cssClass="error-color"/>
+				<form:input path="mem_email" placeholder="이메일을 입력해주세요" style="width:90%; height:30px; border-radius:5px; border:1px solid gray; padding-left: 0.6rem;"/>
 			</li>
 		</ul>  
 		<div class="align-center" style="margin-top: 10px;">

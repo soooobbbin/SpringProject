@@ -22,6 +22,7 @@ public class MemberServiceImpl implements MemberService{
 		member.setMem_num(memberMapper.selectMem_num());
 		memberMapper.insertMember(member);
 		memberMapper.insertMember_detail(member);
+		memberMapper.insertZipcode(member);
 	}
 	//카카오회원가입
 	@Override

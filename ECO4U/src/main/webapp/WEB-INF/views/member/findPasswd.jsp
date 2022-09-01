@@ -3,10 +3,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
 #id{
+	width:15%;
 	font-size: 15px;
-	margin-top: 20px;
 }
 #mem_cell{
+	width:15%;
 	font-size: 15px;
 }
 .submit-btn{
@@ -28,28 +29,29 @@
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
 		<h1>비밀번호 찾기</h1>
 	</div>
-	<form:form id="findpasswd_form" action="doSend.do" modelAttribute="memberVO" style="border:1px solid white; border-radius:10px; height:450px; background-color:white;">
+	<form:form id="findpasswd_form" action="doSend.do" modelAttribute="memberVO" style="border:1px solid white; border-radius:10px; height:400px; background-color:white; padding-top:30px;">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<label for="id" id="id">아이디</label><br>
+				<label for="id" id="id">아이디</label>
+				<form:errors path="id" cssClass="error-color"/><br>
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<form:input path="id" placeholder="아이디를 입력해주세요" autocomplete="off" style="width:90%; height:30px; border-radius:5px; border:1px solid gray;"/>
-				<form:errors path="id" cssClass="error-color"/>
+				<form:input path="id" placeholder="아이디를 입력해주세요" autocomplete="off" style="width:90%; height:30px; border-radius:5px; border:1px solid gray; padding-left: 0.6rem;"/>
+				
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<label for="mem_cell" id="mem_cell">전화번호</label><br>
+				<label for="mem_cell" id="mem_cell">전화번호</label>
+				<form:errors path="mem_cell" cssClass="error-color"/><br>
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<form:input path="mem_cell" placeholder="전화번호를 입력해주세요" style="width:90%; height:30px; border-radius:5px; border:1px solid gray;"/>
-				<form:errors path="mem_cell" cssClass="error-color"/>
+				<form:input path="mem_cell" placeholder="전화번호를 입력해주세요" style="width:90%; height:30px; border-radius:5px; border:1px solid gray; padding-left: 0.6rem;"/>
 			</li>
 		</ul>  
 		<div class="align-center" style="margin-top: 10px;">

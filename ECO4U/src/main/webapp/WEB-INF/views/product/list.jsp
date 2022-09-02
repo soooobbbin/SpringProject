@@ -85,6 +85,7 @@
 								style="width: 278px; height: 200px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
 								src="/ex/resources/${list.p_photo}" alt="thumbnail">
 								<div class="card-body">
+									<span class="p_name">[${list.p_brand}]</span>
 									<span class="p_name">${list.p_name}</span><br>
 									<span class="price">￦<fmt:formatNumber type="number"
 											maxFractionDigits="3" value="${list.p_price}" /></span>

@@ -34,6 +34,8 @@
 					  p_photoname,
 					  reg_date,
 					  modify_date
+					  ROW_NUMBER() OVER(
+					  <include refid="sort"/> AS rnum
 		            FROM product
 					<where>
 						<if test="keyword != null and keyword != ''">
@@ -45,11 +47,26 @@
 							</if>
 						</if>
 					</where>
-					ORDER BY p_num DESC)a)
+					<include refid="sort"/>
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
 	</select>
+	<sql id="sort">
+		<if test="sort==null">
+		ORDER BY p_num DESC
+		</if>
+		<if test="sort==p_num">
+		ORDER BY p_num DESC
+		</if>
+		
+		<if test="sort==rowprice">
+		ORDER BY p_price ASC
+		</if>
+		<if test="sort==highprice">
+		ORDER BY p_price DESC
+		</if>
+	</sql>
 	
 	<!--상품 수정-->
 	<update id="updateProduct" parameterType="kr.spring.product.vo.ProductVO">

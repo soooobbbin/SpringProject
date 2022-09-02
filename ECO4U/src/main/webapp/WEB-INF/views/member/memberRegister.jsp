@@ -34,9 +34,6 @@
 #address1{
 	font-size: 15px;
 }
-.address2{
-	font-size: 15px;
-}
 #address2{
 	font-size: 15px;
 }
@@ -188,7 +185,7 @@ input{
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
 		<h1>ECO4U에 오신 것을 환영합니다.</h1>
 	</div>
-	<form:form id="register_form" action="registerUser.do" modelAttribute="memberVO" style="border:1px solid white; border-radius:10px; width:35%; height:900px; background-color:white; padding-top:30px;">
+	<form:form id="register_form" action="registerUser.do" modelAttribute="memberVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:35%; height:900px; background-color:white; padding-top:30px;">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
@@ -322,8 +319,8 @@ input{
 			</li>
 		</ul>
 		<div class="checks">
-  			<input type="checkbox" id="ex_chk"> 
-  			<label for="ex_chk" style="width: 18%; font-weight: bold;">동의하기</label>  <a href="#pop_info_1" class="btn_open" style="cursor:pointer;">이용약관</a> , <a href="#pop_info_2" class="btn_open" style="cursor:pointer;">개인정보 수집 및 이용</a> 동의(필수)
+  			<input type="checkbox" id="ex_chk" name="ex_chk"> 
+  			<label for="ex_chk" style="width: 18%; font-weight: bold;">동의하기</label>  <a href="#pop_info_1" class="btn_open" style="cursor:pointer; color:#558B2F">이용약관</a> , <a href="#pop_info_2" class="btn_open" style="cursor:pointer; color:#558B2F">개인정보 수집 및 이용</a> 동의(필수)
   			<!-- 팝업창 시작 -->
   			<div id="pop_info_1" class="pop_wrap" style="display:none;">
           		<div class="pop_inner">
@@ -501,6 +498,16 @@ for(var j = 0; j < target.length; j++){
     this.parentNode.parentNode.style.display = 'none';
   });
 }
+/* 체크 박스 */
+$('#register_form').submit(function(event){
+	if ($("input:checkbox[name=ex_chk]").is(":checked") == true) {
+        //체크가 되어있을때.    
+	} else {
+        //체크가 안되어있을때.
+        alert('이용약관에 동의해주세요');
+        return false;
+	}
+});
 </script>
 <!-- 내용 끝 -->
 

@@ -44,7 +44,7 @@
 		<img src="${pageContext.request.contextPath}/images/logout.png" class="logout">
 		</a>
 	</c:if>
-	<c:if test="${!empty user && user.auth == 2}">
+	<c:if test="${!empty user && user.auth == 1}">
 		<a href="${pageContext.request.contextPath}/member/myPage.do"> 
 		<img src="${pageContext.request.contextPath}/images/home.png" class="home">
 		</a>

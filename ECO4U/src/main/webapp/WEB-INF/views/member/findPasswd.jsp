@@ -29,7 +29,7 @@
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
 		<h1>비밀번호 찾기</h1>
 	</div>
-	<form:form id="findpasswd_form" action="doSend.do" modelAttribute="memberVO" style="border:1px solid white; border-radius:10px; height:400px; background-color:white; padding-top:30px;">
+	<form:form id="findpasswd_form" action="doSend.do" modelAttribute="memberVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; height:400px; background-color:white; padding-top:30px;">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
@@ -57,8 +57,8 @@
 		<div class="align-center" style="margin-top: 10px;">
 			<input type="submit" value="이메일전송" class="submit-btn">
 		</div>
-		<div class="align-center" style="font-size:15px; font-color:gray; margin-top: 20px">
-		가입하신 이메일 주소를 입력해주시면<br>
+		<div class="align-center" style="font-size:15px; color:gray; margin-top: 20px">
+		가입하신 아이디와 전화번호를 입력해주시면<br>
 		새로운 비밀번호를 보내드립니다.<br>
 		로그인 후 새로운 비밀번호를 변경해주세요.
 		</div>	                  

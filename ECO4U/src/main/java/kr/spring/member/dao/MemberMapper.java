@@ -29,10 +29,7 @@ public interface MemberMapper {
 	//카카오 회원가입
 	@Insert("INSERT INTO member (mem_num,id) VALUES (#{mem_num},#{id})")
 	public void insertkakaoMember(int mem_num,String id);
-	@Insert("INSERT INTO member_detail (mem_num,"
-			+ "mem_name,mem_pw,mem_cell,mem_email)"
-			+ " VALUES (#{mem_num},"
-			+ "카카오톡회원,null,null,#{id}")
+	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_email) VALUES (#{mem_num},'카카오회원',#{id})")
 	public void insertkakaoMember_detail(int mem_num,String id);
 	@Select("SELECT * FROM member WHERE id=#{id}") 
 	public MemberVO selectCheckkakaoMember(String id); 

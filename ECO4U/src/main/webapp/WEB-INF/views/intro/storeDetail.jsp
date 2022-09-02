@@ -19,8 +19,18 @@
 		<input type="button" value="홈으로" 
 			onclick="location.href='${pageContext.request.contextPath}/intro/store.do'">
 	</div>
-	<div id="map" style="width:500px;height:350px;">
+	<div id="map" style="width:500px;height:400px;float:left;">
 	</div>
+	<div class="store-content">
+		<h2>가게 소개</h2>
+		<span>${store.s_content}</span><br>
+		<h2>전화번호</h2>
+		<span>${store.s_tel}</span><br>
+		<h2>주소</h2>
+		<span>${store.zipcode}</span>
+		<span>${store.address1} ${store.address2}</span>
+	</div>
+	
 	<c:if test="${store.s_num == 27}">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/map/map1.js"></script>
 	</c:if>

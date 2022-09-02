@@ -53,6 +53,8 @@ public class CommunityAjaxController {
 		
 		return mapJson;
 	}
+	
+	
 	/*
 	//==========부모글 좋아요============//
 	//부모글 좋아요 등록

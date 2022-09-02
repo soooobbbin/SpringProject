@@ -29,7 +29,7 @@
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
 		<h1>로그인</h1>
 	</div>
-	<form:form id="login_form" action="login.do" modelAttribute="memberVO" style="border:1px solid white; border-radius:10px; height:450px; background-color:white; padding-top:30px;">
+	<form:form id="login_form" action="login.do" modelAttribute="memberVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; height:450px; background-color:white; padding-top:30px;">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>

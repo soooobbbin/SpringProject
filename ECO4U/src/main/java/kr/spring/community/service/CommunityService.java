@@ -18,7 +18,6 @@ public interface CommunityService {
 	public void updateCommunity(CommunityVO community);
 	public void deleteCommunity(Integer c_num);
 	public void deleteFile(Integer c_num);
-	
 	/*
 	//부모글 좋아요
 	public CommunityLikeVO selectLike(CommunityLikeVO like);

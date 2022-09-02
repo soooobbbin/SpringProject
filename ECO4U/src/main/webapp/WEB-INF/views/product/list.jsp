@@ -10,6 +10,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/product-list.css">
 <!-- 내용 시작 -->
 <div class="page-main">
 	<div class="row">
@@ -47,48 +49,30 @@
 	</div>
 	<div class="container">
 		<hr>
-		<div class="row">
-			<input type="hidden" id="product_category_name"
-				value="${product_category_name}"> <input type="hidden"
-				id="order" value="${order}">
-			<div class="form-row justify-content-center">
-				<h4 align="center">${product_category_name}</h4>
+		<div class="list-header">
+			<div class="category">
+				<a class="cate" href="/product/list.do">ALL</a> <a
+					class="cate" href="/product/list.do?p_category=1">Living</a> <a
+					class="cate" href="/product/list.do?p_category=2">Beauty</a> <a
+					class="cate" href="/product/list.do?p_category=3">Fashion</a>
 			</div>
-			<div class="form-row justify-content-center" id="categories">
-				<div class="form-group col-md-4">
-					<ul>
-						<div style="margin: 20px;">
-							<div class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									정렬 <!-- 아래 화살표 --> <span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item"
-										href="/product/list.do?p_category=${p_category}&order=new">신상품순</a></li>
-									<li><a class="dropdown-item"
-										href="/product/list.do?p_category=${p_category}&order=hignPrice">높은가격순</a></li>
-									<li><a class="dropdown-item"
-										href="/product/list.do?p_category=${p_category}&order=lowPrice">낮은가격순</a></li>
-									<li><a class="dropdown-item"
-										href="/product/list.do?p_category=${p_category}&order=review">리뷰많은순</a></li>
-								</ul>
-							</div>
-						</div>
-					</ul>
-				</div>
+			<div class="order">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 정렬 <!-- 아래 화살표 -->
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item"
+						href="/product/list.do?p_category=${p_category}&order=new">신상품순</a></li>
+					<li><a class="dropdown-item"
+						href="/product/list.do?p_category=${p_category}&order=hignPrice">높은가격순</a></li>
+					<li><a class="dropdown-item"
+						href="/product/list.do?p_category=${p_category}&order=lowPrice">낮은가격순</a></li>
+					<li><a class="dropdown-item"
+						href="/product/list.do?p_category=${p_category}&order=review">리뷰많은순</a></li>
+				</ul>
 			</div>
 		</div>
-
-		<div id="mainList" class="row"></div>
-
-		<div class="col-sm">
-			<div class="category">
-				<a class="category" href="/product/list.do">ALL</a> <a
-					class="category" href="/product/list.do?p_category=1">Living</a> <a
-					class="category" href="/product/list.do?p_category=2">Beauty</a> <a
-					class="category" href="/product/list.do?p_category=3">Fashion</a>
-			</div>
-			<hr>
+			<hr class="bhr">
 			<div class="row cardmargin">
 				<c:forEach var="list" items="${list}" varStatus="status">
 					<div class="col" style="margin-top: 15px;">
@@ -100,8 +84,8 @@
 								style="width: 278px; height: 200px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
 								src="/ex/resources/${list.p_photo}" alt="thumbnail">
 								<div class="card-body">
-									<h4 class="card-title">${list.p_name}</h4>
-									<span>￦<fmt:formatNumber type="number"
+									<span class="p_name">${list.p_name}</span><br>
+									<span class="price">￦<fmt:formatNumber type="number"
 											maxFractionDigits="3" value="${list.p_price}" /></span>
 								</div>
 							</a>
@@ -110,7 +94,5 @@
 				</c:forEach>
 			</div>
 		</div>
-
-	</div>
 </div>
 <!-- 내용 끝 -->

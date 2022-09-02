@@ -106,7 +106,7 @@ public class ProductController {
 		}
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("product/list");
+		mav.setViewName("list");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());

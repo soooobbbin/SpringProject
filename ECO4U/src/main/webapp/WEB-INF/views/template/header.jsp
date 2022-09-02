@@ -16,11 +16,11 @@
 			<a href="${pageContext.request.contextPath}/intro/store.do" id="store">Offline Store</a>
 		</div>
 		<div class="product2">
-			<a href="${pageContext.request.contextPath}/intro/list.do" id="fashion">Fashion</a>
+			<a href="${pageContext.request.contextPath}/product/list.do?p_category=3" id="fashion">Fashion</a>
 			 <br><br> 
-			<a href="${pageContext.request.contextPath}/intro/list.do" id="beauty">Beauty</a>
+			<a href="${pageContext.request.contextPath}/product/list.do?p_category=2" id="beauty">Beauty</a>
 			<br><br> 
-			<a href="${pageContext.request.contextPath}/intro/list.do" id="living">Living</a>
+			<a href="${pageContext.request.contextPath}/product/list.do?p_category=1" id="living">Living</a>
 		</div>
 		<div class="community2">
 			<a href="${pageContext.request.contextPath}/intro/list.do" id="communication">Communication</a>

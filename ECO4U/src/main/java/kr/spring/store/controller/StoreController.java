@@ -25,6 +25,7 @@ import kr.spring.store.service.StoreService;
 import kr.spring.store.vo.StoreVO;
 import kr.spring.util.FileUtil;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 
 @Controller
@@ -109,6 +110,23 @@ public class StoreController {
 		mav.addObject("page", page.getPage());
 		
 		return mav;
+	}
+	
+	//============ 가게 글상세 =============//
+	@RequestMapping("/intro/detail.do")
+	public ModelAndView detail(@RequestParam int s_num) {
+		
+		logger.debug("<<s_num>> : " + s_num);
+		
+		
+		StoreVO store = storeService.selectStore(s_num);
+		
+		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
+		
+		store.setS_content(StringUtil.useBrNoHtml(store.getS_content()));
+		
+								//뷰 이름		 속성명	 속성값
+		return new ModelAndView("storeDetail","store", store);
 	}
 	
 	//============ 이미지 출력 =============//

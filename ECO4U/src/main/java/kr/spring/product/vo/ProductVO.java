@@ -27,7 +27,6 @@ public class ProductVO {
 	private Date reg_date;
 	private Date modify_date;
 	
-	private String sort;
 	
 	//========이미지 BLOB 처리===============//
 	//(주의) 폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야 함
@@ -123,12 +122,6 @@ public class ProductVO {
 		this.modify_date = modify_date;
 	}
 	
-	public String getSort() {
-		return sort;
-	}
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
 
 	//byte[] 타입의 프로퍼티 제외
 	@Override

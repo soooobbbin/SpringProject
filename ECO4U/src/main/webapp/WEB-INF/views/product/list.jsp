@@ -51,30 +51,11 @@
 		<hr>
 		<div class="list-header">
 			<div class="category">
-				<c:if test="${param.p_category==null}">
-					<a class="cate" href="/product/list.do" style="font-weight:bolder;">ALL</a>
-					<a class="cate" href="/product/list.do?p_category=1">Living</a>
-					<a class="cate" href="/product/list.do?p_category=2">Beauty</a>
-					<a class="cate" href="/product/list.do?p_category=3">Fashion</a>
-				</c:if>
-				<c:if test="${param.p_category==1}">
-					<a class="cate" href="/product/list.do">ALL</a>
-					<a class="cate" href="/product/list.do?p_category=1" style="font-weight:bolder;">Living</a>
-					<a class="cate" href="/product/list.do?p_category=2">Beauty</a>
-					<a class="cate" href="/product/list.do?p_category=3">Fashion</a>
-				</c:if>
-				<c:if test="${param.p_category==2}">
-					<a class="cate" href="/product/list.do">ALL</a>
-					<a class="cate" href="/product/list.do?p_category=1">Living</a>
-					<a class="cate" href="/product/list.do?p_category=2" style="font-weight:bolder;">Beauty</a>
-					<a class="cate" href="/product/list.do?p_category=3">Fashion</a>
-				</c:if>
-				<c:if test="${param.p_category==3}">
-					<a class="cate" href="/product/list.do">ALL</a>
-					<a class="cate" href="/product/list.do?p_category=1">Living</a>
-					<a class="cate" href="/product/list.do?p_category=2">Beauty</a>
-					<a class="cate" href="/product/list.do?p_category=3" style="font-weight:bolder;">Fashion</a>
-				</c:if>
+				<a class="cate" href="/product/list.do?p_category=0&order=${order}" <c:if test="${param.p_category==0}">style="font-weight:bolder;"</c:if>>ALL</a>
+				<a class="cate" href="/product/list.do?p_category=1&order=${order}" <c:if test="${param.p_category==1}">style="font-weight:bolder;"</c:if>>Living</a>
+				<a class="cate" href="/product/list.do?p_category=2&order=${order}" <c:if test="${param.p_category==2}">style="font-weight:bolder;"</c:if>>Beauty</a>
+				<a class="cate" href="/product/list.do?p_category=3&order=${order}" <c:if test="${param.p_category==3}">style="font-weight:bolder;"</c:if>>Fashion</a>
+				
 			</div>
 			<div class="order">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 정렬 <!-- 아래 화살표 -->
@@ -114,5 +95,6 @@
 				</c:forEach>
 			</div>
 		</div>
+		<div class="page align-center">${page}</div>
 </div>
 <!-- 내용 끝 -->

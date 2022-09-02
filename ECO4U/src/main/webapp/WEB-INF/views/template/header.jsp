@@ -7,7 +7,7 @@
 </a>
 <div class="align-center" id="header_center">
 	<a href="${pageContext.request.contextPath}/intro/list.do" id="intro">Intro</a>
-	<a href="${pageContext.request.contextPath}/product/list.do" id="product">Product</a> 
+	<a href="${pageContext.request.contextPath}/product/list.do?p_category=0" id="product">Product</a> 
 	<a href="${pageContext.request.contextPath}/community/list.do" id="community">Community</a>
 	<div id="menu">
 		<div class="intro2">
@@ -16,11 +16,11 @@
 			<a href="${pageContext.request.contextPath}/intro/store.do" id="store">Offline Store</a>
 		</div>
 		<div class="product2">
-			<a href="${pageContext.request.contextPath}/product/list.do?p_category=3" id="fashion">Fashion</a>
-			 <br><br> 
+			<a href="${pageContext.request.contextPath}/product/list.do?p_category=1" id="living">Living</a>
+			<br><br> 
 			<a href="${pageContext.request.contextPath}/product/list.do?p_category=2" id="beauty">Beauty</a>
 			<br><br> 
-			<a href="${pageContext.request.contextPath}/product/list.do?p_category=1" id="living">Living</a>
+			<a href="${pageContext.request.contextPath}/product/list.do?p_category=3" id="fashion">Fashion</a>
 		</div>
 		<div class="community2">
 			<a href="${pageContext.request.contextPath}/intro/list.do" id="communication">Communication</a>

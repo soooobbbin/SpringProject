@@ -57,7 +57,7 @@
 				<form:errors path="address1" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="address2">주소</label>
+				<label for="address2">상세주소</label>
 				<form:input path="address2"/>
 				<form:errors path="address2" cssClass="error-color"/>
 			</li>

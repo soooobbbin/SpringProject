@@ -10,10 +10,10 @@
 		<h1>오프라인 가게</h1>
 	</div>
 	<c:if test="${user.auth == 2}"> 
-	</c:if>
 	<div class="align-right">
 		<input type="button" value="등록" id="register" onclick="location.href='storeRegister.do'">	
 	</div>
+	</c:if>
 	<c:if test="${count == 0}">
 	<div class="result-display">표시할 게시물이 없습니다.</div>
 	</c:if>

@@ -8,6 +8,7 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import kr.spring.interceptor.AdminCheckInterceptor;
 import kr.spring.interceptor.LoginCheckInterceptor;
 
 //자바코드 기반 설정 클래스
@@ -22,6 +23,8 @@ public class AppConfig implements WebMvcConfigurer{
 		registry.addInterceptor(
 				    new LoginCheckInterceptor())
 		        .addPathPatterns("/member/myPage.do");
+		registry.addInterceptor(new AdminCheckInterceptor())
+				.addPathPatterns("/intro/storeRegister.do");
 		
 	}
 	

@@ -29,7 +29,7 @@
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
 		<h1>아이디 찾기</h1>
 	</div>
-	<form:form id="findid_form" action="doSendid.do" modelAttribute="memberVO" style="box-shadow: 3px 3px 10px gray; border:1px solid white; border-radius:10px; height:400px; background-color:white; padding-top:30px;">
+	<form:form id="findid_form" action="doSendid.do" modelAttribute="memberVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; height:400px; background-color:white; padding-top:30px;">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
@@ -56,7 +56,7 @@
 		<div class="align-center" style="margin-top: 10px;">
 			<input type="submit" value="아이디 찾기" class="submit-btn">
 		</div>
-		<div class="align-center" style="font-size:15px; font-color:gray; margin-top: 20px">
+		<div class="align-center" style="font-size:15px; color:gray; margin-top: 20px;">
 		가입하신 성함과 이메일을 입력해주시면<br>
 		가입하신 아이디를 아스타처리하여 보여드립니다.
 		</div>	                  

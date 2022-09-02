@@ -66,7 +66,7 @@ public class MemberController {
 		
 		model.addAttribute("accessMsg", "회원가입이 완료되었습니다.");
 		
-		return "common/notice";
+		return "common/notice_member";
 	}
 	
 	//============회원로그인============//
@@ -240,12 +240,12 @@ public class MemberController {
 				
 				Map<String, Object> sendRs = mailService.send(email, title, body);
 				
-				model.addAttribute("accessMsg", "메일발송이 완료되었습니다. 확인 후 비밀번호를 변경해주세요.");
+				model.addAttribute("accessMsg", "메일발송이 완료되었습니다.");
 				
 				//생성한 난수로 비밀번호 변경
 				memberService.updatefindPassword(member.getMem_num(),mem_pw);
 			
-				return "common/notice";
+				return "common/notice_findpw";
 			}
 					
 			//인증실패
@@ -313,7 +313,7 @@ public class MemberController {
 	
 				model.addAttribute("accessMsg", "고객님의 아이디는" + id + "***입니다.");
 				
-				return "common/notice";
+				return "common/notice_findid";
 			}
 					
 			//인증실패

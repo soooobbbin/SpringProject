@@ -19,11 +19,8 @@ public interface MemberService {
 	public void updatefindPassword(Integer mem_num,String mem_pw);
 	public void deleteMember(Integer mem_num);
 
-	//프로필 이미지 업데이트
-	public void updateProfile(MemberVO member);	
 	//회원관리 - 관리자
-	public List<MemberVO> selectList(
-			Map<String,Object> map);
+	public List<MemberVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
 	public void updateByAdmin(MemberVO member);
 }

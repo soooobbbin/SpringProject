@@ -83,7 +83,7 @@ public class MemberController {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		//id와 passwd 필드만 체크
-		if(result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
+		if(result.hasFieldErrors("id") || result.hasFieldErrors("mem_pw")) {
 			return formLogin();
 		}
 		
@@ -157,7 +157,7 @@ public class MemberController {
 				logger.debug("<<카카오회원 로그인 성공>>");
 			} else {
 				//회원 상태 확인
-				if(member.getAuth() != 0) {
+				if(member.getAuth() != 1) {
 					check = false;
 				}
 			}
@@ -212,8 +212,7 @@ public class MemberController {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		//id와 phone 필드만 체크
-		if(result.hasFieldErrors("id") || 
-				result.hasFieldErrors("phone")) {
+		if(result.hasFieldErrors("id") || result.hasFieldErrors("mem_cell")) {
 			return findpasswd();
 		}
 		
@@ -288,7 +287,7 @@ public class MemberController {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		//id와 email 필드만 체크
-		if(result.hasFieldErrors("name") || result.hasFieldErrors("email")) {
+		if(result.hasFieldErrors("mem_name") || result.hasFieldErrors("mem_email")) {
 			return findid();
 		}
 		
@@ -332,6 +331,112 @@ public class MemberController {
 					
 			return findid();
 		}
+	}
+	
+	//==========MY페이지===========//
+	@RequestMapping("/member/myPage.do")
+	public String myPage(HttpSession session,Model model) {
+		//session에 저장된 정보 읽기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+			
+		//1건의 레코드 읽기
+		MemberVO member = memberService.selectMember(user.getMem_num());
+			
+		logger.debug("<<회원상세정보>> : " + member);
+			                   //속성명     속성값 
+		model.addAttribute("member", member);		
+			
+		return "memberView";
+	}
+	
+	//================회원정보수정=============//
+	//수정폼
+	@GetMapping("/member/update.do")
+	public String formUpdate(HttpSession session,Model model) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		
+		//1건의 레코드를 구함
+		MemberVO memberVO = memberService.selectMember(user.getMem_num());
+		
+		model.addAttribute("memberVO", memberVO);
+		
+		return "memberModify";
+	}
+	
+	//수정폼에서 전송된 데이터 처리
+	@PostMapping("/member/update.do")
+	public String submitUpdate(@Valid MemberVO memberVO,BindingResult result,HttpSession session) {
+		
+		logger.debug("<<회원정보수정 처리>> : " + memberVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return "memberModify";
+		}
+		
+		//전송되지 않은 회원번호를 세션에서 추출
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		memberVO.setMem_num(user.getMem_num());
+		
+		//회원정보수정
+		memberService.updateMember(memberVO);
+		
+		return "redirect:/member/myPage.do";
+	}
+	
+	//===============회원정보 비밀번호 수정 폼==============//
+	@GetMapping("/member/updatepw.do")
+	public String updatePwForm() {
+		return "updatePw";
+	}
+	
+	//수정폼에서 전송된 데이터 처리
+	@PostMapping("/member/updatepw.do")
+	public String updatePw(@Valid MemberVO memberVO,BindingResult result,HttpSession session) {
+		
+		logger.debug("<<회원비밀번호변경>> : " + memberVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasFieldErrors("id") || result.hasFieldErrors("mem_pw") || result.hasFieldErrors("mem_pwcheck")) {
+			return updatePwForm();
+		}
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		memberVO.setMem_num(user.getMem_num());
+		
+		//아이디 체크
+		MemberVO member = null;
+		try {
+			member = memberService.selectCheckMember(memberVO.getId());
+			boolean check = false;
+				
+			if(member!=null) {
+				//이메일 일치 여부 체크
+				check = member.isCheckedid(member.getId());
+			}
+			if(check) {
+				logger.debug("<<비밀번호 변경 인증 성공>> : " + memberVO.getId());
+				
+				//회원정보수정
+				memberService.updatePassword(memberVO);
+						
+				return "redirect:/member/myPage.do";
+			}
+					
+			//인증실패
+			throw new AuthCheckException();
+					
+		}catch(AuthCheckException e) {
+			//인증 실패로 로그인 폼 호출
+			if(member!=null && member.getAuth()==0) {
+				//정지회원 메시지 표시
+				result.reject("noAuthority");
+			}else {
+				result.reject("invalidPasswordOrPasswordCheck");
+			}
+					
+			logger.debug("<<비밀번호 변경 인증 실패>>");
+					
+			return updatePwForm();
+		}
 	}
 }

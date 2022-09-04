@@ -1,14 +1,11 @@
 package kr.spring.member.vo;
 
-import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import org.springframework.web.multipart.MultipartFile;
 
 public class MemberVO {
 	private int mem_num;
@@ -32,6 +29,10 @@ public class MemberVO {
 	private String address2;
 	private Date reg_date;
 	private Date modify_date;
+	
+	//비밀번호 변경시 현재 비밀번호를 저장하는 용도
+	@Pattern(regexp="^[A-Za-z0-9]{4,12}$")
+	private String mem_pwcheck;
 	
 	//비밀번호 변경시 현재 비밀번호를 저장하는 용도
 	@Pattern(regexp="^[A-Za-z0-9]{4,12}$")
@@ -59,8 +60,16 @@ public class MemberVO {
 			return true;
 		}
 		return false;
-	}	
-
+	}
+	
+	//=========아이디 일치 여부 체크===========//
+	public boolean isCheckedid(String userId) {
+		if(auth > 0 && id.equals(userId)) {
+			return true;
+		}
+		return false;
+	}
+		
 	public int getMem_num() {
 		return mem_num;
 	}
@@ -165,4 +174,12 @@ public class MemberVO {
 		this.now_passwd = now_passwd;
 	}
 
+	public String getMem_pwcheck() {
+		return mem_pwcheck;
+	}
+
+	public void setMem_pwcheck(String mem_pwcheck) {
+		this.mem_pwcheck = mem_pwcheck;
+	}
+	
 }

@@ -22,7 +22,7 @@ public interface MemberMapper {
 			+ " VALUES (#{mem_num},"
 			+ "#{mem_name},#{mem_pw},#{mem_cell},#{mem_email})")
 	public void insertMember_detail(MemberVO member);
-	@Insert("INSERT INTO zipcode (zip_num,zip_name,zip_cell,zip_rec,zip_auth,zip_zipcode,zip_addr1,zip_addr2,mem_num) "
+	@Insert("INSERT INTO zipcode (zip_num,zip_name,zip_cell,zip_rec,zip_auth,zipcode,address1,address2,mem_num) "
 			+ "VALUES (zipcode_seq.nextval,null,null,#{mem_name},0,#{zipcode},#{address1},#{address2},#{mem_num})")
 	public void insertZipcode(MemberVO member);
 	
@@ -46,20 +46,17 @@ public interface MemberMapper {
 			+ "member_detail d ON m.mem_num=d.mem_num "
 			+ "WHERE d.mem_name=#{name}")
 	public MemberVO selectCheckNameMember(String name);
-	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
+	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num JOIN zipcode z ON m.mem_num=z.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
-	public void updateMember(MemberVO member);
+	@Update("UPDATE member_detail SET mem_name=#{mem_name},mem_cell=#{mem_cell},mem_email=#{mem_email} WHERE mem_num=#{mem_num}")
+	public void updateMember_detail(MemberVO member);
+	@Update("UPDATE zipcode SET zipcode=#{zipcode},address1=#{address1},address2=#{address2} WHERE mem_num=#{mem_num}")
+	public void updatezipcode(MemberVO member);
+	@Update("UPDATE member_detail SET mem_pw=#{mem_pw} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);
 	@Update("UPDATE member_detail SET mem_pw=#{mem_pw} WHERE mem_num=#{mem_num}")
 	public void updatefindPassword(Integer mem_num,String mem_pw);
 	public void deleteMember(Integer mem_num);
 	public void deleteMember_detail(Integer mem_num);
 	
-	//프로필 이미지 업데이트
-	public void updateProfile(MemberVO member);	
-	//회원관리 - 관리자
-	public List<MemberVO> selectList(
-			                 Map<String,Object> map);
-	public int selectRowCount(Map<String,Object> map);
-	public void updateByAdmin(MemberVO member);
 }

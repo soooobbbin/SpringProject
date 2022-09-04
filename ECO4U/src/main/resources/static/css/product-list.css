@@ -4,6 +4,10 @@ body{
 	overflow-y:auto;
 }
 
+.carousel-inner{
+	top:-9px;
+}
+
 .row{
 	margin-bottom: 50px;
 }
@@ -26,11 +30,20 @@ hr.bhr{
 }
 
 .p_name{
-	font-size: 16px;
+	font-size: 14px;
+	font-weight: bold;
 }
 
 .price{
-	font-size: 14px;
+	font-size: 12px;
 	margin:100px 0;
+}
+
+.dropdown-item{
+	font-size: 12px;
+}
+
+.page{
+	margin-bottom:70px;
 }
 

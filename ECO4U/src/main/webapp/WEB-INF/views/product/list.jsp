@@ -51,10 +51,11 @@
 		<hr>
 		<div class="list-header">
 			<div class="category">
-				<a class="cate" href="/product/list.do">ALL</a> <a
-					class="cate" href="/product/list.do?p_category=1">Living</a> <a
-					class="cate" href="/product/list.do?p_category=2">Beauty</a> <a
-					class="cate" href="/product/list.do?p_category=3">Fashion</a>
+				<a class="cate" href="/product/list.do?p_category=0&order=${order}" <c:if test="${param.p_category==0}">style="font-weight:bolder;"</c:if>>ALL</a>
+				<a class="cate" href="/product/list.do?p_category=1&order=${order}" <c:if test="${param.p_category==1}">style="font-weight:bolder;"</c:if>>Living</a>
+				<a class="cate" href="/product/list.do?p_category=2&order=${order}" <c:if test="${param.p_category==2}">style="font-weight:bolder;"</c:if>>Beauty</a>
+				<a class="cate" href="/product/list.do?p_category=3&order=${order}" <c:if test="${param.p_category==3}">style="font-weight:bolder;"</c:if>>Fashion</a>
+				
 			</div>
 			<div class="order">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 정렬 <!-- 아래 화살표 -->
@@ -84,6 +85,7 @@
 								style="width: 278px; height: 200px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
 								src="/ex/resources/${list.p_photo}" alt="thumbnail">
 								<div class="card-body">
+									<span class="p_name">[${list.p_brand}]</span>
 									<span class="p_name">${list.p_name}</span><br>
 									<span class="price">￦<fmt:formatNumber type="number"
 											maxFractionDigits="3" value="${list.p_price}" /></span>
@@ -94,5 +96,6 @@
 				</c:forEach>
 			</div>
 		</div>
+		<div class="page align-center">${page}</div>
 </div>
 <!-- 내용 끝 -->

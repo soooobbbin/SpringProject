@@ -10,11 +10,19 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/intro/eco4u.jsp"/>                   
     </definition>
+    
     <definition name="store" extends="main">
-    	<put-attribute name="title" value="오프라인 가게 판매처"/>
+    	<put-attribute name="title" value="오프라인 가게 목록"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/intro/store.jsp"/>                   
     </definition>
+    
+    <definition name="storeDetail" extends="main">
+    	<put-attribute name="title" value="오프라인 가게 판매처"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/intro/storeDetail.jsp"/>                   
+    </definition>
+    
     <definition name="storeRegister" extends="main">
     	<put-attribute name="title" value="오프라인 가게 등록"/>
     	<put-attribute name="body"

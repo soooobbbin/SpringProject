@@ -181,7 +181,7 @@ input{
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
-<div class="page-main" style="height:1100px;">
+<div class="page-main">
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
 		<h1>ECO4U에 오신 것을 환영합니다.</h1>
 	</div>

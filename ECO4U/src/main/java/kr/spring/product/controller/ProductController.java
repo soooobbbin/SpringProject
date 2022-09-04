@@ -114,7 +114,7 @@ public class ProductController {
 		return mav;
 	}
 	
-	//========게시판 글상세===========//
+	//========상품 상세===========//
 	@RequestMapping("/product/detail.do")
 	public ModelAndView detail(@RequestParam int p_num) {
 		

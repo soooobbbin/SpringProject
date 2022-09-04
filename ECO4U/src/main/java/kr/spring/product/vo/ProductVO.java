@@ -27,6 +27,7 @@ public class ProductVO {
 	private Date reg_date;
 	private Date modify_date;
 	
+	
 	//========이미지 BLOB 처리===============//
 	//(주의) 폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야 함
 	public void setUpload(MultipartFile upload) throws IOException {
@@ -121,6 +122,7 @@ public class ProductVO {
 		this.modify_date = modify_date;
 	}
 	
+
 	//byte[] 타입의 프로퍼티 제외
 	@Override
 	public String toString() {

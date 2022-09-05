@@ -15,6 +15,16 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/faq/faqWrite.jsp"/>                   
     </definition>
+    <definition name="faqModify" extends="main">
+    	<put-attribute name="title" value="FAQ글수정"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/faq/faqModify.jsp"/>                   
+    </definition>
+    <definition name="qnaWrite" extends="main">
+    	<put-attribute name="title" value="1:1문의글쓰기"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/faq/qnaWrite.jsp"/>                   
+    </definition>
 </tiles-definitions>
 
 

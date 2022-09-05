@@ -9,10 +9,8 @@ public interface FAQService {
 	//부모글
 	public List<FAQVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
-	public void insertBoard(FAQVO board);
-//	public FAQVO selectBoard(Integer board_num);
-//	public void updateHit(Integer board_num);
-//	public void updateBoard(FAQVO board);
-//	public void deleteBoard(Integer board_num);
-//	public void deleteFile(Integer board_num);
+	public void insertBoard(FAQVO faq);
+	public FAQVO selectBoard(Integer f_num);
+	public void updateBoard(FAQVO faq);
+	public void deleteBoard(Integer f_num);
 }

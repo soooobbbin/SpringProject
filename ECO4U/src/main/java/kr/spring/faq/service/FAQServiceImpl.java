@@ -17,21 +17,36 @@ import kr.spring.faq.vo.FAQVO;
 public class FAQServiceImpl implements FAQService{
 	
 	@Autowired
-	private FAQMapper FAQMapper;
+	private FAQMapper faqMapper;
 	
 	@Override
 	public List<FAQVO> selectList(Map<String, Object> map) {
-		return FAQMapper.selectList(map);
+		return faqMapper.selectList(map);
 	}
 
 	@Override
 	public int selectRowCount(Map<String, Object> map) {
-		return FAQMapper.selectRowCount(map);
+		return faqMapper.selectRowCount(map);
 	}
 
 	@Override
 	public void insertBoard(FAQVO faq) {
-		FAQMapper.insertBoard(faq);
+		faqMapper.insertBoard(faq);
+	}
+	
+	@Override
+	public FAQVO selectBoard(Integer f_num) {
+		return faqMapper.selectBoard(f_num);
+	}
+
+	@Override
+	public void updateBoard(FAQVO faq) {
+		faqMapper.updateBoard(faq);
+	}
+
+	@Override
+	public void deleteBoard(Integer f_num) {
+		faqMapper.deleteBoard(f_num);
 	}
 
 }

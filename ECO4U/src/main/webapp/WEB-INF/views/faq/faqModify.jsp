@@ -6,23 +6,54 @@
 <!-- include libraries(jquery,bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style>
-.ck-editor__editable_inline{
-	min-height:250px;
-}
-</style>
 <!-- include ckeditor js -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-<div class="page-main">
-	<h2>글수정</h2>
-	<form:form action="update.do" modelAttribute="boardVO"
-	        id="update_form"
-	        enctype="multipart/form-data">
-	    <form:hidden path="board_num"/>    
-	    <form:errors element="div" cssClass="error-color"/>    
-		<ul>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/faq.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/faq.js"></script>
+<div class="faq_write_main">
+	<h2 style="font-weight:bold">FAQ<span style="font-size:11px; font-weight:none">(공지수정)</span></h2>
+	<hr class="faq_write_hr" size="3" width="112px" align="left">
+	<form:form action="faqupdate.do" modelAttribute="fAQVO" id="update_form" enctype="multipart/form-data">
+ 	<form:hidden path="f_num"/>    
+	    <form:errors element="div" cssClass="error-color"/>
+	    <ul class="f_title_li">
+			<li>
+			<select name="f_category" id="f_category">
+				<option value="1"<c:if test="${faq.f_category == 1}">selected</c:if>>회원문의</option>
+				<option value="2"<c:if test="${faq.f_category == 2}">selected</c:if>>상품/배송문의</option>
+				<option value="3"<c:if test="${faq.f_category == 3}">selected</c:if>>기타</option>
+			</select>
+			<form:input path="f_title" placeholder="제목을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '제목을 입력하세요.'" autocomplete="off"/>
+			<form:errors path="f_title" cssClass="error-color"/>
+			</li>
+			<li>
+				<form:textarea path="f_content" placeholder="내용을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '내용을 입력하세요.'" autocomplete="off"/>
+				<form:errors path="f_content" cssClass="error-color"/>
+				<script>
+				 function MyCustomUploadAdapterPlugin(editor) {
+					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+					        return new UploadAdapter(loader);
+					    }
+					}
+				 
+				 ClassicEditor
+		            .create( document.querySelector( '#f_content' ),{
+		            	extraPlugins: [MyCustomUploadAdapterPlugin]
+		            })
+		            .then( editor => {
+						window.editor = editor;
+					} )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+			    </script>   
+			</li>
+			
+		</ul>
+		<div class="align-left" id="faq_write_btn01">
+			<form:button>수정</form:button>
+			<input type="button" value="목록" onclick="location.href='faqlist.do'">
+		</div>
+	<%-- 	   	<ul>
 			<li>
 				<label for="title">제목</label>
 				<form:input path="title"/>
@@ -97,7 +128,7 @@
 			<form:button>전송</form:button>
 			<input type="button" value="목록"
 			            onclick="location.href='list.do'">
-		</div>    
+		</div>  --%>   
 	</form:form>
 </div>
 <!-- 내용 끝 -->

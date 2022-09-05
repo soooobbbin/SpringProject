@@ -17,11 +17,10 @@ import kr.spring.faq.service.FAQService;
 
 @Controller
 public class FAQAjaxController {
-	private static final Logger logger =
-			LoggerFactory.getLogger(FAQAjaxController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FAQAjaxController.class);
 	
 	@Autowired
-	private FAQService boardService;
+	private FAQService FAQService;
 	
 	
 }

@@ -24,8 +24,9 @@ public class AppConfig implements WebMvcConfigurer{
 				    new LoginCheckInterceptor())
 		        .addPathPatterns("/member/myPage.do");
 		registry.addInterceptor(new AdminCheckInterceptor())
-				.addPathPatterns("/intro/storeRegister.do");
-		
+				.addPathPatterns("/intro/storeRegister.do")
+				.addPathPatterns("/intro/update.do")
+				.addPathPatterns("/intro/delete.do");
 	}
 	
 	@Bean

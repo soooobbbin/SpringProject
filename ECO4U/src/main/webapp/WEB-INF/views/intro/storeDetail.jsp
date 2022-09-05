@@ -12,7 +12,7 @@
 	</div>
 	<c:if test="${user.auth == 2}"> 
 	</c:if>
-	<div class="align-right">
+	<div class="align-right" style="margin-bottom:20px;">
 		<input type="button" value="수정" 
 			onclick="location.href='update.do?s_num=${store.s_num}'">
 		<input type="button" value="삭제" id="delete_btn">

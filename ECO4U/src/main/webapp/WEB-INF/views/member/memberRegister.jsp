@@ -169,13 +169,8 @@
 	border-radius: 10px;
 }
 input:focus {
-	outline : 3px solid rgba(0,0,0,0.2);
-}
-input:focus {
-	outline : npne; 
-}
-input{
-	border-radius: 20px;
+	outline : 3px solid rgba(110, 131, 118, 0.45);
+	border : none;
 }
 </style>        
 <!-- 내용 시작 -->
@@ -230,7 +225,7 @@ input{
 		<ul>
 			<li>
 			<div style="position:relative;">
-				<form:input path="mem_pw" placeholder="비밀번호를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:input path="mem_pw" placeholder="비밀번호를 입력해주세요" autocomplete="off" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
 				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
 					<img src="${pageContext.request.contextPath}/images/member/member_pw.svg" width="20" height="20">
 				</div>
@@ -278,7 +273,7 @@ input{
 		<ul>
 			<li>
 			<div style="position:relative;">
-				<form:input path="zipcode" placeholder="우편번호" style="width:60%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:input path="zipcode" placeholder="우편번호" autocomplete="off" style="width:60%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" id="confirmzipcode">
 				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
 					<img src="${pageContext.request.contextPath}/images/member/member_zipcode.svg" width="20" height="20">
@@ -295,7 +290,7 @@ input{
 		<ul>
 			<li>
 			<div style="position:relative;">
-				<form:input path="address1" placeholder="주소를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:input path="address1" placeholder="주소를 입력해주세요" autocomplete="off" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
 				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
 					<img src="${pageContext.request.contextPath}/images/member/member_address.svg" width="20" height="20">
 				</div>

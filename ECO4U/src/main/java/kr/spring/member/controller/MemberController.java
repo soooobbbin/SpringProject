@@ -439,4 +439,26 @@ public class MemberController {
 			return updatePwForm();
 		}
 	}
+	
+	//================회원탈퇴=====================//
+	@GetMapping("/member/delete.do")
+	public String deleteForm() {
+		return "memberDelete";
+	}
+	
+	@PostMapping("/member/delete.do")
+	public String memberDelete(@Valid MemberVO memberVO,BindingResult result,HttpSession session) {
+		
+		logger.debug("<<회원탈퇴>>");
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		memberVO.setMem_num(user.getMem_num());
+		
+		//회원탈퇴
+		memberService.deleteMember(memberVO.getMem_num());
+		
+		session.invalidate();
+		
+		return "redirect:/main/main.do";
+	}
 }

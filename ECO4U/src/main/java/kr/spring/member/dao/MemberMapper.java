@@ -3,6 +3,7 @@ package kr.spring.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -15,7 +16,7 @@ public interface MemberMapper {
 	//회원관리 - 일반회원
 	@Select("SELECT member_seq.nextval FROM dual")
 	public int selectMem_num();
-	@Insert("INSERT INTO member (mem_num,id) VALUES (#{mem_num},#{id})")
+	@Insert("INSERT INTO member (mem_num,id,auth) VALUES (#{mem_num},#{id},1)")
 	public void insertMember(MemberVO member);
 	@Insert("INSERT INTO member_detail (mem_num,"
 			+ "mem_name,mem_pw,mem_cell,mem_email)"
@@ -56,7 +57,11 @@ public interface MemberMapper {
 	public void updatePassword(MemberVO member);
 	@Update("UPDATE member_detail SET mem_pw=#{mem_pw} WHERE mem_num=#{mem_num}")
 	public void updatefindPassword(Integer mem_num,String mem_pw);
+	@Delete("DELETE FROM member WHERE mem_num=#{mem_num}")
 	public void deleteMember(Integer mem_num);
+	@Delete("DELETE FROM member_detail WHERE mem_num=#{mem_num}")
 	public void deleteMember_detail(Integer mem_num);
+	@Delete("DELETE FROM zipcode WHERE mem_num=#{mem_num}")
+	public void deletezipcode(Integer mem_num);
 	
 }

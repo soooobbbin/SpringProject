@@ -29,14 +29,12 @@ public class StoreServiceImpl implements StoreService{
 
 	@Override
 	public void updateStore(StoreVO store) {
-		// TODO Auto-generated method stub
-		
+		storeMapper.updateStore(store);
 	}
 
 	@Override
 	public void deleteStore(Integer s_num) {
-		// TODO Auto-generated method stub
-		
+		storeMapper.deleteStore(s_num);
 	}
 
 	@Override

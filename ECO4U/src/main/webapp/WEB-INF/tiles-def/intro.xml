@@ -28,6 +28,13 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/intro/storeRegister.jsp"/>                   
     </definition>
+    
+    <definition name="storeModify" extends="main">
+    	<put-attribute name="title" value="오프라인 가게 등록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/intro/storeModify.jsp"/>                   
+    </definition>
+    
 </tiles-definitions>
 
 

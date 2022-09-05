@@ -43,6 +43,60 @@ $(function(){
 		$('#upload').val('');
 	});
 	
-
+	$('#zero').click(function(){
+		$('.zero').show();
+		$('#zero').css('background','#eee').css('font-weight','bold');
+		initForm1();
+	});
+	$('#up').click(function(){
+		$('.up').show();
+		$('#up').css('background','#eee').css('font-weight','bold');
+		initForm2();
+	});
+	$('#fair').click(function(){
+		$('.fair').show();
+		$('#fair').css('background','#eee').css('font-weight','bold');
+		initForm3();
+	});
+	$('#vegan').click(function(){
+		$('.vegan').show();
+		$('#vegan').css('background','#eee').css('font-weight','bold');
+		initForm4();
+	});
+	
+	//수정 폼 초기화
+	function initForm1(){
+		$('.up').hide();
+		$('.fair').hide();
+		$('.vegan').hide();
+		$('#up').css('background','white').css('font-weight','normal');
+		$('#fair').css('background','white').css('font-weight','normal');
+		$('#vegan').css('background','white').css('font-weight','normal');
+	}
+	function initForm2(){
+		$('.zero').hide();
+		$('.fair').hide();
+		$('.vegan').hide();
+		$('#zero').css('background','white').css('font-weight','normal');
+		$('#fair').css('background','white').css('font-weight','normal');
+		$('#vegan').css('background','white').css('font-weight','normal');
+	}
+	function initForm3(){
+		$('.zero').hide();
+		$('.up').hide();
+		$('.vegan').hide();
+		$('#zero').css('background','white').css('font-weight','normal');
+		$('#up').css('background','white').css('font-weight','normal');
+		$('#vegan').css('background','white').css('font-weight','normal');
+	}
+	function initForm4(){
+		$('.zero').hide();
+		$('.up').hide();
+		$('.fair').hide();
+		$('#zero').css('background','white').css('font-weight','normal');
+		$('#up').css('background','white').css('font-weight','normal');
+		$('#fair').css('background','white').css('font-weight','normal');
+	}
+	
 	
 });

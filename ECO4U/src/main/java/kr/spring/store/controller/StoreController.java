@@ -144,6 +144,57 @@ public class StoreController {
 		
 		return mav;
 	}
+	
+	//============ 게시판 글수정 =============//
+	//수정 폼
+	@GetMapping("/intro/update.do")
+	public String formUpdate(@RequestParam int s_num, Model model) {
+		StoreVO storeVO = storeService.selectStore(s_num);
+		
+		model.addAttribute("storeVO", storeVO);
+		
+		return "storeModify";
+	}
+	//수정 폼에서 전송된 데이터 처리
+	@PostMapping("/intro/update.do")
+	public String submitUpdate(@Valid StoreVO storeVO,BindingResult result,
+								HttpServletRequest request,Model model) {
+		logger.debug("<<글수정>> : " + storeVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			/* title 또는 content가 입력되지 않아 유효성 체크에 걸리면
+			 * 파일 정보를 읽어버리기 때문에 폼을 호출할 때 다시 세팅해줘야함
+			 */
+			StoreVO vo = storeService.selectStore(storeVO.getS_num());
+			storeVO.setPhoto_name(vo.getPhoto_name());
+			return "storeModify";
+		}
+		//글 수정
+		storeService.updateStore(storeVO);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "글 수정 완료!!");
+		model.addAttribute("url", request.getContextPath()+
+				"/intro/detail.do?s_num="+storeVO.getS_num());
+		
+		return "common/resultView";
+	}
+	//=========== 게시판 글 삭제 =============//
+	@RequestMapping("/intro/delete.do")
+	public String submitDelete(@RequestParam int s_num,
+							HttpServletRequest request,Model model) {
+		logger.debug("<<글삭제>> : " + s_num);
+		
+		//글 삭제
+		storeService.deleteStore(s_num);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "글 삭제 완료!!");
+		model.addAttribute("url", request.getContextPath()+"/intro/store.do");
+		
+		return "common/resultView";
+	}
 
 	
 }

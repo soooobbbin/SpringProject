@@ -5,6 +5,7 @@
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/store.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/store.css">
 <div class="page-main">
 	<h2>오프라인 가게 등록</h2>
@@ -23,7 +24,8 @@
 					</li>
 					<li>
 						<label for="upload">파일업로드</label>
-						<input type="file" name="upload" id="upload"><br>
+						<input type="file" name="upload" id="upload">
+						<input type="button" value="취소" id="photo_reset">
 					</li>
 				</ul>
 			</div>

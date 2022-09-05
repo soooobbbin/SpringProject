@@ -24,7 +24,11 @@ span{
 #register{
 	margin:0px 30px 50px 0px;
 }
-
+/* 가게 등록 페이지*/
+#photo_reset{
+	margin-left:-70px;
+}
+/* 가게 상세 페이지*/
 .store-content{
 	float:left;
 	position:absolute;

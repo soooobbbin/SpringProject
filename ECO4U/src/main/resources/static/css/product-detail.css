@@ -1,0 +1,50 @@
+#wrapper{
+	width: 900px;
+	margin: 100px auto 0 auto;
+}
+
+.detail-thumbnail{
+	float: left;
+}
+
+.thumbnail-side{
+	margin-left: 450px;
+}
+
+.wishlist{
+	position: relative;
+	left: 210px;
+	bottom: 20px;
+}
+
+div#detail-div{
+	margin: 10px 0;
+}
+
+hr.hr{
+	margin: 30px 0;
+}
+
+span.title{
+	font-size: 25px;
+	font-weight: bold;
+}
+span.price{
+	font-size: 20px;
+	font-weight: 600;
+}
+
+label.text{
+	font-weight: 600;
+}
+
+.button{
+	width: 222px;
+	height: 40px;
+	border: 0px;
+	background-color: #839589;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+}
+

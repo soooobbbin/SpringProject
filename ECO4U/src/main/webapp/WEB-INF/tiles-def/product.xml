@@ -10,9 +10,9 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/product/list.jsp"/>                   
     </definition>
-	<definition name="detail" extends="main">
+	<definition name="productView" extends="main">
     	<put-attribute name="title" value="상품상세"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/product/detail.jsp"/>                     
+    	  value="/WEB-INF/views/product/productView.jsp"/>                     
     </definition>
 </tiles-definitions>

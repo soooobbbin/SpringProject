@@ -75,20 +75,20 @@
 		</div>
 			<hr class="bhr">
 			<div class="row cardmargin">
-				<c:forEach var="list" items="${list}" varStatus="status">
+				<c:forEach var="product" items="${list}" varStatus="status">
 					<div class="col" style="margin-top: 15px;">
 						<div class="card" style="width: 300px; border: 0px;">
-							<a href="/product/detail?p_num=${list.p_num}"
+							<a href="/product/detail.do?p_num=${product.p_num}"
 								class="btn btn-primary stretched-link"
 								style="background-color: #f4f9f2; color: #000000; border-color: #f4f9f2;">
 								<img class="card-img-top"
 								style="width: 278px; height: 200px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
-								src="/ex/resources/${list.p_photo}" alt="thumbnail">
+								src="/ex/resources/${product.p_photo}" alt="thumbnail">
 								<div class="card-body">
-									<span class="p_name">[${list.p_brand}]</span>
-									<span class="p_name">${list.p_name}</span><br>
+									<span class="p_name">[${product.p_brand}]</span>
+									<span class="p_name">${product.p_name}</span><br>
 									<span class="price">￦<fmt:formatNumber type="number"
-											maxFractionDigits="3" value="${list.p_price}" /></span>
+											maxFractionDigits="3" value="${product.p_price}" /></span>
 								</div>
 							</a>
 						</div>

@@ -11,12 +11,15 @@
 		<h1>${store.s_name}</h1>
 	</div>
 	<c:if test="${user.auth == 2}"> 
-	</c:if>
 	<div class="align-right" style="margin-bottom:20px;">
 		<input type="button" value="수정" 
 			onclick="location.href='update.do?s_num=${store.s_num}'">
-		<input type="button" value="삭제" id="delete_btn">
-		<input type="button" value="홈으로" 
+		<input type="button" value="삭제" id="delete_btn"
+			onclick="location.href='delete.do?s_num=${store.s_num}'">
+	</div>
+	</c:if>
+	<div class="align-right" style="margin-bottom:20px;">
+		<input type="button" value="가게 목록" 
 			onclick="location.href='${pageContext.request.contextPath}/intro/store.do'">
 	</div>
 	<div id="map" style="width:500px;height:400px;float:left;">
@@ -37,7 +40,7 @@
 	<c:if test="${store.s_num == 26}">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/map/map2.js"></script>
 	</c:if>
-	<c:if test="${store.s_num == 25}">
+	<c:if test="${store.s_num == 41}">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/map/map3.js"></script>
 	</c:if>
 	<c:if test="${store.s_num == 24}">

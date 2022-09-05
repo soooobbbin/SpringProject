@@ -108,12 +108,18 @@
 .submenu2:hover{
 	color: gray;
 }
+/*li*/
+.page-content li{
+	font-size: 20px;
+	list-style: none;
+	
+}
 </style>    
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
-<div class="page-main" style="height:600px;">
-	<div class="align-center" style="width: 50%; float:left; padding-top: 60px;">
+<div class="page" style="height: 770px;">
+	<div class="align-center" style="width: 50%; float:left; padding-top: 65px;">
 		<div class="menu">
 		<input type="button" value="전체주문내역" id="all" onclick="location.href='#'">
 		</div>
@@ -137,32 +143,49 @@
 		<div style="padding-left: 20px;">
 			<h2>${member.mem_name}님 회원상세정보</h2>
 		</div>
-		<div style="height: 400px; font-size: 20px;">
+		<hr width="100%" noshade="noshade" size="1px">
+		<div class ="page-content"style="height: 400px;">
 			<div style="width: 25%; float:left;">
 				<ul>
 					<li>이름</li>
+					<hr width="100%" noshade="noshade" size="1px">
 					<li>전화번호</li>
+					<hr width="100%" noshade="noshade" size="1px">
 					<li>이메일</li>
+					<hr width="100%" noshade="noshade" size="1px">
 					<li>우편번호</li>
+					<hr width="100%" noshade="noshade" size="1px">
 					<li>주소</li>
+					<hr width="100%" noshade="noshade" size="1px">
 					<li>상세주소</li>
+					<hr width="100%" noshade="noshade" size="1px">
 					<li>가입날짜</li>
+					<hr width="100%" noshade="noshade" size="1px">
 					<c:if test="${!empty member.modify_date}">
 					<li>정보 수정일</li>
+					<hr width="100%" noshade="noshade" size="1px">
 					</c:if>
 				</ul>
 			</div>
 			<div style="width: 75%; float:left;">
 				<ul>
 					<li>${member.mem_name}</li>
+					<hr width="90%" noshade="noshade" size="1px" align="left">
 					<li>${member.mem_cell}</li>
+					<hr width="90%" noshade="noshade" size="1px" align="left">
 					<li>${member.mem_email}</li>
+					<hr width="90%" noshade="noshade" size="1px" align="left">
 					<li>${member.zipcode}</li>
+					<hr width="90%" noshade="noshade" size="1px" align="left">
 					<li>${member.address1}</li>
+					<hr width="90%" noshade="noshade" size="1px" align="left">
 					<li>${member.address2}</li>
+					<hr width="90%" noshade="noshade" size="1px" align="left">
 					<li>${member.reg_date}</li>
+					<hr width="90%" noshade="noshade" size="1px" align="left">
 					<c:if test="${!empty member.modify_date}">
 					<li>${member.modify_date}</li>
+					<hr width="90%" noshade="noshade" size="1px" align="left">
 					</c:if>
 				</ul>
 			</div>

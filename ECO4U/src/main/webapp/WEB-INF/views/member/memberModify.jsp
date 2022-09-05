@@ -87,6 +87,10 @@
 	font-weight: bold;
 	cursor:pointer;
 }
+input:focus {
+	outline : 3px solid rgba(110, 131, 118, 0.45);
+	border : none;
+}
 </style>        
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>

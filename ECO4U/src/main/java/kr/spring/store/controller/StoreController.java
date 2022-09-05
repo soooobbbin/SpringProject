@@ -141,7 +141,7 @@ public class StoreController {
 	
 		mav.addObject("imageFile", store.getPhoto());
 		mav.addObject("filename", store.getPhoto_name());
-	
+		
 		return mav;
 	}
 

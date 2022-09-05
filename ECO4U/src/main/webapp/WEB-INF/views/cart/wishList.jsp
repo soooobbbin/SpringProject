@@ -14,9 +14,9 @@
 		<form action="wishList.do" id="search_form"  method="get">
 			<ul class="wish-category-ul" id="category" name="category">
 				<li><input type="button" value="all" onclick="location.href='/cart/wishList.do?category=0'"></li>
-				<li><input type="button" value="fassion" onclick="location.href='/cart/wishList.do?category=1'"></li>
+				<li><input type="button" value="living" onclick="location.href='/cart/wishList.do?category=1'"></li>
 				<li><input type="button" value="beauty"  onclick="location.href='/cart/wishList.do?category=2'"></li>
-				<li><input type="button" value="living"  onclick="location.href='/cart/wishList.do?category=3'"></li>
+				<li><input type="button" value="fassion"  onclick="location.href='/cart/wishList.do?category=3'"></li>
 			</ul>
 		
 		</form>
@@ -30,7 +30,7 @@
 	
 	<!-- 찜 목록에 상품이 담기지 않은 경우 -->
 	<c:if test="${count == 0}">
-	관심 상품이 없습니다.
+	<div class="no-wish">관심 상품이 없습니다.</div>
 	</c:if>
 	
 	<!-- 찜 목록에 상품이 담긴 경우 -->
@@ -48,6 +48,7 @@
 					<img src="../images/product/${wish.p_photoname}" width="80" height="80">
 				</div>
 				<div class="product-box">
+					<span class="box-brand">[${wish.p_brand}]</span><br>
 					<span class="box-title">${wish.p_name}</span><br>
 					<span class="box-price"><strong>${wish.p_price}</strong></span><br>
 					<span class="box-dprice">배송비 ${wish.p_dprice}</span><br>

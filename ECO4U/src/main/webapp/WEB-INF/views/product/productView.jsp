@@ -10,6 +10,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/product-detail.css">
 
+<form action="detail.do" method="post">
+	<input type="hidden" name="p_num" value="${product.p_num}" />
+</form>
+
 <div class="page-main">
 	<div id="wrapper">
 		<div class="detail-thumbnail">
@@ -47,7 +51,10 @@
 			<hr class="hr">
 
 			<!-- 수량 선택 -->
-
+			<div class="detail-buycount" id="detail-div">
+				<label class="text">구입 수량</label>
+				<input type="number" min="1" max="${product.p_quantity}" value="1" />
+			</div>
 			<!-- 수량 선택 끝 -->
 
 			<!-- 최종 금액 -->
@@ -56,8 +63,8 @@
 
 			<hr class="hr">
 			<div class="cart-buy">
-				<button class="button">장바구니</button>
-				<button class="button" href="/buy.do?p_num=${product.p_num}">구매하기</button>
+				<button class="button" value="장바구니" onclick="location.href='/cart/cart.do'">장바구니</button>
+				<button class="button" value="구매하기" onclick="location.href='/buy.do?p_num=${product.p_num}'">구매하기</button>
 			</div>
 		</div>
 	</div>

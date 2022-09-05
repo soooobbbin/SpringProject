@@ -8,13 +8,17 @@
 		 COUNT(*)
 		FROM product
 		<where>
-			<if test="keyword != null and keyword != ''">
-				<if test="keyfield == 1">
-					p_name LIKE '%' || #{keyword} || '%'
-				</if>
-				<if test="keyfield == 2">
-					p_brand LIKE '%' || #{keyword} || '%'
-				</if>
+			<if test="category == all">
+				p_category = 1 OR p_category = 2 OR p_category = 3
+			</if>
+			<if test="category == living">
+				p_category = 1
+			</if>
+			<if test="category == beauty">
+				p_category = 2
+			</if>
+			<if test="category == fashion">
+				p_category = 3
 			</if>
 		</where>
 	</select>
@@ -30,20 +34,27 @@
 					  p_price,
 					  p_dprice,
 					  p_quantity,
+					  p_category,
 					  p_brand,
 					  p_photoname,
 					  reg_date,
 					  modify_date
 		            FROM product
 					<where>
-						<if test="keyword != null and keyword != ''">
-							<if test="keyfield == 1">
-							p_name LIKE '%' || #{keyword} || '%'
+						
+							<if test="category == 0">
+								p_category = 1 OR p_category = 2 OR p_category = 3 
 							</if>
-							<if test="keyfield == 2">
-							p_brand LIKE '%' || #{keyword} || '%'
+							<if test="category == 1">
+								p_category = 1
 							</if>
-						</if>
+							<if test="category == 2">
+								p_category = 2
+							</if>
+							<if test="category == 3">
+								p_category = 3
+							</if>
+						
 					</where>
 					ORDER BY p_num DESC)a)
 		<![CDATA[

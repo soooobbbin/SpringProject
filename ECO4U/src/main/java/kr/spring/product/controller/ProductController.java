@@ -79,12 +79,12 @@ public class ProductController {
 			int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")
 			String keyfield,
-			@RequestParam(value="keyword",defaultValue="")
-			String keyword) {
+			@RequestParam(value="category",defaultValue="")
+			String category) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
+		map.put("category", category);
 
 		//상품의 총개수(검색된 상품의 개수)
 		int count = productService.selectRowCount(map);
@@ -92,7 +92,7 @@ public class ProductController {
 		logger.debug("<<count>> : " + count);
 		
 		// 페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, 
+		PagingUtil page = new PagingUtil(keyfield, category, 
 						currentPage, count, rowCount, pageCount, "list.do");
 
 		List<ProductVO> list = null;

@@ -12,16 +12,25 @@ body{
 	margin-bottom: 50px;
 }
 
+input[type="button"]{
+	background-color: transparent;
+	border: 0;
+	margin-right: 23px;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+ul#category{
+	display:flex;
+}
+
 hr.bhr{
 	margin-bottom: 80px;
 }
 
 .category{
 	float:left;
-}
-
-.cate{
-	margin:0 30px 0 0;
 }
 
 .order{

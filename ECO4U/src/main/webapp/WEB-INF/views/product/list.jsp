@@ -51,14 +51,12 @@
 		<hr>
 		<div class="list-header">
 			<div class="category">
-				<form action="list.do" id="search_form"  method="get">
-					<ul class="product-category-ul" id="category" name="category">
-						<li><a class="cate" href="/product/list.do?p_category=0&order=${order}" <c:if test="${param.p_category==0}">style="font-weight:bolder;"</c:if>>ALL</a></li>
-						<li><a class="cate" href="/product/list.do?p_category=1&order=${order}" <c:if test="${param.p_category==1}">style="font-weight:bolder;"</c:if>>Living</a></li>
-						<li><a class="cate" href="/product/list.do?p_category=2&order=${order}" <c:if test="${param.p_category==2}">style="font-weight:bolder;"</c:if>>Beauty</a></li>
-						<li><a class="cate" href="/product/list.do?p_category=3&order=${order}" <c:if test="${param.p_category==3}">style="font-weight:bolder;"</c:if>>Fashion</a></li>
-					</ul>
-				</form>
+				<ul class="product-category-ul" id="category" name="category">
+					<li><input type="button" value="All" onclick="location.href='/product/list.do?category=0'"></li>
+					<li><input type="button" value="Living" onclick="location.href='/product/list.do?category=1'"></li>
+					<li><input type="button" value="Beauty"  onclick="location.href='/product/list.do?category=2'"></li>
+					<li><input type="button" value="Fashion"  onclick="location.href='/product/list.do?category=3'"></li>
+				</ul>
 			</div>
 			<div class="order">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 정렬 <!-- 아래 화살표 -->

@@ -55,9 +55,11 @@
 		<img src="${pageContext.request.contextPath}/images/wish.png" class="wish">
 		</a>
 	</c:if>
+	<c:if test="${!empty user && user.auth == 2}">
+		<a href="#"> 
+		<img src="${pageContext.request.contextPath}/images/home.png" class="home">
+		</a>
+	</c:if>
 </div>
 
 <!-- 상단 끝 -->
-
-
-

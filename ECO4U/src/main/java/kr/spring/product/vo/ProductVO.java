@@ -35,6 +35,7 @@ public class ProductVO {
 	private int p_category; //상품카테고리(1.리빙/2.뷰티/3.패션)
 	private Date reg_date;
 	private Date modify_date;
+	private int review_count; //상품에 달린 리뷰 수
 	
 	
 	public MultipartFile getUpload() {
@@ -133,14 +134,20 @@ public class ProductVO {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
 	}
+	public int getReview_count() {
+		return review_count;
+	}
+	public void setReview_count(int review_count) {
+		this.review_count = review_count;
+	}
 	
-
+	
 	@Override
 	public String toString() {
 		return "ProductVO [p_num=" + p_num + ", p_name=" + p_name + ", p_price=" + p_price + ", p_dprice=" + p_dprice
 				+ ", p_quantity=" + p_quantity + ", p_brand=" + p_brand + ", upload=" + upload 
 				+ ", p_photoname=" + p_photoname + ", p_cont1=" + p_cont1 + ", p_cont2=" + p_cont2 
 				+ ", p_status=" + p_status + ", p_category=" + p_category
-				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + "]";
+				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", review_count=" + review_count + "]";
 	}
 }

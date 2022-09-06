@@ -14,9 +14,11 @@ public interface ProductService {
 	public int selectRowCount(Map<String,Object> map);
 	public void insertProduct(ProductVO product);
 	public ProductVO selectProduct(Integer p_num);
+	public void changeStock(ProductVO product);
 	public void updateProduct(ProductVO product);
 	public void deleteProduct(Integer p_num);
 	public void deletePhoto(Integer p_num);
+	public void updateReviewCount(Integer p_num);
 
 	//리뷰
 	public List<P_reviewVO> selectListReview(Map<String,Object> map);

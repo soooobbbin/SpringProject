@@ -62,6 +62,13 @@
   		]]>
 	</select>
 	
+	<!--상품 재고 수정-->
+	<update id="changeStock" parameterType="kr.spring.product.vo.ProductVO">
+		UPDATE product SET
+			p_quantity = p_quantity - #{p_quantity}
+		WHERE p_num = #{p_num}
+	</update>
+	
 	<!--상품 수정-->
 	<update id="updateProduct" parameterType="kr.spring.product.vo.ProductVO">
 		UPDATE product SET

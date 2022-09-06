@@ -6,35 +6,15 @@
 	<img src="${pageContext.request.contextPath}/images/main_logo.png" class="main_logo">
 </a>
 <div class="align-center" id="header_center">
-	<a href="${pageContext.request.contextPath}/intro/list.do" id="intro">Intro</a>
-	<a href="${pageContext.request.contextPath}/product/list.do" id="product">Product</a> 
-	<a href="${pageContext.request.contextPath}/community/list.do" id="community">Community</a>
-	<div id="menu">
-		<div class="intro2">
-			<a href="${pageContext.request.contextPath}/intro/eco4u.do" id="eco4u">ECO4U</a>
-			<br><br><br> 
-			<a href="${pageContext.request.contextPath}/intro/store.do" id="store">Offline Store</a>
-		</div>
-		<div class="product2">
-			<a href="${pageContext.request.contextPath}/intro/list.do" id="fashion">Fashion</a>
-			 <br><br> 
-			<a href="${pageContext.request.contextPath}/intro/list.do" id="beauty">Beauty</a>
-			<br><br> 
-			<a href="${pageContext.request.contextPath}/intro/list.do" id="living">Living</a>
-		</div>
-		<div class="community2">
-			<a href="${pageContext.request.contextPath}/intro/list.do" id="communication">Communication</a>
-			 <br><br><br> 
-			<a href="${pageContext.request.contextPath}/intro/list.do" id="QnA">QnA</a>
-		</div>
-	</div>
+	<a href="${pageContext.request.contextPath}/admin/m_all.do" id="admin_member">회원관리</a>
+	<a href="${pageContext.request.contextPath}/admin/p_all.do" id="admin_product">상품관리</a> 
+	<a href="${pageContext.request.contextPath}/admin/qna.do" id="admin_community">문의관리</a>
 </div>
 <div class="align-right" id="header_right">
 	<c:if test="${!empty user}">
 		[<span class="user_name">${user.id}</span>]
 	</c:if>
 	<c:if test="${empty user}">
-		<!--<a href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a>-->
 		<a href="${pageContext.request.contextPath}/member/login.do"> 
 		<img src="${pageContext.request.contextPath}/images/login.png" class="login">
 		</a>

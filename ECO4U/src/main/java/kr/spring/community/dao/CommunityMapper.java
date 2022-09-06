@@ -18,9 +18,9 @@ public interface CommunityMapper{
 	//부모글
 		public List<CommunityVO> selectList(Map<String,Object> map);
 		public int selectRowCount(Map<String,Object> map);
-		@Insert("INSERT INTO community (c_num,c_title,"
+		@Insert("INSERT INTO community (c_num,c_title,c_category,"
 				+ "c_content,c_uploadfile,c_filename,mem_num) "
-				+ "VALUES (community_seq.nextval,#{c_title},"
+				+ "VALUES (community_seq.nextval,#{c_title},c_category,"
 				+ "#{c_content},#{c_uploadfile},#{c_filename},"
 				+ "#{mem_num})")
 		public void insertCommunity(CommunityVO community);

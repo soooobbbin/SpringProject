@@ -50,4 +50,59 @@
 
 
 </select>
+
+<select id="selectList" parameterType="map" resultType="communityVO">
+		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              b.c_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(b.c_title,'<','&lt;'),'>','&gt;') c_title,
+  		              ]]>
+					  b.c_category,
+					  b._content,
+					  b.hit,
+					  reg_date,
+					  modify_date,
+					  m.id
+					  
+		            FROM community b JOIN member m
+		            ON b.mem_num = m.mem_num
+					<where>
+						
+							<if test="c_category == tip">
+								c_category = 1
+							</if>
+							<if test="c_category == 함께해요">
+								c_category = 2
+							</if>
+							<if test="c_category == 친환경소식">
+								c_category = 3
+							</if>
+						
+					</where>
+					ORDER BY c_num DESC)a)
+		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+	</select>
+	
+	<!-- 글수정 -->
+  	<update id="updateCommunity" parameterType="communityVO">
+  		UPDATE community SET
+  		    <if test="c_filename != ''">
+  		    c_uploadfile=#{c_uploadfile},
+  		    c_filename=#{c_filename},
+  		    </if>
+  		    c_category=#{c_category},
+  			c_title=#{c_title},
+  			c_content=#{c_content}
+  		    modify_date=SYSDATE
+  		WHERE c_num=#{c_num}
+  	</update>
+  	
+  	
 </mapper>

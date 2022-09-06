@@ -11,9 +11,12 @@
 	</div>
 	
 	
-				<a href="./community?c_category=1">TIP</a>
-				<a href="./community?c_category=2" >함께해요</a>
-				<a href="./community?c_category=3">친환경 소식</a>
+				<ul class="community-category-ul" id="c_category" name="c_category">
+					<li><input type="button" value="TIP" onclick="location.href='/community/list.do?c_category=tip'"></li>
+					<li><input type="button" value="함께해요"  onclick="location.href='/community/list.do?c_category=함께해요'"></li>
+					<li><input type="button" value="친환경 소식"  onclick="location.href='/community/list.do?c_category=친환경소식'"></li>
+				</ul>
+			</div>
 			
 			<div class="align-right">
 				<select name="keyfield" id="keyfield">
@@ -44,11 +47,12 @@
 		
 		<c:forEach var="community" items="${list}">
 		<tr>
-			<td>${community.c_num}</td>
-			<td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></td>
 			<td>${community.id}	</td>
-			<td>${community.reg_date}</td>
+			<td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a> · ${community.reg_date}</td>
 			<td>${community.c_hit}</td>
+		</tr>
+		<tr>
+		<td >${community.c_content}</td>
 		</tr>
 		</c:forEach>
 	</table>

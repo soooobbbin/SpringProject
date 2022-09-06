@@ -52,21 +52,14 @@ public class CommunityServiceImpl implements CommunityService{
 
 	@Override
 	public void deleteCommunity(Integer c_num) {
-		/*//부모글 좋아요 삭제
-		communityMapper.deleteLikeByCommunityNum(c_num);*/
+		//부모글 좋아요 삭제
+		communityMapper.deleteLikeByCommunityNum(c_num);
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		communityMapper.deleteCommentByCommunityNum(c_num);
 		//부모글 삭제
 		communityMapper.deleteCommunity(c_num);
 	}
 
-	@Override
-	public void deleteFile(Integer c_num) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	
-	/*
 	@Override
 	public void deleteFile(Integer c_num) {
 		communityMapper.deleteFile(c_num);
@@ -76,9 +69,7 @@ public class CommunityServiceImpl implements CommunityService{
 	public CommunityLikeVO selectLike(CommunityLikeVO like) {
 		return communityMapper.selectLike(like);
 	}
-	*/
 	
-	/*
 
 	@Override
 	public int selectLikeCount(Integer c_num) {
@@ -86,8 +77,8 @@ public class CommunityServiceImpl implements CommunityService{
 	}
 
 	@Override
-	public void insertLike(CommunityLikeVO CommunityLike) {
-		CommunityMapper.insertLike(CommunityLike);
+	public void insertLike(CommunityLikeVO communityLike) {
+		communityMapper.insertLike(communityLike);
 	}
 
 	@Override
@@ -105,11 +96,11 @@ public class CommunityServiceImpl implements CommunityService{
 	public int selectRowCountComment(Map<String, Object> map) {
 		return communityMapper.selectRowCountComment(map);
 	}
-
+	
+	
 	@Override
 	public CommunityCommentVO selectComment(Integer com_num) {
-		// TODO Auto-generated method stub
-		return null;
+		return communityMapper.selectComment(com_num);
 	}
 
 	@Override
@@ -129,5 +120,5 @@ public class CommunityServiceImpl implements CommunityService{
 		// TODO Auto-generated method stub
 		
 	}
-*/
+
 }

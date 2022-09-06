@@ -101,9 +101,6 @@ public class CommunityController {
 	
 	{
 		
-		
-		
-		
 		Map<String,Object> map = 
 				    new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -116,7 +113,7 @@ public class CommunityController {
 		
 		//페이지 처리
 		PagingUtil page = 
-				new PagingUtil(keyfield, c_category,
+				new PagingUtil(keyfield,c_category,
 						currentPage,count,
 						rowCount,pageCount,"list.do");
 		

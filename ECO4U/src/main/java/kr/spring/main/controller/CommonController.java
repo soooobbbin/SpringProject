@@ -27,10 +27,10 @@ public class CommonController {
 		//업로드한 파일 이름
 		String org_filename = upload.getOriginalFilename();
 		//새로운 파일명 (시간 + 업로드한 파일명)
-		String str_c_filename = System.currentTimeMillis() + org_filename;
+		String str_filename = System.currentTimeMillis() + org_filename;
 		
 		//파일이 저장될 경로
-		String filepath = realFolder + "\\" + str_c_filename;
+		String filepath = realFolder + "\\" + str_filename;
 		
 		File f = new File(filepath);
 		if(!f.exists()) {
@@ -43,7 +43,7 @@ public class CommonController {
 		Map<String,Object> map = 
 				new HashMap<String,Object>();
 		map.put("upload", true);
-		map.put("url", request.getContextPath()+"/image_upload/"+str_c_filename);
+		map.put("url", request.getContextPath()+"/image_upload/"+str_filename);
 		
 		return map;
 	}

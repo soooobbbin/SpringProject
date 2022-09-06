@@ -3,8 +3,8 @@
 #section1 {
 	position: relative;
 	margin-top:-10px;
-	height:875px;
-    background-color: aliceblue;
+	height:930px;
+    background-color: white;
 }
 #section2 {
 	position: relative;
@@ -20,4 +20,40 @@
 	position: relative;
 	height:925px;
     background-color: aqua;
+}
+/*메인 이동 ul*/
+#menu_full {
+    position: absolute;
+    top: 45%;
+    z-index: 70;
+    right: 20px;
+    transform: translateY(-50%);
+}
+#menu_full.fixed{
+	width:100%;
+	position:fixed;
+	top:45%;
+	right: 20px;
+    transform: translateY(-50%);
+}
+#menu_full li{
+	display:block;
+	list-style:none;
+	margin:20px;
+}
+#menu_full li a{
+	color: white;
+	font-weight: 500;
+	font-size:15pt;
+}
+/*메인 첫번째 화면*/
+.carousel-inner{
+	top:-9px;
+}
+
+ul.carousel-indicators{
+	bottom: 200px;
+}
+#myslide{
+	width:100%;
 }

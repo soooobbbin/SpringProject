@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+#section1 {
+	position: relative;
+	margin-top:-10px;
+	height:875px;
+    background-color: aliceblue;
+}
+#section2 {
+	position: relative;
+	height:930px;
+    background-color: lightpink;
+}
+#section3 {
+	position: relative;
+	height:930px;
+    background-color: coral;
+}
+#section4 {
+	position: relative;
+	height:925px;
+    background-color: aqua;
+}

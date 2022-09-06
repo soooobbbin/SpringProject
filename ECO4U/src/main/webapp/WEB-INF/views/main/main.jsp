@@ -1,28 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<style>
-#section1 {
-	position: relative;
-	margin-top:-10px;
-	height:865px;
-    background-color: aliceblue;
-}
-#section2 {
-	position: relative;
-	height:930px;
-    background-color: lightpink;
-}
-#section3 {
-	position: relative;
-	height:930px;
-    background-color: coral;
-}
-#section4 {
-	position: relative;
-	height:925px;
-    background-color: aqua;
-}
-</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<!-- 내용 시작 -->
 <script>
     var mHtml = $("html");
     var page = 1;
@@ -49,3 +29,4 @@
     <div class="section" id="section3">3</div>
     <div class="section" id="section4">4</div>
 <!-- 메인 끝 -->
+<!-- 내용 끝 -->

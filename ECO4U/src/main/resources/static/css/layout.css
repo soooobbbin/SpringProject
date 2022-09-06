@@ -60,7 +60,7 @@ div#main_footer{
 }
 
 /*=========메뉴바=======*/
-#menu{
+#header-menu{
 	display: none;
     position: absolute;
 	top:65px;

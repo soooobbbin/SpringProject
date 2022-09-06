@@ -17,9 +17,9 @@ public interface QnAMapper {
 //	public List<FAQVO> selectList(Map<String,Object> map);
 //	public int selectRowCount(Map<String,Object> map);
 	@Insert("INSERT INTO qna (q_num,q_title,"
-			+ "q_content,q_category,mem_num) "
+			+ "q_content,q_category,mem_num,q_photo,q_photo_name) "
 			+ "VALUES (qna_seq.nextval,#{q_title},"
-			+ "#{q_content},#{q_category},#{mem_num})")
+			+ "#{q_content},#{q_category},#{mem_num},#{q_photo},#{q_photo_name})")
 	public void insertQnA(QnAVO qna);
 //		@Select("SELECT * FROM faq f JOIN member m "
 //			+ "USING(mem_num) JOIN member_detail d "

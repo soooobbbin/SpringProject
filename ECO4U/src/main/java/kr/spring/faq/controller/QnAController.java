@@ -31,11 +31,11 @@ import kr.spring.util.StringUtil;
 public class QnAController {
 	private static final Logger logger = LoggerFactory.getLogger(QnAController.class);
 	
-	private int rowCount = 30;
-	private int pageCount = 30;
+	private int rowCount = 20;
+	private int pageCount = 10;
 	
 	@Autowired
-	private QnAService QnAService;
+	private QnAService qnaService;
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -51,13 +51,13 @@ public class QnAController {
 	}
 	//등록 폼에서 전송된 데이터 처리
 	@PostMapping("/faq/qnawrite.do")
-	public String submit(@Valid QnAVO QnAVO,
+	public String submit(@Valid QnAVO qnaVO,
 			BindingResult result,
 			HttpServletRequest request,
 			HttpSession session,
 			Model model) {
 
-		logger.debug("<<게시판 글 저장>> : " + QnAVO);
+		logger.debug("<<게시판 글 저장>> : " + qnaVO);
 
 		//유효성 검사 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
@@ -67,16 +67,14 @@ public class QnAController {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
 		//회원번호 셋팅
-		QnAVO.setMem_num(user.getMem_num());
+		qnaVO.setMem_num(user.getMem_num());
 
 		//글쓰기
-		QnAService.insertQnA(QnAVO);
+		qnaService.insertQnA(qnaVO);
 
 		//View에 표시할 메시지
-		model.addAttribute(
-				"message", "글 등록이 완료되었습니다.");
-		model.addAttribute(
-				"url", request.getContextPath()+"/faq/faqlist.do");
+		model.addAttribute("message", "글 등록이 완료되었습니다.");
+		model.addAttribute("url", request.getContextPath()+"/faq/faqlist.do");
 
 		return "common/resultView";
 	}

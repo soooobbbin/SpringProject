@@ -14,6 +14,7 @@ public interface ProductService {
 	public int selectRowCount(Map<String,Object> map);
 	public void insertProduct(ProductVO product);
 	public ProductVO selectProduct(Integer p_num);
+	public void changeStock(ProductVO product);
 	public void updateProduct(ProductVO product);
 	public void deleteProduct(Integer p_num);
 	public void deletePhoto(Integer p_num);

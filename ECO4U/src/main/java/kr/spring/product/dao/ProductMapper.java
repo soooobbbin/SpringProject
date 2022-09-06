@@ -27,6 +27,7 @@ public interface ProductMapper {
 	public void insertProduct(ProductVO product);
 	@Select("SELECT * FROM product WHERE p_num=#{p_num}")
 	public ProductVO selectProduct(Integer p_num);
+	public void changeStock(ProductVO product); //재고 수정
 	public void updateProduct(ProductVO product);
 	@Delete("DELETE FROM product WHERE p_num=#{p_num}")
 	public void deleteProduct(Integer p_num);

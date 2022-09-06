@@ -37,6 +37,32 @@ span.price{
 label.text{
 	font-weight: 600;
 }
+label.count{
+	width: 330px;
+}
+
+input.numBox{
+	width: 30px;
+    background-color: transparent;
+    border: 0;
+    text-align: center;
+    font-weight: bold;
+    padding-left: 20px;
+}
+button.minus{
+	background-color: transparent;
+    border-radius: 10px;
+    border-width: thin;
+    border-color: #839589;
+    padding: 2px 8px;
+}
+button.plus{
+	background-color: transparent;
+    border-radius: 10px;
+    border-width: thin;
+    border-color: #839589;
+    padding: 2px 8px;
+}
 
 .button{
 	width: 222px;

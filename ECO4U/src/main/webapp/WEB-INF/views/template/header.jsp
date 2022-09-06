@@ -9,10 +9,10 @@
 <script>
 $(function(){
 	$("#header_center>a").on("mouseover", function() {
-        $(".menu").slideDown("5000"); 
+        $(".header-menu").slideDown("5000"); 
     });
-	$(".menu").on("mouseleave", function() {
-        $(".menu").slideUp("10000"); 
+	$(".header-menu").on("mouseleave", function() {
+        $(".header-menu").slideUp("10000"); 
     });
 });
 </script>
@@ -24,7 +24,7 @@ $(function(){
    <a href="${pageContext.request.contextPath}/intro/eco4u.do" id="intro">Intro</a>
    <a href="${pageContext.request.contextPath}/product/list.do?p_category=0" id="product">Product</a> 
    <a href="${pageContext.request.contextPath}/community/list.do" id="community">Community</a>
-   <div id="menu" class="menu">
+   <div id="header-menu" class="header-menu">
       <div class="intro2">
          <a href="${pageContext.request.contextPath}/intro/eco4u.do" id="eco4u">ECO4U</a>
          <br><br><br> 

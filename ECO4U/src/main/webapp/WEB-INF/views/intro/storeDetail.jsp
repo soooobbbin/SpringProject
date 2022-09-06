@@ -19,7 +19,7 @@
 	</div>
 	</c:if>
 	<div class="align-right" style="margin-bottom:20px;">
-		<input type="button" value="가게 목록" 
+		<input type="button" value="가게 목록" id="storeListBtn"
 			onclick="location.href='${pageContext.request.contextPath}/intro/store.do'">
 	</div>
 	<div id="map" style="width:500px;height:400px;float:left;">
@@ -34,7 +34,7 @@
 		<span>${store.address1} ${store.address2}</span>
 	</div>
 	
-	<c:if test="${store.s_num == 27}">
+	<c:if test="${store.s_num == 61}">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/map/map1.js"></script>
 	</c:if>
 	<c:if test="${store.s_num == 26}">

@@ -27,31 +27,22 @@
 					b.c_content LIKE '%' || #{keyword} || '%'
 				</if>
 			</if>
-		</where>  	
-		
-		<!-- 카테고리 번호당 1.TIP 2.함께해요 3.친환경소식 -->
-		<!--  SELECT
-		  COUNT(*)
-		FROM community b JOIN member m
-		ON b.mem_num = m.mem_num
-		<where>
-			<if test="keyword != null and keyword != ''">
-				<if test="c_category == 1">
-					b.c_category LIKE '%' || #{keyword} || '%'
+			<if test="c_category != null ">
+				<if test="c_category == tip">
+					c_category = 1
 				</if>
-				<if test="c_category == 2">
-					b.c_category LIKE '%' || #{keyword} || '%' 
+				<if test="c_category == 함께해요">
+					c_category = 2
 				</if>
-				<if test="c_category == 3">
-					b.c_category LIKE '%' || #{keyword} || '%'
+				<if test="c_category == 친환경 소식">
+					c_category = 3
 				</if>
 			</if>
-		</where>  	 -->
-
-
+		</where>  	
+	
 </select>
 
-<select id="selectList" parameterType="map" resultType="communityVO">
+	<select id="selectList" parameterType="map" resultType="communityVO">
 		SELECT
   		   *
   		FROM (SELECT
@@ -63,28 +54,44 @@
   		              REPLACE(REPLACE(b.c_title,'<','&lt;'),'>','&gt;') c_title,
   		              ]]>
 					  b.c_category,
-					  b._content,
-					  b.hit,
-					  reg_date,
-					  modify_date,
+					  b.c_content,
+					  b.c_hit,
+					  b.c_filename,
+					  b.reg_date,
+					  b.modify_date,
 					  m.id
 					  
 		            FROM community b JOIN member m
 		            ON b.mem_num = m.mem_num
 					<where>
-						
-							<if test="c_category == tip">
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								b.c_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								m.id LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								b.c_content LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 4">
+								b.c_title LIKE '%' || #{keyword} || '%' OR
+								b.c_content LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+						<if test="c_category != null ">
+							<if test="c_category == 1">
 								c_category = 1
 							</if>
-							<if test="c_category == 함께해요">
+							<if test="c_category == 2">
 								c_category = 2
 							</if>
-							<if test="c_category == 친환경소식">
+							<if test="c_category == 3">
 								c_category = 3
 							</if>
-						
+						</if>
 					</where>
-					ORDER BY c_num DESC)a)
+					ORDER BY b.c_num DESC)a)
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>

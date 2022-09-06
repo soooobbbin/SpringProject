@@ -16,7 +16,7 @@
 					<li><input type="button" value="함께해요"  onclick="location.href='/community/list.do?c_category=함께해요'"></li>
 					<li><input type="button" value="친환경 소식"  onclick="location.href='/community/list.do?c_category=친환경소식'"></li>
 				</ul>
-			</div>
+		
 			
 			<div class="align-right">
 				<select name="keyfield" id="keyfield">
@@ -30,34 +30,31 @@
 			<input type="submit" value="찾기">
 			
 	
-<!-- 글쓰기 버튼 -->
-<c:if test="${!empty user}">
+		<!-- 글쓰기 버튼 -->
+		<c:if test="${!empty user}">
 	
 		<input type="button" value="글쓰기"
 		          onclick="location.href='write.do'">
-	
-</c:if></div>
-</div>
-<!-- 게시글 목록 -->
-<c:if test="${count == 0}">
-	<div class="result-display">표시할 게시물이 없습니다.</div>	
-	</c:if>
-	<c:if test="${count > 0}">
-	<table>
+			</c:if></div>
+
+		<!-- 게시글 목록 -->
+		<c:if test="${count == 0}">
+			<div class="community-result-display">표시할 게시물이 없습니다.</div>	
+		</c:if>
 		
-		<c:forEach var="community" items="${list}">
-		<tr>
-			<td>${community.id}	</td>
-			<td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a> · ${community.reg_date}</td>
-			<td>${community.c_hit}</td>
-		</tr>
-		<tr>
-		<td >${community.c_content}</td>
-		</tr>
-		</c:forEach>
+			<c:if test="${count > 0}">
+		<table>			
+			<c:forEach var="community" items="${list}">
+				<tr>
+					<td>${community.id}	</td>
+					<td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a> ${community.reg_date}</td>
+					<td>${community.c_hit}</td>
+				</tr>
+			</c:forEach>
 	</table>
+	
 	<div class="align-center">${page}</div>
-	</c:if>	
+			</c:if>	
 	
 	
 </div>

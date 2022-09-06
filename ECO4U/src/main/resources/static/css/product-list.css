@@ -8,6 +8,10 @@ body{
 	top:-9px;
 }
 
+ul.carousel-indicators{
+	bottom: 20px;
+}
+
 .row{
 	margin-bottom: 50px;
 }

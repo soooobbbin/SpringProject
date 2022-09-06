@@ -33,6 +33,10 @@ public interface ProductMapper {
 	public void deleteProduct(Integer p_num);
 	@Update("UPDATE product SET p_photo='',p_photoname='' WHERE p_num=#{p_num}")
 	public void deletePhoto(Integer p_num);
+	@Update("UPDATE product p SET p.review_count = "
+			+ "(select count(r_num) from p_review where p_num = #{p_num}) "
+			+ "where p.p_num = #{p_num}")
+	public void updateReviewCount(Integer p_num);
 	
 	//리뷰
 	public List<P_reviewVO> selectListReview(Map<String,Object> map);

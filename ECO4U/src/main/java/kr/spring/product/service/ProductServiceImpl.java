@@ -59,6 +59,11 @@ public class ProductServiceImpl implements ProductService{
 	public void deletePhoto(Integer p_num) {
 		productMapper.deletePhoto(p_num);
 	}
+	
+	@Override
+	public void updateReviewCount(Integer p_num) {
+		productMapper.updateReviewCount(p_num);
+	}
 
 	@Override
 	public List<P_reviewVO> selectListReview(Map<String, Object> map) {

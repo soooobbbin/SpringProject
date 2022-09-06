@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 -->
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/review.fav.js"></script>
@@ -133,14 +134,33 @@
 	<table class="product-category">
 		<tr>
 		<td id="detail">상세 설명</td>
-		<td id="review">구매 후기</td>
+		<td id="review">구매 후기(${product.review_count})</td>
 		</tr>
 	</table>
 	
 	<div class="product-detail align-center">
 		${product.p_cont2}
 	</div>
+	<br>
+	<br>
 	<!-- 상품 본문 끝 -->
+	<!-- 리뷰 시작 -->
+	<h4>후기 (${product.review_count}건)</h4>
+	<div class="accordion accordion-flush" id="accordionFlushExample">
+	  <c:forEach var="review" items="${reviewList}" varStatus="status">
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="flush-heading${status.index}" >
+	      <button id="title_btn01" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${status.index}" aria-expanded="false" aria-controls="flush-collapse${status.index}">
+	      <span id="title_btn02">후기</span>${review.r_title}
+	      </button>
+	    </h2>
+	    <div style="background:#f4f9f2; border-bottom:1px solid #7c8f83;" id="flush-collapse${status.index}" class="accordion-collapse collapse" aria-labelledby="flush-heading${status.index}" data-bs-parent="#accordionFlushExample">
+	      <div class="accordion-body">${review.r_content}</div>
+	    </div>
+	  </div>
+	  </c:forEach>
+	</div>
+	<!-- 리뷰 끝 -->
 	</div>
 </div>
 

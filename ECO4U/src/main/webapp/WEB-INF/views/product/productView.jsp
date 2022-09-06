@@ -17,6 +17,7 @@
 
 <div class="page-main">
 	<div id="wrapper">
+	<!-- 상품 헤더 시작 -->
 		<div class="detail-thumbnail">
 			<img
 				src="${pageContext.request.contextPath}/images/product/${product.p_photoname}"
@@ -126,6 +127,20 @@
 				<button class="button" value="구매하기" onclick="location.href='/buy.do?p_num=${product.p_num}'">구매하기</button>
 			</div>
 		</div>
+	<!-- 상품 헤더 끝 -->
+	
+	<!-- 상품 본문 시작 -->
+	<table class="product-category">
+		<tr>
+		<td id="detail">상세 설명</td>
+		<td id="review">구매 후기</td>
+		</tr>
+	</table>
+	
+	<div class="product-detail align-center">
+		${product.p_cont2}
+	</div>
+	<!-- 상품 본문 끝 -->
 	</div>
 </div>
 

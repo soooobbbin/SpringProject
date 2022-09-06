@@ -3,6 +3,7 @@
 	margin: 100px auto 0 auto;
 }
 
+/*상품 헤더*/
 .detail-thumbnail{
 	float: left;
 }
@@ -74,3 +75,25 @@ button.plus{
 	font-weight: bold;
 }
 
+/*본문*/
+.product-category{
+	margin:60px 0;
+	width:900px;
+	border:2px solid #797979;
+	 border-collapse: collapse;
+	text-align:center;
+}
+.product-category td{
+	border: 1px solid #839589;
+    font-size: 10pt;
+    background-color: #fcfffb;
+    color: #37403a;
+    font-weight: bold;
+}
+/*
+.detail, .review{
+	clear:both;
+	display:block;
+	margin-top:50px;
+}
+*/

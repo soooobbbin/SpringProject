@@ -11,13 +11,23 @@ div#main{
 	font-family: "맑은 고딕";
 }
 #main_header{
-	margin-bottom: 10px;
 	background:white;
+	left: 0; 
+	top: 0; 
+	position:absolute;
+	z-index: 999;
 	width:100%;
 	height:65px;
 }
+#main_header.fixed{
+	width:100%;
+	position:fixed;
+	top:0;
+	transition:0.2s;
+}
 div#main_body{
 	min-height:750px;
+	margin-top: 70px;
 }
 div#main_footer{
 	background-color:rgba(110, 131, 118, 0.85);

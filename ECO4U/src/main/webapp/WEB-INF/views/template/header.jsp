@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <style>
@@ -14,6 +15,17 @@ $(function(){
 	$(".header-menu").on("mouseleave", function() {
         $(".header-menu").slideUp("10000"); 
     });
+	
+	 var lnb = $("#main_header").offset().top;
+     $(window).scroll(function() {
+       var window = $(this).scrollTop();
+
+       if(lnb <= window) {
+         $("#main_header").addClass("fixed");
+       } else {
+         $("#main_header").removeClass("fixed");
+       }
+     })
 });
 </script>
 <!-- 상단 시작 -->

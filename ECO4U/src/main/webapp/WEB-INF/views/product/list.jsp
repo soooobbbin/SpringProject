@@ -83,8 +83,8 @@
 								class="btn btn-primary stretched-link"
 								style="background-color: #f4f9f2; color: #000000; border-color: #f4f9f2;">
 								<img class="card-img-top"
-								style="width: 278px; height: 200px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
-								src="/ex/resources/${product.p_photo}" alt="thumbnail">
+								style="width: 278px; height: 278px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
+								src="${pageContext.request.contextPath}/images/product/${product.p_photoname}" alt="thumbnail">
 								<div class="card-body">
 									<span class="p_name">[${product.p_brand}]</span>
 									<span class="p_name">${product.p_name}</span><br>

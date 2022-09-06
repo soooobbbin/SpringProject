@@ -5,6 +5,7 @@ import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProductVO {
@@ -12,13 +13,21 @@ public class ProductVO {
 	private int p_num; //상품id
 	@NotEmpty
 	private String p_name; //상품명
+	@Range(min=1,max=99999999)
 	private int p_price; //상품 가격
+	@Range(min=1,max=9999)
 	private int p_dprice; //상품 배송비
+	@Range(min=1,max=99999)
 	private int p_quantity; //재고수량
 	@NotEmpty
 	private String p_brand; //브랜드
+	
+	//폼에서 전송된 이미지1(파일업로드 유효성 체크)
+	private MultipartFile upload;
+	//전송된 이미지를 byte[]로 변환
 	private byte[] p_photo; //상품 대표이미지
 	private String p_photoname; //이미지이름
+	
 	@NotEmpty
 	private String p_cont1; //상품설명(간략)
 	private String p_cont2; //상품추가설명
@@ -28,12 +37,15 @@ public class ProductVO {
 	private Date modify_date;
 	
 	
-	//========이미지 BLOB 처리===============//
-	//(주의) 폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야 함
-	public void setUpload(MultipartFile upload) throws IOException {
-		// MultipartFile -> byte[]
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	//업로드 파일 처리
+	public void setUpload(MultipartFile upload) throws IOException{
+		this.upload = upload;
+		//MutipartFile -> byte[] 변환
 		setP_photo(upload.getBytes());
-		// 파일 이름
+		//파일명 구하기
 		setP_photoname(upload.getOriginalFilename());
 	}
 	
@@ -123,12 +135,12 @@ public class ProductVO {
 	}
 	
 
-	//byte[] 타입의 프로퍼티 제외
 	@Override
 	public String toString() {
 		return "ProductVO [p_num=" + p_num + ", p_name=" + p_name + ", p_price=" + p_price + ", p_dprice=" + p_dprice
-				+ ", p_quantity=" + p_quantity + ", p_brand=" + p_brand + ", p_photoname=" + p_photoname + ", p_cont1=" + p_cont1
-				+ ", p_cont2=" + p_cont2 + ", p_status=" + p_status + ", p_category=" + p_category
+				+ ", p_quantity=" + p_quantity + ", p_brand=" + p_brand + ", upload=" + upload 
+				+ ", p_photoname=" + p_photoname + ", p_cont1=" + p_cont1 + ", p_cont2=" + p_cont2 
+				+ ", p_status=" + p_status + ", p_category=" + p_category
 				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + "]";
 	}
 }

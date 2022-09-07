@@ -6,7 +6,7 @@
 	<img src="${pageContext.request.contextPath}/images/main_logo.png" class="main_logo">
 </a>
 <div class="align-center" id="header_center">
-	<a href="${pageContext.request.contextPath}/admin/m_all.do" id="admin_member">회원관리</a>
+	<a href="${pageContext.request.contextPath}/admin/admin_list.do" id="admin_member">회원관리</a>
 	<a href="${pageContext.request.contextPath}/admin/p_all.do" id="admin_product">상품관리</a> 
 	<a href="${pageContext.request.contextPath}/admin/qna.do" id="admin_community">문의관리</a>
 </div>

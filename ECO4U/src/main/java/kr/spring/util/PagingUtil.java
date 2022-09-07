@@ -25,6 +25,9 @@ public class PagingUtil {
 			int pageCount,String pageUrl) {
 		this(keyfield,keyword,currentPage,count,rowCount,pageCount,pageUrl,null);
 	}
+	
+
+	
 	public PagingUtil(String keyfield, String keyword, int currentPage, int count, int rowCount,
 			int pageCount,String pageUrl,String addKey) {
 		
@@ -83,6 +86,8 @@ public class PagingUtil {
 			page.append("</a>");
 		}
 	}
+	
+	
 	public StringBuffer getPage() {
 		return page;
 	}

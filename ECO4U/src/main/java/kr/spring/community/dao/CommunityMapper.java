@@ -25,8 +25,8 @@ public interface CommunityMapper{
 				+ "#{mem_num})")
 		public void insertCommunity(CommunityVO community);
 		@Select("SELECT * FROM community b JOIN member m "
-				+ "USING(c_num) JOIN member_detail d "
-				+ "USING(c_num) WHERE b.c_num=#{c_num}")
+				+ "USING(mem_num) JOIN member_detail d "
+				+ "USING(mem_num) WHERE b.c_num=#{c_num}")
 		public CommunityVO selectCommunity(Integer c_num);
 		@Update("UPDATE community SET c_hit=c_hit+1 WHERE c_num=#{c_num}")
 		public void updateC_hit(Integer c_num);
@@ -35,7 +35,7 @@ public interface CommunityMapper{
 		public void deleteCommunity(Integer c_num);
 		@Update("UPDATE community SET uploadc_file='',"
 				+ "c_filename='' WHERE c_num=#{c_num}")
-		public void deleteFile(Integer c_num);
+		public void deleteC_file(Integer c_num);
 		
 	
 		//부모글 좋아요

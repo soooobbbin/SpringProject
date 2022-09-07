@@ -9,18 +9,15 @@
 #section2 {
 	position: relative;
 	height:930px;
-    background-color: lightpink;
+    background-color: ivory;
+    padding-top:30px;
 }
 #section3 {
 	position: relative;
 	height:930px;
-    background-color: coral;
+    background-color: ivory;
 }
-#section4 {
-	position: relative;
-	height:925px;
-    background-color: aqua;
-}
+
 /*메인 이동 ul*/
 #menu_full {
     position: absolute;
@@ -33,16 +30,18 @@
 	width:100%;
 	position:fixed;
 	top:45%;
+	text-align:right;
 	right: 20px;
     transform: translateY(-50%);
 }
 #menu_full li{
 	display:block;
+
 	list-style:none;
 	margin:20px;
 }
 #menu_full li a{
-	color: white;
+	color: black;
 	font-weight: 500;
 	font-size:15pt;
 }
@@ -54,6 +53,29 @@
 ul.carousel-indicators{
 	bottom: 200px;
 }
-#myslide{
-	width:100%;
+.cs-12{
+	position: relative;
+    width: 100%;
+}
+/*메인 두번째 화면*/
+#section2 h1{
+	margin:30px auto;
+}
+body{
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.row{
+	margin-bottom: 50px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.p_name{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.price{
+	font-size: 12px;
+	margin:100px 0;
 }

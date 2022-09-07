@@ -62,7 +62,7 @@ public class CommunityServiceImpl implements CommunityService{
 
 	@Override
 	public void deleteFile(Integer c_num) {
-		communityMapper.deleteFile(c_num);
+		communityMapper.deleteC_file(c_num);
 	}
 
 	@Override

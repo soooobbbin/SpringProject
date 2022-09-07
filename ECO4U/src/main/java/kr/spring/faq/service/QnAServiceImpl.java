@@ -24,4 +24,14 @@ public class QnAServiceImpl implements QnAService{
 		qnaMapper.insertQnA(qna);
 	}
 
+	@Override
+	public List<QnAVO> selectQnAList(Map<String, Object> map) {
+		return qnaMapper.selectQnAList(map);
+	}
+
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		return qnaMapper.selectRowCount(map);
+	}
+
 }

@@ -1,8 +1,12 @@
 package kr.spring.faq.vo;
 
+import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class QnAVO {
 	private int q_num;//1:1문의글 번호
@@ -13,9 +17,20 @@ public class QnAVO {
 	private int q_category;//1.회원문의 2.상품배송문의 3.기타
 	private Date reg_date;//등록일
 	private Date modify_date;//수정일
+	private byte[] q_photo;
+	private String q_photo_name;
 	private int mem_num;//회원번호
 	
 	private String mem_id;//회원 아이디
+	
+	//========= 이미지 BLOB 처리 ==========//
+	//(주의) 폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야함
+	public void setUpload(MultipartFile upload)throws IOException {
+		//MultipartFile -> byte[]
+		setQ_photo(upload.getBytes());
+		//파일 이름
+		setQ_photo_name(upload.getOriginalFilename());
+	}
 
 	public int getQ_num() {
 		return q_num;
@@ -65,6 +80,22 @@ public class QnAVO {
 		this.modify_date = modify_date;
 	}
 
+	public byte[] getQ_photo() {
+		return q_photo;
+	}
+
+	public void setQ_photo(byte[] q_photo) {
+		this.q_photo = q_photo;
+	}
+
+	public String getQ_photo_name() {
+		return q_photo_name;
+	}
+
+	public void setQ_photo_name(String q_photo_name) {
+		this.q_photo_name = q_photo_name;
+	}
+
 	public int getMem_num() {
 		return mem_num;
 	}
@@ -84,7 +115,8 @@ public class QnAVO {
 	@Override
 	public String toString() {
 		return "QnAVO [q_num=" + q_num + ", q_title=" + q_title + ", q_content=" + q_content + ", q_category="
-				+ q_category + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", mem_num=" + mem_num
-				+ ", mem_id=" + mem_id + "]";
+				+ q_category + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", q_photo="
+				+ Arrays.toString(q_photo) + ", q_photo_name=" + q_photo_name + ", mem_num=" + mem_num + ", mem_id="
+				+ mem_id + "]";
 	}
 }

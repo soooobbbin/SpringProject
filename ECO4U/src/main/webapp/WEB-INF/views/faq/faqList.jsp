@@ -8,7 +8,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/faq.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/faq.js"></script>
-<h2 align="center" class="faqh2"><img id="faq_main_img01" src="../images/faq/support.png" onclick="location.href='faqlist.do'">고객센터</h2>
+<input type="button" value="1:1문의 list" onclick="location.href='/faq/qnalist.do'">
+<br>
+<span class="faq_main"><a href="/main/main.do">홈</a>><a href="/faq/faqlist.do">자주찾는질문</a></span>
+<h2 align="center" class="faqh2"><img id="faq_main_img01" src="../images/faq/support.png">고객센터</h2>
 <c:if test="${user.auth == 1}">
 <div class="faq_main_qna02" align="right">
 <figure id="faq_main_qna">
@@ -34,14 +37,19 @@
 				</li>
 			</ul>
 		</div>
-		</form>
-		<br>
-		<c:if test="${user.auth == 2}">
-		<div class="align-right">
-			<input id="faq_btn01" type="button" value="글등록" onclick="location.href='faqwrite.do'">
-		</div>
-		</c:if>
-	<!-- Example Code -->	
+	</form><br>
+	<c:if test="${user.auth == 2}">
+	<div class="align-right">
+		<input id="faq_btn01" type="button" value="글등록" onclick="location.href='faqwrite.do'">
+	</div>
+	</c:if>
+	<br>
+	<c:if test="${count == 0}">
+		<div class="community-result-display">표시할 게시물이 없습니다.</div>	
+	</c:if>
+		
+		<c:if test="${count > 0}">
+	<!-- Example Code -->
 	<div class="accordion accordion-flush" id="accordionFlushExample">
 	  <c:forEach var="faq" items="${list}" varStatus="status">
 	  <div class="accordion-item">
@@ -72,9 +80,9 @@
 	  </div>
 	  </c:forEach>
 	</div>
+	</c:if>
     <!-- End Example Code -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <%-- 		<c:if test="${!empty user}">
 		<div class="align-right">
 			<input id="faq_btn01" type="button" value="글등록" onclick="location.href='faqwrite.do'">

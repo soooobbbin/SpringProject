@@ -1,0 +1,314 @@
+/*qnaList 페이지*/
+body{
+	background:#f4f9f2;
+}
+#btnmodify{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 20px;
+}
+#btnmodify:hover{
+	filter: brightness(95%);
+}
+#btnupdate{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 20px;
+}
+#btnupdate:hover{
+	filter: brightness(95%);
+}
+#btndelete{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 40px;
+}
+#btndelete:hover{
+	filter: brightness(95%);
+}
+#all{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+}
+#all:hover{
+	filter: brightness(95%);
+}
+#my-wish{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+}
+#my-wish:hover{
+	filter: brightness(95%);
+}
+.menu{
+	height: 55px;
+}
+/*가로 슬라이드*/
+.menu-v2{
+	left:384px;
+	width:193px;
+	position:relative;
+}
+#my-write{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width:193px;
+	height:45px;
+	cursor:pointer;
+}
+#my-write:hover{
+	filter: brightness(95%);
+}
+.submenu{
+	position:absolute;
+	width:193px;
+	left:0px;
+	top:35px;
+	display:none;
+	border:1px solid white;
+	box-shadow: 2px 2px 7px gray;
+	border-radius:10px;
+	height:120px;
+	background-color:white;
+}
+.submenu2{
+	margin-top:25px;
+	height: 30px;
+	font-size: 15px;
+	cursor:pointer;
+}
+.submenu2:hover{
+	color: gray;
+}
+/*li*/
+.page-content li{
+	font-size: 20px;
+	list-style: none;
+	
+}
+/* end of faqlist */
+
+/* .faq_main{
+	margin: 45px 315px 90px 315px;
+}
+.faqh2{
+	margin-top: 135px;
+	margin-bottom: 3px;
+	font-weight: bold;
+}
+.faq_main_qna02{
+	margin: 0 200px;
+}
+#faq_main_qna figcaption{
+	margin-top:5px;
+	margin-right:6px;
+	font-size:12px;
+	font-weight:bold;
+}
+#faq_main_img02{
+	width: 50px;
+	height: 50px;
+	cursor:pointer;
+}
+#faq_main_img01{
+	margin-right: 15px;
+	margin-bottom: 5px;
+	width: 38px;
+	height: 38px;
+	cursor:pointer;
+}
+.faq-form-inline{
+	font-size:15px;
+}
+#faq_btn01{
+	margin-right:5px;
+	margin-bottom:5px;
+	width:52px;
+	height:28px;
+	background-color: #7c8f83;
+	color:white;
+	border: none;
+	border-radius: 13px;
+	font-size: 13px;
+	cursor:pointer;
+}
+.faq_btn_group{
+	margin-right:10px;
+}
+.faq_btn_group input[type="button"]{
+	margin: 0 3px 10px 0;
+	width:38px;
+	height:20px;
+	background-color: #7c8f83;
+	color:white;
+	border: none;
+	border-radius: 10px;
+	font-size:11px;
+}
+#title_btn01{
+	background:#f4f9f2; 
+	border-bottom:1px solid #7c8f83;
+	font-size:14px;
+	font-weight: bold;
+}
+#title_btn02{
+	text-align:center;
+	width:40px;
+	height: 15px;
+	margin:0 45px 0 30px;
+	border: 1px solid green;
+	border-radius: 20px;
+	color: green;
+	font-size:10px;
+}
+.accordion-body{
+	margin:0 100px 0 116px;
+} */
+/*end faqList.jsp*/
+
+/*category*/
+/* .faq-category-ul{
+	list-style: none;
+	padding-left:0px;
+}
+.faqbtn00{
+	font-weight:bold;
+	border: 7px solid #7c8f83;
+	background-color:#7c8f83;
+	color:white;
+}
+.faqbtn00, .faqbtn01, .faqbtn02, .faqbtn03{
+	font-weight:bold;
+	border: 7px solid #f4f9f2;
+	background-color:#f4f9f2;
+	font-size:14px;
+}
+.faqbtn00:hover, .faqbtn01:hover, .faqbtn02:hover, .faqbtn03:hover{
+	font-weight:bold;
+	font-size:14px;
+	border: 7px solid #7c8f83;
+	background-color:#7c8f83;
+    color: white;
+} */
+/*category*/
+
+/*qnaWrite.jsp*/
+.qna_write_main{
+	margin: 120px 0 0 35%;
+}
+.faq_write_main h2{
+	margin-bottom:20px;
+}
+.q_title_li{
+	list-style: none;
+	padding-left:0px;
+}
+.qna_write_hr{
+	background:#7c8f83;
+    height:1px;
+    border:0;
+}
+#q_category{
+	margin-right:17px;
+	width: 115px;
+	height: 26px;
+	border-radius: 10px;
+	text-align:center;
+}
+.q_title_li input[type="text"]{
+	margin-top: 40px;
+	width: 462px;
+	height: 28px;
+	border-color:lightgray;
+	border-radius: 10px;
+}
+.q_title_li textarea{
+	margin-top: 30px;
+	width: 600px;
+	height: 200px;
+	border-color:lightgray;
+	border-radius: 7px;
+}
+.q_title_li input[type="text"]::placeholder, textarea::placeholder{
+	color: #d5d4d4;
+}
+#faq_write_btn01{
+	margin: 42px 250px 0;
+}
+#faq_write_btn01 button,#faq_write_btn01 input[type="button"]{
+	margin-right:15px;
+	width:45px;
+	height:23px;
+	background-color: #7c8f83;
+	color:white;
+	border: none;
+	border-radius: 10px;
+	font-weight:bold;
+}
+.my-photo2{
+	width:130px;
+	height:140px;
+}
+.photoUpload li{
+	list-style: none;
+}
+.photoUpload_li{
+	margin: 40px 0 0 190px;
+}
+#upload{
+	float:left;
+}
+.qna_write_btn02{
+	margin: 15px 0 0 115px;
+}
+#photo_reset{
+	width:20px;
+	height:20px;
+	cursor:pointer;
+}
+/*end qnaWrite.jsp*/

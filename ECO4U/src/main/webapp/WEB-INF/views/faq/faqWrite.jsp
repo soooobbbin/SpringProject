@@ -11,9 +11,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/faq.js"></script>
 <!-- include ckeditor js -->
 <div class="faq_write_main">
-	<!-- <hr class="faq_write_hr" size="3" width="130px" align="left"> -->
 	<h2 style="font-weight:bold">FAQ<span style="font-size:11px; font-weight:none">(공지등록)</span></h2>
-	<hr class="faq_write_hr" size="3" width="112px" align="left">
+	<hr class="faq_write_hr" width="112px" align="left">
 	<form:form action="faqwrite.do" modelAttribute="FAQVO" id="register_form" enctype="multipart/form-data">
 	    <form:errors element="div" cssClass="error-color"/>
 		<ul class="f_title_li">

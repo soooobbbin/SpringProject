@@ -23,6 +23,9 @@
 	font-weight: bold;
 	cursor:pointer;
 }
+.submit-btn:hover{
+	filter: brightness(95%);
+}
 </style>     
 <!-- 내용 시작 -->
 <div class="page-main">

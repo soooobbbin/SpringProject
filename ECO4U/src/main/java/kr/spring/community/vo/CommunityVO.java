@@ -1,8 +1,13 @@
 package kr.spring.community.vo;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import kr.spring.util.DurationFromNow;
 
 
 public class CommunityVO {
@@ -12,12 +17,26 @@ public class CommunityVO {
 	@NotEmpty
 	private String c_content;//내용
 	private int c_hit;//조회수
-	private Date reg_date; //등록일
-	private Date modify_date; //수정일
+	private String reg_date; //등록일
+	private String modify_date; //수정일
 	private byte[] c_uploadfile;//파일
 	private String c_filename;//파일명
 	private int c_category;//카테고리
 	private int c_auth;//공지
+	
+	private int mem_num; //회원번호
+	private String id; //회원아이디
+	
+	
+	//파일 업로드 처리
+		public void setUpload(MultipartFile upload)
+		                              throws IOException{
+			//MultipartFile -> byte[] 변환
+			setC_uploadfile(upload.getBytes());
+			//파일명 구하기
+			setC_filename(upload.getOriginalFilename());
+		}
+		
 	
 	public int getC_auth() {
 		return c_auth;
@@ -51,17 +70,17 @@ public class CommunityVO {
 	public void setC_hit(int c_hit) {
 		this.c_hit = c_hit;
 	}
-	public Date getReg_date() {
+	public String getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
+	public void setReg_date(String reg_date) {
+		this.reg_date = DurationFromNow.getTimeDiffLabel(reg_date);
 	}
-	public Date getModify_date() {
+	public String getModify_date() {
 		return modify_date;
 	}
 	public void setModify_date(Date modify_date) {
-		this.modify_date = modify_date;
+		this.modify_date = DurationFromNow.getTimeDiffLabel(modify_date);
 	}
 	public byte[] getC_uploadfile() {
 		return c_uploadfile;
@@ -93,8 +112,7 @@ public class CommunityVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	private int mem_num; //회원번호
-	private String id; //회원아이디
+
 	
 	
 	@Override

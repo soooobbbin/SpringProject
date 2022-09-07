@@ -50,29 +50,40 @@
 	font-weight: bold;
 	cursor:pointer;
 }
+#sub_btn:hover{
+	filter: brightness(95%);
+}
 #confirmId{
 	color:white;
-	font-size: 11px;
+	font-size: 13px;
 	background-color: gray;
-	padding: 9px;
-	margin-top: -10px;
+	padding: 7px;
+	margin-top: -9px;
 	border: none;
 	border-radius: 5px;
 	width: 20%;
 	height:45px;
+	font-weight: bold;
 	cursor:pointer;
+}
+#confirmId:hover{
+	filter: brightness(95%);
 }
 #confirmzipcode{
 	color:white;
-	font-size: 11px;
+	font-size: 13px;
 	background-color: gray;
-	padding: 9px;
-	margin-top: -10px;
+	padding: 7px;
+	margin-top: -9px;
 	border: none;
 	border-radius: 5px;
 	width: 20%;
 	height:45px;
+	font-weight: bold;
 	cursor:pointer;
+}
+#confirmzipcode:hover{
+	filter: brightness(95%);
 }
 .btn_close{
 	color:white;
@@ -86,6 +97,9 @@
 	width: 90%;
 	font-weight: bold;
 	cursor:pointer;
+}
+.btn_close:hover{
+	filter: brightness(95%);
 }
 input:focus {
 	outline : 3px solid rgba(110, 131, 118, 0.45);

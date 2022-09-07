@@ -67,26 +67,29 @@ public class ProductAjaxController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("p_num", p_num);
-
+		
 		// 총 글의 개수
 		int count = productService.selectRowCountReview(map);
+		
+		//상품에 들어가면 리뷰 수 업데이트
+		productService.updateReviewCount(p_num);
 
 		PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, null);
 
 		map.put("start", page.getStartRow());
 		map.put("end", page.getEndRow());
 
-		List<P_reviewVO> list = null;
+		List<P_reviewVO> reviewList = null;
 		if (count > 0) {
-			list = productService.selectListReview(map);
+			reviewList = productService.selectListReview(map);
 		} else {
-			list = Collections.emptyList();
+			reviewList = Collections.emptyList();
 		}
 
 		Map<String, Object> mapAjax = new HashMap<String, Object>();
 		mapAjax.put("count", count);
 		mapAjax.put("rowCount", rowCount);
-		mapAjax.put("list", list);
+		mapAjax.put("reviewList", reviewList);
 
 		return mapAjax;
 	}

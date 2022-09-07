@@ -4,8 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/community.like.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/community.comment.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <div class="page-main">
 	<h2>${community.c_title}</h2>
@@ -41,11 +41,11 @@
 	              fn:endsWith(community.c_filename,'.png') ||
 	              fn:endsWith(community.c_filename,'.PNG')}">
 	<div class="align-center">
-		<img src="imageView.do?c_num=${community.c_num}&c_category=2" style="max-width:800px;">
+		<img src="imageView.do?c_num=${community.c_num}&c_category=${community.c_category}" style="max-width:800px;">
 	</div>
 	</c:if>
 	<p>
-		${board.content}
+		${community.c_content}
 	</p>
 	<div>
 		<%-- 좋아요 --%>

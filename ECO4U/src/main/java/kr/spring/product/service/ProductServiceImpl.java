@@ -39,6 +39,11 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO selectProduct(Integer p_num) {
 		return productMapper.selectProduct(p_num);
 	}
+	
+	@Override
+	public void changeStock(ProductVO product) {
+		productMapper.changeStock(product);
+	}
 
 	@Override
 	public void updateProduct(ProductVO product) {
@@ -53,6 +58,11 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void deletePhoto(Integer p_num) {
 		productMapper.deletePhoto(p_num);
+	}
+	
+	@Override
+	public void updateReviewCount(Integer p_num) {
+		productMapper.updateReviewCount(p_num);
 	}
 
 	@Override

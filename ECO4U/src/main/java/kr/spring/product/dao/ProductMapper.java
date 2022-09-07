@@ -27,11 +27,16 @@ public interface ProductMapper {
 	public void insertProduct(ProductVO product);
 	@Select("SELECT * FROM product WHERE p_num=#{p_num}")
 	public ProductVO selectProduct(Integer p_num);
+	public void changeStock(ProductVO product); //재고 수정
 	public void updateProduct(ProductVO product);
 	@Delete("DELETE FROM product WHERE p_num=#{p_num}")
 	public void deleteProduct(Integer p_num);
 	@Update("UPDATE product SET p_photo='',p_photoname='' WHERE p_num=#{p_num}")
 	public void deletePhoto(Integer p_num);
+	@Update("UPDATE product p SET p.review_count = "
+			+ "(select count(r_num) from p_review where p_num = #{p_num}) "
+			+ "where p.p_num = #{p_num}")
+	public void updateReviewCount(Integer p_num);
 	
 	//리뷰
 	public List<P_reviewVO> selectListReview(Map<String,Object> map);

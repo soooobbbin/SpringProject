@@ -37,6 +37,7 @@ public class QnAController {
 	@Autowired
 	private QnAService qnaService;
 	
+	
 	//자바빈(VO) 초기화
 	@ModelAttribute
 	public QnAVO initCommand() {
@@ -57,7 +58,7 @@ public class QnAController {
 			HttpSession session,
 			Model model) {
 
-		logger.debug("<<게시판 글 저장>> : " + qnaVO);
+		logger.debug("<<1:1문의 글 저장>> : " + qnaVO);
 
 		//유효성 검사 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
@@ -73,12 +74,47 @@ public class QnAController {
 		qnaService.insertQnA(qnaVO);
 
 		//View에 표시할 메시지
-		model.addAttribute("message", "글 등록이 완료되었습니다.");
-		model.addAttribute("url", request.getContextPath()+"/faq/faqlist.do");
+		model.addAttribute("message", "문의등록이 완료되었습니다.");
+		model.addAttribute("url", "/faq/faqlist.do");
 
 		return "common/resultView";
 	}
 	
+	//===========게시판 글 목록============//
+	@RequestMapping("/faq/qnalist.do")
+	public ModelAndView process(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="keyfield",defaultValue="") String keyfield,
+			@RequestParam(value="category",defaultValue="") String category) {
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("category", category);
+		
+		//글의 총개수(검색된 글의 개수)
+		int count = qnaService.selectRowCount(map);
+		
+		logger.debug("<<count>> : " + count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield,category,currentPage,count,rowCount,pageCount,"qnalist.do");
+		
+		List<QnAVO> list = null;
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = qnaService.selectQnAList(map);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("qnaList");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}
 }
 
 

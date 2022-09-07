@@ -14,8 +14,8 @@ import kr.spring.faq.vo.QnAVO;
 @Mapper
 public interface QnAMapper {
 	//부모글
-//	public List<FAQVO> selectList(Map<String,Object> map);
-//	public int selectRowCount(Map<String,Object> map);
+	public List<QnAVO> selectQnAList(Map<String,Object> map);
+	public int selectRowCount(Map<String,Object> map);
 	@Insert("INSERT INTO qna (q_num,q_title,"
 			+ "q_content,q_category,mem_num,q_photo,q_photo_name) "
 			+ "VALUES (qna_seq.nextval,#{q_title},"

@@ -1,71 +1,100 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.faq.dao.QnAMapper">  
-<!-- <select id="selectRowCount" parameterType="map" resultType="integer">
+<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
-		FROM faq f JOIN member m
-		ON f.mem_num = m.mem_num
+		FROM qna q JOIN member m
+		ON q.mem_num = m.mem_num
 		<where>
 			<if test="category == all">
-				f.f_category = 1 OR f.f_category = 2 OR f.f_category = 3
+				q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3
 			</if>
 			<if test="category == member">
-				f.f_category = 1
+				q.q_category = 1
 			</if>
 			<if test="category == product">
-				f.f_category = 2
+				q.q_category = 2
 			</if>
 			<if test="category == others">
-				f.f_category = 3
+				q.q_category = 3
 			</if>
 		</where>
   	</select>
-  	<select id="selectList" parameterType="map" resultType="fAQVO">
+  	<select id="selectQnAList" parameterType="map" resultType="qnAVO">
 		SELECT 
 		  *
 		 FROM (SELECT
 		 		a.*,
 		 		rownum rnum
 		 	   FROM (SELECT
-		 	   			f.f_num,
+		 	   			q.q_num,
 		 	   			<![CDATA[
-		 	   			REPLACE(REPLACE(f.f_title,'<','&lt;'),'>','&gt;') f_title,
+		 	   			REPLACE(REPLACE(q.q_title,'<','&lt;'),'>','&gt;') q_title,
 		 	   			]]>
-		 	   			f.f_content,
-		 	   			f_category,
-		 	   			f.mem_num
-		 	   		 FROM faq f JOIN member m
-		 	   		 ON f.mem_num = m.mem_num
+		 	   			q.q_content,
+		 	   			q.reg_date,
+		 	   			q_category,
+		 	   			q.mem_num
+		 	   		 FROM qna q JOIN member m
+		 	   		 ON q.mem_num = m.mem_num
 		 	   		 <where>
 							<if test="category == 0">
-								f.f_category = 1 OR f.f_category = 2 OR f.f_category = 3 
+								q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3 
 							</if>
 							<if test="category == 1">
-								f.f_category = 1
+								q.q_category = 1
 							</if>
 							<if test="category == 2">
-								f.f_category = 2
+								q.q_category = 2
 							</if>
 							<if test="category == 3">
-								f.f_category = 3
+								q.q_category = 3
 							</if>
 					</where>
-		 	   		 ORDER BY f.f_num DESC)a)
+		 	   		 ORDER BY q.q_num DESC)a)
 		 <![CDATA[
 		 WHERE rnum >= #{start} AND rnum <= #{end}
 		 ]]>
 	</select>
 	
-  	글수정
-  	<update id="updateBoard" parameterType="fAQVO">
-  		UPDATE faq SET
-  			f_title=#{f_title},
-  			f_content=#{f_content},
-  			f_category=#{f_category},
-  		    modify_date=SYSDATE
-  		WHERE f_num=#{f_num}
-  	</update> -->
+ 	<!-- 글수정 -->
+ 	<!-- <update id="updateQnA" parameterType="qnAVO">
+ 		UPDATE faq SET
+ 			f_title=#{f_title},
+ 			f_content=#{f_content},
+ 			f_category=#{f_category},
+ 		    modify_date=SYSDATE
+ 		WHERE f_num=#{f_num}
+ 	</update> -->
+  	
+  	<!-- 댓글 목록 -->
+  	<!-- <select id="selectListReply" parameterType="map"
+  	                    resultType="boardReplyVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              re_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(re_content,'<','&lt;'),'>','&gt;') re_content,
+  		              ]]>
+  		              re_date,
+  		              re_mdate,
+  		              board_num,
+  		              mem_num,
+  		              id,
+  		              nick_name
+  		            FROM spboard_reply
+  		            JOIN spmember USING(mem_num)
+  		            WHERE board_num = #{board_num}
+  		            ORDER BY re_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select> -->
   	
 </mapper>
 

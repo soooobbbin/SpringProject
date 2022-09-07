@@ -9,6 +9,7 @@
 <!-- include ckeditor js -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/store.js"></script>
 <!-- include ckeditor js -->
 <div class="qna_write_main">
 	<h2 style="font-weight:bold">1:1문의<span style="font-size:11px; font-weight:none">(등록)</span></h2>
@@ -17,18 +18,17 @@
 	    <form:errors element="div" cssClass="error-color"/>
 	    <div class="photoUpload">
 				<ul>
-					<li>
-						<c:if test="${empty store.photo_name}">
-						<img src="${pageContext.request.contextPath}/images/no_image.png" width="130" height="160" class="my-photo">
+					<li class="photoUpload_li">
+						<c:if test="${empty qna.q_photo_name}">
+						<img src="${pageContext.request.contextPath}/images/faq/camera_img.png" class="my-photo2">
 						</c:if>
-						<c:if test="${!empty store.photo_name}">
-						<img src="${pageContext.request.contextPath}/image_upload/${store.photo}" width="130" height="160" class="my-photo">
+						<c:if test="${!empty qna.q_photo_name}">
+						<img src="${pageContext.request.contextPath}/image_upload/${qna.q_photo}" class="my-photo2">
 						</c:if>
 					</li>
-					<li>
-						<label for="upload">파일업로드</label>
-						<input type="file" name="upload" id="upload">
-						<input type="button" value="취소" id="photo_reset">
+					<li class="qna_write_btn02">
+						<input type="file" id="upload" name="upload">
+						<img id="photo_reset" src="${pageContext.request.contextPath}/images/faq/bin.png">
 					</li>
 				</ul>
 		</div>
@@ -67,46 +67,8 @@
 			 </ul>
 			<div class="align-left" id="faq_write_btn01">
 			<form:button>등록</form:button>
-			<input type="button" onclick="location.href='faqlist.do'" id="qna_backarrow">
+			<input type="button" value="취소" id="qna_write_btn03">
 			</div>
-		<%-- <ul class="f_title_li">
-			<li>
-			<select name="q_category" id="q_category">
-				<option value="1"<c:if test="${q_category == 1}">selected</c:if>>회원문의</option>
-				<option value="2"<c:if test="${q_category == 2}">selected</c:if>>상품/배송문의</option>
-				<option value="3"<c:if test="${q_category == 3}">selected</c:if>>기타</option>
-			</select>
-			<form:input path="q_title" placeholder="제목을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '제목을 입력하세요.'" autocomplete="off"/>
-			<form:errors path="q_title" cssClass="error-color"/>
-			</li>
-			<li>
-				<form:textarea path="q_content" placeholder="내용을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '내용을 입력하세요.'" autocomplete="off"/>
-				<form:errors path="q_content" cssClass="error-color"/>
-				<script>
-				 function MyCustomUploadAdapterPlugin(editor) {
-					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-					        return new UploadAdapter(loader);
-					    }
-					}
-				 
-				 ClassicEditor
-		            .create( document.querySelector( '#q_content' ),{
-		            	extraPlugins: [MyCustomUploadAdapterPlugin]
-		            })
-		            .then( editor => {
-						window.editor = editor;
-					} )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-			    </script>   
-			</li>
-			
-		</ul> --%>
-		<%-- <div class="align-left" id="faq_write_btn01">
-			<form:button>등록</form:button>
-			<input type="button" value="목록" onclick="location.href='faqlist.do'">
-		</div> --%>
 	</form:form>
 </div>
 <!-- 내용 끝 -->

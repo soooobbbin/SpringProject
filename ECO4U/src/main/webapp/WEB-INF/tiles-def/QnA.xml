@@ -25,6 +25,11 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/faq/qnaWrite.jsp"/>                   
     </definition>
+    <definition name="qnaList" extends="main">
+    	<put-attribute name="title" value="QNA게시판"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/faq/qnaList.jsp"/>                   
+    </definition>
 </tiles-definitions>
 
 

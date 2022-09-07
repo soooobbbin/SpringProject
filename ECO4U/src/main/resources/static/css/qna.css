@@ -1,7 +1,138 @@
-/*faqList 페이지*/
+/*qnaList 페이지*/
 body{
 	background:#f4f9f2;
 }
+#btnmodify{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 20px;
+}
+#btnmodify:hover{
+	filter: brightness(95%);
+}
+#btnupdate{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 20px;
+}
+#btnupdate:hover{
+	filter: brightness(95%);
+}
+#btndelete{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 40px;
+}
+#btndelete:hover{
+	filter: brightness(95%);
+}
+#all{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+}
+#all:hover{
+	filter: brightness(95%);
+}
+#my-wish{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+}
+#my-wish:hover{
+	filter: brightness(95%);
+}
+.menu{
+	height: 55px;
+}
+/*가로 슬라이드*/
+.menu-v2{
+	left:384px;
+	width:193px;
+	position:relative;
+}
+#my-write{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width:193px;
+	height:45px;
+	cursor:pointer;
+}
+#my-write:hover{
+	filter: brightness(95%);
+}
+.submenu{
+	position:absolute;
+	width:193px;
+	left:0px;
+	top:35px;
+	display:none;
+	border:1px solid white;
+	box-shadow: 2px 2px 7px gray;
+	border-radius:10px;
+	height:120px;
+	background-color:white;
+}
+.submenu2{
+	margin-top:25px;
+	height: 30px;
+	font-size: 15px;
+	cursor:pointer;
+}
+.submenu2:hover{
+	color: gray;
+}
+/*li*/
+.page-content li{
+	font-size: 20px;
+	list-style: none;
+	
+}
+/* end of faqlist */
+
 /* .faq_main{
 	margin: 45px 315px 90px 315px;
 }
@@ -159,9 +290,25 @@ body{
 	border-radius: 10px;
 	font-weight:bold;
 }
-#qna_backarrow{
-	background-image: url('../images/faq/backarrow.png');
-	background-repeat: no-repeat;
-	background-size: 15px;
+.my-photo2{
+	width:130px;
+	height:140px;
+}
+.photoUpload li{
+	list-style: none;
+}
+.photoUpload_li{
+	margin: 40px 0 0 190px;
+}
+#upload{
+	float:left;
+}
+.qna_write_btn02{
+	margin: 15px 0 0 115px;
+}
+#photo_reset{
+	width:20px;
+	height:20px;
+	cursor:pointer;
 }
 /*end qnaWrite.jsp*/

@@ -7,10 +7,21 @@ import kr.spring.faq.vo.QnAVO;
 
 public interface QnAService {
 	//부모글
-//	public List<FAQVO> selectList(Map<String,Object> map);
-//	public int selectRowCount(Map<String,Object> map);
+	public List<QnAVO> selectQnAList(Map<String,Object> map);
+	public int selectRowCount(Map<String,Object> map);
 	public void insertQnA(QnAVO qna);
 //	public FAQVO selectBoard(Integer f_num);
 //	public void updateBoard(FAQVO faq);
 //	public void deleteBoard(Integer f_num);
+//	public void deleteFile(Integer board_num);
+	
+	//댓글
+//	public List<BoardReplyVO> selectListReply(
+//			                 Map<String,Object> map);
+//	public int selectRowCountReply(
+//			                 Map<String,Object> map);
+//	public BoardReplyVO selectReply(Integer re_num);
+//	public void insertReply(BoardReplyVO boardReply);
+//	public void updateReply(BoardReplyVO boardReply);
+//	public void deleteReply(Integer re_num);
 }

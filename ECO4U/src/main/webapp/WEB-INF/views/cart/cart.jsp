@@ -71,7 +71,7 @@ function selectAll(selectAll)  {
 						<span class="box-brand">[${cart.p_brand}]</span>
 					</div>
 					
-					<hr size="1" color="green" width="90%">
+					<hr color="gray" width="95%" size="1">
 					<div class="div2">
 						<div class="product-image">
 							<img src="../images/product/${cart.p_photoname}" width="80" height="80">
@@ -79,9 +79,7 @@ function selectAll(selectAll)  {
 						<div class="product-box">
 							
 							<span class="box-title">${cart.p_name}</span><br>
-							<span class="box-price"><strong>${cart.p_price}</strong></span><br>
-							<span class="box-dprice">배송비 ${cart.p_dprice}</span><br>
-							<span class="box-pcate">카테고리 ${cart.p_category}</span>
+							<span class="box-price"><strong>${cart.p_price}</strong></span>
 						</div>
 					</div>
 					
@@ -115,7 +113,7 @@ function selectAll(selectAll)  {
 		</ul>
 		</c:if>
 		<div class="cart-order">
-			<input type="button" value="결제하기">
+			<input type="button" value="결제하기" onclick="location.href='orders.do'">
 		</div>
 	
 </div>

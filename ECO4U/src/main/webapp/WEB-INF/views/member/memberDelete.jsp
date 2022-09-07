@@ -15,6 +15,9 @@
 	font-weight: bold;
 	cursor:pointer;
 }
+.submit-btn:hover{
+	filter: brightness(95%);
+}
 .btn01{
 	color:white;
 	font-size: 25px;
@@ -26,6 +29,9 @@
 	width: 90%;
 	font-weight: bold;
 	cursor:pointer;
+}
+.btn01:hover{
+	filter: brightness(95%);
 }
 </style>     
 <!-- 내용 시작 -->

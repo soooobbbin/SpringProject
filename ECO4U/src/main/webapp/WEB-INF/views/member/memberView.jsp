@@ -16,6 +16,9 @@
 	cursor:pointer;
 	margin-right: 20px;
 }
+#btnmodify:hover{
+	filter: brightness(95%);
+}
 #btnupdate{
 	color:white;
 	font-size: 15px;
@@ -28,6 +31,9 @@
 	height:45px;
 	cursor:pointer;
 	margin-right: 20px;
+}
+#btnupdate:hover{
+	filter: brightness(95%);
 }
 #btndelete{
 	color:white;
@@ -42,6 +48,9 @@
 	cursor:pointer;
 	margin-right: 40px;
 }
+#btndelete:hover{
+	filter: brightness(95%);
+}
 #all{
 	color:white;
 	font-size: 15px;
@@ -54,6 +63,9 @@
 	height:45px;
 	cursor:pointer;
 }
+#all:hover{
+	filter: brightness(95%);
+}
 #my-wish{
 	color:white;
 	font-size: 15px;
@@ -65,6 +77,9 @@
 	width: 20%;
 	height:45px;
 	cursor:pointer;
+}
+#my-wish:hover{
+	filter: brightness(95%);
 }
 .menu{
 	height: 55px;
@@ -87,11 +102,14 @@
 	height:45px;
 	cursor:pointer;
 }
+#my-write:hover{
+	filter: brightness(95%);
+}
 .submenu{
 	position:absolute;
 	width:193px;
-	left:193px;
-	top:-10px;
+	left:0px;
+	top:35px;
 	display:none;
 	border:1px solid white;
 	box-shadow: 2px 2px 7px gray;
@@ -124,7 +142,7 @@
 		<input type="button" value="전체주문내역" id="all" onclick="location.href='#'">
 		</div>
 		<div class="menu">
-		<input type="button" value="나의 관심" id="my-wish" onclick="location.href='#'">
+		<input type="button" value="나의 관심" id="my-wish" onclick="location.href='${pageContext.request.contextPath}/cart/wishList.do'">
 		</div>
 		<div id="nav-v2">
 			<div class="menu-v2"><input type="button" value="내가 쓴 글" id="my-write" onclick="location.href='#'">
@@ -139,54 +157,38 @@
 			</div>
 		</div>
 	</div>
-	<div class="mypage-div" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:45%; height:600px; background-color:white; padding-top:30px; padding-top:30px; margin-top: 50px;">
+	<div class="mypage-div" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:35%; height:600px; background-color:white; padding-top:30px; padding-top:30px; margin-top: 50px; margin-left: -250px;">
 		<div style="padding-left: 20px;">
 			<h2>${member.mem_name}님 회원상세정보</h2>
 		</div>
 		<hr width="100%" noshade="noshade" size="1px">
-		<div class ="page-content"style="height: 400px;">
-			<div style="width: 25%; float:left;">
+		<div class ="page-content"style="height: 470px;">
+			<div class="page-content01" style="width: 25%; float:left; padding-left: 5%;">
 				<ul>
-					<li>이름</li>
-					<hr width="100%" noshade="noshade" size="1px">
-					<li>전화번호</li>
-					<hr width="100%" noshade="noshade" size="1px">
-					<li>이메일</li>
-					<hr width="100%" noshade="noshade" size="1px">
-					<li>우편번호</li>
-					<hr width="100%" noshade="noshade" size="1px">
-					<li>주소</li>
-					<hr width="100%" noshade="noshade" size="1px">
-					<li>상세주소</li>
-					<hr width="100%" noshade="noshade" size="1px">
-					<li>가입날짜</li>
-					<hr width="100%" noshade="noshade" size="1px">
+					<li>이름</li><br>
+					<li>전화번호</li><br>
+					<li>이메일</li><br>
+					<li>가입날짜</li><br>
 					<c:if test="${!empty member.modify_date}">
-					<li>정보 수정일</li>
-					<hr width="100%" noshade="noshade" size="1px">
+					<li>정보 수정일</li><br>
 					</c:if>
+					<li>우편번호</li><br>
+					<li>주소</li><br>
+					<li>상세주소</li><br>
 				</ul>
 			</div>
-			<div style="width: 75%; float:left;">
+			<div class ="page-content02" style="width: 65%; float:left;">
 				<ul>
-					<li>${member.mem_name}</li>
-					<hr width="90%" noshade="noshade" size="1px" align="left">
-					<li>${member.mem_cell}</li>
-					<hr width="90%" noshade="noshade" size="1px" align="left">
-					<li>${member.mem_email}</li>
-					<hr width="90%" noshade="noshade" size="1px" align="left">
-					<li>${member.zipcode}</li>
-					<hr width="90%" noshade="noshade" size="1px" align="left">
-					<li>${member.address1}</li>
-					<hr width="90%" noshade="noshade" size="1px" align="left">
-					<li>${member.address2}</li>
-					<hr width="90%" noshade="noshade" size="1px" align="left">
-					<li>${member.reg_date}</li>
-					<hr width="90%" noshade="noshade" size="1px" align="left">
+					<li>${member.mem_name}</li><br>
+					<li>${member.mem_cell}</li><br>
+					<li>${member.mem_email}</li><br>
+					<li>${member.reg_date}</li><br>
 					<c:if test="${!empty member.modify_date}">
-					<li>${member.modify_date}</li>
-					<hr width="90%" noshade="noshade" size="1px" align="left">
+					<li>${member.modify_date}</li><br>
 					</c:if>
+					<li>${member.zipcode}</li><br>
+					<li>${member.address1}</li><br>
+					<li>${member.address2}</li><br>
 				</ul>
 			</div>
 		</div>

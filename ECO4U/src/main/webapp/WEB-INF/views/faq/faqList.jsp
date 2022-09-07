@@ -32,7 +32,7 @@
 				<li>
 				<input class="faqbtn00" type="button" value="전체" onclick="location.href='/faq/faqlist.do?category=0'">|
 				<input class="faqbtn01" type="button" value="회원" onclick="location.href='/faq/faqlist.do?category=1'">|
-				<input class="faqbtn02" type="button" value="상품/배달"  onclick="location.href='/faq/faqlist.do?category=2'">|
+				<input class="faqbtn02" type="button" value="상품/배송"  onclick="location.href='/faq/faqlist.do?category=2'">|
 				<input class="faqbtn03" type="button" value="기타"  onclick="location.href='/faq/faqlist.do?category=3'">
 				</li>
 			</ul>

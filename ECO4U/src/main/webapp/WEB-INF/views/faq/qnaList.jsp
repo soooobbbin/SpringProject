@@ -6,8 +6,35 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishList.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
+<script type="text/javascript">
+function checkSelectAll()  {
+	  // 전체 체크박스
+	  const checkboxes 
+	    = document.querySelectorAll('input[name="select_product"]');
+	  // 선택된 체크박스
+	  const checked 
+	    = document.querySelectorAll('input[name="select_product"]:checked');
+	  // select all 체크박스
+	  const selectAll 
+	    = document.querySelector('input[name="selectall"]');
+	  
+	  if(checkboxes.length === checked.length)  {
+	    selectAll.checked = true;
+	  }else {
+	    selectAll.checked = false;
+	  }
+}
+
+function selectAll(selectAll)  {
+	  const checkboxes 
+	     = document.getElementsByName('select_product');
+	  
+	  checkboxes.forEach((checkbox) => {
+	    checkbox.checked = selectAll.checked
+	  })
+}
+</script>
 <div class="page" style="height: 770px;">
 	<form action="qnalist.do" id="search_form"  method="get">
 	
@@ -35,18 +62,28 @@
 	<!-- 좌측 메뉴바 종료 -->
 	
 	<!-- 초반 기반 폼 추후 삭제 작업필요 -->
-	<div class="mypage-div" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:50%; height:600px; background-color:none; padding-top:30px; padding-top:30px; margin-top: 50px; margin-left: -250px;">
+	<!-- 문의 내역 폼 시작 -->
+	<div class="mypage-div" style="box-shadow: 2px 2px 7px gray; border:1px solid #7c8f83; border-radius:10px; width:50%; height:600px; background-color:none; padding-top:30px; padding-top:30px; margin-top: 50px; margin-left: -250px;">
 		<div style="padding-left: 20px;">
-			<span style="font-size:12px"><a href="/member/myPage.do">My</a> > <a href="/faq/qnalist.do">문의내역</a></span>
-			<h2>문의내역</h2>
+		<span style="font-size:13px"><a href="/member/myPage.do">My</a> > <a href="/faq/qnalist.do">문의내역</a></span>
+		<img src="../images/faq/comment.png" width="14px" height="14px" style="margin-bottom:-2px; margin-left:-1px;">
 		</div>
-		<hr width="100%" noshade="noshade" size="1px">
 		<div class ="page-content"style="height: 470px;">
-			
+			<ul class="wish-category-ul" id="category" name="category">
+			<li class="myqna_btn01">
+				<input type="button" value="all" onclick="location.href='/faq/qnalist.do?category=0'">
+				<input type="button" value="member" onclick="location.href='/faq/qnalist.do?category=1'">
+				<input type="button" value="product/delivery"  onclick="location.href='/faq/qnalist.do?category=2'">
+				<input type="button" value="others"  onclick="location.href='/faq/qnalist.do?category=3'">
+				<hr width="98%" noshade="noshade" size="1px" align="left" color="gray">
+			</li>
+			</ul>
 		</div>
 		<div class="align-right">
 		</div>
 	</div>
+	<!-- 문의 내역 폼 끝 -->
+	
 	</form>
 </div>
 <!-- 내가 쓴 글 subbar.js -->

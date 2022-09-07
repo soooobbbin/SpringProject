@@ -87,17 +87,17 @@ $(function(){
 		</div>
 	</div>
     <div class="section" id="section2">
-    	<h1 class="align-center">The Latest Product</h1>
-    	<hr style="border: solid 1px #999;" width="80%" >
+    	<h2 class="align-center">The Latest Product</h2>
+    	<hr style="border: solid 1px #999;" width="70%" >
     	<div class="row cardmargin">
 				<c:forEach var="product" items="${list}" varStatus="status">
-					<div class="col" style="margin-top: 15px;">
+					<div class="col" >
 						<div class="card" style="width: 300px; border: 0px;">
 							<a href="/product/detail.do?p_num=${product.p_num}"
 								class="btn btn-primary stretched-link"
-								style="background-color: #f4f9f2; color: #000000; border-color: #f4f9f2;">
+								style="background-color: ivory; color: #000000; border-color: ivory;">
 								<img class="card-img-top"
-								style="width: 278px; height: 278px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
+								style="width: 265px; height: 265px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
 								src="${pageContext.request.contextPath}/images/product/${product.p_photoname}" alt="thumbnail">
 								<div class="card-body">
 									<span class="p_name">[${product.p_brand}]</span>

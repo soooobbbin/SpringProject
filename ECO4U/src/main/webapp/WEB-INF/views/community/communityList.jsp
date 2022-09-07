@@ -64,7 +64,7 @@
 		<table>			
 			<c:forEach var="community" items="${list}">
 				<tr>
-					<td>${community.id}	</td>
+					<td>${community.id}	· ${community.reg_date}</td>
 					<td><img class="community-img" src="imageView.do?c_num=${community.c_num}&c_category=${community.c_category}" style="max-width:200px;">
 					
 					<!-- <img class="community-img"
@@ -75,7 +75,7 @@
 				</tr>
 				<tr>
 					<td>
-					<a href="detail.do?c_num=${community.c_num}">${community.c_title}</a> ${community.reg_date}</td>
+					<a href="detail.do?c_num=${community.c_num}">${community.c_title}</a> </td>
 				</tr>
 				<tr>
 					<td>${community.c_hit}</td>

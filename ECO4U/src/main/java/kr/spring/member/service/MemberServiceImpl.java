@@ -82,21 +82,14 @@ public class MemberServiceImpl implements MemberService{
 		memberMapper.deleteMember(mem_num);
 	}
 
-	@Override
-	public List<MemberVO> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int selectRowCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void updateByAdmin(MemberVO member) {
-		// TODO Auto-generated method stub
-		
-	}
+	/*
+	 * @Override public List<MemberVO> selectList(Map<String, Object> map) { return
+	 * memberMapper.selectList(map); }
+	 * 
+	 * @Override public int selectRowCount(Map<String, Object> map) { return
+	 * memberMapper.selectRowCount(map); }
+	 * 
+	 * @Override public void updateByAdmin(MemberVO memberVO) {
+	 * memberMapper.updateByAdmin(memberVO); }
+	 */
 }

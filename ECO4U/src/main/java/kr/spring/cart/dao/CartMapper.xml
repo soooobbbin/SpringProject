@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.cart.dao.CartMapper">  
+  	<select id="selectRowCount" parameterType="map"
+  	                    resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM cart c JOIN product p
+		ON c.p_num = p.p_num
+  	</select>
+  	
+  	<select id="selectList" parameterType="map"
+  	                         resultType="CartVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              c.cart_num,
+  		              p.p_name,
+  		              p.p_price,
+  		              p.p_quantity,
+  		              p.p_dprice,
+  		              p_category,
+  		              p_photo,
+  		              p_photoname,
+  		              p_brand
+  		            FROM cart c JOIN product p
+  		            ON c.p_num = p.p_num
+  		            ORDER BY c.cart_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	
+</mapper>

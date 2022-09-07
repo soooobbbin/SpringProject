@@ -115,7 +115,7 @@ function selectAll(selectAll)  {
 		</ul>
 		</c:if>
 		<div class="cart-order">
-			<input type="button" value="결제하기">
+			<input type="button" value="결제하기" onclick="location.href='orders.do'">
 		</div>
 	
 </div>

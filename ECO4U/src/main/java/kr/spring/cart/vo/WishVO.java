@@ -108,8 +108,8 @@ public class WishVO {
 	public String toString() {
 		return "WishVO [w_num=" + w_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", mem_num="
 				+ mem_num + ", p_num=" + p_num + ", p_name=" + p_name + ", p_price=" + p_price + ", p_dprice="
-				+ p_dprice + ", p_quantity=" + p_quantity + ", p_photo=" + Arrays.toString(p_photo) + ", p_photoname="
-				+ p_photoname + ", p_category=" + p_category + ", p_brand=" + p_brand + "]";
+				+ p_dprice + ", p_quantity=" + p_quantity + ", p_photoname=" + p_photoname + ", p_category="
+				+ p_category + ", p_brand=" + p_brand + "]";
 	}
 	
 	

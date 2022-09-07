@@ -54,37 +54,39 @@ function selectAll(selectAll)  {
 		<span> | 선택 삭제</span> <!-- 버튼으로 만들어서 선택한 상품 삭제 가능하게 하기 -->
 	</div>
 	
-	<!-- 찜 목록에 상품이 담기지 않은 경우 -->
-	<c:if test="${count == 0}">
-	<div class="no-wish">관심 상품이 없습니다.</div>
-	</c:if>
+		<!-- 찜 목록에 상품이 담기지 않은 경우 -->
+		<c:if test="${count == 0}">
+		<div class="no-wish">관심 상품이 없습니다.</div>
+		</c:if>
+		
+		<!-- 찜 목록에 상품이 담긴 경우 -->
+		<c:if test="${count > 0}">
+		
+		<ul class="wish-list-ul">
+			<c:forEach var="wish" items="${list}">
+			<li class="wish-list-li">
+				<div class="box-parent">
+					<input type="hidden" value="${wish.p_category}">
+					<div class="wish-check">
+					<input type="checkbox" id="select_product" name="select_product" 
+					 onclick="checkSelectAll()">
+					</div>
+					<div class="product-image">
+						<img src="../images/product/${wish.p_photoname}" width="80" height="80">
+					</div>
+					<div class="product-box">
+						<span class="box-brand">[${wish.p_brand}]</span><br>
+						<span class="box-title">${wish.p_name}</span><br>
+						<span class="box-price"><strong>${wish.p_price}</strong></span><br>
+						<span class="box-dprice">배송비 ${wish.p_dprice}</span><br>
+						<span class="box-pcate">카테고리 ${wish.p_category}</span>
+					</div>
+				</div>
+			</li>
+			</c:forEach>
+		</ul>
+		</c:if>
 	
-	<!-- 찜 목록에 상품이 담긴 경우 -->
-	<c:if test="${count > 0}">
-	<ul class="wish-list-ul">
-		<c:forEach var="wish" items="${list}">
-		<li class="wish-list-li">
-			<div class="box-parent">
-				<input type="hidden" value="${wish.p_category}">
-				<div class="wish-check">
-				<input type="checkbox" id="select_product" name="select_product" 
-				 onclick="checkSelectAll()">
-				</div>
-				<div class="product-image">
-					<img src="../images/product/${wish.p_photoname}" width="80" height="80">
-				</div>
-				<div class="product-box">
-					<span class="box-brand">[${wish.p_brand}]</span><br>
-					<span class="box-title">${wish.p_name}</span><br>
-					<span class="box-price"><strong>${wish.p_price}</strong></span><br>
-					<span class="box-dprice">배송비 ${wish.p_dprice}</span><br>
-					<span class="box-pcate">카테고리 ${wish.p_category}</span>
-				</div>
-			</div>
-		</li>
-		</c:forEach>
-	</ul>
-	</c:if>
 	
 	
 </div>

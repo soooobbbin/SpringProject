@@ -1,19 +1,18 @@
 .page-main{
-	margin:100px 300px ;	
+	margin: auto;
+    width: 800px;	
 }
 .content-main{
 	background-color:white;
-	width:800px;
-	height:430px;
+	width: 500px;
+    height: 250px;
+    margin-bottom: 10px;
 }
-.cart-category{
-	margin-top:50px;
-	width:800px;
-	border:1px solid gray;
-	text-align:center;
-}
-td.cart-category{
-	border:1px solid gray;
+.cart-top {
+    height: 70px;
+    margin: auto;
+    padding-top: 50px;
+    width: 800px;
 }
 .cart-left{
 	float:left;	
@@ -24,3 +23,27 @@ td.cart-category{
 .cart-right2{
 	float:right;	
 }
+
+/*장바구니에 담긴 상품 없음*/
+.no-cart {
+    margin: 200px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+/*장바구니에 담긴 상품*/
+.box-parent {
+    display: flex;
+    width:fit-content;
+}
+.cart-check, .product-image {
+    width: fit-content;
+    flex: 1;
+    padding-right: 10px;
+}
+.cart-list-ul{
+	padding: 0;
+}
+
+
+/*결제하기*/

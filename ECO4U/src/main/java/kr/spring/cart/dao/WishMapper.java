@@ -11,7 +11,7 @@ import kr.spring.cart.vo.WishVO;
 @Mapper
 public interface WishMapper {
 
-	//장바구니
+	//찜목록
 	public List<WishVO> selectList(Map<String,Object>map);
 	public int selectRowCount(Map<String,Object> map);
 	@Select("SELECT * FROM wish w JOIN product p "

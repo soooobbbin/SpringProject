@@ -10,7 +10,7 @@
 	position: relative;
 	height:930px;
     background-color: ivory;
-    padding-top:30px;
+    padding-top:20px;
 }
 #section3 {
 	position: relative;
@@ -58,24 +58,25 @@ ul.carousel-indicators{
     width: 100%;
 }
 /*메인 두번째 화면*/
-#section2 h1{
-	margin:30px auto;
+#section2 h2{
+	margin:10px auto;
 }
 body{
 	overflow-x:hidden;
 	overflow-y:auto;
 }
 .row{
-	margin-bottom: 50px;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	width:88%;
+	padding-left:280px;
 }
 .p_name{
-	font-size: 14px;
+	font-size: 13px;
 	font-weight: bold;
 }
 
 .price{
-	font-size: 12px;
+	font-size: 13px;
 	margin:100px 0;
 }

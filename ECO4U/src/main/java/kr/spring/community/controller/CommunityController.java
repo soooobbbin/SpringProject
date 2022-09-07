@@ -94,8 +94,11 @@ public class CommunityController {
 			int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")
 			String keyfield,
+			@RequestParam(value="keyword",defaultValue="")
+			String keyword,
 			@RequestParam(value="c_category",defaultValue="")
-			String c_category)
+			String c_category
+			)
 	
 	
 	
@@ -104,6 +107,7 @@ public class CommunityController {
 		Map<String,Object> map = 
 				    new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 		map.put(" c_category",  c_category);
 		
 		//글의 총개수(검색된 글의 개수)
@@ -113,9 +117,9 @@ public class CommunityController {
 		
 		//페이지 처리
 		PagingUtil page = 
-				new PagingUtil(keyfield,c_category,
+				new PagingUtil(keyfield,c_category,pageCount,
 						currentPage,count,
-						rowCount,pageCount,"list.do");
+						rowCount,keyword,"list.do");
 		
 		List<CommunityVO> list = null;
 		if(count > 0) {
@@ -134,7 +138,7 @@ public class CommunityController {
 		
 		return mav;
 	}
-	/*
+	
 	//========게시판 글상세===========//
 	@RequestMapping("/community/detail.do")
 	public ModelAndView detail(
@@ -153,20 +157,20 @@ public class CommunityController {
 			 StringUtil.useNoHtml(community.getC_title()));
 		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
 		//ckeditor 사용시 아래 코드 주석 처리
-		
+		/*
 		community.setC_content(
-		 StringUtil.useBrNoHtml(community.getC_content()));
+		 StringUtil.useBrNoHtml(community.getC_content()));*/
 		
 		                          //뷰 이름    속성명   속성값
 		return new ModelAndView("communityView","community",community);
-	}*/
-	/*
+	}
+	
 	//===========파일다운로드===========//
 	@RequestMapping("/community/file.do")
 	public ModelAndView download(
 			   @RequestParam int c_num) {
 		
-		communityVO community = 
+		CommunityVO community = 
 				communityService.selectCommunity(c_num);
 		
 		ModelAndView mav = new ModelAndView();
@@ -200,7 +204,7 @@ public class CommunityController {
 			            BindingResult result,
 			            HttpServletRequest request,
 			            Model model) {
-		logger.debug("<<글수정>> : " + communitydVO);
+		logger.debug("<<글수정>> : " + communityVO);
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
@@ -209,7 +213,7 @@ public class CommunityController {
 			//호출할 때 다시 셋팅해주어야 함.
 			CommunityVO vo = communityService.selectCommunity(
 					communityVO.getC_num());
-			communityVO.setFilename(vo.getFilename());
+			communityVO.setC_filename(vo.getC_filename());
 			return "communityModify";
 		}
 		
@@ -244,6 +248,6 @@ public class CommunityController {
 		
 		return "common/resultView";
 	}
-	*/
+
 }
 

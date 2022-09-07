@@ -10,12 +10,12 @@
 		<h2 onclick="location.href='list.do'">Community</h2>
 	</div>
 	
-	
-				<ul class="community-category-ul" id="c_category" name="c_category">
-					<li><input type="button" value="TIP" onclick="location.href='/community/list.do?c_category=tip'"></li>
-					<li><input type="button" value="함께해요"  onclick="location.href='/community/list.do?c_category=함께해요'"></li>
-					<li><input type="button" value="친환경 소식"  onclick="location.href='/community/list.do?c_category=친환경소식'"></li>
-				</ul>
+	<div class="community-list-header">
+			<ul class="community-category-ul" id="c_category" name="c_category">
+				<li><input type="button" value="TIP" onclick="location.href='/community/list.do?c_category=tip'"></li>
+				<li><input type="button" value="함께해요"  onclick="location.href='/community/list.do?c_category=함께해요'"></li>
+				<li><input type="button" value="친환경 소식"  onclick="location.href='/community/list.do?c_category=친환경소식'"></li>
+			</ul>
 		
 			
 			<div class="align-right">
@@ -28,14 +28,32 @@
 				<input type="search" name="keyword" id="keyword"
 				               value="${param.keyword}">
 			<input type="submit" value="찾기">
-			
+			</div>
 	
 		<!-- 글쓰기 버튼 -->
 		<c:if test="${!empty user}">
 	
 		<input type="button" value="글쓰기"
 		          onclick="location.href='write.do'">
-			</c:if></div>
+			</c:if>
+		
+	</div>
+	
+	<div class="community-list-sort">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 정렬 <!-- 아래 화살표 -->
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item"
+						href="/community/list.do?c_category=${c_category}&sort=hits">조회수순</a></li>
+					<li><a class="dropdown-item"
+						href="/community/list.do?c_category=${c_category}&sort=likes">추천순</a></li>
+					<li><a class="dropdown-item"
+						href="/community/list.do?c_category=${c_category}&sort=comments">댓글순</a></li>
+					
+				</ul>
+	</div>
+	
 
 		<!-- 게시글 목록 -->
 		<c:if test="${count == 0}">
@@ -47,7 +65,19 @@
 			<c:forEach var="community" items="${list}">
 				<tr>
 					<td>${community.id}	</td>
-					<td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a> ${community.reg_date}</td>
+					<td><img class="community-img" src="imageView.do?c_num=${community.c_num}&c_category=${community.c_category}" style="max-width:200px;">
+					
+					<!-- <img class="community-img"
+								style="width: 200px; height: 250px;: "
+								src="${pageContext.request.contextPath}/image_upload/${community.c_filename}"> -->
+					
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<a href="detail.do?c_num=${community.c_num}">${community.c_title}</a> ${community.reg_date}</td>
+				</tr>
+				<tr>
 					<td>${community.c_hit}</td>
 				</tr>
 			</c:forEach>

@@ -32,6 +32,8 @@ public interface MemberMapper {
 	public void insertkakaoMember(int mem_num,String id);
 	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_email) VALUES (#{mem_num},'카카오회원',#{id})")
 	public void insertkakaoMember_detail(int mem_num,String id);
+	@Insert("INSERT INTO zipcode (zip_num,mem_num) VALUES (zipcode_seq.nextval,#{mem_num})")
+	public void insertkakaoZipcode(int mem_num);
 	@Select("SELECT * FROM member WHERE id=#{id}") 
 	public MemberVO selectCheckkakaoMember(String id); 
 	

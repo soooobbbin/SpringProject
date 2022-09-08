@@ -32,6 +32,7 @@ public class MemberServiceImpl implements MemberService{
 		int mem_num = member.getMem_num();
 		memberMapper.insertkakaoMember(mem_num,id);
 		memberMapper.insertkakaoMember_detail(mem_num,id);
+		memberMapper.insertkakaoZipcode(mem_num);
 	}
 	@Override
 	public MemberVO selectCheckkakaoMember(String id) {

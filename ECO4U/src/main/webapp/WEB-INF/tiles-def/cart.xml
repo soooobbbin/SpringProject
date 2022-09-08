@@ -17,6 +17,12 @@
     	  value="/WEB-INF/views/cart/wishList.jsp"/>                   
     </definition>
     
+    <definition name="zipcodeUpdate" extends="main">
+    	<put-attribute name="title" value="배송지 추가"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/cart/zipcodeUpdate.jsp"/>                   
+    </definition>
+    
 </tiles-definitions>
 
 

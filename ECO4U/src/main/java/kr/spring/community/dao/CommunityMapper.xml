@@ -43,7 +43,6 @@
 					  b.c_category,
 					  b.c_content,
 					  b.c_hit,
-					  b.uploadfile,
 					  b.filename,
 					  b.reg_date,
 					  b.modify_date,
@@ -75,7 +74,7 @@
 	<!-- 글수정 -->
   	<update id="updateCommunity" parameterType="communityVO">
   		UPDATE community SET
-  		    <if test="c_filename != ''">
+  		    <if test="filename != ''">
   		    uploadfile=#{uploadfile},
   		    filename=#{filename},
   		    </if>

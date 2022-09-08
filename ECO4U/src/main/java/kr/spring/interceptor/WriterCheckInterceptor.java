@@ -53,7 +53,7 @@ public class WriterCheckInterceptor
 			request.setAttribute(
 					"accessBtn", "게시판 목록");
 			request.setAttribute(
-					"accessUrl", request.getContextPath()+"/community/list.do");
+					"accessUrl", request.getContextPath()+"/community/list.do?c_category=1");
 			
 			//포워드 방식으로 화면 호출
 			RequestDispatcher dispatcher = 

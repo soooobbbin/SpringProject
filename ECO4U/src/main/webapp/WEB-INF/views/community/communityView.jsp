@@ -25,21 +25,21 @@
 		</li>
 	</ul>
 	<ul>
-		<c:if test="${!empty community.c_filename}">
+		<c:if test="${!empty community.filename}">
 		<li>
-			첨부파일 : <a href="file.do?c_num=${community.c_num}">${community.c_filename}</a>
+			첨부파일 : <a href="file.do?c_num=${community.c_num}">${community.filename}</a>
 		</li>
 		</c:if>
 	</ul>
 	<hr size="1" width="100%">
-	<c:if test="${fn:endsWith(community.c_filename,'.jpg') ||
-	              fn:endsWith(community.c_filename,'.JPG') ||
-	              fn:endsWith(community.c_filename,'.jpeg') ||
-	              fn:endsWith(community.c_filename,'.JPEG') ||
-	              fn:endsWith(community.c_filename,'.gif') ||
-	              fn:endsWith(community.c_filename,'.GIF') ||
-	              fn:endsWith(community.c_filename,'.png') ||
-	              fn:endsWith(community.c_filename,'.PNG')}">
+	<c:if test="${fn:endsWith(community.filename,'.jpg') ||
+	              fn:endsWith(community.filename,'.JPG') ||
+	              fn:endsWith(community.filename,'.jpeg') ||
+	              fn:endsWith(community.filename,'.JPEG') ||
+	              fn:endsWith(community.filename,'.gif') ||
+	              fn:endsWith(community.filename,'.GIF') ||
+	              fn:endsWith(community.filename,'.png') ||
+	              fn:endsWith(community.filename,'.PNG')}">
 	<div class="align-center">
 		<img src="imageView.do?c_num=${community.c_num}&c_category=${community.c_category}" style="max-width:800px;">
 	</div>

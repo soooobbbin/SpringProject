@@ -81,7 +81,7 @@ public class CommunityController {
 		model.addAttribute(
 				"message", "글 등록이 완료되었습니다.");
 		model.addAttribute(
-		 "url", request.getContextPath()+"/community/list.do");
+		 "url", request.getContextPath()+"/community/list.do?c_category=1");
 		
 		return "common/resultView";
 	}

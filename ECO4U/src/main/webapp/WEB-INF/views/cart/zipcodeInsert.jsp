@@ -111,55 +111,33 @@ input:focus {
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
 <div class="page-main" style="height:900px;">
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
-		<h1>회원정보 수정</h1>
+		<h1>배송지 추가</h1>
 	</div>
-	<form:form id="modify_form" action="update.do" modelAttribute="memberVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:35%; height:700px; background-color:white; padding-top:30px;">
+	<form:form id="zipcodeInsert_form" action="zipcodeInsert.do" modelAttribute="zipcodeVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:35%; height:700px; background-color:white; padding-top:30px;">
 		<form:errors element="div" cssClass="error-color"/>
 		<ul>
 			<li>
-				<label for="mem_name" id="mem_name">이름</label>
-				<form:errors path="mem_name" cssClass="error-color"/><br>
+				<label for="zip_rec" id="zip_rec">수신인</label>
+				<form:errors path="zip_rec" cssClass="error-color"/><br>
 			</li>
 		</ul>
 		<ul>
 			<li>
 			<div style="position:relative;">
-				<form:input path="mem_name" placeholder="이름을 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
-				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
-					<img src="${pageContext.request.contextPath}/images/member/member_name.svg" width="20" height="20">
-				</div>
+				<form:input path="zip_rec" placeholder="수신인명을 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 0.75rem;"/>
 			</div>
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<label for="mem_cell" id="mem_cell">전화번호</label>
-				<form:errors path="mem_cell" cssClass="error-color"/><br>
+				<label for="zip_cell" id="zip_cell">전화번호</label>
+				<form:errors path="zip_cell" cssClass="error-color"/><br>
 			</li>
 		</ul>
 		<ul>
 			<li>
 			<div style="position:relative;">
-				<form:input path="mem_cell" placeholder="전화번호를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
-				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
-					<img src="${pageContext.request.contextPath}/images/member/member_cell.svg" width="20" height="20">
-				</div>
-			</div>
-			</li>
-		</ul>
-		<ul>
-			<li>
-				<label for="mem_email" id="mem_eamil">이메일</label>
-				<form:errors path="mem_email" cssClass="error-color"/><br>
-			</li>
-		</ul>
-		<ul>
-			<li>
-			<div style="position:relative;">
-				<form:input path="mem_email" placeholder="이메일을 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
-				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
-					<img src="${pageContext.request.contextPath}/images/member/member_email.svg" width="20" height="20">
-				</div>
+				<form:input path="zip_cell" placeholder="전화번호를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 0.75rem;"/>
 			</div>
 			</li>
 		</ul>
@@ -172,11 +150,8 @@ input:focus {
 		<ul>
 			<li>
 			<div style="position:relative;">
-				<form:input path="zipcode" placeholder="우편번호" style="width:60%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
+				<form:input path="zipcode" placeholder="우편번호" style="width:60%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 0.75rem;"/>
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" id="confirmzipcode">
-				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
-					<img src="${pageContext.request.contextPath}/images/member/member_zipcode.svg" width="20" height="20">
-				</div>
 			</div>
 			</li>
 		</ul>
@@ -189,10 +164,7 @@ input:focus {
 		<ul>
 			<li>
 			<div style="position:relative;">
-				<form:input path="address1" placeholder="주소를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
-				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
-					<img src="${pageContext.request.contextPath}/images/member/member_address.svg" width="20" height="20">
-				</div>
+				<form:input path="address1" placeholder="주소를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 0.75rem;"/>
 			</div>
 			</li>
 		</ul>
@@ -205,15 +177,12 @@ input:focus {
 		<ul>
 			<li>
 			<div style="position:relative;">
-				<form:input path="address2" placeholder="상세주소를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 2.75rem;"/>
-				<div style="position:absolute; margin-top: -32px; margin-left: 15px">
-					<img src="${pageContext.request.contextPath}/images/member/member_address.svg" width="20" height="20">
-				</div>
+				<form:input path="address2" placeholder="상세주소를 입력해주세요" style="width:80%; height:40px; border-radius:5px; border:1px solid gray; padding-left: 0.75rem;"/>
 			</div>
 			</li>
 		</ul>    
 		<div class="align-center">
-			<form:button id="sub_btn">회원정보수정</form:button>
+			<form:button id="sub_btn">배송지 추가</form:button>
 		</div>                
 	</form:form>
 </div>

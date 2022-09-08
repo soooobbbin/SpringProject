@@ -37,7 +37,7 @@
 							 	</c:forEach>
 							 </div>
 							<div class="align-center">${page}</div>
-				            <input type="button" value="배송지추가" onclick="location.href='zipcodeUpdate.do'">
+				            <input type="button" value="배송지추가" onclick="location.href='zipcodeInsert.do'">
 				            <button type="button" class="btn_close">닫기</button>
 				         </div>
 				       </div>

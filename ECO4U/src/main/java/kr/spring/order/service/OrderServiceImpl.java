@@ -25,6 +25,24 @@ public class OrderServiceImpl implements OrderService{
 	}
 	
 	@Override
+	public List<ZipcodeVO> selectZipList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return orderMapper.selectZipList(map);
+	}
+
+	@Override
+	public int selectZipRowCount(Map<String, Object> map , Integer mem_num) {
+		// TODO Auto-generated method stub
+		return orderMapper.selectZipRowCount(map, mem_num);
+	}
+	
+	@Override
+	public void insertNotice(OrderVO order) {
+		// TODO Auto-generated method stub
+		orderMapper.insertNotice(order);
+	}
+	
+	@Override
 	public void updateZipcode(ZipcodeVO zipcode) {
 		// TODO Auto-generated method stub
 		
@@ -42,16 +60,4 @@ public class OrderServiceImpl implements OrderService{
 		return null;
 	}
 	
-	@Override
-	public List<OrderVO> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int selectRowCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

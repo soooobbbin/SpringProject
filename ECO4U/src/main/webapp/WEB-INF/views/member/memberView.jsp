@@ -180,15 +180,19 @@
 			<div class ="page-content02" style="width: 65%; float:left;">
 				<ul>
 					<li>${member.mem_name}</li><br>
-					<li>${member.mem_cell}</li><br>
+					<c:if test="${!empty member.mem_cell}"><li>${member.mem_cell}</li><br></c:if>
+					<c:if test="${empty member.mem_cell}"><li style="color : gray;">전화번호를 등록해주세요.</li><br></c:if>
 					<li>${member.mem_email}</li><br>
 					<li>${member.reg_date}</li><br>
 					<c:if test="${!empty member.modify_date}">
 					<li>${member.modify_date}</li><br>
 					</c:if>
-					<li>${member.zipcode}</li><br>
-					<li>${member.address1}</li><br>
-					<li>${member.address2}</li><br>
+					<c:if test="${!empty member.zipcode}"><li>${member.zipcode}</li><br></c:if>
+					<c:if test="${empty member.zipcode}"><li style="color : gray;">우편번호를 등록해주세요.</li><br></c:if>
+					<c:if test="${!empty member.address1}"><li>${member.address1}</li><br></c:if>
+					<c:if test="${empty member.address1}"><li style="color : gray;">주소를 등록해주세요.</li><br></c:if>
+					<c:if test="${!empty member.address2}"><li>${member.address2}</li><br></c:if>
+					<c:if test="${empty member.address2}"><li style="color : gray;">상세주소를 등록해주세요.</li><br></c:if>
 				</ul>
 			</div>
 		</div>

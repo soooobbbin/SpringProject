@@ -35,7 +35,7 @@ $(function(){
 <div class="align-center" id="header_center">
    <a href="${pageContext.request.contextPath}/intro/eco4u.do" id="intro">Intro</a>
    <a href="${pageContext.request.contextPath}/product/list.do?p_category=0" id="product">Product</a> 
-   <a href="${pageContext.request.contextPath}/community/list.do" id="community">Community</a>
+   <a href="${pageContext.request.contextPath}/community/list.do?c_category=1" id="community">Community</a>
    <div id="header-menu" class="header-menu">
       <div class="intro2">
          <a href="${pageContext.request.contextPath}/intro/eco4u.do" id="eco4u">ECO4U</a>
@@ -50,7 +50,7 @@ $(function(){
          <a href="${pageContext.request.contextPath}/product/list.do?p_category=3" id="fashion">Fashion</a>
       </div>
       <div class="community2">
-         <a href="${pageContext.request.contextPath}/community/list.do" id="communication">Communication</a>
+         <a href="${pageContext.request.contextPath}/community/list.do?c_category=1" id="communication">Communication</a>
           <br><br><br> 
          <a href="${pageContext.request.contextPath}/faq/faqlist.do" id="QnA">QnA</a>
       </div>

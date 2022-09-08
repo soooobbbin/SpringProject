@@ -8,13 +8,13 @@
 <!-- 내용 시작 -->
 <div class="page-main">
 	<div class="align-center">
-		<h2 onclick="location.href='list.do'">Community</h2>
+		<h2 onclick="location.href='list.do?c_category=1'">Community</h2>
 	</div>
 	<div class="community-list-header">
 		<ul class="community-category-ul" id="c_category">
-			<li class="tip1"><a href="location.href='/community/list.do?c_category=tip'">TIP</a></li>
-			<li class="tip2"><a href="location.href='/community/list.do?c_category=함께해요'">함께해요</a></li>
-			<li class="tip3"><a href="location.href='/community/list.do?c_category=친환경소식'">친환경 소식</a></li>
+			<li class="tip1"><a href="list.do?c_category=1">TIP</a></li>
+			<li class="tip2"><a href="list.do?c_category=2">함께해요</a></li>
+			<li class="tip3"><a href="list.do?c_category=3">친환경 소식</a></li>
 		</ul>
 	</div>
 	<form action="list.do" id="search_form" method="get">

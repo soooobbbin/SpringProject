@@ -36,7 +36,7 @@
 			</li>
 			
 			<li><label for="c_title">제목</label>
-				<form:input path="c_title"/>
+				<form:input path="c_title" id="c_title"/>
 				<form:errors path="c_title" 
 				             cssClass="error-color"/><br><br>
 			</li>

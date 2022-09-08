@@ -11,35 +11,22 @@
 		  COUNT(*)
 		FROM community b JOIN member m
 		ON b.mem_num = m.mem_num
-		<where>
-			<if test="keyword != null and keyword != ''">
-				<if test="keyfield == 1">
-					b.c_title LIKE '%' || #{keyword} || '%'
-				</if>
-				<if test="keyfield == 2">
-					m.id LIKE '%' || #{keyword} || '%' 
-				</if>
-				<if test="keyfield == 3">
-					b.c_content LIKE '%' || #{keyword} || '%'
-				</if>
-				<if test="keyfield == 4">
-					b.c_title LIKE '%' || #{keyword} || '%' OR
-					b.c_content LIKE '%' || #{keyword} || '%'
-				</if>
+		WHERE b.c_category = #{c_category}
+		<if test="keyword != null and keyword != ''">
+			<if test="keyfield == 1">
+				AND b.c_title LIKE '%' || #{keyword} || '%'
 			</if>
-			<if test="c_category != null">
-				<if test="c_category == tip">
-					b.c_category = 1
-				</if>
-				<if test="c_category == 함께해요">
-					b.c_category = 2
-				</if>
-				<if test="c_category == 친환경 소식">
-					b.c_category = 3
-				</if>
+			<if test="keyfield == 2">
+				AND m.id LIKE '%' || #{keyword} || '%' 
 			</if>
-		</where>  	
-	
+			<if test="keyfield == 3">
+				AND b.c_content LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyfield == 4">
+				AND (b.c_title LIKE '%' || #{keyword} || '%' OR
+				b.c_content LIKE '%' || #{keyword} || '%')
+			</if>
+		</if>
 </select>
 
 	<select id="selectList" parameterType="map" resultType="communityVO">
@@ -62,34 +49,22 @@
 					  m.id					  
 		            FROM community b JOIN member m
 		            ON b.mem_num = m.mem_num
-					<where>
-						<if test="keyword != null and keyword != ''">
-							<if test="keyfield == 1">
-								b.c_title LIKE '%' || #{keyword} || '%'
-							</if>
-							<if test="keyfield == 2">
-								m.id LIKE '%' || #{keyword} || '%'
-							</if>
-							<if test="keyfield == 3">
-								b.c_content LIKE '%' || #{keyword} || '%'
-							</if>
-							<if test="keyfield == 4">
-								b.c_title LIKE '%' || #{keyword} || '%' OR
-								b.c_content LIKE '%' || #{keyword} || '%'
-							</if>
+					WHERE b.c_category = #{c_category}
+					<if test="keyword != null and keyword != ''">
+						<if test="keyfield == 1">
+							AND b.c_title LIKE '%' || #{keyword} || '%'
 						</if>
-						<if test="c_category != null">
-							<if test="c_category == 1">
-								b.c_category = 1
-							</if>
-							<if test="c_category == 2">
-								b.c_category = 2
-							</if>
-							<if test="c_category == 3">
-								b.c_category = 3
-							</if>
+						<if test="keyfield == 2">
+							AND m.id LIKE '%' || #{keyword} || '%' 
 						</if>
-					</where>
+						<if test="keyfield == 3">
+							AND b.c_content LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyfield == 4">
+							AND (b.c_title LIKE '%' || #{keyword} || '%' OR
+							b.c_content LIKE '%' || #{keyword} || '%')
+						</if>
+					</if>
 					ORDER BY b.c_num DESC)a)
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

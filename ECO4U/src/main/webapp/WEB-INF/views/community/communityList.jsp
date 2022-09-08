@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 
 <div class="page-main">
 
@@ -65,13 +66,7 @@
 			<c:forEach var="community" items="${list}">
 				<tr>
 					<td>${community.id}	· ${community.reg_date}</td>
-					<td><img class="community-img" src="imageView.do?c_num=${community.c_num}&c_category=${community.c_category}" style="max-width:200px;">
-					
-					<!-- <img class="community-img"
-								style="width: 200px; height: 250px;: "
-								src="${pageContext.request.contextPath}/image_upload/${community.c_filename}"> -->
-					
-					</td>
+					<td><img src="${community.c_content}"></td>
 				</tr>
 				<tr>
 					<td>

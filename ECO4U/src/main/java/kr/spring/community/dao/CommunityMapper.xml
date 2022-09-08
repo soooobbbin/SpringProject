@@ -27,15 +27,15 @@
 					b.c_content LIKE '%' || #{keyword} || '%'
 				</if>
 			</if>
-			<if test="c_category != null ">
+			<if test="c_category != null">
 				<if test="c_category == tip">
-					c_category = 1
+					b.c_category = 1
 				</if>
 				<if test="c_category == 함께해요">
-					c_category = 2
+					b.c_category = 2
 				</if>
 				<if test="c_category == 친환경 소식">
-					c_category = 3
+					b.c_category = 3
 				</if>
 			</if>
 		</where>  	
@@ -59,8 +59,7 @@
 					  b.c_filename,
 					  b.reg_date,
 					  b.modify_date,
-					  m.id
-					  
+					  m.id					  
 		            FROM community b JOIN member m
 		            ON b.mem_num = m.mem_num
 					<where>
@@ -79,15 +78,15 @@
 								b.c_content LIKE '%' || #{keyword} || '%'
 							</if>
 						</if>
-						<if test="c_category != null ">
+						<if test="c_category != null">
 							<if test="c_category == 1">
-								c_category = 1
+								b.c_category = 1
 							</if>
 							<if test="c_category == 2">
-								c_category = 2
+								b.c_category = 2
 							</if>
 							<if test="c_category == 3">
-								c_category = 3
+								b.c_category = 3
 							</if>
 						</if>
 					</where>

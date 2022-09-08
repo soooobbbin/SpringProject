@@ -40,33 +40,46 @@
 				<form:errors path="c_title" 
 				             cssClass="error-color"/><br><br>
 			</li>
-			<li><label for="c_content">내용</label>
-				  <textarea id="c_content" name="c_content" ></textarea> 
-			<script>
-				 function MyCustomUploadAdapterPlugin(editor) {
-					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-					        return new UploadAdapter(loader);
-					    }
-					}
-				 
-				 ClassicEditor
-		            .create( document.querySelector( '#c_content' ),{
-		            	extraPlugins: [MyCustomUploadAdapterPlugin]
-		            })
-		            .then( editor => {
-						window.editor = editor;
-					} )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-			    </script>               
-				        
-				<br><br>
-				    
+			<li><b>내용</b></li>
 			<li>
-				<label for="upload">파일 업로드</label>
-				<input type="file" name="upload" id="upload">
-			</li>
+				<form:textarea path="c_content"/>
+				<form:errors path="c_content" cssClass="error-color"/>
+				<script>
+					 function MyCustomUploadAdapterPlugin(editor) {
+						    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+						        return new UploadAdapter(loader);
+						    }
+						}
+					 
+					 ClassicEditor
+			            .create( document.querySelector( '#c_content' ),{
+			            	extraPlugins: [MyCustomUploadAdapterPlugin]
+			            })
+			            .then( editor => {
+							window.editor = editor;
+						} )
+			            .catch( error => {
+			                console.error( error );
+			            } );
+				 </script>               
+				<%-- 가게 이미지 등록 --%>
+			<div class="photoUpload">
+				<ul>
+					<li>
+						<c:if test="${empty community.filename}">
+						<img src="${pageContext.request.contextPath}/images/no_image.png" width="130" height="160" class="my-photo">
+						</c:if>
+						<c:if test="${!empty community.filename}">
+						<img src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}" width="130" height="160" class="my-photo">
+						</c:if>
+					</li>
+					<li>
+						<label for="upload">파일업로드</label>
+						<input type="file" name="upload" id="upload">
+						<input type="button" value="취소" id="photo_reset">
+					</li>
+				</ul>
+			</div>
 		</ul>    
 		<div class="align-center">
 			<form:button>등록</form:button>

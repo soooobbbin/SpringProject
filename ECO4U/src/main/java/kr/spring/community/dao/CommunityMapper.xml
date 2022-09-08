@@ -43,7 +43,8 @@
 					  b.c_category,
 					  b.c_content,
 					  b.c_hit,
-					  b.c_filename,
+					  b.uploadfile,
+					  b.filename,
 					  b.reg_date,
 					  b.modify_date,
 					  m.id					  
@@ -75,8 +76,8 @@
   	<update id="updateCommunity" parameterType="communityVO">
   		UPDATE community SET
   		    <if test="c_filename != ''">
-  		    c_uploadfile=#{c_uploadfile},
-  		    c_filename=#{c_filename},
+  		    uploadfile=#{uploadfile},
+  		    filename=#{filename},
   		    </if>
   		    c_category=#{c_category},
   			c_title=#{c_title},

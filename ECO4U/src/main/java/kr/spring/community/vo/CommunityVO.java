@@ -19,24 +19,21 @@ public class CommunityVO {
 	private int c_hit;//조회수
 	private String reg_date; //등록일
 	private String modify_date; //수정일
-	private byte[] c_uploadfile;//파일
-	private String c_filename;//파일명
+	private byte[] uploadfile;//파일
+	private String filename;//파일명
 	private int c_category;//카테고리
 	private int c_auth;//공지
 	
 	private int mem_num; //회원번호
 	private String id; //회원아이디
 	
-	
 	//파일 업로드 처리
-		public void setUpload(MultipartFile upload)
-		                              throws IOException{
-			//MultipartFile -> byte[] 변환
-			setC_uploadfile(upload.getBytes());
-			//파일명 구하기
-			setC_filename(upload.getOriginalFilename());
-		}
-		
+	public void setUpload(MultipartFile upload) throws IOException{
+		//MultipartFile -> byte[] 변환
+		setUploadfile(upload.getBytes());
+		//파일명 구하기
+		setFilename(upload.getOriginalFilename());
+	}
 	
 	public int getC_auth() {
 		return c_auth;
@@ -82,18 +79,27 @@ public class CommunityVO {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = DurationFromNow.getTimeDiffLabel(modify_date);
 	}
-	public byte[] getC_uploadfile() {
-		return c_uploadfile;
+	
+	public byte[] getUploadfile() {
+		return uploadfile;
 	}
-	public void setC_uploadfile(byte[] c_uploadfile) {
-		this.c_uploadfile = c_uploadfile;
+
+
+	public void setUploadfile(byte[] uploadfile) {
+		this.uploadfile = uploadfile;
 	}
-	public String getC_filename() {
-		return c_filename;
+
+
+	public String getFilename() {
+		return filename;
 	}
-	public void setC_filename(String c_filename) {
-		this.c_filename = c_filename;
+
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
+
+
 	public int getC_category() {
 		return c_category;
 	}
@@ -113,13 +119,13 @@ public class CommunityVO {
 		this.id = id;
 	}
 
-	
-	
 	@Override
 	public String toString() {
 		return "CommunityVO [c_num=" + c_num + ", c_title=" + c_title + ", c_content=" + c_content + ", c_hit=" + c_hit
-				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", c_filename=" + c_filename 
-				+ ", mem_num=" + mem_num + ", id=" + id + ", c_category=" + c_category +", c_auth=" + c_auth
-				+ "]";
+				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", filename=" + filename + ", c_category="
+				+ c_category + ", c_auth=" + c_auth + ", mem_num=" + mem_num + ", id=" + id + "]";
 	}
+
+	
+
 }

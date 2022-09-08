@@ -170,9 +170,9 @@ public class CommunityController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("downloadView");
 		mav.addObject("downloadFile", 
-				community.getC_uploadfile());
+				community.getUploadfile());
 		mav.addObject("filename", 
-				community.getC_filename());
+				community.getFilename());
 		
 		return mav;
 	}
@@ -207,7 +207,7 @@ public class CommunityController {
 			//호출할 때 다시 셋팅해주어야 함.
 			CommunityVO vo = communityService.selectCommunity(
 					communityVO.getC_num());
-			communityVO.setC_filename(vo.getC_filename());
+			communityVO.setFilename(vo.getFilename());
 			return "communityModify";
 		}
 		

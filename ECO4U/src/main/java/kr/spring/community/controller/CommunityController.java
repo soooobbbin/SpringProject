@@ -101,7 +101,7 @@ public class CommunityController {
 		Map<String,Object> map = 
 				    new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
-		map.put("keyfield", keyword);
+		map.put("keyword", keyword);
 		map.put("c_category",  c_category);
 		
 		//글의 총개수(검색된 글의 개수)

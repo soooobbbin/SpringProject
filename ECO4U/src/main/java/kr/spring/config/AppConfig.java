@@ -61,6 +61,7 @@ public class AppConfig implements WebMvcConfigurer{
 				"/WEB-INF/tiles-def/community.xml",
 				"/WEB-INF/tiles-def/cart.xml",
 				"/WEB-INF/tiles-def/product.xml",
+				"/WEB-INF/tiles-def/order.xml",
 				"/WEB-INF/tiles-def/QnA.xml"
 		});
 		configurer.setCheckRefresh(true);

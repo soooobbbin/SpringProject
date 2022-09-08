@@ -29,7 +29,7 @@
 }
 </style>     
 <!-- 내용 시작 -->
-<div class="page-main">
+<div class="page-main" style="min-height: 775px;">
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
 		<h1>회원비밀번호변경</h1>
 	</div>

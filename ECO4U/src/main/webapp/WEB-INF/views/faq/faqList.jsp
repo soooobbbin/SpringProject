@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/faq.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/faq.js"></script><br><br>
-<span class="faq_main"><a href="/main/main.do">홈</a>><a href="/faq/faqlist.do">자주찾는질문</a></span>
+<!-- faqlist.do start -->
+<span class="faq_main"><a href="/main/main.do">홈</a>><a href="/faq/faqlist.do" style="font-weight:bold">자주찾는질문</a></span>
 <h2 align="center" class="faqh2"><img id="faq_main_img01" src="../images/faq/support.png">고객센터</h2>
 <c:if test="${user.auth == 1}">
 <div class="faq_main_qna02" align="right">
@@ -35,11 +36,11 @@
 				</li>
 			</ul>
 		</div>
-	</form><br>
+	</form>
 	<c:if test="${user.auth == 2}">
 	<div class="align-right">
 		<input id="faq_btn01" type="button" value="글등록" onclick="location.href='faqwrite.do'">
-	</div>
+	</div><br>
 	</c:if>
 	<br>
 	<c:if test="${count == 0}">

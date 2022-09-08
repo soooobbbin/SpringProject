@@ -67,6 +67,7 @@ function selectAll(selectAll)  {
 			<li class="wish-list-li">
 				<div class="box-parent">
 					<input type="hidden" value="${wish.p_category}">
+					<input type="hidden" value="${wish.mem_num}">
 					<div class="wish-check">
 					<input type="checkbox" id="select_product" name="select_product" 
 					 onclick="checkSelectAll()">

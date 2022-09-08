@@ -8,7 +8,7 @@
 		SELECT
 		  COUNT(*)
 		FROM wish w JOIN product p
-		ON w.p_num = p.p_num
+		ON w.p_num = p.p_num AND w.mem_num=#{mem_num}
 		<where>
 			<if test="category == all">
 				p.p_category = 1 OR p.p_category = 2 OR p.p_category = 3
@@ -34,6 +34,7 @@
   		        rownum rnum
   		      FROM (SELECT
   		              w.w_num,
+  		              w.mem_num,
   		              p.p_name,
   		              p.p_price,
   		              p.p_quantity,
@@ -43,7 +44,7 @@
   		              p_photoname,
   		              p_brand
   		            FROM wish w JOIN product p
-  		            ON w.p_num = p.p_num
+  		            ON w.p_num = p.p_num AND w.mem_num=#{mem_num}
   		           <where>
 						
 							<if test="category == 0">

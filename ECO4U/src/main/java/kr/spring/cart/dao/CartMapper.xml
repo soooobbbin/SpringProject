@@ -8,7 +8,7 @@
 		SELECT
 		  COUNT(*)
 		FROM cart c JOIN product p
-		ON c.p_num = p.p_num
+		ON c.p_num = p.p_num AND c.mem_num=#{mem_num}
   	</select>
   	
   	<select id="selectList" parameterType="map"
@@ -20,6 +20,7 @@
   		        rownum rnum
   		      FROM (SELECT
   		              c.cart_num,
+  		              c.mem_num,
   		              p.p_name,
   		              p.p_price,
   		              p.p_quantity,
@@ -29,7 +30,7 @@
   		              p_photoname,
   		              p_brand
   		            FROM cart c JOIN product p
-  		            ON c.p_num = p.p_num
+  		            ON c.p_num = p.p_num AND c.mem_num=#{mem_num}
   		            ORDER BY c.cart_num DESC)a)
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

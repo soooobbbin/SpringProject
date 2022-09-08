@@ -39,9 +39,7 @@ $(function(){
         mHtml.animate({scrollTop : posTop});
     });
     
-    // 해당 섹션으로 스크롤 이동
-	
-    // 우측 li 클릭 시 
+    // 우측 li 클릭 시 해당 섹션으로 스크롤 이동
      $('#main01').click(function(){
     	 $('html,body').animate({
     		 scrollTop: $("#section1").offset().top
@@ -50,7 +48,7 @@ $(function(){
     
      $('#main02').click(function(){
     	 $('html,body').animate({
-    		 scrollTop: $("#section2").offset().top
+    		 scrollTop: $("#section2").offset().top-60
     	 }, 'slow');
      });
      
@@ -129,6 +127,9 @@ $(function(){
 			</div>
     
     </div>
-    <div class="section" id="section3">3</div>
+    <div class="section" id="section3">3
+    
+    </div>
+    
 <!-- 메인 끝 -->
 <!-- 내용 끝 -->

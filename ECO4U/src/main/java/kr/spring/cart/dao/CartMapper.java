@@ -17,7 +17,7 @@ public interface CartMapper {
 	public int selectRowCount(Map<String,Object> map);
 	@Select("SELECT * FROM cart c JOIN product p "
 		  + "USING(p_num) "
-		  + "WHERE cart_num=#{cart_num}")
+		  + "WHERE cart_num=#{cart_num} AND mem_num=#{mem_num}")
 	public CartVO selectCart(Integer cart_num);
 	public void updateCart(Integer cart_num);
 	public void deleteCart(Integer cart_num);

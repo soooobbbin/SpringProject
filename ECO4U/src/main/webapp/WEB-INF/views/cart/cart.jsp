@@ -50,7 +50,7 @@ function selectAll(selectAll)  {
 	
 		<!-- 찜 목록에 상품이 담기지 않은 경우 -->
 		<c:if test="${count == 0}">
-		<div class="no-cart">관심 상품이 없습니다.</div>
+		<div class="no-cart">장바구니에 담긴 상품이 없습니다.</div>
 		</c:if>
 		
 		<!-- 찜 목록에 상품이 담긴 경우 -->

@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.WishService;
 import kr.spring.cart.vo.WishVO;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -43,6 +44,7 @@ public class WishController {
 	//=======찜 목록=======//
 	@RequestMapping(value="/cart/wishList.do",method=RequestMethod.GET)
 	public ModelAndView list(
+					HttpSession session,
 					@RequestParam(value="pageNum",defaultValue="1") 
 					int currentPage,
 					@RequestParam(value="keyfield",defaultValue="")
@@ -50,10 +52,13 @@ public class WishController {
 					@RequestParam(value="category",defaultValue="")
 					String category) {
 		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
 		Map<String,Object> map = 
 				new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("category", category);
+		map.put("mem_num",user.getMem_num());
 		
 		//찜 목록의 총 개수(검색된 목록 개수)
 		int count = wishService.selectRowCount(map);

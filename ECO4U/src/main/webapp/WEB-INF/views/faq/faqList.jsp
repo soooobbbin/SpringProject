@@ -7,9 +7,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/faq.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/faq.js"></script>
-<input type="button" value="1:1문의 list" onclick="location.href='/faq/qnalist.do'">
-<br>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/faq.js"></script><br><br>
 <span class="faq_main"><a href="/main/main.do">홈</a>><a href="/faq/faqlist.do">자주찾는질문</a></span>
 <h2 align="center" class="faqh2"><img id="faq_main_img01" src="../images/faq/support.png">고객센터</h2>
 <c:if test="${user.auth == 1}">

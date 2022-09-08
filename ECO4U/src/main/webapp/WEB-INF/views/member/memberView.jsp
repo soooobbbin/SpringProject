@@ -148,7 +148,7 @@
 			<div class="menu-v2"><input type="button" value="내가 쓴 글" id="my-write" onclick="location.href='#'">
 				<div class="submenu">
 					<div class="submenu2">
-						<a href="#">문의/답변</a>
+						<a href="${pageContext.request.contextPath}/faq/qnalist.do">문의/답변</a>
 					</div>
 					<div class="submenu2">
 						<a href="#">상품평</a>

@@ -73,7 +73,7 @@ function selectAll(selectAll)  {
 			<li class="myqna_btn01">
 				<input type="button" value="all" onclick="location.href='/faq/qnalist.do?category=0'">
 				<input type="button" value="member" onclick="location.href='/faq/qnalist.do?category=1'">
-				<input type="button" value="product/delivery"  onclick="location.href='/faq/qnalist.do?category=2'">
+				<input type="button" value="product / delivery"  onclick="location.href='/faq/qnalist.do?category=2'">
 				<input type="button" value="others"  onclick="location.href='/faq/qnalist.do?category=3'">
 				<hr width="98%" noshade="noshade" size="1px" align="left" color="gray">
 			</li>

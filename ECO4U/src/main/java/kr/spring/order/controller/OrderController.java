@@ -43,6 +43,12 @@ public class OrderController {
 		return new OrderVO();
 	}
 	
+	//자바빈(VO) 초기화
+	@ModelAttribute
+	public ZipcodeVO initCommand2() {
+		return new ZipcodeVO();
+	}
+	
 	//=============주문메인===============//
 	//주문메인 폼 호출
 	@RequestMapping("/cart/orders.do")
@@ -133,9 +139,9 @@ public class OrderController {
 	
 	
 	//=============배송지 추가 폼 이동=============================//
-	@GetMapping("/cart/zipcodeUpdate.do")
+	@GetMapping("/cart/zipcodeInsert.do")
 	public String form() {
 		       //타일스 설정의 식별자
-		return "zipcodeUpdate";
+		return "zipcodeInsert";
 	}
 }	

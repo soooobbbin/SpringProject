@@ -7,7 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function checkSelectAll()  {
 	  // 전체 체크박스
 	  const checkboxes 
@@ -34,7 +34,7 @@ function selectAll(selectAll)  {
 	    checkbox.checked = selectAll.checked
 	  })
 }
-</script>
+</script> -->
 <div class="page" style="height: 770px;">
 	<form action="qnalist.do" id="search_form"  method="get">
 	
@@ -75,8 +75,7 @@ function selectAll(selectAll)  {
 				<input type="button" value="member" onclick="location.href='/faq/qnalist.do?category=1'">
 				<input type="button" value="product / delivery"  onclick="location.href='/faq/qnalist.do?category=2'">
 				<input type="button" value="others"  onclick="location.href='/faq/qnalist.do?category=3'">
-				<hr width="98%" noshade="noshade" size="1px" align="left" color="gray">
-			</li>
+			</li><hr width="96%" noshade="noshade" size="1px" align="left" color="gray">
 			</ul>
 		</div>
 		<div class="align-right">

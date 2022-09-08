@@ -6,22 +6,22 @@ body{
 	margin: 45px 315px 90px 315px;
 }
 .faqh2{
-	margin-top: 135px;
-	margin-bottom: 3px;
+	margin-top: 60px;
+	margin-bottom: -45px;
 	font-weight: bold;
 }
 .faq_main_qna02{
-	margin: 0 200px;
+	margin: 70px 265px -45px;
 }
 #faq_main_qna figcaption{
 	margin-top:5px;
-	margin-right:6px;
+	margin-right:8px;
 	font-size:12px;
 	font-weight:bold;
 }
 #faq_main_img02{
-	width: 50px;
-	height: 50px;
+	width: 55px;
+	height: 55px;
 	cursor:pointer;
 }
 #faq_main_img01{
@@ -36,12 +36,12 @@ body{
 #faq_btn01{
 	margin-right:5px;
 	margin-bottom:5px;
-	width:60px;
+	width:65px;
 	height:30px;
 	background-color: #7c8f83;
 	color:white;
 	border: none;
-	border-radius: 13px;
+	border-radius: 15px;
 	font-size: 15px;
 	font-weight: bold;
 	cursor:pointer;

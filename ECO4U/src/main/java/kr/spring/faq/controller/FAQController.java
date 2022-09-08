@@ -151,10 +151,10 @@ public class FAQController {
 	//수정 폼
 	@GetMapping("/faq/faqupdate.do")
 	public String formUpdate(
-			Model model,@RequestParam int f_num) {
+		Model model,@RequestParam int f_num) {
 		FAQVO faqVO = FAQService.selectBoard(f_num);
 		
-		model.addAttribute("fAQVO", faqVO);
+		model.addAttribute("FAQVO", faqVO);
 		
 		return "faqModify";
 	}
@@ -182,7 +182,7 @@ public class FAQController {
 		
 		//View에 표시할 메시지
 		model.addAttribute("message", "글수정 완료!!");
-		model.addAttribute("url", request.getContextPath()+"/faq/faqlist.do");	
+		model.addAttribute("url", request.getContextPath()+"/faq/faqlist.do?f_num="+faqVO.getF_num());	
 
 		return "common/resultView";
 	}

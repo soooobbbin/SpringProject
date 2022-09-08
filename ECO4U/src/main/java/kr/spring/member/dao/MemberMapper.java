@@ -24,7 +24,7 @@ public interface MemberMapper {
 			+ "#{mem_name},#{mem_pw},#{mem_cell},#{mem_email})")
 	public void insertMember_detail(MemberVO member);
 	@Insert("INSERT INTO zipcode (zip_num,zip_name,zip_cell,zip_rec,zip_auth,zipcode,address1,address2,mem_num) "
-			+ "VALUES (zipcode_seq.nextval,null,null,#{mem_name},0,#{zipcode},#{address1},#{address2},#{mem_num})")
+			+ "VALUES (zipcode_seq.nextval,null,#{mem_cell},#{mem_name},0,#{zipcode},#{address1},#{address2},#{mem_num})")
 	public void insertZipcode(MemberVO member);
 	
 	//카카오 회원가입

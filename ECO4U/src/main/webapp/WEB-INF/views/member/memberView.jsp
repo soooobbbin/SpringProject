@@ -136,7 +136,7 @@
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
-<div class="page" style="height: 770px;">
+<div class="page" style="height: 775px;">
 	<div class="align-center" style="width: 50%; float:left; padding-top: 65px;">
 		<div class="menu">
 		<input type="button" value="전체주문내역" id="all" onclick="location.href='#'">

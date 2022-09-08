@@ -43,7 +43,7 @@ $(function(){
 	
     // 우측 li 클릭 시 
      $('#main01').click(function(){
-    	 $('html').animate({
+    	 $('html,body').animate({
     		 scrollTop: $("#section1").offset().top
     	 }, 'slow');
      });

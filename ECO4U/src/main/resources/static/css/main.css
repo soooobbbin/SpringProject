@@ -14,7 +14,7 @@
 }
 #section3 {
 	position: relative;
-	height:930px;
+	height: 785px;
     background-color: ivory;
 }
 
@@ -63,7 +63,7 @@ ul.carousel-indicators{
 }
 body{
 	overflow-x:hidden;
-	overflow-y:auto;
+	overflow-y:hidden;
 }
 .row{
 	display: grid;

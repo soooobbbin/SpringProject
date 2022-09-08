@@ -87,7 +87,6 @@ public class PagingUtil {
 		}
 	}
 	
-	
 	public StringBuffer getPage() {
 		return page;
 	}

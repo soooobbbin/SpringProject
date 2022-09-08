@@ -94,20 +94,19 @@ public class CommunityController {
 			int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")
 			String keyfield,
-			@RequestParam(value="keyword",defaultValue="")
-			String keyword,
 			@RequestParam(value="c_category",defaultValue="")
-			String c_category
-			)
+			String c_category)
 	
 	
 	
 	{
 		
+		
+		
+		
 		Map<String,Object> map = 
 				    new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
 		map.put(" c_category",  c_category);
 		
 		//글의 총개수(검색된 글의 개수)
@@ -117,9 +116,9 @@ public class CommunityController {
 		
 		//페이지 처리
 		PagingUtil page = 
-				new PagingUtil(keyfield,c_category,pageCount,
+				new PagingUtil(keyfield,c_category,
 						currentPage,count,
-						rowCount,keyword,"list.do");
+						rowCount,pageCount,"list.do");
 		
 		List<CommunityVO> list = null;
 		if(count > 0) {

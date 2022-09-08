@@ -40,8 +40,25 @@ $(function(){
     });
     
     // 해당 섹션으로 스크롤 이동
-
+	
+    // 우측 li 클릭 시 
+     $('#main01').click(function(){
+    	 $('html').animate({
+    		 scrollTop: $("#section1").offset().top
+    	 }, 'slow');
+     });
+    
+     $('#main02').click(function(){
+    	 $('html,body').animate({
+    		 scrollTop: $("#section2").offset().top
+    	 }, 'slow');
+     });
      
+     $('#main03').click(function(){
+    	 $('html,body').animate({
+    		 scrollTop: $("#section3").offset().top
+    	 }, 'slow');
+     });
  
 }); 
    
@@ -49,9 +66,9 @@ $(function(){
 <!-- 메인 시작 -->
 	<div class="section" id="section1">
     	<ul id="menu_full"><!--오른쪽 페이지 네이트 인덱스입니다.-->
-    	<li data-menuanchor="anchor1" class="active"><a href="#section1">01</a></li><!--01번째 이미지 인덱스입니다.-->
-		  <li data-menuanchor="anchor2"><a href="#section2">02</a></li><!--02번째 이미지 인덱스입니다.-->
-		  <li data-menuanchor="anchor3"><a href="#section3">03</a></li><!--03번째 이미지 인덱스입니다.-->
+    	<li data-menuanchor="anchor1" class="active" id="main01"><a href="#section1">01</a></li><!--01번째 이미지 인덱스입니다.-->
+		  <li data-menuanchor="anchor2" id="main02"><a href="#section2">02</a></li><!--02번째 이미지 인덱스입니다.-->
+		  <li data-menuanchor="anchor3" id="main03"><a href="#section3">03</a></li><!--03번째 이미지 인덱스입니다.-->
 		  <!--오른쪽 페이지 네이트 인덱스입니다.-->  
 		</ul>
 		<div class="cs-12">

@@ -11,20 +11,19 @@
 <!-- faqlist.do start -->
 <span class="faq_main"><a href="/main/main.do">홈</a>><a href="/faq/faqlist.do" style="font-weight:bold">자주찾는질문</a></span>
 <h2 align="center" class="faqh2"><img id="faq_main_img01" src="../images/faq/support.png">고객센터</h2>
-<c:if test="${user.auth == 1}">
-<div class="faq_main_qna02" align="right">
-<figure id="faq_main_qna">
-	<img id="faq_main_img02" src="../images/faq/messenger.png" onclick="location.href='qnawrite.do'">
-	<figcaption>1:1문의</figcaption>
-</figure>
-</div>
-</c:if>
  <c:if test="${empty user || user.auth == 2}">
  <br>
  <br>
- <br> 
  </c:if>
 <div class="faq_main">
+	<c:if test="${user.auth == 1}">
+	<div class="faq_main_qna02" align="right">
+	<figure id="faq_main_qna">
+		<img id="faq_main_img02" src="../images/faq/messenger.png" onclick="location.href='qnawrite.do'">
+		<figcaption>1:1문의</figcaption>
+	</figure>
+	</div>
+	</c:if>
 	<form action="faqlist.do" id="search_form">
 		<div class="faq-form-inline">
 			<ul class="faq-category-ul" id="category" name="category">

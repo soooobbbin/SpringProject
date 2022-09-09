@@ -182,117 +182,35 @@ body{
 }
 .qnalist-ul{
 	margin-top:-16px;
+	margin-bottom:5px;
 }
 .qnalistspanbottom{
-	padding-left: 45px;
+	margin-bottom: 15px;
+	margin-left: 45px;
 	color:gray;
 	font-size:8px;
 }
-/* end of qnalist */
-
-/* .faq_main{
-	margin: 45px 315px 90px 315px;
+.qnalist-image01{
+	margin-top:4px;
+	margin-right:15px;
+	margin-left:15px;
 }
-.faqh2{
-	margin-top: 135px;
-	margin-bottom: 3px;
-	font-weight: bold;
+.qnalist-span01{
+	margin:10px;
 }
-.faq_main_qna02{
-	margin: 0 200px;
-}
-#faq_main_qna figcaption{
-	margin-top:5px;
-	margin-right:6px;
-	font-size:12px;
-	font-weight:bold;
-}
-#faq_main_img02{
-	width: 50px;
-	height: 50px;
-	cursor:pointer;
-}
-#faq_main_img01{
-	margin-right: 15px;
-	margin-bottom: 5px;
-	width: 38px;
-	height: 38px;
-	cursor:pointer;
-}
-.faq-form-inline{
+.box-title{
 	font-size:15px;
-}
-#faq_btn01{
-	margin-right:5px;
-	margin-bottom:5px;
-	width:52px;
-	height:28px;
-	background-color: #7c8f83;
-	color:white;
-	border: none;
-	border-radius: 13px;
-	font-size: 13px;
-	cursor:pointer;
-}
-.faq_btn_group{
-	margin-right:10px;
-}
-.faq_btn_group input[type="button"]{
-	margin: 0 3px 10px 0;
-	width:38px;
-	height:20px;
-	background-color: #7c8f83;
-	color:white;
-	border: none;
-	border-radius: 10px;
-	font-size:11px;
-}
-#title_btn01{
-	background:#f4f9f2; 
-	border-bottom:1px solid #7c8f83;
-	font-size:14px;
-	font-weight: bold;
-}
-#title_btn02{
-	text-align:center;
-	width:40px;
-	height: 15px;
-	margin:0 45px 0 30px;
-	border: 1px solid green;
-	border-radius: 20px;
-	color: green;
-	font-size:10px;
-}
-.accordion-body{
-	margin:0 100px 0 116px;
-} */
-/*end faqList.jsp*/
-
-/*category*/
-/* .faq-category-ul{
-	list-style: none;
-	padding-left:0px;
-}
-.faqbtn00{
 	font-weight:bold;
-	border: 7px solid #7c8f83;
-	background-color:#7c8f83;
-	color:white;
 }
-.faqbtn00, .faqbtn01, .faqbtn02, .faqbtn03{
-	font-weight:bold;
-	border: 7px solid #f4f9f2;
-	background-color:#f4f9f2;
-	font-size:14px;
+.box-content{
+	margin-top:5px;
+	margin-bottom:6px;
+	font-size: 11px;
 }
-.faqbtn00:hover, .faqbtn01:hover, .faqbtn02:hover, .faqbtn03:hover{
-	font-weight:bold;
-	font-size:14px;
-	border: 7px solid #7c8f83;
-	background-color:#7c8f83;
-    color: white;
-} */
-/*category*/
+.box-date{
+	font-size:9px;
+}
+/* end of qnalist */
 
 /*qnaWrite.jsp*/
 .qna_write_main{

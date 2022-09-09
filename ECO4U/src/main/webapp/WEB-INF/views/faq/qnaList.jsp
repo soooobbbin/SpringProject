@@ -85,6 +85,7 @@ function selectAll(selectAll)  {
 		<c:if test="${count > 0}">
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
+			<!--  -->
 			<li class="wish-list-li">
 				<div class="box-parent">
 					<%-- <input type="hidden" value="${qna.q_category}"> --%>
@@ -92,17 +93,16 @@ function selectAll(selectAll)  {
 					<input type="checkbox" id="select_product" name="select_product" 
 					 onclick="checkSelectAll()">
 					</div> -->
-					<c:if test="${empty qna.q_photo}">
 					<div class="qnalist-image01">
-						<img src="imageView.do?q_num=${qna.q_num}" width="75" height="75">
+						<img src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" width="75" height="75">
 					</div>
-					</c:if>
+					
 					<div class="qnalist-span01">
-						<span class="box-brand"><a href="detail.do?q_num=${qna.q_num}">[${qna.q_title}]</a></span><br>
-						<span class="box-title">${qna.q_content}</span><br>
-						<span class="box-dprice">${qna.reg_date}</span>
-						<span class="box-pcate" style="font-size:8px">
-						<img src="../images/faq/comment.png" width="18px" height="18px" style="margin-left:10px; margin-bottom:-3px">
+						<span class="box-title"><a href="detail.do?q_num=${qna.q_num}">${qna.q_title}</a></span><br>
+						<div class="box-content"><img src="../images/faq/enterdarkgray.png" width="15px" height="15px" style="margin-right:3px; margin-bottom:-3px">${qna.q_content}</div>
+						<span class="box-date">${qna.reg_date}</span>
+						<span class="box-comment" style="font-size:5px">
+						<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">
 						(0)
 						</span>
 					</div>

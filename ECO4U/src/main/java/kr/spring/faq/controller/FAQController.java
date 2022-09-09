@@ -31,8 +31,8 @@ import kr.spring.util.StringUtil;
 public class FAQController {
 	private static final Logger logger = LoggerFactory.getLogger(FAQController.class);
 	
-	private int rowCount = 30;
-	private int pageCount = 30;
+	private int rowCount = 10;
+	private int pageCount = 1;
 	
 	@Autowired
 	private FAQService FAQService;

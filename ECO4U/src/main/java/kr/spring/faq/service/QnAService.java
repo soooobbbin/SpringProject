@@ -10,7 +10,7 @@ public interface QnAService {
 	public List<QnAVO> selectQnAList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
 	public void insertQnA(QnAVO qna);
-//	public FAQVO selectBoard(Integer f_num);
+	public QnAVO selectQnA(Integer q_num);
 //	public void updateBoard(FAQVO faq);
 //	public void deleteBoard(Integer f_num);
 //	public void deleteFile(Integer board_num);

@@ -34,4 +34,9 @@ public class QnAServiceImpl implements QnAService{
 		return qnaMapper.selectRowCount(map);
 	}
 
+	@Override
+	public QnAVO selectQnA(Integer q_num) {
+		return qnaMapper.selectQnA(q_num);
+	}
+
 }

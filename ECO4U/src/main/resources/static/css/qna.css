@@ -131,8 +131,15 @@ body{
 	list-style: none;
 	
 }
+.page-content02{
+	height: 500px;
+}
+.page-content02 li{
+	list-style: none;
+	
+}
 .myqna_btn01 input[type="button"]{
-	margin-top:15px;
+	margin-top:20px;
 	background: none;
 	cursor:pointer;
 	border-top:1px solid gray;
@@ -140,9 +147,24 @@ body{
 	border-right:1px solid gray;
 	border-bottom:none;
 	font-weight:bold;
-	font-size:14px;
+	font-size:15px;
 }
-/* end of faqlist */
+.mypage-div{
+	box-shadow: 2px 2px 7px gray; 
+	border:1px solid #7c8f83; 
+	border-radius:8px; 
+	width:50%; 
+	height:675px; 
+	background-color:none; 
+	padding-top:30px; 
+	padding-top:30px; 
+	margin-top: 50px; 
+	margin-left: -250px;
+}
+.page{
+	margin-top: -10px;
+}
+/* end of qnalist */
 
 /* .faq_main{
 	margin: 45px 315px 90px 315px;

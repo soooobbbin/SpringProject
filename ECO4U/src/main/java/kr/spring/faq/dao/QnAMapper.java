@@ -21,10 +21,10 @@ public interface QnAMapper {
 			+ "VALUES (qna_seq.nextval,#{q_title},"
 			+ "#{q_content},#{q_category},#{mem_num},#{q_photo},#{q_photo_name})")
 	public void insertQnA(QnAVO qna);
-//		@Select("SELECT * FROM faq f JOIN member m "
-//			+ "USING(mem_num) JOIN member_detail d "
-//			+ "USING(mem_num) WHERE f.f_num=#{f_num}")
-//	public FAQVO selectBoard(Integer f_num);
+	@Select("SELECT * FROM qna q JOIN member m "
+		+ "USING(mem_num) JOIN member_detail d "
+		+ "USING(mem_num) WHERE q.q_num=#{q_num}")
+	public QnAVO selectQnA(Integer q_num);
 //	public void updateBoard(FAQVO faq);
 //	@Delete("DELETE FROM faq WHERE f_num=#{f_num}")
 //	public void deleteBoard(Integer f_num);

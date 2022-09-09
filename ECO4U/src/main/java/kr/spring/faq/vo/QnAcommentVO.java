@@ -2,7 +2,7 @@ package kr.spring.faq.vo;
 
 import java.sql.Date;
 
-public class QnA_comment {
+public class QnAcommentVO {
 	private int qc_num;//1:1문의 댓글 번호
 	private String qc_content;//댓글 내용
 	private Date reg_date;//등록일

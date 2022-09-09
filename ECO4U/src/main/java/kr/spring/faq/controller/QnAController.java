@@ -31,7 +31,7 @@ import kr.spring.util.StringUtil;
 public class QnAController {
 	private static final Logger logger = LoggerFactory.getLogger(QnAController.class);
 	
-	private int rowCount = 20;
+	private int rowCount = 5;
 	private int pageCount = 10;
 	
 	@Autowired
@@ -115,6 +115,50 @@ public class QnAController {
 		
 		return mav;
 	}
+	
+	//========게시판 글상세===========//
+	@RequestMapping("/faq/detail.do")
+	public ModelAndView detail(@RequestParam int q_num) {
+		
+		logger.debug("<<q_num>> : " + q_num);
+		
+		QnAVO qna = qnaService.selectQnA(q_num);
+		
+		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
+		qna.setQ_content(StringUtil.useBrNoHtml(qna.getQ_content()));
+		
+		return new ModelAndView("qnaView","qna",qna);
+	}
+		
+	//===========파일다운로드===========//
+//	@RequestMapping("/faq/file.do")
+//	public ModelAndView download(@RequestParam int q_num) {
+//		
+//		QnAVO qna = qnaService.selectQnA(q_num);
+//		
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("downloadView");
+//		mav.addObject("downloadFile", qna.getQ_photo());
+//		mav.addObject("filename", qna.getQ_photo_name());
+//		
+//		return mav;
+//	}
+	
+	//=========이미지 출력=========//
+	@RequestMapping("/faq/imageView.do")
+	public ModelAndView viewImage(@RequestParam int q_num) {
+		
+		QnAVO qna = qnaService.selectQnA(q_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		
+		mav.addObject("imageFile", qna.getQ_photo());
+		mav.addObject("filename", qna.getQ_photo_name());
+		
+		return mav;
+	}
+	
 }
 
 

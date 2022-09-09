@@ -7,6 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishList.css">
 <!-- <script type="text/javascript">
 function checkSelectAll()  {
 	  // 전체 체크박스
@@ -35,7 +36,7 @@ function selectAll(selectAll)  {
 	  })
 }
 </script> -->
-<div class="page" style="height: 770px;">
+<div class="page" style="height: 783px;">
 	<form action="qnalist.do" id="search_form"  method="get">
 	
 	<!-- 좌측 메뉴바 -->
@@ -63,28 +64,60 @@ function selectAll(selectAll)  {
 	
 	<!-- 초반 기반 폼 추후 삭제 작업필요 -->
 	<!-- 문의 내역 폼 시작 -->
-	<div class="mypage-div" style="box-shadow: 2px 2px 7px gray; border:1px solid #7c8f83; border-radius:10px; width:50%; height:600px; background-color:none; padding-top:30px; padding-top:30px; margin-top: 50px; margin-left: -250px;">
-		<div style="padding-left: 20px;">
-		<span style="font-size:13px"><a href="/member/myPage.do">My</a> > <a href="/faq/qnalist.do">문의내역</a></span>
-		<img src="../images/faq/comment.png" width="14px" height="14px" style="margin-bottom:-2px; margin-left:-1px;">
+	<div class="mypage-div">
+		<div style="padding-left: 20px; margin-top:-5px">
+		<span style="font-size:13px"><a href="/member/myPage.do">My</a> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
-		<div class ="page-content"style="height: 470px;">
-			<ul class="wish-category-ul" id="category" name="category">
+		<div class ="page-content02">
+			<ul class="category-ul" id="category" name="category">
 			<li class="myqna_btn01">
-				<input type="button" value="all" onclick="location.href='/faq/qnalist.do?category=0'">
-				<input type="button" value="member" onclick="location.href='/faq/qnalist.do?category=1'">
-				<input type="button" value="product / delivery"  onclick="location.href='/faq/qnalist.do?category=2'">
-				<input type="button" value="others"  onclick="location.href='/faq/qnalist.do?category=3'">
-			</li><hr width="96%" noshade="noshade" size="1px" align="left" color="gray">
+				<input type="button" value="전체" onclick="location.href='/faq/qnalist.do?category=0'">
+				<input type="button" value="회원" onclick="location.href='/faq/qnalist.do?category=1'">
+				<input type="button" value="상품/배송"  onclick="location.href='/faq/qnalist.do?category=2'">
+				<input type="button" value="기타"  onclick="location.href='/faq/qnalist.do?category=3'">
+			</li>
 			</ul>
-		</div>
-		<div class="align-right">
+			
+		<c:if test="${count == 0}">
+		<div class="no-wish">관심 상품이 없습니다.</div>
+		</c:if>
+		
+		<c:if test="${count > 0}">
+		
+		<ul class="qnalist-ul">
+			<c:forEach var="qna" items="${list}">
+			<li class="wish-list-li">
+				<div class="box-parent">
+					<%-- <input type="hidden" value="${qna.q_category}"> --%>
+					<!-- <div class="wish-check">
+					<input type="checkbox" id="select_product" name="select_product" 
+					 onclick="checkSelectAll()">
+					</div> -->
+					<c:if test="${empty qna.q_photo}">
+					<div class="qnalist-image01">
+						<img src="imageView.do?q_num=${qna.q_num}" width="75" height="75">
+					</div>
+					</c:if>
+					<div class="qnalist-span01">
+						<span class="box-brand"><a href="detail.do?q_num=${qna.q_num}">[${qna.q_title}]</a></span><br>
+						<span class="box-title">${qna.q_content}</span><br>
+						<span class="box-dprice">${qna.reg_date}</span>
+						<span class="box-pcate">
+						<img src="../images/faq/comment.png" width="18px" height="18px" style="margin-left:10px; margin-bottom:-3px">(0)
+						</span>
+					</div>
+				</div>
+			</li>
+			</c:forEach>
+		</ul>
+		</c:if>
+		<div class="page align-center">${page}</div>
 		</div>
 	</div>
 	<!-- 문의 내역 폼 끝 -->
-	
 	</form>
 </div>
+
 <!-- 내가 쓴 글 subbar.js -->
 <script>
 //script.js
@@ -99,34 +132,7 @@ $(document).ready(function(){
 	
 });
 </script>
-<%-- <script type="text/javascript">
-function checkSelectAll()  {
-	  // 전체 체크박스
-	  const checkboxes 
-	    = document.querySelectorAll('input[name="select_product"]');
-	  // 선택된 체크박스
-	  const checked 
-	    = document.querySelectorAll('input[name="select_product"]:checked');
-	  // select all 체크박스
-	  const selectAll 
-	    = document.querySelector('input[name="selectall"]');
-	  
-	  if(checkboxes.length === checked.length)  {
-	    selectAll.checked = true;
-	  }else {
-	    selectAll.checked = false;
-	  }
-}
-
-function selectAll(selectAll)  {
-	  const checkboxes 
-	     = document.getElementsByName('select_product');
-	  
-	  checkboxes.forEach((checkbox) => {
-	    checkbox.checked = selectAll.checked
-	  })
-}
-</script>
+<%--
 <div class="page-main">
 	<div class="wish-top">
 	<h2>관심 상품</h2>

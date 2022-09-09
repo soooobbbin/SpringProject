@@ -69,8 +69,7 @@
  	</update> -->
   	
   	<!-- 댓글 목록 -->
-  	<!-- <select id="selectListReply" parameterType="map"
-  	                    resultType="boardReplyVO">
+  	<!-- <select id="selectListReply" parameterType="map" resultType="qnAcommentVO">
   		SELECT
   		   *
   		FROM (SELECT

@@ -64,8 +64,8 @@ function selectAll(selectAll)  {
 	
 	<!-- 초반 기반 폼 추후 삭제 작업필요 -->
 	<!-- 문의 내역 폼 시작 -->
-	<div class="mypage-div">
-		<div style="padding-left: 20px; margin-top:-8px">
+	<div class="mypage-div02">
+		<div style="padding-left: 27px; margin-top:-5px">
 		<span style="font-size:13px"><a href="/member/myPage.do">My</a> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
 		<div class ="page-content02">
@@ -86,7 +86,7 @@ function selectAll(selectAll)  {
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
 			<!--  -->
-			<li class="wish-list-li">
+			<li class="qnalist-list">
 				<div class="box-parent">
 					<%-- <input type="hidden" value="${qna.q_category}"> --%>
 					<!-- <div class="wish-check">
@@ -99,7 +99,7 @@ function selectAll(selectAll)  {
 					
 					<div class="qnalist-span01">
 						<span class="box-title"><a href="detail.do?q_num=${qna.q_num}">${qna.q_title}</a></span><br>
-						<div class="box-content"><img src="../images/faq/enterdarkgray.png" width="15px" height="15px" style="margin-right:3px; margin-bottom:-3px">${qna.q_content}</div>
+						<div class="box-content"><img src="../images/faq/entergray.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-3px">${qna.q_content}</div>
 						<span class="box-date">${qna.reg_date}</span>
 						<span class="box-comment" style="font-size:5px">
 						<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">

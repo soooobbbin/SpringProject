@@ -2,54 +2,7 @@
 body{
 	background:#f4f9f2;
 }
-#btnmodify{
-	color:white;
-	font-size: 15px;
-	background-color: gray;
-	padding: 9px;
-	margin-top: -10px;
-	border: none;
-	border-radius: 5px;
-	width: 20%;
-	height:45px;
-	cursor:pointer;
-	margin-right: 20px;
-}
-#btnmodify:hover{
-	filter: brightness(95%);
-}
-#btnupdate{
-	color:white;
-	font-size: 15px;
-	background-color: gray;
-	padding: 9px;
-	margin-top: -10px;
-	border: none;
-	border-radius: 5px;
-	width: 20%;
-	height:45px;
-	cursor:pointer;
-	margin-right: 20px;
-}
-#btnupdate:hover{
-	filter: brightness(95%);
-}
-#btndelete{
-	color:white;
-	font-size: 15px;
-	background-color: gray;
-	padding: 9px;
-	margin-top: -10px;
-	border: none;
-	border-radius: 5px;
-	width: 20%;
-	height:45px;
-	cursor:pointer;
-	margin-right: 40px;
-}
-#btndelete:hover{
-	filter: brightness(95%);
-}
+/* menubar */
 #all{
 	color:white;
 	font-size: 15px;
@@ -125,11 +78,13 @@ body{
 .submenu2:hover{
 	color: gray;
 }
-/*li*/
-.page-content li{
-	font-size: 20px;
-	list-style: none;
-	
+/* end of menubar */
+
+/* qanlist start */
+.qnalist-list{
+	width:94%;
+	padding: 10px 0;
+	border-top: 1px solid gray;
 }
 .page-content02{
 	height: 500px;
@@ -165,14 +120,17 @@ body{
 	font-size:14px;
 	color:white;
 }
-.mypage-div{
+.category-ul{
+	margin-left:16px;
+}
+.mypage-div02{
+	float:left;
 	box-shadow: 2px 2px 7px gray; 
 	border:1px solid #7c8f83; 
 	border-radius:8px; 
-	width:50%; 
+	width:49%; 
 	height:675px; 
 	background-color:none; 
-	padding-top:30px; 
 	padding-top:30px; 
 	margin-top: 50px; 
 	margin-left: -250px;
@@ -183,10 +141,11 @@ body{
 .qnalist-ul{
 	margin-top:-16px;
 	margin-bottom:5px;
+	margin-left: 20px;
 }
 .qnalistspanbottom{
 	margin-bottom: 15px;
-	margin-left: 45px;
+	margin-left: 56px;
 	color:gray;
 	font-size:8px;
 }

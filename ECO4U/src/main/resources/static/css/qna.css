@@ -139,15 +139,31 @@ body{
 	
 }
 .myqna_btn01 input[type="button"]{
-	margin-top:20px;
-	background: none;
+	margin-top:15px;
+	margin-right:-5px;
+	background: #f4f9f2;
 	cursor:pointer;
+	border-radius:1px;
 	border-top:1px solid gray;
 	border-left:1px solid gray;
 	border-right:1px solid gray;
-	border-bottom:none;
+	border-bottom:3px solid #f4f9f2;
 	font-weight:bold;
-	font-size:15px;
+	font-size:14px;
+}
+.myqna_btn01 input[type="button"]:hover{
+	margin-top:15px;
+	margin-right:-5px;
+	background: #7c8f83;
+	cursor:pointer;
+	border-radius:1px;
+	border-top:1px solid #7c8f83;
+	border-left:1px solid #7c8f83;
+	border-right:1px solid #7c8f83;
+	border-bottom:2px solid #7c8f83;
+	font-weight:bold;
+	font-size:14px;
+	color:white;
 }
 .mypage-div{
 	box-shadow: 2px 2px 7px gray; 
@@ -163,6 +179,14 @@ body{
 }
 .page{
 	margin-top: -10px;
+}
+.qnalist-ul{
+	margin-top:-16px;
+}
+.qnalistspanbottom{
+	padding-left: 45px;
+	color:gray;
+	font-size:8px;
 }
 /* end of qnalist */
 

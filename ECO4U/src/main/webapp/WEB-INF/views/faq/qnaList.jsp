@@ -36,7 +36,7 @@ function selectAll(selectAll)  {
 	  })
 }
 </script> -->
-<div class="page" style="height: 783px;">
+<div class="page" style="height: 793px;">
 	<form action="qnalist.do" id="search_form"  method="get">
 	
 	<!-- 좌측 메뉴바 -->
@@ -65,16 +65,16 @@ function selectAll(selectAll)  {
 	<!-- 초반 기반 폼 추후 삭제 작업필요 -->
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div">
-		<div style="padding-left: 20px; margin-top:-5px">
+		<div style="padding-left: 20px; margin-top:-8px">
 		<span style="font-size:13px"><a href="/member/myPage.do">My</a> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
 		<div class ="page-content02">
 			<ul class="category-ul" id="category" name="category">
 			<li class="myqna_btn01">
-				<input type="button" value="전체" onclick="location.href='/faq/qnalist.do?category=0'">
-				<input type="button" value="회원" onclick="location.href='/faq/qnalist.do?category=1'">
-				<input type="button" value="상품/배송"  onclick="location.href='/faq/qnalist.do?category=2'">
-				<input type="button" value="기타"  onclick="location.href='/faq/qnalist.do?category=3'">
+				<input type="button" value="   전체   " onclick="location.href='/faq/qnalist.do?category=0'">
+				<input type="button" value="   회원   " onclick="location.href='/faq/qnalist.do?category=1'" style="border-left:none;">
+				<input type="button" value="   상품/배송   "  onclick="location.href='/faq/qnalist.do?category=2'" style="border-left:none;">
+				<input type="button" value="   기타   "  onclick="location.href='/faq/qnalist.do?category=3'" style="border-left:none;">
 			</li>
 			</ul>
 			
@@ -83,7 +83,6 @@ function selectAll(selectAll)  {
 		</c:if>
 		
 		<c:if test="${count > 0}">
-		
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
 			<li class="wish-list-li">
@@ -102,16 +101,22 @@ function selectAll(selectAll)  {
 						<span class="box-brand"><a href="detail.do?q_num=${qna.q_num}">[${qna.q_title}]</a></span><br>
 						<span class="box-title">${qna.q_content}</span><br>
 						<span class="box-dprice">${qna.reg_date}</span>
-						<span class="box-pcate">
-						<img src="../images/faq/comment.png" width="18px" height="18px" style="margin-left:10px; margin-bottom:-3px">(0)
+						<span class="box-pcate" style="font-size:8px">
+						<img src="../images/faq/comment.png" width="18px" height="18px" style="margin-left:10px; margin-bottom:-3px">
+						(0)
 						</span>
 					</div>
 				</div>
 			</li>
 			</c:forEach>
 		</ul>
-		</c:if>
+		<div class="qnalistspanbottom">
+		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
+		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
+		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span>
+		</div>
 		<div class="page align-center">${page}</div>
+		</c:if>
 		</div>
 	</div>
 	<!-- 문의 내역 폼 끝 -->

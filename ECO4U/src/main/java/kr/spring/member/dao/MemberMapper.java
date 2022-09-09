@@ -49,7 +49,7 @@ public interface MemberMapper {
 			+ "member_detail d ON m.mem_num=d.mem_num "
 			+ "WHERE d.mem_name=#{name}")
 	public MemberVO selectCheckNameMember(String name);
-	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num JOIN zipcode z ON m.mem_num=z.mem_num WHERE m.mem_num=#{mem_num}")
+	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num JOIN zipcode z ON m.mem_num=z.mem_num WHERE m.mem_num=#{mem_num} AND z.zip_auth=0")
 	public MemberVO selectMember(Integer mem_num);
 	@Update("UPDATE member_detail SET mem_name=#{mem_name},mem_cell=#{mem_cell},mem_email=#{mem_email} WHERE mem_num=#{mem_num}")
 	public void updateMember_detail(MemberVO member);

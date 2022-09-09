@@ -30,7 +30,7 @@
 </style>     
 <!-- 내용 시작 -->
 <div class="page-main" style="min-height: 775px;">
-	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
+	<div class="align-center" style="margin-top: 100px; margin-bottom: 30px;">
 		<h1>회원비밀번호변경</h1>
 	</div>
 	<form:form id="updatePw_from" action="updatepw.do" modelAttribute="memberVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; height:480px; background-color:white; padding-top:30px;">

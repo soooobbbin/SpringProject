@@ -46,7 +46,7 @@
 	padding: 12px;
 	border: none;
 	border-radius: 5px;
-	width: 90%;
+	width: 85%;
 	font-weight: bold;
 	cursor:pointer;
 }
@@ -110,7 +110,7 @@ input:focus {
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
 <div class="page-main" style="height:900px;">
-	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
+	<div class="align-center" style="margin-top: 100px; margin-bottom: 30px;">
 		<h1>회원정보 수정</h1>
 	</div>
 	<form:form id="modify_form" action="update.do" modelAttribute="memberVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:35%; height:700px; background-color:white; padding-top:30px;">

@@ -140,7 +140,7 @@
 	display:inline-block; 
 	padding:30px 30px;
 	width:40%;
-	height:55%; 
+	height:60%; 
 	background:#fff;  
 	vertical-align:middle; 
 	font-size:15px;
@@ -154,14 +154,14 @@
 }
 .pop_content1{
 	width: 75%;
-	height: 20%;
+	height: 18%;
 	padding-left:2%;
 	text-align:left;
 	float:left;
 }
 .pop_content2{
 	width: 23%;
-	height: 20%;
+	height: 18%;
 	text-align:center;
 	float:left;
 }

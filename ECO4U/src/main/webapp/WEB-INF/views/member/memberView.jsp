@@ -187,7 +187,7 @@
 					<c:if test="${!empty member.modify_date}">
 					<li>${member.modify_date}</li><br>
 					</c:if>
-					<c:if test="${!empty member.zipcode}"><li>${member.zipcode}</li><br></c:if>
+					<c:if test="${!empty member.zipcode}"><li>${member.zipcode} <b style="color:blue;">[대표배송지]</b></li><br></c:if>
 					<c:if test="${empty member.zipcode}"><li style="color : gray;">우편번호를 등록해주세요.</li><br></c:if>
 					<c:if test="${!empty member.address1}"><li>${member.address1}</li><br></c:if>
 					<c:if test="${empty member.address1}"><li style="color : gray;">주소를 등록해주세요.</li><br></c:if>

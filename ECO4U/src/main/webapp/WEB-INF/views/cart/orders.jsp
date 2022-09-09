@@ -10,7 +10,7 @@
 			주문결제
 		</div>
 		<div class="header-right">
-			장바구니><b>주문결제</b>>주문결제
+			장바구니><b>주문결제</b>>주문완료
 		</div>
 	</div>
 	<div class="order-main">
@@ -19,19 +19,19 @@
 				<div class="order-zipcode-content">
 					<div class="zip-content1">배송지</div>
 					<div class="zip-content2"><input type="button" value="배송지 변경" id="zipcodebtn" class="zipcodebtn" href="#pop_info_1">
+					<!-- 파업창 시작 -->
 						<div id="pop_info_1" class="pop_wrap">
 				          <div class="pop_inner">
 				          	<div class="pop_content">
 				          		<div class="pop_content_title" style="padding-left:2%;"><h3>배송지 주소록</h3></div>
 				          		<c:forEach var="zip" items="${zip_list}">
 									<div class="pop_content1">
-										[${zip.zip_rec}]
-										${zip.zip_cell}<br>
+										${zip.zip_name} [${zip.zip_rec}] ${zip.zip_cell}<br>
 										${zip.zipcode}<br>
-										${zip.address1}
-										${zip.address2}
+										${zip.address1} ${zip.address2}
 									</div>
 									<div class="pop_content2">
+										<input type="button" value="배송지 내용 수정" onclick="location.href='/cart/zipcodeUpdate.do?zip_num=${zip.zip_num}'">
 										<input type="button" value="배송지 선택" onclick="location.href='/cart/updateauth.do?zip_num=${zip.zip_num}'">
 									</div>
 							 	</c:forEach>
@@ -41,6 +41,7 @@
 				            <button type="button" class="btn_close">닫기</button>
 				         </div>
 				       </div>
+				       <!-- 파업창 끝 -->
 					</div>
 					<div class="zip-content3">
 						${zipcode.zip_rec} ${zipcode.zip_cell}<br>

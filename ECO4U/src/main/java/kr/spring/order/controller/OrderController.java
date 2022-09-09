@@ -144,4 +144,86 @@ public class OrderController {
 		       //타일스 설정의 식별자
 		return "zipcodeInsert";
 	}
+	
+	//배송지 추가 데이터 전송
+	@PostMapping("/cart/zipcodeInsert.do")
+	public String submit(@Valid ZipcodeVO zipcode,BindingResult result, Model model, HttpServletRequest request, HttpSession session) {
+		
+		logger.debug("<<배송지 추가>> : " + zipcode);
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		//회원번호 셋팅
+		zipcode.setMem_num(user.getMem_num());
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return form();
+		}
+		
+		//zipcode테이블에 추가
+		orderService.insertZipcode(zipcode);
+		
+		model.addAttribute("message", "배송지 추가 완료되었습니다.");
+		model.addAttribute("url", request.getContextPath()+"/cart/orders.do");
+		
+		return "common/resultView";
+	}
+	
+	//================대표 배송지 변경====================//
+	@GetMapping("/cart/updateauth.do")
+	public String zipAuth(HttpSession session,@RequestParam(value="zip_num",defaultValue="")int zip_num,Model model,HttpServletRequest request) {
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		logger.debug("<<대표 배송지 변경>> : " + user.getMem_num() + " , " + zip_num);
+		
+		//====zipcode테이블에 auth 변경====//
+		//해당 고객의 모든 배송지 auth값을 1로 변경하고 선택한 배송지 코드만 auth값을 1로 변경
+		orderService.updateAuth(user.getMem_num(), zip_num);
+	
+		model.addAttribute("message", "대표 배송지가 변경되었습니다.");
+		model.addAttribute("url", request.getContextPath()+"/cart/orders.do");
+		
+		return "common/resultView";
+	}
+	
+	//================배송지 데이터 수정==================//
+	@GetMapping("/cart/zipcodeUpdate.do")
+	public String updateForm(Model model,@RequestParam(value="zip_num",defaultValue="")int zip_num,HttpSession session) {
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		//1건의 레코드를 구함
+		ZipcodeVO zipcodeVO = orderService.selectZip(zip_num);
+		
+		//전송되지 않은 회원번호를 세션에서 추출
+		zipcodeVO.setZip_num(zip_num);
+		zipcodeVO.setMem_num(user.getMem_num());
+				
+		model.addAttribute("zipcodeVO", zipcodeVO);
+		
+		//타일스 설정의 식별자
+		return "zipcodeUpdate";
+	}	
+	//수정폼에서 전송된 데이터 처리
+	@PostMapping("/cart/zipcodeUpdate.do")
+	public String submitUpdate(@Valid ZipcodeVO zipcodeVO,BindingResult result,Model model,HttpServletRequest request) {
+		
+		logger.debug("<<회원정보수정 처리>> : " + zipcodeVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return "zipcodeUpdate";
+		}
+				
+		//회원정보수정
+		orderService.updateZipcode(zipcodeVO);
+		
+		model.addAttribute("message", "배송지 내용 수정되었습니다.");
+		model.addAttribute("url", request.getContextPath()+"/cart/orders.do");
+		
+		return "common/resultView";
+	}
+	
 }	

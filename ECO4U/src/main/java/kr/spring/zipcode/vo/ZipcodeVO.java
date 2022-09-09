@@ -1,13 +1,21 @@
 package kr.spring.zipcode.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 public class ZipcodeVO {
 	private int zip_num;
+	@NotEmpty
 	private String zip_name;
+	@NotEmpty
 	private String zip_cell;
+	@NotEmpty
 	private String zip_rec;
 	private int zip_auth;
+	@NotEmpty
 	private String zipcode;
+	@NotEmpty
 	private String address1;
+	@NotEmpty
 	private String address2;
 	private int mem_num;
 	

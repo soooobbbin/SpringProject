@@ -6,11 +6,23 @@
 	width:20%;
 	font-size: 15px;
 }
+.zip_name{
+	width:20%;
+	font-size: 15px;
+}
 #zip_rec{
 	width:15%;
 	font-size: 15px;
 }
+.zip_rec{
+	width:15%;
+	font-size: 15px;
+}
 #zip_cell{
+	width:15%;
+	font-size: 15px;
+}
+.zip_cell{
 	width:15%;
 	font-size: 15px;
 }
@@ -71,13 +83,14 @@ input:focus {
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/confirmId.js"></script>
 <div class="page-main" style="height:900px;">
 	<div class="align-center" style="margin-top: 100px; margin-bottom: 30px;">
-		<h1>배송지 추가</h1>
+		<h1>배송지 수정</h1>
 	</div>
-	<form:form id="zipcodeInsert_form" action="zipcodeInsert.do" modelAttribute="zipcodeVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:35%; height:700px; background-color:white; padding-top:30px;">
+	<form:form id="zipcodeUpdate_form" action="zipcodeUpdate.do" modelAttribute="zipcodeVO" style="box-shadow: 2px 2px 7px gray; border:1px solid white; border-radius:10px; width:35%; height:700px; background-color:white; padding-top:30px;">
 		<form:errors element="div" cssClass="error-color"/>
+		<form:hidden path="zip_num"/>
 		<ul>
 			<li>
-				<label for="zip_name" id="zip_name">배송지이름</label>
+				<label for="zip_name" class="zip_name">배송지이름</label>
 				<form:errors path="zip_name" cssClass="error-color"/><br>
 			</li>
 		</ul>
@@ -90,7 +103,7 @@ input:focus {
 		</ul>
 		<ul>
 			<li>
-				<label for="zip_rec" id="zip_rec">수신인</label>
+				<label for="zip_rec" class="zip_rec">수신인</label>
 				<form:errors path="zip_rec" cssClass="error-color"/><br>
 			</li>
 		</ul>
@@ -103,7 +116,7 @@ input:focus {
 		</ul>
 		<ul>
 			<li>
-				<label for="zip_cell" id="zip_cell">전화번호</label>
+				<label for="zip_cell" class="zip_cell">전화번호</label>
 				<form:errors path="zip_cell" cssClass="error-color"/><br>
 			</li>
 		</ul>
@@ -155,7 +168,7 @@ input:focus {
 			</li>
 		</ul>    
 		<div class="align-center">
-			<form:button id="sub_btn">배송지 추가</form:button>
+			<form:button id="sub_btn">배송지 내용 수정</form:button>
 		</div>                
 	</form:form>
 </div>

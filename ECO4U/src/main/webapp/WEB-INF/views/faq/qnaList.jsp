@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
@@ -65,7 +66,7 @@ function selectAll(selectAll)  {
 	<!-- 초반 기반 폼 추후 삭제 작업필요 -->
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
-		<div style="padding-left: 27px; margin-top:-5px">
+		<div style="padding-left: 27px; margin-top:-10px">
 		<span style="font-size:13px"><a href="/member/myPage.do">My</a> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
 		<div class ="page-content02">
@@ -94,12 +95,24 @@ function selectAll(selectAll)  {
 					 onclick="checkSelectAll()">
 					</div> -->
 					<div class="qnalist-image01">
-						<img src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" width="75" height="75">
+						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='detail.do?q_num=${qna.q_num}'">
 					</div>
 					
 					<div class="qnalist-span01">
-						<span class="box-title"><a href="detail.do?q_num=${qna.q_num}">${qna.q_title}</a></span><br>
-						<div class="box-content"><img src="../images/faq/entergray.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-3px">${qna.q_content}</div>
+						<div class="box-title"><a href="detail.do?q_num=${qna.q_num}">${qna.q_title}</a></div><br>
+						<div class="box-content">
+						<img src="../images/faq/enterdarkgray.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-3px">
+						<c:choose>
+				        <c:when test="${fn:length(qna.q_content) gt 58}">
+				        <c:out value="${fn:substring(qna.q_content, 0, 57)}">
+				        </c:out><a href="detail.do?q_num=${qna.q_num}" style="font-size:11px; font-weight:bold; color:#999999;">... 더보기</a>
+				        </c:when>
+				        <c:otherwise>
+				        <c:out value="${qna.q_content}">
+				        </c:out>
+				        </c:otherwise>
+						</c:choose>
+						</div>
 						<span class="box-date">${qna.reg_date}</span>
 						<span class="box-comment" style="font-size:5px">
 						<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">
@@ -113,7 +126,6 @@ function selectAll(selectAll)  {
 		<div class="qnalistspanbottom">
 		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
 		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
-		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span>
 		</div>
 		<div class="page align-center">${page}</div>
 		</c:if>

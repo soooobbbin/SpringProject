@@ -86,15 +86,12 @@ body{
 	padding: 10px 0;
 	border-top: 1px solid gray;
 }
-.page-content02{
-	height: 500px;
-}
 .page-content02 li{
 	list-style: none;
 	
 }
 .myqna_btn01 input[type="button"]{
-	margin-top:15px;
+	margin-top:12px;
 	margin-right:-5px;
 	background: #f4f9f2;
 	cursor:pointer;
@@ -107,7 +104,7 @@ body{
 	font-size:14px;
 }
 .myqna_btn01 input[type="button"]:hover{
-	margin-top:15px;
+	margin-top:12px;
 	margin-right:-5px;
 	background: #7c8f83;
 	cursor:pointer;
@@ -128,8 +125,8 @@ body{
 	box-shadow: 2px 2px 7px gray; 
 	border:1px solid #7c8f83; 
 	border-radius:8px; 
-	width:49%; 
-	height:675px; 
+	width:49%;
+	height:678px;
 	background-color:none; 
 	padding-top:30px; 
 	margin-top: 50px; 
@@ -140,30 +137,36 @@ body{
 }
 .qnalist-ul{
 	margin-top:-16px;
-	margin-bottom:5px;
+	margin-bottom:3px;
 	margin-left: 20px;
 }
 .qnalistspanbottom{
-	margin-bottom: 15px;
+	margin-bottom: 14px;
 	margin-left: 56px;
 	color:gray;
 	font-size:8px;
 }
 .qnalist-image01{
-	margin-top:4px;
+	margin-top:6px;
 	margin-right:15px;
 	margin-left:15px;
 }
+#qnalist-image02{
+	width:80px;
+	height:80px;
+	cursor:pointer;
+}
 .qnalist-span01{
-	margin:10px;
+	margin:9px;
 }
 .box-title{
+	margin-top:6px;
 	font-size:15px;
 	font-weight:bold;
 }
 .box-content{
-	margin-top:5px;
-	margin-bottom:6px;
+	margin-top:-15px;
+	margin-bottom:8px;
 	font-size: 11px;
 }
 .box-date{
@@ -244,5 +247,10 @@ body{
 	width:20px;
 	height:20px;
 	cursor:pointer;
+}
+#qnacontent_ckeck{
+	padding-top:3px;
+	padding-left:544px;
+	font-size:11px;
 }
 /*end qnaWrite.jsp*/

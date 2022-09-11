@@ -75,7 +75,7 @@ public class QnAController {
 
 		//View에 표시할 메시지
 		model.addAttribute("message", "문의등록이 완료되었습니다.");
-		model.addAttribute("url", "/faq/faqlist.do");
+		model.addAttribute("url", request.getContextPath()+"/faq/qnalist.do");
 
 		return "common/resultView";
 	}

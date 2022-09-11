@@ -41,4 +41,15 @@ $(function() {
 		$('#upload').val('');
 	});
 	
+	 //글자 수 세기
+	 $("#qnacontent_length").keyup(function() {
+	 var content = $(this).val();
+	 $("#qnacontent_ckeck").text("(" + content.length + " / 500자)");
+
+		 if (content.length > 500) {
+			alert("최대 500자까지 입력 가능합니다.");
+			$(this).val(content.substring(0, 500));
+			$('#qnacontent_ckeck').text("(500 / 500자)");
+		}
+	});
 });

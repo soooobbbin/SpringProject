@@ -39,12 +39,13 @@
 				<option value="2"<c:if test="${q_category == 2}">selected</c:if>>상품/배송문의</option>
 				<option value="3"<c:if test="${q_category == 3}">selected</c:if>>기타</option>
 			</select>
-			<form:input path="q_title" placeholder="제목을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '제목을 입력하세요.'" autocomplete="off"/>
+			<form:input path="q_title" maxlength='42' placeholder="제목을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '제목을 입력하세요.'" autocomplete="off"/>
 			<form:errors path="q_title" cssClass="error-color"/>
 			</li>
 		    	<li>
-					<form:textarea path="q_content" placeholder="내용을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '내용을 입력하세요.'" autocomplete="off"/>
+					<form:textarea id="qnacontent_length" path="q_content" maxlength='500' placeholder="내용을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '내용을 입력하세요.'" autocomplete="off"/>
 					<form:errors path="q_content" cssClass="error-color"/>
+					<div id="qnacontent_ckeck">(0 / 500자)</div>
 					<script>
 					 function MyCustomUploadAdapterPlugin(editor) {
 						    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -66,7 +67,7 @@
 				</li>
 			 </ul>
 			<div class="align-left" id="faq_write_btn01">
-			<form:button>등록</form:button>
+			<form:button id="btn02">등록</form:button>
 			<input type="button" value="취소" id="qna_write_btn03">
 			</div>
 	</form:form>

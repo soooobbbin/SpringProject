@@ -172,6 +172,12 @@ body{
 .box-date{
 	font-size:9px;
 }
+#qna_home{
+	margin-bottom:-3px;
+	width:17px;
+	height:17px;
+	cursor:pointer;
+}
 /* end of qnalist */
 
 /*qnaWrite.jsp*/
@@ -254,3 +260,49 @@ body{
 	font-size:11px;
 }
 /*end qnaWrite.jsp*/
+
+/*qnaView.jsp start*/
+.qna-main{
+	margin: 130px 350px 90px 350px;
+	font-family : Arial, "돋움", dotum, sans-serif;
+}
+/* .qna-main h3{
+	margin-top: 45px;
+	color:gray;
+} */
+.qna-main a{
+	color:#A9A9A9;
+}
+.qnaViewtable{
+	margin-top:75px;
+	width:100%;
+}
+.qnaViewtb table, th, td{
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+	border-collapse : collapse;
+}
+.qnaViewtb th{
+	height:37px;
+	text-align:center;
+}
+#qnaac01{
+	height:37px;
+	border-bottom:1px solid lightgray;
+	font-size:12px;
+	font-weight: bold;
+	border:white;
+}
+#qnaac02{
+	width:12%;
+	text-align:center;
+}
+#qnaac03{
+	width:88%
+}
+.accordion-body{
+	margin-right:12%;
+	margin-left:13%;
+	/* margin:0 90px 0 96px; */
+}
+/*end qnaView.jsp*/

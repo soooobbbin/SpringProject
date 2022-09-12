@@ -2,13 +2,84 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!-- 내용 시작 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.fav.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
-<div class="page-main">
-<h2>qnaView</h2>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/board.reply.js"></script> --%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
+<style>
+	body{
+	background-color:white;
+	}
+	#main_header{
+	background-color:#f4f9f2;
+	}
+</style>
+<!-- 내용 시작 -->
+<div class="qna-main">
+<div class="align-right" style="font-size:12px">
+<a href="/member/myPage.do">HOME</a> > 
+<a href="/faq/qnalist.do">문의내역</a> > 
+<a href="detail.do?q_num=${qna.q_num}" style="color:black;">문의상세</a></div>
+<%-- <h3>「 ${qna.mem_name} 」 님의 문의</h3> --%>
+<div class="qnaViewtb">
+	<table class="qnaViewtable">
+		<tr>
+			<th width="15%">제목</th>
+			<td width="85%">${qna.q_title}</td>
+		</tr>
+		<tr>
+			<th width="15%">작성자</th>
+			<td width="85%">${qna.mem_name}</td>
+		</tr>
+		<tr>
+			<th width="15%">작성일</th>
+			<td width="85%">${qna.reg_date}</td>
+		</tr>
+	</table>
+</div>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button id="qnaac01" style="background:white;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <span id="qnaac02">내용</span>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      ${qna.q_content}
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<%-- 	<div class="accordion accordion-flush" id="accordionFlushExample">
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="flush-heading" >
+	      <button id="title_btn01" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse" aria-expanded="false" aria-controls="flush-collapse">
+	      <span id="title_btn02">내용</span>
+	      </button>
+	    </h2>
+	    <div style="background:white; border-bottom:1px solid #7c8f83;" id="flush-collapse" class="accordion-collapse collapse" aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
+	      <div class="accordion-body">${qna.q_content}</div>
+	      <div class="faq_btn_group" align="right">
+	      <input type="button" value="수정" onclick="location.href='faqupdate.do?f_num=${qna.q_num}'">
+		  <input type="button" value="삭제" id="delete_btn">
+		  <script type="text/javascript">
+			let delete_btn = document.getElementById('delete_btn');
+			//이벤트 연결
+			delete_btn.onclick=function(){
+				let choice = confirm('삭제하시겠습니까?');
+				if(choice){
+					location.replace('delete.do?q_num=${qna.q_num}');
+				}
+			};
+			</script> 
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	--%>
 	<%-- <h2>${board.title}</h2> --%>
 	<%-- <ul class="detail-info">
 		<li>

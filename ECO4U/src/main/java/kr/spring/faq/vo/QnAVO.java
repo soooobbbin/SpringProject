@@ -21,7 +21,7 @@ public class QnAVO {
 	private String q_photo_name;
 	private int mem_num;//회원번호
 	
-	private String mem_id;//회원 아이디
+	private String mem_name;//회원 이름
 	
 	//========= 이미지 BLOB 처리 ==========//
 	//(주의) 폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야함
@@ -104,19 +104,20 @@ public class QnAVO {
 		this.mem_num = mem_num;
 	}
 
-	public String getMem_id() {
-		return mem_id;
+	public String getMem_name() {
+		return mem_name;
 	}
 
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 
 	@Override
 	public String toString() {
 		return "QnAVO [q_num=" + q_num + ", q_title=" + q_title + ", q_content=" + q_content + ", q_category="
 				+ q_category + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", q_photo="
-				+ Arrays.toString(q_photo) + ", q_photo_name=" + q_photo_name + ", mem_num=" + mem_num + ", mem_id="
-				+ mem_id + "]";
+				+ Arrays.toString(q_photo) + ", q_photo_name=" + q_photo_name + ", mem_num=" + mem_num + ", mem_name="
+				+ mem_name + "]";
 	}
+
 }

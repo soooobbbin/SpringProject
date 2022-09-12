@@ -121,7 +121,6 @@ public class QnAController {
 	public ModelAndView detail(@RequestParam int q_num) {
 		
 		logger.debug("<<q_num>> : " + q_num);
-		
 		QnAVO qna = qnaService.selectQnA(q_num);
 		
 		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음

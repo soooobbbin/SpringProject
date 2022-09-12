@@ -5,7 +5,7 @@
 		SELECT
 		  COUNT(*)
 		FROM qna q JOIN member m
-		ON q.mem_num = m.mem_num
+		ON q.mem_num = m.mem_num 
 		<where>
 			<if test="category == all">
 				q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3
@@ -34,8 +34,10 @@
 		 	   			]]>
 		 	   			q.q_content,
 		 	   			q.reg_date,
-		 	   			q_category,
-		 	   			q.mem_num
+		 	   			q.q_category,
+		 	   			q.mem_num,
+		 	   			q_photo,
+		 	   			q_photo_name
 		 	   		 FROM qna q JOIN member m
 		 	   		 ON q.mem_num = m.mem_num
 		 	   		 <where>

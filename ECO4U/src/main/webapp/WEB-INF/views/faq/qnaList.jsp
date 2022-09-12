@@ -67,7 +67,7 @@ function selectAll(selectAll)  {
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
 		<div style="padding-left: 27px; margin-top:-10px">
-		<span style="font-size:13px"><a href="/member/myPage.do">My</a> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
+		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/member/myPage.do'"> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
 		<div class ="page-content02">
 			<ul class="category-ul" id="category" name="category">
@@ -78,14 +78,13 @@ function selectAll(selectAll)  {
 				<input type="button" value="   기타   "  onclick="location.href='/faq/qnalist.do?category=3'" style="border-left:none;">
 			</li>
 			</ul>
-			
 		<c:if test="${count == 0}">
 		<div class="no-wish">관심 상품이 없습니다.</div>
 		</c:if>
-		
 		<c:if test="${count > 0}">
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
+			<c:if test="${!empty user && user.mem_num == qna.mem_num}">
 			<!--  -->
 			<li class="qnalist-list">
 				<div class="box-parent">
@@ -121,20 +120,20 @@ function selectAll(selectAll)  {
 					</div>
 				</div>
 			</li>
+			</c:if>
 			</c:forEach>
 		</ul>
+		</c:if>
 		<div class="qnalistspanbottom">
 		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
 		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
 		</div>
 		<div class="page align-center">${page}</div>
-		</c:if>
 		</div>
 	</div>
 	<!-- 문의 내역 폼 끝 -->
 	</form>
 </div>
-
 <!-- 내가 쓴 글 subbar.js -->
 <script>
 //script.js

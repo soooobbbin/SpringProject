@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.faq.dao.QnAMapper;
 import kr.spring.faq.vo.QnAVO;
+import kr.spring.member.vo.MemberVO;
 
 
 

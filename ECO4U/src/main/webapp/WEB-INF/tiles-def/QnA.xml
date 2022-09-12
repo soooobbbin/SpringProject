@@ -35,6 +35,11 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/faq/qnaView.jsp"/>                   
     </definition>
+    <definition name="qnaModify" extends="main">
+    	<put-attribute name="title" value="QNA글수정"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/faq/qnaModify.jsp"/>                   
+    </definition>
 </tiles-definitions>
 
 

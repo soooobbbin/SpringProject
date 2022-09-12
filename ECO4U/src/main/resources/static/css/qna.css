@@ -263,7 +263,7 @@ body{
 
 /*qnaView.jsp start*/
 .qna-main{
-	margin: 130px 350px 90px 350px;
+	margin: 138px 350px 90px 350px;
 	font-family : Arial, "돋움", dotum, sans-serif;
 }
 /* .qna-main h3{
@@ -274,7 +274,6 @@ body{
 	color:#A9A9A9;
 }
 .qnaViewtable{
-	margin-top:75px;
 	width:100%;
 }
 .qnaViewtb table, th, td{
@@ -301,8 +300,54 @@ body{
 	width:88%
 }
 .accordion-body{
+	margin-bottom:3%;
 	margin-right:12%;
 	margin-left:13%;
-	/* margin:0 90px 0 96px; */
+	
+}
+#collapse{
+	border-bottom:2px solid lightgray;
+}
+.accordion-item{
+	border:none;
+}
+#qnalist-image03{
+	margin-bottom:6%;
+	width: 50%;
+	height: 50%;
+}
+.qna_btn_group{
+	margin:1%;
+}
+.qna_btn_group input[type="button"]{
+	margin-right:6px;
+	width:47px;
+	height:23px;
+	background-color: #7c8f83;
+	color:white;
+	border: none;
+	font-weight:bold;
+	font-size:13px;
+	border-radius: 50px;
+}
+#qnadiv01{
+	margin-top:50px;
+	font-size:11px;
+	font-weight:bold;
+}
+.qna_btn02 input[type="button"]{
+	margin:3%;
+	width:50px;
+	background:white;
+	border:1px solid silver;
+	font-size:13px;
+}
+.qnarefresh{
+   cursor: pointer;
+   height: 15px;
+   width: 15px;
+   position: fixed;
+   right:328px;
+   top: 139px;
 }
 /*end qnaView.jsp*/

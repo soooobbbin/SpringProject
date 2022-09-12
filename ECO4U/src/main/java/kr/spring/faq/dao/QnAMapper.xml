@@ -61,14 +61,18 @@
 	</select>
 	
  	<!-- 글수정 -->
- 	<!-- <update id="updateQnA" parameterType="qnAVO">
- 		UPDATE faq SET
- 			f_title=#{f_title},
- 			f_content=#{f_content},
- 			f_category=#{f_category},
- 		    modify_date=SYSDATE
- 		WHERE f_num=#{f_num}
- 	</update> -->
+ 	<update id="updateQnA" parameterType="qnaVO">
+ 		UPDATE qna SET
+ 			<if test="q_photo_name != ''">
+  		    q_photo=#{q_photo},
+ 			q_photo_name=#{q_photo_name},
+  		    </if>
+ 			q_title=#{q_title},
+ 			q_content=#{q_content},
+ 			q_category=#{q_category},
+ 			modify_date=SYSDATE 
+ 		WHERE q_num=#{q_num}
+ 	</update>
   	
   	<!-- 댓글 목록 -->
   	<!-- <select id="selectListReply" parameterType="map" resultType="qnAcommentVO">

@@ -11,9 +11,8 @@ public interface QnAService {
 	public int selectRowCount(Map<String,Object> map);
 	public void insertQnA(QnAVO qna);
 	public QnAVO selectQnA(Integer q_num);
-//	public void updateBoard(FAQVO faq);
-//	public void deleteBoard(Integer f_num);
-//	public void deleteFile(Integer board_num);
+	public void updateQnA(QnAVO qna);
+	public void deleteQnA(Integer q_num);
 	
 	//댓글
 //	public List<BoardReplyVO> selectListReply(

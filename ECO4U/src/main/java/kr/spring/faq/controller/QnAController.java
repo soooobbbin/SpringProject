@@ -128,20 +128,6 @@ public class QnAController {
 		
 		return new ModelAndView("qnaView","qna",qna);
 	}
-		
-	//===========파일다운로드===========//
-//	@RequestMapping("/faq/file.do")
-//	public ModelAndView download(@RequestParam int q_num) {
-//		
-//		QnAVO qna = qnaService.selectQnA(q_num);
-//		
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("downloadView");
-//		mav.addObject("downloadFile", qna.getQ_photo());
-//		mav.addObject("filename", qna.getQ_photo_name());
-//		
-//		return mav;
-//	}
 	
 	//=========이미지 출력=========//
 	@RequestMapping("/faq/imageView.do")
@@ -158,6 +144,55 @@ public class QnAController {
 		return mav;
 	}
 	
+	//============ 게시판 글수정 =============//
+	//수정 폼
+	@GetMapping("/faq/qnaupdate.do")
+	public String formUpdate(@RequestParam int q_num, Model model) {
+		QnAVO qnaVO = qnaService.selectQnA(q_num);
+		
+		model.addAttribute("qnaVO", qnaVO);
+		
+		return "qnaModify";
+	}
+	//수정 폼에서 전송된 데이터 처리
+	@PostMapping("/faq/qnaupdate.do")
+	public String submitUpdate(@Valid QnAVO qnaVO,BindingResult result,
+								HttpServletRequest request,Model model) {
+		logger.debug("<<글수정>> : " + qnaVO);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			/* title 또는 content가 입력되지 않아 유효성 체크에 걸리면
+			 * 파일 정보를 읽어버리기 때문에 폼을 호출할 때 다시 세팅해줘야함
+			 */
+			QnAVO vo = qnaService.selectQnA(qnaVO.getQ_num());
+			qnaVO.setQ_photo_name(vo.getQ_photo_name());
+			return "qnaModify";
+		}
+		//글 수정
+		qnaService.updateQnA(qnaVO);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "글 수정 완료!!");
+		model.addAttribute("url", request.getContextPath()+"/faq/detail.do?q_num="+qnaVO.getQ_num());
+		
+		return "common/resultView";
+	}
+	//=========== 게시판 글 삭제 =============//
+	@RequestMapping("/faq/qnadelete.do")
+	public String submitDelete(@RequestParam int q_num,
+							HttpServletRequest request,Model model) {
+		logger.debug("<<글삭제>> : " + q_num);
+		
+		//글 삭제
+		qnaService.deleteQnA(q_num);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "글 삭제 완료!!");
+		model.addAttribute("url", request.getContextPath()+"/faq/qnalist.do");
+		
+		return "common/resultView";
+	}
 }
 
 

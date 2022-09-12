@@ -25,9 +25,9 @@ public interface QnAMapper {
 		+ "USING(mem_num) JOIN member_detail d "
 		+ "USING(mem_num) WHERE q.q_num=#{q_num}")
 	public QnAVO selectQnA(Integer q_num);
-//	public void updateBoard(FAQVO faq);
-//	@Delete("DELETE FROM faq WHERE f_num=#{f_num}")
-//	public void deleteBoard(Integer f_num);
+	public void updateQnA(QnAVO qna);
+	@Delete("DELETE FROM qna WHERE q_num=#{q_num}")
+	public void deleteQnA(Integer q_num);
 }
 
 

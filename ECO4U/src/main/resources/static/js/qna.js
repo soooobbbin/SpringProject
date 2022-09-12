@@ -3,6 +3,10 @@ $(function() {
 		alert("취소가 완료되었습니다.");
 		location.href="faqlist.do";
 	});
+	$('#qna_write_btn01').click(function(){
+		alert("취소가 완료되었습니다.");
+		history.back();
+	});
 	
 	//처음 화면에 보여지는 이미지 읽기
 	let photo_path = $('.my-photo2').attr('src');

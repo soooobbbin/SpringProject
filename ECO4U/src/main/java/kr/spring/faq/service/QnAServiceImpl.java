@@ -40,4 +40,14 @@ public class QnAServiceImpl implements QnAService{
 		return qnaMapper.selectQnA(q_num);
 	}
 
+	@Override
+	public void updateQnA(QnAVO qna) {
+		qnaMapper.updateQnA(qna);
+	}
+
+	@Override
+	public void deleteQnA(Integer q_num) {
+		qnaMapper.deleteQnA(q_num);
+	}
+
 }

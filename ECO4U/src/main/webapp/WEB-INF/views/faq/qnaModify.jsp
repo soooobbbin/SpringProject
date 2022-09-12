@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- 내용 시작 -->
 <!-- include libraries(jquery,bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -9,10 +10,11 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
 <!-- 내용시작 -->
 <div class="qna_write_main">
-	<h2 style="font-weight:bold">1:1문의<span style="font-size:11px; font-weight:none">(등록)</span></h2>
+	<h2 style="font-weight:bold">1:1문의<span style="font-size:11px; font-weight:none">(수정)</span></h2>
 	<hr class="qna_write_hr" width="135px" align="left">
-	<form:form action="qnawrite.do" modelAttribute="qnAVO" id="register_form" enctype="multipart/form-data">
-	    <form:errors element="div" cssClass="error-color"/>
+	<form:form action="qnaupdate.do" modelAttribute="qnaVO" id="update_form" enctype="multipart/form-data">
+    <form:hidden path="q_num"/>
+    <form:errors element="div" cssClass="error-color"/>
 	    <div class="photoUpload">
 				<ul>
 					<li class="photoUpload_li">
@@ -61,8 +63,8 @@
 				</li>
 			 </ul>
 			<div class="align-left" id="faq_write_btn01">
-			<form:button id="btn02">등록</form:button>
-			<input type="button" value="취소" id="qna_write_btn03">
+			<form:button id="btn02">수정</form:button>
+			<input type="button" value="취소" id="qna_write_btn01">
 			</div>
 	</form:form>
 </div>

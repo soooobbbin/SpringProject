@@ -51,7 +51,7 @@ public class ProductAjaxController {
 			reviewVO.setMem_num(user.getMem_num());
 			// 리뷰 등록
 			productService.insertReview(reviewVO);
-			mapAjax.put("result", "success");
+			mapAjax.put("result", "success"); 
 		}
 		return mapAjax;
 	}
@@ -60,7 +60,7 @@ public class ProductAjaxController {
 	@RequestMapping("/product/listReview.do")
 	@ResponseBody
 	public Map<String, Object> getList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
-			@RequestParam int p_num) {
+			@RequestParam int p_num, HttpSession session) {
 
 		logger.debug("<<currentPage>> : " + currentPage);
 		logger.debug("<<p_num>> : " + p_num);
@@ -79,18 +79,91 @@ public class ProductAjaxController {
 		map.put("start", page.getStartRow());
 		map.put("end", page.getEndRow());
 
-		List<P_reviewVO> reviewList = null;
+		List<P_reviewVO> list = null;
 		if (count > 0) {
-			reviewList = productService.selectListReview(map);
+			list = productService.selectListReview(map);
 		} else {
-			reviewList = Collections.emptyList();
+			list = Collections.emptyList();
 		}
 
 		Map<String, Object> mapAjax = new HashMap<String, Object>();
 		mapAjax.put("count", count);
 		mapAjax.put("rowCount", rowCount);
-		mapAjax.put("reviewList", reviewList);
+		mapAjax.put("list", list);
+		
+		//로그인 한 회원정보 셋팅
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		if (user != null) {
+			mapAjax.put("user_num", user.getMem_num());
+		}
 
+		return mapAjax;
+	}
+	
+	//==========리뷰 수정==========//
+	@RequestMapping("/product/updateReview.do")
+	@ResponseBody
+	public Map<String,String> modifyReview(
+				  P_reviewVO reviewVO,
+			      HttpSession session,
+			      HttpServletRequest request){
+		
+		logger.debug("<<리뷰 수정>> : " + reviewVO);
+		
+		Map<String,String> mapAjax = 
+				new HashMap<String,String>();
+		
+		MemberVO user = 
+				(MemberVO)session.getAttribute("user");
+		P_reviewVO p_review = 
+				productService.selectReview(
+						reviewVO.getR_num());
+		if(user==null) {//로그인이 되지 않는 경우
+			mapAjax.put("result", "logout");
+		}else if(user!=null && 
+			//로그인 회원번호와 작성자 회원번호 일치
+			user.getMem_num()==p_review.getMem_num()) { 
+
+			//리뷰 수정
+			productService.updateReview(reviewVO);
+			mapAjax.put("result", "success");
+		}else {
+			//로그인 회원번호와 작성자 회원번호 불일치
+			mapAjax.put("result", "wrongAccess");
+		}
+		return mapAjax;
+	}
+	//==========리뷰 삭제==========//
+	@RequestMapping("/product/deleteReview.do")
+	@ResponseBody
+	public Map<String,String> deleteReview(
+			            @RequestParam int r_num,
+			            HttpSession session){
+		
+		logger.debug("<<r_num>> : " + r_num);
+		
+		Map<String,String> mapAjax =
+				new HashMap<String,String>();
+		
+		MemberVO user = 
+			(MemberVO)session.getAttribute("user");
+		P_reviewVO p_review = 
+				productService.selectReview(r_num);
+		if(user==null) {
+			//로그인이 되지 않은 경우
+			mapAjax.put("result", "logout");
+		}else if(user!=null && 
+		  //로그인이 되어 있고 로그인한 회원번호와 작성자 회원번호 일치
+		  user.getMem_num()==p_review.getMem_num()) {
+			
+			//댓글 삭제
+			productService.deleteReview(r_num);
+			
+			mapAjax.put("result", "success");
+		}else {
+			//로그인한 회원번호와 작성자 회원번호 불일치
+			mapAjax.put("result", "wrongAccess");
+		}
 		return mapAjax;
 	}
 	

@@ -12,9 +12,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/product-detail.css">
 
-<form action="detail.do" method="post">
-	<input type="hidden" name="p_num" value="${product.p_num}" />
-</form>
 
 <div class="page-main">
 	<div id="wrapper">
@@ -56,6 +53,8 @@
 			<!-- 수량 선택 -->
 			<div class="detail-buycount" id="detail-div">
 				<label class="text count">${product.p_name}</label>
+				<!-- 리뷰에 필요한 p_num 불러오기 -->
+				<input type="hidden" id="p_num" value="${product.p_num}" />
 				<button type="button" class="minus">-</button>
 				<input type="number" class="numBox" min="1" max="${product.p_quantity}" value="1" readonly="readonly"/>
 				<button type="button" class="plus">+</button>
@@ -146,19 +145,10 @@
 	<!-- 상품 본문 끝 -->
 	<!-- 리뷰 시작 -->
 	<h4>후기 (${product.review_count}건)</h4>
-	<div class="accordion accordion-flush" id="accordionFlushExample">
-	  <c:forEach var="review" items="${reviewList}" varStatus="status">
-	  <div class="accordion-item">
-	    <h2 class="accordion-header" id="flush-heading${status.index}" >
-	      <button id="title_btn01" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${status.index}" aria-expanded="false" aria-controls="flush-collapse${status.index}">
-	      <span id="title_btn02">후기</span>${review.r_title}
-	      </button>
-	    </h2>
-	    <div style="background:#f4f9f2; border-bottom:1px solid #7c8f83;" id="flush-collapse${status.index}" class="accordion-collapse collapse" aria-labelledby="flush-heading${status.index}" data-bs-parent="#accordionFlushExample">
-	      <div class="accordion-body">${review.r_content}</div>
-	    </div>
-	  </div>
-	  </c:forEach>
+	
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음 리뷰 보기">
 	</div>
 	<!-- 리뷰 끝 -->
 	</div>

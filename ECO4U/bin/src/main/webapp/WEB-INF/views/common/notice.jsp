@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>안내</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<style type="text/css">
+h2{
+	text-align:center;
+	margin:50px auto;
+}
+</style>
 </head>
 <body>
 <div class="page-one">

@@ -1,0 +1,99 @@
+#wrapper{
+	width: 900px;
+	margin: 100px auto 0 auto;
+}
+
+/*상품 헤더*/
+.detail-thumbnail{
+	float: left;
+}
+
+.thumbnail-side{
+	margin-left: 450px;
+}
+
+.wishlist{
+	position: relative;
+	left: 210px;
+	bottom: 20px;
+}
+
+div#detail-div{
+	margin: 10px 0;
+}
+
+hr.hr{
+	margin: 30px 0;
+}
+
+span.title{
+	font-size: 25px;
+	font-weight: bold;
+}
+span.price{
+	font-size: 20px;
+	font-weight: 600;
+}
+
+label.text{
+	font-weight: 600;
+}
+label.count{
+	width: 330px;
+}
+
+input.numBox{
+	width: 30px;
+    background-color: transparent;
+    border: 0;
+    text-align: center;
+    font-weight: bold;
+    padding-left: 20px;
+}
+button.minus{
+	background-color: transparent;
+    border-radius: 10px;
+    border-width: thin;
+    border-color: #839589;
+    padding: 2px 8px;
+}
+button.plus{
+	background-color: transparent;
+    border-radius: 10px;
+    border-width: thin;
+    border-color: #839589;
+    padding: 2px 8px;
+}
+
+.button{
+	width: 222px;
+	height: 40px;
+	border: 0px;
+	background-color: #839589;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/*본문*/
+.product-category{
+	margin:60px 0;
+	width:900px;
+	border:2px solid #797979;
+	 border-collapse: collapse;
+	text-align:center;
+}
+.product-category td{
+	border: 1px solid #839589;
+    font-size: 10pt;
+    background-color: #fcfffb;
+    color: #37403a;
+    font-weight: bold;
+}
+/*
+.detail, .review{
+	clear:both;
+	display:block;
+	margin-top:50px;
+}
+*/

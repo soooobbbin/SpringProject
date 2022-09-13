@@ -51,7 +51,7 @@ public class ProductAjaxController {
 			reviewVO.setMem_num(user.getMem_num());
 			// 리뷰 등록
 			productService.insertReview(reviewVO);
-			mapAjax.put("result", "success");
+			mapAjax.put("result", "success"); 
 		}
 		return mapAjax;
 	}

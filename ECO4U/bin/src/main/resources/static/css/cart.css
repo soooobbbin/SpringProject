@@ -1,0 +1,26 @@
+.page-main{
+	margin:100px 300px ;	
+}
+.content-main{
+	background-color:white;
+	width:800px;
+	height:430px;
+}
+.cart-category{
+	margin-top:50px;
+	width:800px;
+	border:1px solid gray;
+	text-align:center;
+}
+td.cart-category{
+	border:1px solid gray;
+}
+.cart-left{
+	float:left;	
+}
+.cart-right1{
+	float:right;	
+}
+.cart-right2{
+	float:right;	
+}

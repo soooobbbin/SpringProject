@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="communityList" extends="main">
+    	<put-attribute name="title" value="Community"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/community/communityList.jsp"/>                   
+    </definition>
+	<definition name="communityWrite" extends="main">
+    	<put-attribute name="title" value="글쓰기"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/community/communityWrite.jsp"/>   
+ 	</definition>
+</tiles-definitions>
+
+
+

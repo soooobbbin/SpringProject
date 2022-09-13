@@ -38,12 +38,13 @@ $(function(){
 					
 					
 					output += '<div class="sub-item">';
-					output += '<p>' + item.com_content.replace(/\r\n/g,'<br>') + '</p>';
+					output += item.com_content.replace(/\r\n/g,'<br>');
+					
 					
 					if(item.modify_date){
-						output += '<span class="modify-date">최근 수정일 : ' + item.modify_date + '</span>';
+						 output += '최근 수정일 : ' + item.modify_date ;
 					}else{
-						output += '<span class="modify-date">등록일 : ' + item.reg_date + '</span>';
+						output += '등록일 : ' + item.reg_date ;
 					}
 					
 					if(param.user_num==item.mem_num){
@@ -214,7 +215,7 @@ $(function(){
 				if(param.result=='logout'){
 					alert('로그인해야 수정할 수 있습니다.');
 				}else if(param.result=='success'){
-					$('#mre_form').parent()
+					$('#mcom_form').parent()
 					              .find('p')
                                   .html($('#mcom_content').val()
                                          .replace(/</g,'&lt;')

@@ -34,7 +34,7 @@ public class CommunityController {
 	private static final Logger logger =
 			         LoggerFactory.getLogger(
 			        		 CommunityController.class);
-	private int rowCount = 20;
+	private int rowCount = 10;
 	private int pageCount = 10;
 	
 	@Autowired

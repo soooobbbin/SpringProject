@@ -64,7 +64,7 @@ public interface CommunityMapper{
 		public CommunityCommentVO selectComment(Integer com_num);
 		@Insert("INSERT INTO c_comment (com_num,"
 				+ "com_content,c_num,mem_num) "
-				+ "VALUES (comment_seq.nextval,#{com_content},"
+				+ "VALUES (c_comment_seq.nextval,#{com_content},"
 				+ "#{c_num},#{mem_num})")
 		public void insertComment(CommunityCommentVO communityComment);
 		@Update("UPDATE c_comment SET "
@@ -76,7 +76,7 @@ public interface CommunityMapper{
 		//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 		@Delete("DELETE FROM c_comment "
 				+ "WHERE c_num=#{c_num}")
-		public void deleteCommentByCommunityNum(Integer c_num);
+		public void deleteCommentByCNum(Integer c_num);
 		
 			
 			

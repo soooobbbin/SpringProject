@@ -146,10 +146,19 @@
 	<!-- 상품 본문 끝 -->
 	<!-- 리뷰 시작 -->
 	<h4>후기 (${product.review_count}건)</h4>
-	
-	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
+	<div class="accordion accordion-flush" id="accordionFlushExample">
+	  <c:forEach var="review" items="${reviewList}" varStatus="status">
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="flush-heading${status.index}" >
+	      <button id="title_btn01" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${status.index}" aria-expanded="false" aria-controls="flush-collapse${status.index}">
+	      <span id="title_btn02">후기</span>${review.r_title}
+	      </button>
+	    </h2>
+	    <div style="background:#f4f9f2; border-bottom:1px solid #7c8f83;" id="flush-collapse${status.index}" class="accordion-collapse collapse" aria-labelledby="flush-heading${status.index}" data-bs-parent="#accordionFlushExample">
+	      <div class="accordion-body">${review.r_content}</div>
+	    </div>
+	  </div>
+	  </c:forEach>
 	</div>
 	<!-- 리뷰 끝 -->
 	</div>

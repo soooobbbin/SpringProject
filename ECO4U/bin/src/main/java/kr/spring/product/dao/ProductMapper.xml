@@ -108,8 +108,7 @@
 				  reg_date,
 				  modify_date,
 				  p_num,
-				  mem_num,
-				  id
+				  mem_num
 				FROM p_review
 				JOIN member USING(mem_num)
 				WHERE p_num = #{p_num}

@@ -10,16 +10,16 @@
 		FROM wish w JOIN product p
 		ON w.p_num = p.p_num AND w.mem_num=#{mem_num}
 		<where>
-			<if test="category == all">
+			<if test="category == 0">
 				p.p_category = 1 OR p.p_category = 2 OR p.p_category = 3
 			</if>
-			<if test="category == fassion">
+			<if test="category == 1">
 				p.p_category = 1
 			</if>
-			<if test="category == beauty">
+			<if test="category == 2">
 				p.p_category = 2
 			</if>
-			<if test="category == living">
+			<if test="category == 3">
 				p.p_category = 3
 			</if>
 		</where>

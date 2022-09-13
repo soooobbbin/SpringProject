@@ -27,7 +27,7 @@ public class WishController {
 	private static final Logger logger = 
 			LoggerFactory.getLogger(WishController.class);
 	
-	private int rowCount = 20;
+	private int rowCount = 10;
 	private int pageCount = 10;
 	
 	@Autowired

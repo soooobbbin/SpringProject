@@ -44,7 +44,7 @@ function selectAll(selectAll)  {
 	<div class="cart-choice">
 	<span><input type="checkbox" id="selectall" name="selectall"
 	 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
-	<span> | 선택 삭제</span> <!-- 버튼으로 만들어서 선택한 상품 삭제 가능하게 하기 -->
+	<span> | <input type="button" value="선택 삭제" id="delete_btn"></span> 
 	</div>
 	
 	
@@ -63,11 +63,13 @@ function selectAll(selectAll)  {
 				<div class="box-parent">
 					<input type="hidden" value="${cart.p_category}">
 					<input type="hidden" value="${cart.mem_num}">
+					<input type="hidden" value="${cart.cart_num}">
+					<input type="hidden" value="${cart.p_num}">
 					
 					<div class="div1">
 						<div class="check-box">
 							<input type="checkbox" id="select_product" name="select_product" 
-							 onclick="checkSelectAll()">
+							 onclick="checkSelectAll()" data-cartNum="${cart.cart_num}" value="${cart.cart_num}">
 						 </div>
 						<span class="box-brand">[${cart.p_brand}]</span>
 					</div>
@@ -75,13 +77,27 @@ function selectAll(selectAll)  {
 					<hr color="gray" width="95%" size="1">
 					<div class="div2">
 						<div class="product-image">
+						<a href="${pageContext.request.contextPath}/product/detail.do?p_num=${cart.p_num}">
 							<img src="../images/product/${cart.p_photoname}" width="80" height="80">
+						</a>
 						</div>
 						<div class="product-box">
-							
+							<a href="${pageContext.request.contextPath}/product/detail.do?p_num=${cart.p_num}">
 							<span class="box-title">${cart.p_name}</span><br>
+							</a>
 							<span class="box-price"><strong>${cart.p_price}</strong></span>
 						</div>
+						<input type="button" value="삭제" id="delete_pro" data-cartNum="${cart.cart_num}">
+						<script type="text/javascript">
+							let delete_btn = document.getElementById('delete_pro');
+							//이벤트 연결
+							delete_btn.onclick=function(){
+								let choice = confirm('삭제하시겠습니까?');
+								if(choice){
+									location.replace('delete.do?cart_num=${cart.cart_num}');
+								}
+							};
+						</script> 
 					</div>
 					
 					<div class="div3">
@@ -102,7 +118,7 @@ function selectAll(selectAll)  {
 						=
 						<div class="cart-bottom-price">
 							<span>주문금액</span><br>
-							<span>${cart.p_price}+${cart.p_dprice}</span>
+							<span id="item_total">${cart.p_price}+${cart.p_dprice}</span>
 						</div>
 					</div>
 				</div>
@@ -118,4 +134,7 @@ function selectAll(selectAll)  {
 		</div>
 	
 </div>
-<!— 내용 끝 —>
+<div class="align-center">
+${page}
+</div>
+<!-- 내용 끝 -->

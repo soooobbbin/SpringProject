@@ -21,6 +21,7 @@
   		      FROM (SELECT
   		              c.cart_num,
   		              c.mem_num,
+  		              p.p_num,
   		              p.p_name,
   		              p.p_price,
   		              p.p_quantity,

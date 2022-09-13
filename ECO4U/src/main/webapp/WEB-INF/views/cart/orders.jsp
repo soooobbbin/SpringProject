@@ -17,7 +17,8 @@
 		<div class="order-main-left">
 			<div class="order-zipcode">
 				<div class="order-zipcode-content">
-					<div class="zip-content1">배송지</div>
+					<div class="zip-content1">
+					 <img src="${pageContext.request.contextPath}/images/placeholder.png"> 배송지</div>
 					<div class="zip-content2"><input type="button" value="배송지 변경" id="zipcodebtn" class="zipcodebtn" href="#pop_info_1">
 					<!-- 파업창 시작 -->
 						<div id="pop_info_1" class="pop_wrap">

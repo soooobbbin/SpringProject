@@ -5,6 +5,11 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
+    <definition name="faqMain" extends="main">
+    	<put-attribute name="title" value="고객센터"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/faq/main.jsp"/>                   
+    </definition>
     <definition name="faqList" extends="main">
     	<put-attribute name="title" value="FAQ게시판"/>
     	<put-attribute name="body"

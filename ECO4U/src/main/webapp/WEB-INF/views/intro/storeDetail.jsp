@@ -49,7 +49,7 @@
 	<c:if test="${store.s_num == 23}">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/map/map5.js"></script>
 	</c:if>
-	<c:if test="${store.s_num == 21}">
+	<c:if test="${store.s_num == 101}">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/map/map6.js"></script>
 	</c:if>
 </div>

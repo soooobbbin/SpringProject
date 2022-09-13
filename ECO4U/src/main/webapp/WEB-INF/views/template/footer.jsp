@@ -10,6 +10,6 @@
 </div>
 <div class="align-right footer2">
 	<a href="${pageContext.request.contextPath}/intro/eco4u.do" style="color:white">ECO4U 소개</a> | 
-	<a href="${pageContext.request.contextPath}/faq/faqlist.do" style="color:white">고객 센터</a>
+	<a href="${pageContext.request.contextPath}/faq/main.do" style="color:white">고객 센터</a>
 </div>
 <!-- 하단 끝 -->

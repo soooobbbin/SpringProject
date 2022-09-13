@@ -33,13 +33,18 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public void updateCart(Integer cart_num) {
+	public void updateCart(CartVO cart) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void deleteCart(Integer cart_num) {
+		cartMapper.deleteCart(cart_num);
+	}
+
+	@Override
+	public void insertCart(CartVO cart) {
 		// TODO Auto-generated method stub
 		
 	}

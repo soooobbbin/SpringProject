@@ -87,8 +87,9 @@ function selectAll(selectAll)  {
 			</c:forEach>
 		</ul>
 		</c:if>
-	
-	
-	
+</div>
+
+<div class="align-center">
+${page}
 </div>
 <!-- 내용 끝 -->

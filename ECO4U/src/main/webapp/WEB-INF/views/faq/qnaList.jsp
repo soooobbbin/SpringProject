@@ -75,7 +75,7 @@ function selectAll(selectAll)  {
 				<input type="button" value="   전체   " onclick="location.href='/faq/qnalist.do?category=0'">
 				<input type="button" value="   회원   " onclick="location.href='/faq/qnalist.do?category=1'" style="border-left:none;">
 				<input type="button" value="   상품/배송   "  onclick="location.href='/faq/qnalist.do?category=2'" style="border-left:none;">
-				<input type="button" value="   기타   "  onclick="location.href='/faq/qnalist.do?category=3'" style="border-left:none;">
+				<input type="button" value="   기타   "  onclick="location.href='/faq/qnalist.do?category=3'">
 			</li>
 			</ul>
 		<c:if test="${count == 0}">
@@ -94,7 +94,7 @@ function selectAll(selectAll)  {
 					 onclick="checkSelectAll()">
 					</div> -->
 					<div class="qnalist-image01">
-						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='detail.do?q_num=${qna.q_num}'">
+						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor2.png'" onclick="location.href='detail.do?q_num=${qna.q_num}'">
 					</div>
 					
 					<div class="qnalist-span01">

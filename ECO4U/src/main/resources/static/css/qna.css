@@ -93,13 +93,13 @@ body{
 .myqna_btn01 input[type="button"]{
 	margin-top:12px;
 	margin-right:-5px;
-	background: #f4f9f2;
+	background: white;
 	cursor:pointer;
 	border-radius:1px;
 	border-top:1px solid gray;
 	border-left:1px solid gray;
 	border-right:1px solid gray;
-	border-bottom:3px solid #f4f9f2;
+	border-bottom:3px solid white;
 	font-weight:bold;
 	font-size:14px;
 }
@@ -127,7 +127,7 @@ body{
 	border-radius:8px; 
 	width:49%;
 	height:678px;
-	background-color:none; 
+	background-color:white; 
 	padding-top:30px; 
 	margin-top: 50px; 
 	margin-left: -250px;

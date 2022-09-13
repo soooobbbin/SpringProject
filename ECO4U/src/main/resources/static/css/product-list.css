@@ -23,6 +23,11 @@ input[type="button"]{
 	border: 0;
 	margin-right: 23px;
 }
+
+input[type="button"]:active, input[type="button"]:visited, input[type="button"]:hover{
+	font-weight: bold;
+}
+
 ul{
 	margin:0;
 	padding:0;

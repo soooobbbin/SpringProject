@@ -83,7 +83,7 @@ $(function(){
       </a>
    </c:if>
    <c:if test="${!empty user && user.auth == 2}">
-      <a href="${pageContext.request.contextPath}/admin/m_allList.do"> 
+      <a href="${pageContext.request.contextPath}/admin/admin_list.do"> 
       <img src="${pageContext.request.contextPath}/images/home.png" class="home">
       </a>
    </c:if>

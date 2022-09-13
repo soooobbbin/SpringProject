@@ -15,7 +15,7 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
- 
+ <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.js"></script>
 
 
 
@@ -67,10 +67,10 @@
 				<ul>
 					<li>
 						<c:if test="${empty community.filename}">
-						<img src="${pageContext.request.contextPath}/images/no_image.png" width="130" height="160" class="my-photo">
+						<img src="${pageContext.request.contextPath}/images/no_image.png" width="160" height="130" class="com-photo">
 						</c:if>
 						<c:if test="${!empty community.filename}">
-						<img src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}" width="130" height="160" class="my-photo">
+						<img src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}" width="160" height="130" class="com-photo">
 						</c:if>
 					</li>
 					<li>

@@ -57,15 +57,23 @@
    <c:if test="${count > 0}">
    <table>         
       <c:forEach var="community" items="${list}">
+  
          <tr>
             <td>${community.id}   · ${community.reg_date}</td>
          </tr>
          <tr>
             <td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></td>
-         </tr>
+            <td>
+	              	<c:if test="${!empty community.filename}">
+	              <img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
+	               </c:if>
+	              </td>
+	              </tr>
+        
          <tr>
             <td>${community.c_hit}</td>
          </tr>
+       
       </c:forEach>
    </table>
    <div class="align-center">${page}</div>

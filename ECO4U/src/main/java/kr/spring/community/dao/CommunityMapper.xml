@@ -74,10 +74,7 @@
 	<!-- 글수정 -->
   	<update id="updateCommunity" parameterType="communityVO">
   		UPDATE community SET
-  		    <if test="filename != ''">
-  		    uploadfile=#{uploadfile},
-  		    filename=#{filename},
-  		    </if>
+  		    
   		    c_category=#{c_category},
   			c_title=#{c_title},
   			c_content=#{c_content}
@@ -85,5 +82,31 @@
   		WHERE c_num=#{c_num}
   	</update>
   	
+  	<!-- 댓글 목록 -->
+  	<select id="selectListComment" parameterType="map"
+  	                    resultType="communityCommentVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              com_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(com_content,'<','&lt;'),'>','&gt;') com_content,
+  		              ]]>
+  		              reg_date,
+  		              modify_date,
+  		              c_num,
+  		              mem_num,
+  		              id
+  		            FROM c_comment
+  		            JOIN member USING(mem_num)
+  		            WHERE c_num = #{c_num}
+  		            ORDER BY com_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
   	
 </mapper>

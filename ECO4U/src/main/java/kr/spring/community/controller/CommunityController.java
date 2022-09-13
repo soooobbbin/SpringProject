@@ -159,24 +159,23 @@ public class CommunityController {
 		return new ModelAndView("communityView","community",community);
 	}
 	
-	//===========파일다운로드===========//
-	@RequestMapping("/community/file.do")
-	public ModelAndView download(
-			   @RequestParam int c_num) {
-		
-		CommunityVO community = 
-				communityService.selectCommunity(c_num);
+
+	
+	//============ 이미지 출력 =============//
+	@RequestMapping("/community/imageView.do")
+	public ModelAndView viewImage(@RequestParam int c_num) {
+		System.out.println("c-num : " + c_num);
+		CommunityVO community = communityService.selectCommunity(c_num);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("downloadView");
-		mav.addObject("downloadFile", 
-				community.getUploadfile());
-		mav.addObject("filename", 
-				community.getFilename());
+		//뷰 이름
+		mav.setViewName("imageView");
+	
+		mav.addObject("imageFile", community.getUploadfile());
+		mav.addObject("filename", community.getFilename());
 		
 		return mav;
 	}
-	
 	
 	
 	//===========게시판 글수정===========//
@@ -238,7 +237,7 @@ public class CommunityController {
 		//View에 표시할 메시지
 		model.addAttribute("message", "글삭제 완료!!");
 		model.addAttribute("url", 
-				request.getContextPath()+"/community/list.do");
+				request.getContextPath()+"/community/list.do?c_category=\"+communityVO.getC_category()");
 		
 		return "common/resultView";
 	}

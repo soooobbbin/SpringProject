@@ -45,6 +45,9 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/intro/storeRegister.do")
 				.addPathPatterns("/intro/update.do")
 				.addPathPatterns("/intro/delete.do");
+		registry.addInterceptor(interceptor)
+        .addPathPatterns("/community/update.do")
+        .addPathPatterns("/community/delete.do");
 	}
 	
 	@Bean

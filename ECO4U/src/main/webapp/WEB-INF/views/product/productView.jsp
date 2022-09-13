@@ -12,9 +12,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/product-detail.css">
 
-<form action="detail.do" method="post">
-	<input type="hidden" name="p_num" value="${product.p_num}" />
-</form>
 
 <div class="page-main">
 	<div id="wrapper">
@@ -56,6 +53,8 @@
 			<!-- 수량 선택 -->
 			<div class="detail-buycount" id="detail-div">
 				<label class="text count">${product.p_name}</label>
+				<!-- 리뷰에 필요한 p_num 불러오기 -->
+				<input type="hidden" id="p_num" value="${product.p_num}" />
 				<button type="button" class="minus">-</button>
 				<input type="number" class="numBox" min="1" max="${product.p_quantity}" value="1" readonly="readonly"/>
 				<button type="button" class="plus">+</button>
@@ -149,7 +148,7 @@
 	
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
+		<input type="button" value="다음 리뷰 보기">
 	</div>
 	<!-- 리뷰 끝 -->
 	</div>

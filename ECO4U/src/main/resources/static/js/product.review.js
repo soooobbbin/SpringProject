@@ -25,18 +25,24 @@ $(function(){
 				}
 				
 				//리뷰 목록 작업
-				$(param.list).each(function(index,item){
+				$(param.list).each(function(index, item){
 					let output = '<div class="item">';
 					output += '<h4>';
 					output += item.id + '</h4>';
 					output += '<div class="sub-item">';
-					output += '<p>' + item.r_title.replace(/\r\n/g,'<br>') + '</p>';
+					output += '<h4>' + item.r_title.replace(/\r\n/g,'<br>') + '</h4>';
+					
+					if(item.r_photoname==null){
+						
+					}else{
+						output += '<img class="review-img" src="${pageContext.request.contextPath}/images/product/${item.r_photoname}">';
+					}
 					output += '<p>' + item.r_content.replace(/\r\n/g,'<br>') + '</p>';
 					
 					if(item.modify_date){
-						output += '<span class="modify-date">최근 수정일 : ' + item.modify_date + '</span>';
+						output += '<span class="modify-date">' + item.modify_date + ' 수정</span>';
 					}else{
-						output += '<span class="modify-date">등록일 : ' + item.reg_date + '</span>';
+						output += '<span class="modify-date">' + item.reg_date + '</span>';
 					}
 					
 					if(param.user_num==item.mem_num){

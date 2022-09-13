@@ -8,16 +8,16 @@
 		 COUNT(*)
 		FROM product
 		<where>
-			<if test="category == all">
+			<if test="category == 0">
 				p_category = 1 OR p_category = 2 OR p_category = 3
 			</if>
-			<if test="category == living">
+			<if test="category == 1">
 				p_category = 1
 			</if>
-			<if test="category == beauty">
+			<if test="category == 2">
 				p_category = 2
 			</if>
-			<if test="category == fashion">
+			<if test="category == 3">
 				p_category = 3
 			</if>
 		</where>
@@ -89,7 +89,7 @@
 		WHERE p_num=#{p_num}
 	</update>
 	
-	<!--리뷰 목록-->
+	<!--리뷰 목록 -->
 	<select id="selectListReview" parameterType="map" resultType="kr.spring.product.vo.P_reviewVO">
 		SELECT
 		 *

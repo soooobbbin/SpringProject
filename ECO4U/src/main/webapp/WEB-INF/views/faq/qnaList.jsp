@@ -84,11 +84,11 @@ function selectAll(selectAll)  {
 		<c:if test="${count > 0}">
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
-			<c:if test="${!empty user && user.mem_num == qna.mem_num}">
 			<!--  -->
 			<li class="qnalist-list">
 				<div class="box-parent">
-					<%-- <input type="hidden" value="${qna.q_category}"> --%>
+					<input type="hidden" value="${qna.q_category}">
+					<input type="hidden" value="${qna.mem_num}">
 					<!-- <div class="wish-check">
 					<input type="checkbox" id="select_product" name="select_product" 
 					 onclick="checkSelectAll()">
@@ -120,7 +120,6 @@ function selectAll(selectAll)  {
 					</div>
 				</div>
 			</li>
-			</c:if>
 			</c:forEach>
 		</ul>
 		</c:if>

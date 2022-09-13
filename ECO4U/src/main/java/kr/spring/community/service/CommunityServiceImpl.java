@@ -55,7 +55,7 @@ public class CommunityServiceImpl implements CommunityService{
 		//부모글 좋아요 삭제
 		communityMapper.deleteLikeByCommunityNum(c_num);
 		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
-		communityMapper.deleteCommentByCommunityNum(c_num);
+		communityMapper.deleteCommentByCNum(c_num);
 		//부모글 삭제
 		communityMapper.deleteCommunity(c_num);
 	}
@@ -111,13 +111,13 @@ public class CommunityServiceImpl implements CommunityService{
 
 	@Override
 	public void updateComment(CommunityCommentVO communityComment) {
-		// TODO Auto-generated method stub
+		communityMapper.updateComment(communityComment);
 		
 	}
 
 	@Override
 	public void deleteComment(Integer com_num) {
-		// TODO Auto-generated method stub
+		communityMapper.deleteComment(com_num);
 		
 	}
 

@@ -17,7 +17,7 @@ public interface ProductService {
 	public void changeStock(ProductVO product);
 	public void updateProduct(ProductVO product);
 	public void deleteProduct(Integer p_num);
-	public void deletePhoto(Integer p_num);
+	public void deletePhoto(Integer p_num); 
 	public void updateReviewCount(Integer p_num);
 
 	//리뷰

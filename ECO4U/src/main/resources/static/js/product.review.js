@@ -25,7 +25,7 @@ $(function(){
 				}
 				
 				//리뷰 목록 작업
-				$(param.list).each(function(index,item){
+				$(param.list).each(function(index, item){
 					let output = '<div class="item">';
 					output += '<h4>';
 					output += item.id + '</h4>';

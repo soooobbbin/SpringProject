@@ -15,7 +15,7 @@ public class P_reviewVO {
 	@NotEmpty
 	private String r_content; //리뷰내용
 	private byte[] r_photo; //이미지
-	private String r_photoname; //이미지이름
+	private String r_photoname; //이미지이름 
 	private Date reg_date;
 	private Date modify_date;
 	private int p_num; //상품번호

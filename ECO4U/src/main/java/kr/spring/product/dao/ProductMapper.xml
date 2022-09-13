@@ -112,7 +112,7 @@
 				  id
 				FROM p_review
 				JOIN member USING(mem_num)
-				WHERE p_num = #{p_num}
+				WHERE p_num = #{p_num} 
 				ORDER BY r_num DESC)a)
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

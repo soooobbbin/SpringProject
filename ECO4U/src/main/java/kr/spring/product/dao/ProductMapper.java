@@ -58,7 +58,7 @@ public interface ProductMapper {
 	@Delete("DELETE FROM p_review WHERE r_num=#{r_num}")
 	public void deleteReview(Integer r_num);
 	//상품 삭제 시 리뷰가 존재하면 상품 삭제 전 리뷰 삭제
-	@Delete("DELETE FROM p_review WHERE p_num=#{p_num}")
+	@Delete("DELETE FROM p_review WHERE p_num=#{p_num}") 
 	public void deleteReviewByP_Num(Integer p_num);
 	@Update("UPDATE p_review SET r_photo='',r_photoname='' WHERE r_num=#{r_num}")
 	public void deleteR_photo(Integer r_num);

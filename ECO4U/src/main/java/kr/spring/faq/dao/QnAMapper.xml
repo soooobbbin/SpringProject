@@ -7,16 +7,16 @@
 		FROM qna q JOIN member m
 		ON q.mem_num = m.mem_num AND q.mem_num=#{mem_num}
 		<where>
-			<if test="category == all">
+			<if test="category == 0">
 				q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3
 			</if>
-			<if test="category == member">
+			<if test="category == 1">
 				q.q_category = 1
 			</if>
-			<if test="category == product">
+			<if test="category == 2">
 				q.q_category = 2
 			</if>
-			<if test="category == others">
+			<if test="category == 3">
 				q.q_category = 3
 			</if>
 		</where>

@@ -43,6 +43,10 @@ public class FAQController {
 		return new FAQVO();
 	}
 	
+	@GetMapping("/faq/main.do")
+	public String main() {
+		return "faqMain";
+	}
 	//===========게시판 글 등록============//
 	//등록 폼
 	@GetMapping("/faq/faqwrite.do")

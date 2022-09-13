@@ -37,7 +37,7 @@ function selectAll(selectAll)  {
 	  })
 }
 </script> -->
-<div class="page" style="height: 793px;">
+<div class="page" style="height: 835px;">
 	<form action="qnalist.do" id="search_form"  method="get">
 	
 	<!-- 좌측 메뉴바 -->
@@ -79,7 +79,7 @@ function selectAll(selectAll)  {
 			</li>
 			</ul>
 		<c:if test="${count == 0}">
-		<div class="no-wish">관심 상품이 없습니다.</div>
+		<div class="no-wish">문의 내역이 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
 		<ul class="qnalist-ul">

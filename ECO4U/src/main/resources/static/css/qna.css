@@ -351,3 +351,20 @@ body{
    top: 139px;
 }
 /*end qnaView.jsp*/
+
+/*qnaView reply*/
+#qc_content{
+	margin-right: -13%;
+	width:75%;
+	border:none;
+	border-bottom:1px solid black;
+}
+.qna_btn03 input[type="submit"]{
+	float:right;
+	margin-right: 114px;
+	margin-top: -10px;
+	background:white;
+	border:none;
+	font-size:30px;
+}
+/*end qnaView reply*/

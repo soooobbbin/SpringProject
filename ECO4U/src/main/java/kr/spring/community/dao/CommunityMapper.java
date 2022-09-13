@@ -69,7 +69,7 @@ public interface CommunityMapper{
 		public void insertComment(CommunityCommentVO communityComment);
 		@Update("UPDATE c_comment SET "
 				+ "com_content=#{com_content}, "
-				+ "regdate=SYSDATE WHERE com_num=#{com_num}")
+				+ "modify_date=SYSDATE WHERE com_num=#{com_num}")
 		public void updateComment(CommunityCommentVO communityComment);
 		@Delete("DELETE FROM c_comment WHERE com_num=#{com_num}")
 		public void deleteComment(Integer com_num);

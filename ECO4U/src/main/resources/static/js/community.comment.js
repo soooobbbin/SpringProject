@@ -11,7 +11,7 @@ $(function(){
 		$('#loading').show();
 		
 		$.ajax({
-			url:'listReply.do',
+			url:'listComment.do',
 			type:'post',
 			data:{pageNum:pageNum,c_num:$('#c_num').val()},
 			dataType:'json',
@@ -38,12 +38,12 @@ $(function(){
 					
 					
 					output += '<div class="sub-item">';
-					output += '<p>' + item.re_content.replace(/\r\n/g,'<br>') + '</p>';
+					output += '<p>' + item.com_content.replace(/\r\n/g,'<br>') + '</p>';
 					
-					if(item.re_mdate){
+					if(item.modify_date){
 						output += '<span class="modify-date">최근 수정일 : ' + item.modify_date + '</span>';
 					}else{
-						output += '<span class="modify-date">등록일 : ' + item.modify_date + '</span>';
+						output += '<span class="modify-date">등록일 : ' + item.reg_date + '</span>';
 					}
 					
 					if(param.user_num==item.mem_num){
@@ -134,7 +134,7 @@ $(function(){
 			//남은 글자수 구하기
 			let remain = 300 - inputLength;
 			remain += '/300';
-			if($(this).attr('id')=='re_content'){
+			if($(this).attr('id')=='com_content'){
 				//등록 폼 글자수
 				$('#com_first .letter-count').text(remain);
 			}else{

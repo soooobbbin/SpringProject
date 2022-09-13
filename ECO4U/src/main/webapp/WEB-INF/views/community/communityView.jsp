@@ -24,33 +24,14 @@
 			조회 : ${community.c_hit}
 		</li>
 	</ul>
-	<ul>
-		<c:if test="${!empty community.filename}">
-		<li>
-			첨부파일 : <a href="file.do?c_num=${community.c_num}">${community.filename}</a>
-		</li>
-		</c:if>
-	</ul>
-	<hr size="1" width="100%">
-	<c:if test="${fn:endsWith(community.filename,'.jpg') ||
-	              fn:endsWith(community.filename,'.JPG') ||
-	              fn:endsWith(community.filename,'.jpeg') ||
-	              fn:endsWith(community.filename,'.JPEG') ||
-	              fn:endsWith(community.filename,'.gif') ||
-	              fn:endsWith(community.filename,'.GIF') ||
-	              fn:endsWith(community.filename,'.png') ||
-	              fn:endsWith(community.filename,'.PNG')}">
-	<div class="align-center">
-		<img src="imageView.do?c_num=${community.c_num}&c_category=${community.c_category}" style="max-width:800px;">
-	</div>
-	</c:if>
+	
 	<p>
 		${community.c_content}
 	</p>
 	<div>
 		<%-- 좋아요 --%>
-		<img id="output_fav" src="${pageContext.request.contextPath}/images/community/fav01.gif" width="40">
-		<span id="output_fcount"></span>
+		<img id="output_like" src="${pageContext.request.contextPath}/images/community/fav01.gif" width="40">
+		<span id="output_lcount"></span>
 	</div>
 	<hr size="1" width="100%">
 	<div class="align-right">
@@ -70,7 +51,7 @@
 		</script>  
 		</c:if>
 		<input type="button" value="목록"
-		       onclick="location.href='list.do'">
+		       onclick="location.href='list.do?c_category=1'">
 	</div>
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->
@@ -85,7 +66,7 @@
 			  <c:if test="${empty user}">disabled="disabled"</c:if>
 			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 			<c:if test="${!empty user}">
-			<div id="re_first">
+			<div id="com_first">
 				<span class="letter-count">300/300</span>
 			</div>
 			<div id="com_second" class="align-right">

@@ -122,7 +122,7 @@ public class CommunityVO {
 	@Override
 	public String toString() {
 		return "CommunityVO [c_num=" + c_num + ", c_title=" + c_title + ", c_content=" + c_content + ", c_hit=" + c_hit
-				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", filename=" + filename + ", c_category="
+				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date  + ", filename=" + filename + ", c_category="
 				+ c_category + ", c_auth=" + c_auth + ", mem_num=" + mem_num + ", id=" + id + "]";
 	}
 

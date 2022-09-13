@@ -1,6 +1,7 @@
 package kr.spring.community.controller;
 
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,7 +56,7 @@ public class CommunityAjaxController {
 	}
 	
 	
-	/*
+	
 	//==========부모글 좋아요============//
 	//부모글 좋아요 등록
 	@RequestMapping("/community/writeLike.do")
@@ -81,7 +82,7 @@ public class CommunityAjaxController {
 					communityService.selectLike(like);
 			
 			if(communityLike!=null) {//등록된 좋아요 정보가 있는 경우
-				communityService.deleteLike(communityLike.getLike_num());
+				communityService.deleteLike(communityLike.getC_like_num());
 				
 				mapJson.put("result", "success");
 				mapJson.put("status", "noLike");
@@ -118,12 +119,12 @@ public class CommunityAjaxController {
 			mapJson.put("count", communityService.selectLikeCount(
 					                     like.getC_num()));
 		}else {//로그인 된 경우
-			like.setC_num(user.getC_num());
+			like.setC_num(user.getMem_num());
 			
 			//등록된 좋아요 정보 읽기
 			CommunityLikeVO communityLike = communityService.selectLike(like);
 			
-			if(CommunityLike!=null) {//좋아요 등록
+			if(communityLike!=null) {//좋아요 등록
 				mapJson.put("status", "yesLike");
 				mapJson.put("count", communityService.selectLikeCount(
 						                     like.getC_num()));
@@ -140,7 +141,7 @@ public class CommunityAjaxController {
 	@RequestMapping("/community/writeComment.do")
 	@ResponseBody
 	public Map<String,String> writeComment(
-			  communityCommentVO communityCommentVO,
+			  CommunityCommentVO communityCommentVO,
 			  HttpSession session,
 			  HttpServletRequest request){
 		
@@ -230,7 +231,7 @@ public class CommunityAjaxController {
 		
 		MemberVO user = 
 				(MemberVO)session.getAttribute("user");
-		CommunityCommentVO db_reply = 
+		CommunityCommentVO db_comment = 
 				communityService.selectComment(
 						     communityCommentVO.getCom_num());
 		if(user==null) {//로그인이 되지 않는 경우
@@ -250,6 +251,6 @@ public class CommunityAjaxController {
 	}
 
 
-	*/
+
 	
 }

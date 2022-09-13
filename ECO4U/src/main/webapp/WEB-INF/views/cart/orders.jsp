@@ -29,15 +29,16 @@
 										${zip.zip_name} [${zip.zip_rec}] ${zip.zip_cell}<br>
 										${zip.zipcode}<br>
 										${zip.address1} ${zip.address2}
+										<hr size="1px" noshade="noshade" width="100%">
 									</div>
 									<div class="pop_content2">
-										<input type="button" value="배송지 내용 수정" onclick="location.href='/cart/zipcodeUpdate.do?zip_num=${zip.zip_num}'">
-										<input type="button" value="배송지 선택" onclick="location.href='/cart/updateauth.do?zip_num=${zip.zip_num}'">
+										<input type="button" value="배송지 내용 수정" id="btn-modify" onclick="location.href='/cart/zipcodeUpdate.do?zip_num=${zip.zip_num}'">
+										<input type="button" value="배송지 선택" id="btn-check" onclick="location.href='/cart/updateauth.do?zip_num=${zip.zip_num}'">
 									</div>
 							 	</c:forEach>
 							 </div>
 							<div class="align-center">${page}</div>
-				            <input type="button" value="배송지추가" onclick="location.href='zipcodeInsert.do'">
+				            <input type="button" value="배송지 추가" id="btn-add" onclick="location.href='zipcodeInsert.do'">
 				            <button type="button" class="btn_close">닫기</button>
 				         </div>
 				       </div>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -81,15 +82,19 @@ public class QnAController {
 	}
 	
 	//===========게시판 글 목록============//
-	@RequestMapping("/faq/qnalist.do")
+	@RequestMapping(value="/faq/qnalist.do",method=RequestMethod.GET)
 	public ModelAndView process(
+			HttpSession session,
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
 			@RequestParam(value="category",defaultValue="") String category) {
 		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("category", category);
+		map.put("mem_num",user.getMem_num());
 		
 		//글의 총개수(검색된 글의 개수)
 		int count = qnaService.selectRowCount(map);

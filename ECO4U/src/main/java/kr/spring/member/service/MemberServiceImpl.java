@@ -82,15 +82,17 @@ public class MemberServiceImpl implements MemberService{
 		memberMapper.deleteMember_detail(mem_num);
 		memberMapper.deleteMember(mem_num);
 	}
+	
+	//회원관리
+	@Override
+	public List<MemberVO> selectList(Map<String, Object> map) {
+		return memberMapper.selectList(map);
+	}
+	
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		return memberMapper.selectRowCount(map);
+	}
 
-	/*
-	 * @Override public List<MemberVO> selectList(Map<String, Object> map) { return
-	 * memberMapper.selectList(map); }
-	 * 
-	 * @Override public int selectRowCount(Map<String, Object> map) { return
-	 * memberMapper.selectRowCount(map); }
-	 * 
-	 * @Override public void updateByAdmin(MemberVO memberVO) {
-	 * memberMapper.updateByAdmin(memberVO); }
-	 */
+	
 }

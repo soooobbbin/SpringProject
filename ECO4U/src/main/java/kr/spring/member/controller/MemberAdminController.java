@@ -27,10 +27,35 @@ public class MemberAdminController {
 	private MemberService memberService;
 	
 	//==========회원목록==========//
-	@RequestMapping("/admin/m_allList.do")
-	public String main() {
-		// 타일스 설정의 식별자
-		return "admin";
+	@RequestMapping("/admin/admin_list.do")
+	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
+								@RequestParam(value="keyfield", defaultValue="")String keyfield,
+								@RequestParam(value="keyword", defaultValue="")String keyword) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//총 글의 개수 또는 검색된 글의 개수
+		int count = memberService.selectRowCount(map);
+		
+		logger.debug("<<count>>: "+count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "admin_list.do");
+		map.put("start", page.getStartRow());
+		map.put("end", page.getEndRow());
+		
+		List<MemberVO> list = null;
+		if(count > 0)
+			list = memberService.selectList(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin_memList");
+		mav.addObject("count",count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
 	}
 	
 }

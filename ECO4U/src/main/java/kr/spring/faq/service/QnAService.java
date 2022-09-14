@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.faq.vo.QnAVO;
+import kr.spring.faq.vo.QnAcommentVO;
 
 public interface QnAService {
 	//부모글
@@ -15,12 +16,10 @@ public interface QnAService {
 	public void deleteQnA(Integer q_num);
 	
 	//댓글
-//	public List<BoardReplyVO> selectListReply(
-//			                 Map<String,Object> map);
-//	public int selectRowCountReply(
-//			                 Map<String,Object> map);
-//	public BoardReplyVO selectReply(Integer re_num);
-//	public void insertReply(BoardReplyVO boardReply);
-//	public void updateReply(BoardReplyVO boardReply);
-//	public void deleteReply(Integer re_num);
+	public List<QnAcommentVO> selectListComment(Map<String,Object> map);
+	public int selectRowCountComment(Map<String,Object> map);
+	public QnAcommentVO selectComment(Integer qc_num);
+	public void insertComment(QnAcommentVO qnacomment);
+	public void updateComment(QnAcommentVO qnacomment);
+	public void deleteComment(Integer qc_num);
 }

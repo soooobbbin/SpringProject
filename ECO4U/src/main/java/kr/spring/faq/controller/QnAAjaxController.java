@@ -103,7 +103,7 @@ public class QnAAjaxController {
 	}
 	
 	//==========댓글 수정==========//
-	@RequestMapping("/qna/updateComment.do")
+	@RequestMapping("/faq/updateComment.do")
 	@ResponseBody
 	public Map<String,String> modifyComment(
 				  QnAcommentVO qnacommentVO,

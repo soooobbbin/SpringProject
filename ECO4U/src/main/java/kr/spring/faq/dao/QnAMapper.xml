@@ -86,14 +86,13 @@
   		              <![CDATA[
   		              REPLACE(REPLACE(qc_content,'<','&lt;'),'>','&gt;') qc_content,
   		              ]]>
-  		              reg_date,
-  		              modify_date,
+  		              qc.reg_date,
+  		              qc.modify_date,
   		              q_num,
   		              mem_num,
   		              mem_name
-  		            FROM qna_comment
-  		            JOIN member USING(mem_num) 
-  		            JOIN member_detail USING(mem_num)
+  		            FROM qna_comment qc
+  		            JOIN member_detail d USING(mem_num)
   		            WHERE q_num = #{q_num}
   		            ORDER BY qc_num DESC)a)
   		<![CDATA[

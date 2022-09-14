@@ -223,7 +223,7 @@ public class CommunityController {
 	}
 	
 	//==========게시판 글삭제==========//
-	@RequestMapping("/Community/delete.do")
+	@RequestMapping("/community/delete.do")
 	public String submitDelete(
 			       @RequestParam int c_num,
 			       Model model,

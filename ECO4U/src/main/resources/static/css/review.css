@@ -1,0 +1,73 @@
+/*writeReview.jsp*/
+.review_write_main{
+	margin: 120px 0 0 35%;
+}
+.review_write_main h2{
+	margin-bottom:20px;
+}
+.r_title_li{
+	list-style: none;
+	padding-left:0px;
+}
+.review_write_hr{
+	background:#7c8f83;
+    height:1px;
+    border:0;
+}
+.r_title_li input[type="text"]{
+	margin-top: 40px;
+	width: 462px;
+	height: 28px;
+	border-color:lightgray;
+	border-radius: 10px;
+}
+.r_title_li textarea{
+	margin-top: 30px;
+	width: 600px;
+	height: 200px;
+	border-color:lightgray;
+	border-radius: 7px;
+}
+.r_title_li input[type="text"]::placeholder, textarea::placeholder{
+	color: #d5d4d4;
+}
+#review_write_btn01{
+	margin: 42px 250px 0;
+}
+#review_write_btn01 button,#review_write_btn01 input[type="button"]{
+	margin-right:15px;
+	width:45px;
+	height:23px;
+	background-color: #7c8f83;
+	color:white;
+	border: none;
+	border-radius: 10px;
+	font-weight:bold;
+}
+.my-photo2{
+	width:130px;
+	height:140px;
+}
+.photoUpload li{
+	list-style: none;
+}
+.photoUpload_li{
+	margin: 40px 0 0 190px;
+}
+#upload{
+	float:left;
+}
+.review_write_btn02{
+	margin: 15px 0 0 115px;
+}
+#photo_reset{
+	width:20px;
+	height:20px;
+	cursor:pointer;
+}
+#r_content_ckeck{
+	padding-top:3px;
+	padding-left:544px;
+	font-size:11px;
+}
+/*end writeReview.jsp*/

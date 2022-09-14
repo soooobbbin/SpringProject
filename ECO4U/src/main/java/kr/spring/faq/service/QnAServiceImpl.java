@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.faq.dao.QnAMapper;
 import kr.spring.faq.vo.QnAVO;
+import kr.spring.faq.vo.QnAcommentVO;
 import kr.spring.member.vo.MemberVO;
 
 
@@ -48,6 +49,36 @@ public class QnAServiceImpl implements QnAService{
 	@Override
 	public void deleteQnA(Integer q_num) {
 		qnaMapper.deleteQnA(q_num);
+	}
+
+	@Override
+	public List<QnAcommentVO> selectListComment(Map<String, Object> map) {
+		return qnaMapper.selectListComment(map);
+	}
+
+	@Override
+	public int selectRowCountComment(Map<String, Object> map) {
+		return qnaMapper.selectRowCountComment(map);
+	}
+
+	@Override
+	public QnAcommentVO selectComment(Integer qc_num) {
+		return qnaMapper.selectComment(qc_num);
+	}
+
+	@Override
+	public void insertComment(QnAcommentVO qnacomment) {
+		qnaMapper.insertComment(qnacomment);
+	}
+
+	@Override
+	public void updateComment(QnAcommentVO qnacomment) {
+		qnaMapper.updateComment(qnacomment);
+	}
+
+	@Override
+	public void deleteComment(Integer qc_num) {
+		qnaMapper.deleteComment(qc_num);
 	}
 
 }

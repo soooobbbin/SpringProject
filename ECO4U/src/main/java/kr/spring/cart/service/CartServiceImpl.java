@@ -18,20 +18,28 @@ public class CartServiceImpl implements CartService{
 	private CartMapper cartMapper;
 
 	@Override
-	public List<CartVO> selectList(Map<String, Object> map) {
-		return cartMapper.selectList(map);
+	public void insertCart(CartVO cart) {
+		cartMapper.insertCart(cart);
+	}
+	@Override
+	public int selectTotalByMem_num(int mem_num) {
+		return cartMapper.selectTotalByMem_num(mem_num);
+	}
+	@Override
+	public List<CartVO> selectList(int mem_num) {
+		return cartMapper.selectList(mem_num);
 	}
 
 	@Override
-	public int selectRowCount(Map<String, Object> map) {
-		return cartMapper.selectRowCount(map);
+	public CartVO selectCart(CartVO cart) {
+		return cartMapper.selectCart(cart);
 	}
-
+	
 	@Override
-	public CartVO selectCart(Integer cart_num) {
-		return cartMapper.selectCart(cart_num);
+	public void updateCartByItem_num(CartVO cart) {
+		cartMapper.updateCartByItem_num(cart);
 	}
-
+	
 	@Override
 	public void updateCart(CartVO cart) {
 		// TODO Auto-generated method stub
@@ -43,11 +51,6 @@ public class CartServiceImpl implements CartService{
 		cartMapper.deleteCart(cart_num);
 	}
 
-	@Override
-	public void insertCart(CartVO cart) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void deleteCartChecked(String del_product) {
@@ -56,6 +59,9 @@ public class CartServiceImpl implements CartService{
 			cartMapper.deleteCart(Integer.parseInt(ajaxMsg[i]));
 		}
 	}
+
+	
+
 
 
 }

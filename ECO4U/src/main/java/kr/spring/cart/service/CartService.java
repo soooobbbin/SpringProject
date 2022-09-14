@@ -15,4 +15,5 @@ public interface CartService {
 	public CartVO selectCart(Integer cart_num);
 	public void updateCart(CartVO cart);
 	public void deleteCart(Integer cart_num);
+	public void deleteCartChecked(String del_product);
 }

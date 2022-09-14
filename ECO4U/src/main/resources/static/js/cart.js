@@ -1,25 +1,26 @@
 $(function(){
-	//댓글 삭제
+	
+	//장바구니 선택 삭제
 	$(document).on('click','#delete_btn',function(){
-		alert('버튼눌림');
-		if($("input:checkbox[name='select_product']:checked").length == 0){
+		
+		if($(".select-product:checked").length == 0){
 			alert('삭제할 항목을 선택해 주세요.');
 			return;
 		}
 		
-		var confirm = confirm('상품을 장바구니에서 삭제하시겠습니까?');
+		var check = confirm('상품을 장바구니에서 삭제하시겠습니까?');
 		
-		if(confirm){
-			var checkArr = new Array();
+		if(check){
+			var checkArr = [];
 			
-			$("input[name='select_product']:checked").each(function(){
-				checkArr.push($(this)).attr("data-cartNum");
+			$(".select-product:checked").each(function(index,item){
+				checkArr.push($(this).attr("data-cartnum"));
 			});
 			
 			$.ajax({
 			url:'deleteCart.do',
 			type:'post',
-			data:{select_product : checkArr},
+			data:{del_product : checkArr.toString()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -39,9 +40,6 @@ $(function(){
 		});
 			
 		}
-		
-		
-		
 		
 	});
 });

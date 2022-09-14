@@ -50,7 +50,7 @@ public interface CommunityMapper{
 		@Delete("DELETE FROM c_like WHERE c_like_num=#{c_like_num}")
 		public void deleteLike(Integer c_like_num);
 		@Delete("DELETE FROM c_like WHERE c_num=#{c_num}")
-		public void deleteLikeByCommunityNum(Integer c_num);
+		public void deleteLikeByCNum(Integer c_num);
 		
 		//댓글
 		

@@ -251,7 +251,7 @@ public class CommunityAjaxController {
 		return mapAjax;
 	}
 	//==========댓글 삭제==========//
-	@RequestMapping("/board/deleteComment.do")
+	@RequestMapping("/community/deleteComment.do")
 	@ResponseBody
 	public Map<String,String> deleteComment(
 			            @RequestParam int com_num,

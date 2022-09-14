@@ -33,5 +33,6 @@ public interface CommunityService {
 	public void updateComment(CommunityCommentVO communityComment);
 	public void deleteComment(Integer com_num);
 
+
 }
 

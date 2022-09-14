@@ -214,7 +214,7 @@ public class CommunityController {
 		//글수정
 		communityService.updateCommunity(communityVO);
 		
-		//View에 표히살 메시지
+		//View에 표시할 메시지
 		model.addAttribute("message", "글수정 완료!!");
 		model.addAttribute("url", 
 				request.getContextPath()+"/community/detail.do?c_num="+communityVO.getC_num());	
@@ -237,7 +237,7 @@ public class CommunityController {
 		//View에 표시할 메시지
 		model.addAttribute("message", "글삭제 완료!!");
 		model.addAttribute("url", 
-				request.getContextPath()+"/community/list.do?c_category=\"+communityVO.getC_category()");
+				request.getContextPath()+"/community/list.do?c_category="+1);
 		
 		return "common/resultView";
 	}

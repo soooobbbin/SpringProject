@@ -132,7 +132,7 @@ public class QnAAjaxController {
 		return mapAjax;
 	}
 	//==========댓글 삭제==========//
-	@RequestMapping("/qna/deleteComment.do")
+	@RequestMapping("/faq/deleteComment.do")
 	@ResponseBody
 	public Map<String,String> deleteComment(
 			            @RequestParam int qc_num,

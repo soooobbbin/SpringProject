@@ -7,6 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.like.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.comment.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
+
 <div class="page-main">
 	<h2>${community.c_title}</h2>
 	<ul class="detail-info">
@@ -60,11 +61,9 @@
 		<form id="com_form">
 			<input type="hidden" name="c_num"
 			   value="${community.c_num}" id="c_num">
-			<textarea rows="3" cols="50" 
-			  name="com_content" id="com_content"
-			  class="rep-content"
-			  <c:if test="${empty user}">disabled="disabled"</c:if>
-			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+			<textarea rows="3" cols="50"  name="com_content" id="com_content" class="comm-content"
+			  <c:if test="${empty user}">disabled="disabled"</c:if>>
+			  <c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 			<c:if test="${!empty user}">
 			<div id="com_first">
 				<span class="letter-count">300/300</span>

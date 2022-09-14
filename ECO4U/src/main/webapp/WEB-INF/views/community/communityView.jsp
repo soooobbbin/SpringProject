@@ -62,7 +62,7 @@
 			   value="${community.c_num}" id="c_num">
 			<textarea rows="3" cols="50" 
 			  name="com_content" id="com_content"
-			  class="com-content"
+			  class="rep-content"
 			  <c:if test="${empty user}">disabled="disabled"</c:if>
 			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 			<c:if test="${!empty user}">

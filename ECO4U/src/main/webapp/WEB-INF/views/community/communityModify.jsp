@@ -113,7 +113,7 @@
 					});
 				</script>
 				</c:if>
-						<input type="button" value="취소" id="photo_reset">
+						
 					</li>
 				</ul>
 			</div>

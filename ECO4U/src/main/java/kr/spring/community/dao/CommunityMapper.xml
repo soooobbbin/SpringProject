@@ -71,7 +71,19 @@
   		]]>
 	</select>
 	
-
+<!-- 글수정 -->
+  	<update id="updateCommunity" parameterType="communityVO">
+  		UPDATE community SET
+  		    <if test="filename != ''">
+  		    uploadfile=#{uploadfile},
+  		    filename=#{filename},
+  		    </if>
+  			c_title=#{c_title},
+  			c_content=#{c_content},
+  		    c_category=#{c_category},
+  		    modify_date=SYSDATE
+  		WHERE c_num=#{c_num}
+  	</update>
   	
   	<!-- 댓글 목록 -->
   	<select id="selectListComment" parameterType="map"

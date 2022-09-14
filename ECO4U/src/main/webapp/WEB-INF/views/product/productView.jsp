@@ -144,7 +144,11 @@
 	<!-- 리뷰 시작 -->
 	<div id="target1">
 		<h4>후기 (${product.review_count}건)</h4>
-		
+		<!-- 리뷰 등록 버튼 -->
+		<div class="review-write">
+			<button class="button" value="리뷰 등록" onclick="location.href='/product/writeReview.do?p_num=${product.p_num}'">리뷰 등록</button>
+		</div>
+		<!-- 리뷰 등록 버튼 끝-->
 		<div id="output"></div>
 		<div class="paging-button" style="display:none;">
 			<input type="button" value="다음 리뷰 보기">

@@ -7,20 +7,28 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.P_reviewVO;
 import kr.spring.product.vo.R_favVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class ProductAjaxController {
@@ -34,26 +42,45 @@ public class ProductAjaxController {
 	@Autowired
 	private ProductService productService;
 	
+	// 자바빈(VO) 초기화
+	@ModelAttribute
+	public P_reviewVO initCommand() {
+		return new P_reviewVO();
+	}
+	
 	// ========리뷰 등록=========//
 	@RequestMapping("/product/writeReview.do")
-	@ResponseBody
-	public Map<String, String> writeReview(P_reviewVO reviewVO, HttpSession session, HttpServletRequest request) {
+	// 등록 폼
+	@GetMapping("/product/writeReview.do")
+	public String form() {
+		return "writeReview";
+	}
+
+	// 등록 폼에서 전송된 데이터 처리
+	@PostMapping("/product/writeReview.do")
+	public String submit(@Valid P_reviewVO reviewVO, BindingResult result, HttpServletRequest request,
+			HttpSession session, Model model) {
 
 		logger.debug("<<리뷰 등록>> : " + reviewVO);
 
-		Map<String, String> mapAjax = new HashMap<String, String>();
+		// 유효성 검사 결과 오류가 있으면 폼 호출
+		if (result.hasErrors()) {
+			return form();
+		}
 
 		MemberVO user = (MemberVO) session.getAttribute("user");
-		if (user == null) {// 로그인 안 됨
-			mapAjax.put("result", "logout");
-		} else {// 로그인 됨
-				// 회원번호 등록
-			reviewVO.setMem_num(user.getMem_num());
-			// 리뷰 등록
-			productService.insertReview(reviewVO);
-			mapAjax.put("result", "success"); 
-		}
-		return mapAjax;
+
+		// 회원번호 셋팅
+		reviewVO.setMem_num(user.getMem_num());
+
+		// 글쓰기
+		productService.insertReview(reviewVO);
+
+		// View에 표시할 메시지
+		model.addAttribute("message", "리뷰 등록이 완료되었습니다.");
+		model.addAttribute("url", request.getContextPath() + "/product/listReview.do");
+
+		return "common/resultView";
 	}
 
 	// ==========리뷰 목록==========//
@@ -98,6 +125,34 @@ public class ProductAjaxController {
 		}
 
 		return mapAjax;
+	}
+	
+	// ========리뷰 상세===========//
+	@RequestMapping("/mypage/reviewDetail.do")
+	public ModelAndView detail(@RequestParam int r_num) {
+
+		logger.debug("<<r_num>> : " + r_num);
+		P_reviewVO review = productService.selectReview(r_num);
+
+		// 내용에 줄바꿈 처리하면서 태그를 허용하지 않음
+		review.setR_content(StringUtil.useBrNoHtml(review.getR_content()));
+
+		return new ModelAndView("reviewView", "review", review);
+	}
+
+	// =========이미지 출력=========//
+	@RequestMapping("/product/reviewImageView.do")
+	public ModelAndView viewImage(@RequestParam int r_num) {
+
+		P_reviewVO review = productService.selectReview(r_num);
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("reviewImageView");
+
+		mav.addObject("imageFile", review.getR_photo());
+		mav.addObject("filename", review.getR_photoname());
+
+		return mav;
 	}
 	
 	//==========리뷰 수정==========//

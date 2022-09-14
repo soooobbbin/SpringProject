@@ -7,6 +7,7 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/review.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product.review.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
@@ -129,26 +130,40 @@
 		</div>
 	<!-- 상품 헤더 끝 -->
 	
+	<!-- 카테고리를 누르면 해당 위치로 이동하는 스크립트 -->
+	<script>
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){ 
+           event.preventDefault();
+		$('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+		});
+	});
+	</script>
 	<!-- 상품 본문 시작 -->
 	<table class="product-category">
 		<tr>
-		<td id="detail">상세 설명</td>
-		<td id="review">구매 후기(${product.review_count})</td>
+		<td id="detail">
+			<a href="#target1" class="scroll">상세 설명</a></td>
+		<td id="review">
+			<a href="#target1" class="scroll">구매 후기(${product.review_count})</a></td>
 		</tr>
 	</table>
-	
-	<div class="product-detail align-center">
-		${product.p_cont2}
+	<div id="target1">
+		<div class="product-detail align-center">
+			${product.p_cont2}
+		</div>
 	</div>
 	<br>
 	<br>
 	<!-- 상품 본문 끝 -->
 	<!-- 리뷰 시작 -->
-	<h4>후기 (${product.review_count}건)</h4>
-	
-	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음 리뷰 보기">
+	<div id="target1">
+		<h4>후기 (${product.review_count}건)</h4>
+		
+		<div id="output"></div>
+		<div class="paging-button" style="display:none;">
+			<input type="button" value="다음 리뷰 보기">
+		</div>
 	</div>
 	<!-- 리뷰 끝 -->
 	</div>

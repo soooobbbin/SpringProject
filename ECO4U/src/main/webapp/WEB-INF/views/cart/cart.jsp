@@ -39,29 +39,24 @@ function selectAll(selectAll)  {
 		<p class="cart-right1">장바구니</p>
 		<p class="cart-right2"> > 주문/결제 > 주문완료</p>
 	</div>
-
-	
+	<c:if test="${empty list}">
+	<div class="result-display">
+		장바구니에 담은 상품이 없습니다.
+	</div>
+	</c:if>
+	<c:if test="${!empty list}">
 	<div class="cart-choice">
 	<span><input type="checkbox" id="selectall" name="selectall"
 	 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
 	<span> | <input type="button" value="선택 삭제" id="delete_btn"></span> 
 	</div>
 	
-	
-		<!-- 찜 목록에 상품이 담기지 않은 경우 -->
-		<c:if test="${count == 0}">
-		<div class="no-cart">장바구니에 담긴 상품이 없습니다.</div>
-		</c:if>
-		
-		<!-- 찜 목록에 상품이 담긴 경우 -->
-		<c:if test="${count > 0}">
-		
 		<ul class="cart-list-ul">
 			<c:forEach var="cart" items="${list}">
 			<div class="content-main">
 			<li class="cart-list-li">
 				<div class="box-parent">
-					<input type="hidden" value="${cart.p_category}">
+					<input type="hidden" value="${cart.productVO.p_category}">
 					<input type="hidden" value="${cart.mem_num}">
 					<input type="hidden" value="${cart.cart_num}">
 					<input type="hidden" value="${cart.p_num}">
@@ -71,21 +66,21 @@ function selectAll(selectAll)  {
 							<input type="checkbox" class="select-product" name="select_product" 
 							 onclick="checkSelectAll()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}">
 						 </div>
-						<span class="box-brand">[${cart.p_brand}]</span>
+						<span class="box-brand">[${cart.productVO.p_brand}]</span>
 					</div>
 					
 					<hr color="gray" width="95%" size="1">
 					<div class="div2">
 						<div class="product-image">
 						<a href="${pageContext.request.contextPath}/product/detail.do?p_num=${cart.p_num}">
-							<img src="../images/product/${cart.p_photoname}" width="80" height="80">
+							<img src="../images/product/${cart.productVO.p_photoname}" width="80" height="80">
 						</a>
 						</div>
 						<div class="product-box">
 							<a href="${pageContext.request.contextPath}/product/detail.do?p_num=${cart.p_num}">
-							<span class="box-title">${cart.p_name}</span><br>
+							<span class="box-title">${cart.productVO.p_name}</span><br>
 							</a>
-							<span class="box-price"><strong>${cart.p_price}</strong></span>
+							<span class="box-price"><strong>${cart.productVO.p_price}</strong></span>
 						</div>
 						<input type="button" value="삭제" class="delete-pro" data-cartnum="${cart.cart_num}">
 					</div>
@@ -93,7 +88,7 @@ function selectAll(selectAll)  {
 					<div class="div3">
 						<div class="cart-bottom-price">
 							<span>상품금액</span><br>
-							<span>${cart.p_dprice}</span>
+							<span>${cart.productVO.p_price}</span>
 						</div>
 						-
 						<div class="cart-bottom-price">
@@ -103,7 +98,7 @@ function selectAll(selectAll)  {
 						-
 						<div class="cart-bottom-price">
 							<span>배송비</span><br>
-							<span>${cart.p_dprice}</span>
+							<span>${cart.productVO.p_dprice}</span>
 						</div>
 						=
 						<div class="cart-bottom-price">
@@ -127,13 +122,10 @@ function selectAll(selectAll)  {
 			});
 			
 		</script> 
-		</c:if>
 		<div class="cart-order">
 			<input type="button" value="결제하기" onclick="location.href='orders.do'">
 		</div>
-	
+		</c:if>
 </div>
-<div class="align-center">
-${page}
-</div>
+
 <!-- 내용 끝 -->

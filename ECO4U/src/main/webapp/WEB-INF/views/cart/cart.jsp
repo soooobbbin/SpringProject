@@ -68,8 +68,8 @@ function selectAll(selectAll)  {
 					
 					<div class="div1">
 						<div class="check-box">
-							<input type="checkbox" id="select_product" name="select_product" 
-							 onclick="checkSelectAll()" data-cartNum="${cart.cart_num}" value="${cart.cart_num}">
+							<input type="checkbox" class="select-product" name="select_product" 
+							 onclick="checkSelectAll()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}">
 						 </div>
 						<span class="box-brand">[${cart.p_brand}]</span>
 					</div>
@@ -87,23 +87,13 @@ function selectAll(selectAll)  {
 							</a>
 							<span class="box-price"><strong>${cart.p_price}</strong></span>
 						</div>
-						<input type="button" value="삭제" id="delete_pro" data-cartNum="${cart.cart_num}">
-						<script type="text/javascript">
-							let delete_btn = document.getElementById('delete_pro');
-							//이벤트 연결
-							delete_btn.onclick=function(){
-								let choice = confirm('삭제하시겠습니까?');
-								if(choice){
-									location.replace('delete.do?cart_num=${cart.cart_num}');
-								}
-							};
-						</script> 
+						<input type="button" value="삭제" class="delete-pro" data-cartnum="${cart.cart_num}">
 					</div>
 					
 					<div class="div3">
 						<div class="cart-bottom-price">
 							<span>상품금액</span><br>
-							<span>${cart.p_price}</span>
+							<span>${cart.p_dprice}</span>
 						</div>
 						-
 						<div class="cart-bottom-price">
@@ -118,16 +108,25 @@ function selectAll(selectAll)  {
 						=
 						<div class="cart-bottom-price">
 							<span>주문금액</span><br>
-							<span id="item_total">${cart.p_price}+${cart.p_dprice}</span>
+							<span id="item_total">${cart.cart_total}</span>
 						</div>
 					</div>
 				</div>
 			</li>
-			
-			
 			</div>
 			</c:forEach>
 		</ul>
+		<script type="text/javascript">
+			$('.delete-pro').click(function(){
+				let choice = confirm('삭제하시겠습니까?');
+				if(choice){
+			        let del_btn = $(this).attr('data-cartnum');
+					location.replace('delete.do?cart_num='+del_btn);
+				}
+				
+			});
+			
+		</script> 
 		</c:if>
 		<div class="cart-order">
 			<input type="button" value="결제하기" onclick="location.href='orders.do'">

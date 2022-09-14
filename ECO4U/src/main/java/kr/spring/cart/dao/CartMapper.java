@@ -16,7 +16,7 @@ public interface CartMapper {
 
 	//장바구니
 	//장바구니에 상품담기
-	@Insert("INSERT INTO cart set (cart_num,order_quantity,"
+	@Insert("INSERT INTO cart (cart_num,order_quantity,"
 		  + "reg_date,mem_num,p_num) "
 		  + "VALUES(cart_seq.nextval,#{order_quantity},SYSDATE,#{mem_num},#{p_num})")
 	public void insertCart(CartVO cart);

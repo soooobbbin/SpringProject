@@ -1,5 +1,6 @@
 package kr.spring.cart.controller;
 
+import java.sql.Array;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,18 +97,7 @@ public class CartController {
 		
 		return mav;
 	}
-	//==========장바구니 선택 삭제=============//
-	@PostMapping("/cart/deleteCart.do")
-	public String delete(@RequestParam("select_product") List<Integer> list) {
-		
-		for(Integer cart_num : list) cartService.deleteCart(cart_num);
-		return "redirect:/cart/cart.do";
-	}
-
-
-
-
-
+	
 	//==========장바구니 개별 상품 삭제==========//
 	@RequestMapping("/cart/delete.do")
 	public String submitDelete(
@@ -115,7 +105,7 @@ public class CartController {
 			       Model model,
 			       HttpServletRequest request) {
 		
-		logger.debug("<<글삭제>> : " + cart_num);
+		logger.debug("<<장바구니 개별삭제>> : " + cart_num);
 		
 		//장바구니삭제
 		cartService.deleteCart(cart_num);

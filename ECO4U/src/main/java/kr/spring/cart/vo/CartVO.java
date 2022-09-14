@@ -20,8 +20,7 @@ public class CartVO {
 	private int p_category;
 	private String p_brand;
 	private int cart_total;
-	
-	
+
 	public int getCart_num() {
 		return cart_num;
 	}
@@ -107,7 +106,6 @@ public class CartVO {
 		this.p_brand = p_brand;
 	}
 	
-	
 	public int getCart_total() {
 		return cart_total;
 	}
@@ -122,10 +120,6 @@ public class CartVO {
 				+ p_photoname + ", p_category=" + p_category + ", p_brand=" + p_brand + ", cart_total=" + cart_total
 				+ "]";
 	}
-	
-	
-	
-	
 	
 	
 }

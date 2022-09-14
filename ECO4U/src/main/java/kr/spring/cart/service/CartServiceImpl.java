@@ -49,4 +49,13 @@ public class CartServiceImpl implements CartService{
 		
 	}
 
+	@Override
+	public void deleteCartChecked(String del_product) {
+		String[] ajaxMsg = del_product.split(",");
+		for(int i=0; i<ajaxMsg.length; i++) {
+			cartMapper.deleteCart(Integer.parseInt(ajaxMsg[i]));
+		}
+	}
+
+
 }

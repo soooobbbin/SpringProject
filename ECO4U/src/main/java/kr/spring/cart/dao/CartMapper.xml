@@ -29,7 +29,8 @@
   		              p_category,
   		              p_photo,
   		              p_photoname,
-  		              p_brand
+  		              p_brand,
+  		              p_dprice+p_price cart_total
   		            FROM cart c JOIN product p
   		            ON c.p_num = p.p_num AND c.mem_num=#{mem_num}
   		            ORDER BY c.cart_num DESC)a)

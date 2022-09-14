@@ -21,7 +21,7 @@
 
 <div class="page-main">
 <div class="align-center">
-	<h2 onclick="location.href='list.do'">Community</h2> </div>
+	<h2 onclick="location.href='list.do?c_category=1'">Community</h2> </div>
 	<form:form action="write.do" modelAttribute="communityVO"
 	        id="register_form"
 	        enctype="multipart/form-data">

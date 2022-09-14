@@ -15,8 +15,10 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
+ <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.js"></script>
 <div class="page-main">
-	<h2>글수정</h2>
+<div class="align-center">
+	<h2 onclick="location.href='list.do?c_category=1'">Community</h2> </div>
 	<form:form action="update.do" modelAttribute="communityVO"
 	        id="update_form"
 	        enctype="multipart/form-data">
@@ -58,25 +60,29 @@
 		            .catch( error => {
 		                console.error( error );
 		            } );
-			    </script>                
-			</li>
-			<li>
-				<c:if test="${empty community.filename}">
+			    </script>     
+			    
+			    <%-- 목록 이미지 등록 --%>
+			<div class="photoUpload">
+				<ul>
+					<li>
+						<c:if test="${empty community.filename}">
 						<img src="${pageContext.request.contextPath}/images/no_image.png" width="100" height="70" class="com-photo">
 						</c:if>
-						
-				<label for="upload">파일업로드</label>
-				<input type="file" name="upload" id="upload">
-				<c:if test="${!empty community.filename}">
+						<c:if test="${!empty community.filename}">
 						<img src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}" width="100" height="70" class="com-photo">
-						
+						</c:if>
+					</li>
+					<li>
 					
+					<label for="upload">파일업로드</label>
+				<input type="file" name="upload" id="upload">
+				<c:if test="${!empty communityVO.filename}">
 				<div id="file_detail">
 					(${communityVO.filename})파일 등록
 					<input type="button" value="파일삭제"
 					                      id="file_del">
 				</div>
-					
 				<script type="text/javascript">
 					$(function(){
 						$('#file_del').click(function(){
@@ -107,9 +113,15 @@
 					});
 				</script>
 				</c:if>
-				
+						<input type="button" value="취소" id="photo_reset">
+					</li>
+				</ul>
+			</div>
+	             
 			</li>
-		</ul>    
+			
+				
+		  </ul>
 		<div class="align-center">
 			<form:button>전송</form:button>
 			<input type="button" value="목록"

@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,13 @@ public class MemberAdminController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	//회원등록 폼 호출
+	@GetMapping("/admin/registerUser.do")
+	public String form() {
+		       //타일스 설정의 식별자
+		return "memberRegister";
+	}
 	
 	//==========회원목록==========//
 	@RequestMapping("/admin/admin_list.do")

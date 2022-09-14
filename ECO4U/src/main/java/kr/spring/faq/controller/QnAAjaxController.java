@@ -96,8 +96,7 @@ public class QnAAjaxController {
 		//로그인 한 회원정보 셋팅
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user!=null) {
-			mapAjax.put(
-					"user_num", user.getMem_num());
+			mapAjax.put("user_num", user.getMem_num());
 		}
 		
 		return mapAjax;

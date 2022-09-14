@@ -34,9 +34,7 @@ $(function(){
 					let output = '<div class="item">';
 					output += '<h4>';
 					
-					if(item.mem_name){
-						output += item.mem_name + '</h4>';
-					}
+					output += item.mem_name + '</h4>';
 					
 					output += '<div class="sub-item">';
 					output += '<p>' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';

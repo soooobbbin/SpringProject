@@ -20,9 +20,16 @@
 	<form:form action="update.do" modelAttribute="communityVO"
 	        id="update_form"
 	        enctype="multipart/form-data">
-	    <form:hidden path="community_num"/>    
+	    <form:hidden path="c_num"/>    
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>
+			<li><label for="c_category">카테고리</label>
+			<select name="c_category" id="c_category">
+					<option value="1"<c:if test="${c_category == 1}">selected</c:if>>TIP</option>
+					<option value="2"<c:if test="${c_category == 2}">selected</c:if>>함께해요</option>
+					<option value="3"<c:if test="${c_category == 3}">selected</c:if>>친환경 소식</option>
+				</select><br><br>
+			</li>
 			<li>
 				<label for="c_title">제목</label>
 				<form:input path="c_title"/>
@@ -31,8 +38,8 @@
 			</li>
 			<li><b>내용</b></li>
 			<li>
-				<form:textarea path="content"/>
-				<form:errors path="content" 
+				<form:textarea path="c_content"/>
+				<form:errors path="c_content" 
 				             cssClass="error-color"/>
 				 <script>
 				 function MyCustomUploadAdapterPlugin(editor) {
@@ -54,14 +61,22 @@
 			    </script>                
 			</li>
 			<li>
+				<c:if test="${empty community.filename}">
+						<img src="${pageContext.request.contextPath}/images/no_image.png" width="100" height="70" class="com-photo">
+						</c:if>
+						
 				<label for="upload">파일업로드</label>
 				<input type="file" name="upload" id="upload">
-				<c:if test="${!empty communityVO.c_filename}">
+				<c:if test="${!empty community.filename}">
+						<img src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}" width="100" height="70" class="com-photo">
+						
+					
 				<div id="file_detail">
-					(${communityVO.c_filename})파일 등록
+					(${communityVO.filename})파일 등록
 					<input type="button" value="파일삭제"
 					                      id="file_del">
 				</div>
+					
 				<script type="text/javascript">
 					$(function(){
 						$('#file_del').click(function(){
@@ -92,12 +107,13 @@
 					});
 				</script>
 				</c:if>
+				
 			</li>
 		</ul>    
 		<div class="align-center">
 			<form:button>전송</form:button>
 			<input type="button" value="목록"
-			            onclick="location.href='list.do'">
+			            onclick="location.href='list.do?c_category=1'">
 		</div>    
 	</form:form>
 </div>

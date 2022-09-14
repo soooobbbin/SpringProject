@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import kr.spring.community.service.CommunityService;
 import kr.spring.community.vo.CommunityCommentVO;
 import kr.spring.community.vo.CommunityLikeVO;
@@ -249,7 +250,40 @@ public class CommunityAjaxController {
 		}
 		return mapAjax;
 	}
-
+	//==========댓글 삭제==========//
+	@RequestMapping("/board/deleteComment.do")
+	@ResponseBody
+	public Map<String,String> deleteComment(
+			            @RequestParam int com_num,
+			            HttpSession session){
+		
+		logger.debug("<<com_num>> : " + com_num);
+		
+		Map<String,String> mapAjax =
+				new HashMap<String,String>();
+		
+		MemberVO user = 
+			(MemberVO)session.getAttribute("user");
+		CommunityCommentVO db_comment = 
+				communityService.selectComment(com_num);
+		if(user==null) {
+			//로그인이 되지 않은 경우
+			mapAjax.put("result", "logout");
+		}else if(user!=null && 
+		  user.getMem_num()==db_comment.getMem_num()) {
+			//로그인이 되어 있고 
+			//로그인한 회원번호와 작성자 회원번호 일치
+			
+			//댓글 삭제
+			communityService.deleteComment(com_num);
+			
+			mapAjax.put("result", "success");
+		}else {
+			//로그인한 회원번호와 작성자 회원번호 불일치
+			mapAjax.put("result", "wrongAccess");
+		}
+		return mapAjax;
+	}
 
 
 	

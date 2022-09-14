@@ -62,7 +62,7 @@
 			                console.error( error );
 			            } );
 				 </script>               
-				<%-- 가게 이미지 등록 --%>
+				<%-- 목록 이미지 등록 --%>
 			<div class="photoUpload">
 				<ul>
 					<li>

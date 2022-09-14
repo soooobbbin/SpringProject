@@ -70,7 +70,7 @@ $(function(){
 			error:function(){
 				//로딩 이미지 감추기
 				 $('#loading').hide();
-				 alert('네트워크 오류 발생');
+				 alert('네트워크 오류 발생 등록 폼');
 			}
 		});
 		
@@ -234,7 +234,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생 댓글 수정');
 			}
 		});
 		//기본 이벤트 제거

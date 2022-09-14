@@ -200,6 +200,7 @@
 			<input type="button" value="회원정보수정" id="btnmodify" onclick="location.href='update.do'">
 			<input type="button" value="비밀번호변경" id="btnupdate" onclick="location.href='updatepw.do'">
 			<input type="button" value="회원탈퇴" id="btndelete" onclick="location.href='delete.do'">
+			
 		</div>
 	</div>
 </div>

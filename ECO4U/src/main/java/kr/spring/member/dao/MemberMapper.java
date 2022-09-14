@@ -32,7 +32,7 @@ public interface MemberMapper {
 	public void insertkakaoMember(int mem_num,String id);
 	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_email) VALUES (#{mem_num},'카카오회원',#{id})")
 	public void insertkakaoMember_detail(int mem_num,String id);
-	@Insert("INSERT INTO zipcode (zip_num,mem_num) VALUES (zipcode_seq.nextval,#{mem_num})")
+	@Insert("INSERT INTO zipcode (zip_num,zip_auth,zip_rec,mem_num) VALUES (zipcode_seq.nextval,0,'카카오회원',#{mem_num})")
 	public void insertkakaoZipcode(int mem_num);
 	@Select("SELECT * FROM member WHERE id=#{id}") 
 	public MemberVO selectCheckkakaoMember(String id); 
@@ -59,7 +59,7 @@ public interface MemberMapper {
 	public void updatePassword(MemberVO member);
 	@Update("UPDATE member_detail SET mem_pw=#{mem_pw} WHERE mem_num=#{mem_num}")
 	public void updatefindPassword(Integer mem_num,String mem_pw);
-	@Delete("DELETE FROM member WHERE mem_num=#{mem_num}")
+	@Update("UPDATE member SET auth=0 WHERE mem_num=#{mem_num}")
 	public void deleteMember(Integer mem_num);
 	@Delete("DELETE FROM member_detail WHERE mem_num=#{mem_num}")
 	public void deleteMember_detail(Integer mem_num);

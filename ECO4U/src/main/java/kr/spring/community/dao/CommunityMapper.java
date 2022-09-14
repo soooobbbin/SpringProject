@@ -29,10 +29,6 @@ public interface CommunityMapper{
 		public CommunityVO selectCommunity(Integer c_num);
 		@Update("UPDATE community SET c_hit=c_hit+1 WHERE c_num=#{c_num}")
 		public void updateC_hit(Integer c_num);
-		@Update("UPDATE community SET c_content=#{c_content},"
-				+ "c_title=#{c_title},c_category=#{c_category},"
-			+ "uploadfile=#{uploadfile},filename=#{filename},"
-			+ "modify_date=SYSDATE WHERE c_num=#{c_num}")
 		public void updateCommunity(CommunityVO community);
 		@Delete("DELETE FROM community WHERE c_num=#{c_num}")
 		public void deleteCommunity(Integer c_num);

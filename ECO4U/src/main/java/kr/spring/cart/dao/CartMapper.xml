@@ -3,40 +3,37 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.cart.dao.CartMapper">  
-  	<select id="selectRowCount" parameterType="map"
-  	                    resultType="integer">
-		SELECT
-		  COUNT(*)
-		FROM cart c JOIN product p
-		ON c.p_num = p.p_num AND c.mem_num=#{mem_num}
-  	</select>
-  	
-  	<select id="selectList" parameterType="map"
-  	                         resultType="CartVO">
+	<resultMap type="cartVO" id="cartMap">
+		<result property="productVO.p_name" column="p_name"/>
+		<result property="productVO.p_status" column="p_status"/>
+		<result property="productVO.p_price" column="p_price"/>
+		<result property="productVO.p_dprice" column="p_dprice"/>
+		<result property="productVO.p_quantity" column="p_quantity"/>
+		<result property="productVO.p_category" column="p_category"/>
+		<result property="productVO.p_photo" column="p_photo"/>
+		<result property="productVO.p_photoname" column="p_photoname"/>
+		<result property="productVO.p_brand" column="p_brand"/>
+	</resultMap>
+	
+  	<select id="selectList" parameterType="integer" resultMap="cartMap">
   		SELECT
-  		   *
-  		FROM (SELECT
-  		        a.*,
-  		        rownum rnum
-  		      FROM (SELECT
-  		              c.cart_num,
-  		              c.mem_num,
-  		              p.p_num,
-  		              p.p_name,
-  		              p.p_price,
-  		              p.p_quantity,
-  		              p.p_dprice,
-  		              p_category,
-  		              p_photo,
-  		              p_photoname,
-  		              p_brand,
-  		              p_dprice+p_price cart_total
-  		            FROM cart c JOIN product p
-  		            ON c.p_num = p.p_num AND c.mem_num=#{mem_num}
-  		            ORDER BY c.cart_num DESC)a)
-  		<![CDATA[
-  		WHERE rnum >= #{start} AND rnum <= #{end}
-  		]]>
+             cart_num,
+             mem_num,
+             order_quantity,
+             p_num,
+             p_name,
+             p_price,
+             p_quantity,
+             p_dprice,
+             p_category,
+             p_photo,
+             p_photoname,
+             p_brand,
+            (order_quantity * p_price) + p_dprice cart_total
+           FROM cart JOIN product 
+           USING(p_num) 
+           WHERE mem_num=#{mem_num}
+           ORDER BY cart_num ASC
   	</select>
   	
 </mapper>

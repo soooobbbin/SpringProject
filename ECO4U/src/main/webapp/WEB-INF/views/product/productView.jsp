@@ -10,19 +10,32 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/review.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product.review.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/product.detail.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/product-detail.css">
 
-
 <div class="page-main">
+	<c:if test="${product.p_status == 2}"><!-- 미표시 상품 -->
+	<div class="result-display">
+		<div class="align-center">
+			본 상품은 판매 중지되었습니다.<br>
+			<input type="button" value="판매상품 보기" onclick="location.href='list.do'">
+		</div>
+	</div>
+	</c:if>
+	<c:if test="${product.p_status == 1}"><!-- 표시 상품 -->
 	<div id="wrapper">
 	<!-- 상품 헤더 시작 -->
 		<div class="detail-thumbnail">
-			<img
-				src="${pageContext.request.contextPath}/images/product/${product.p_photoname}"
-				width="400" height="400" class="thumbnail">
+			<img src="${pageContext.request.contextPath}/images/product/${product.p_photoname}"
+					width="400" height="400" class="thumbnail">
 		</div>
 		<div class="thumbnail-side">
+			<form id="product_cart" method="post">
+			<input type="hidden" name="p_num" value="${product.p_num}" id="p_num">
+			<input type="hidden" name="p_price" value="${product.p_price}" id="p_price">
+			<input type="hidden" name="p_quantity" value="${product.p_quantity}" id="p_quantity">
+			
 			<div class="detail-h2">
 				<span class="title">[${product.p_brand}] ${product.p_name}</span><br>
 			</div><br>
@@ -50,16 +63,15 @@
 			</div>
 
 			<hr class="hr">
-
+			
 			<!-- 수량 선택 -->
+			<c:if test="${product.p_quantity > 0}">
 			<div class="detail-buycount" id="detail-div">
 				<label class="text count">${product.p_name}</label>
 				<!-- 리뷰에 필요한 p_num 불러오기 -->
-				<input type="hidden" id="p_num" value="${product.p_num}" />
 				<button type="button" class="minus">-</button>
-				<input type="number" class="numBox" min="1" max="${product.p_quantity}" value="1" readonly="readonly"/>
+				<input type="number" name="order_quantity"  id="order_quantity" class="numBox" min="1" max="${product.p_quantity}" value="1" readonly="readonly"/>
 				<button type="button" class="plus">+</button>
-				
 				<script>
 					$(".minus").click(function(){
 						var num = $(".numBox").val();
@@ -85,48 +97,21 @@
 				</script>
 			</div>
 			<!-- 수량 선택 끝 -->
-
 			<!-- 최종 금액 -->
-			
-			<!-- 최종 금액 끝 -->
-
 			<hr class="hr">
 			<div class="cart-buy">
-				<button type="button" class="addCart_btn button">장바구니</button>
-				<script>
-					$(".addCart_btn").click(function(){
-						var p_num = $("#p_num").val();
-						var order_quantity = $(".numBox").val();
-						
-						var data = {
-								p_num : p_num,
-								order_quantity : order_quantity
-								};
-						
-						$.ajax({
-							url : "views/cart/cart",
-							type : "post",
-							data : data,
-							success : function(result){
-								
-								if(result == 1){
-									alert("장바구니에 상품이 담겼습니다.");
-									$(".numBox").val("1");
-								}else{
-									alert("회원만 사용할 수 있습니다.");
-									$(".numBox").val("1");
-								}
-								
-							},
-							error : function(){
-								alert("장바구니 추가 실패");
-							}
-						});
-					});
-				</script>
-				
+				<button type="submit" class="addCart_btn button">장바구니</button>
 				<button class="button" value="구매하기" onclick="location.href='/buy.do?p_num=${product.p_num}'">구매하기</button>
 			</div>
+			<!-- 최종 금액 끝 -->
+			</c:if>
+			<c:if test="${product.p_quantity <= 0}">
+				<li class="align-center">
+					<span class="sold-out">품절</span>
+				</li>
+			</c:if>
+			
+			</form>
 		</div>
 	<!-- 상품 헤더 끝 -->
 	
@@ -167,6 +152,7 @@
 	</div>
 	<!-- 리뷰 끝 -->
 	</div>
+	</c:if>
 </div>
 
 

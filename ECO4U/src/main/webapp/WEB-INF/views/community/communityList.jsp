@@ -3,8 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/community.like.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/community.css">
+
 <!-- 내용 시작 -->
 <div class="page-main">
    <div class="align-center">
@@ -65,13 +67,16 @@
             <td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></td>
             <td>
 	              	<c:if test="${!empty community.filename}">
-	              <img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
-	               </c:if>
+	              <a href="detail.do?c_num=${community.c_num}"><img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
+	              </a></c:if>
 	              </td>
 	              </tr>
         
          <tr>
-            <td>${community.c_hit}</td>
+            <td><img src="${pageContext.request.contextPath}/images/community/hit.png" width="18" height="18"> ${community.c_hit} 
+            <img src="${pageContext.request.contextPath}/images/community/like03.png" width="18" height="18"> <span id="output_lcount"></span>
+            <img src="${pageContext.request.contextPath}/images/community/comment.png" width="18" height="18"></td>
+            
          </tr>
        
       </c:forEach>

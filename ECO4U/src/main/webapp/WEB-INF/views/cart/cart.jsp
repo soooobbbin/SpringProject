@@ -90,12 +90,12 @@ function selectAll(selectAll)  {
 							<span>상품금액</span><br>
 							<span>${cart.productVO.p_price}</span>
 						</div>
-						-
+						+
 						<div class="cart-bottom-price">
 							<span>할인금액</span><br>
 							<span>0</span>
 						</div>
-						-
+						+
 						<div class="cart-bottom-price">
 							<span>배송비</span><br>
 							<span>${cart.productVO.p_dprice}</span>

@@ -1,25 +1,4 @@
-$(function(){
-
-	//========= 주문 수량 변경 =========//
-	$('#order_quantity').on('keyup mouseup',function(){
-		if($('#order_quantity').val() == ''){
-			$('#item_total_txt').text('총 주문 금액 : 0원');
-			return;
-		}
-		if($('#order_quantity').val() <= 0){
-			$('#order_quantity').val('');
-			return;
-		}
-		if(Number($('#item_quantity').val()) < $('#order_quantity').val()){
-			alert('수량이 부족합니다!');
-			$('#order_quantity').val('');
-			$('#item_total_txt').text('총 주문 금액 : 0원');
-			return;
-		}
-		let total = $('#item_price').val() * $('#order_quantity').val();
-		$('#item_total_txt').text('총 주문 금액 : ' + $.number(total) + '원');
-	});
-	
+$(function(){	
 	//========= 장바구니에 상품 담기 =========//
 	$('#product_cart').submit(function(event){
 		if($('#order_quantity').val()==''){
@@ -57,35 +36,68 @@ $(function(){
 		event.preventDefault();
 	});
 	
-	/*$(".addCart_btn").click(function(){
-		var p_num = $("#p_num").val();
-		var order_quantity = $(".numBox").val();
-		
-		var data = {
-				p_num : p_num,
-				order_quantity : order_quantity
-				};
-		
+	//========= 찜목록에 상품 담기 =========//
+	//좋아요 읽기
+	//좋아요 선택 여부와 총개수 표시
+	function selectData(board_num){
 		$.ajax({
-			url : "views/cart/cart",
-			type : "post",
-			data : data,
-			success : function(result){
-				
-				if(result == 1){
-					alert("장바구니에 상품이 담겼습니다.");
-					$(".numBox").val("1");
-				}else{
-					alert("회원만 사용할 수 있습니다.");
-					$(".numBox").val("1");
-				}
-				
+			url:'../cart/getWish.do',
+			type:'post',
+			data:{p_num:p_num},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				displayWish(param);
 			},
-			error : function(){
-				alert("장바구니 추가 실패");
+			error:function(){
+				alert('네트워크 오류 발생');
 			}
 		});
-	});*/
+	}
+	
+	//좋아요 등록
+	$('#wishlist').click(function(){
+		$.ajax({
+			url:'../cart/writeWish.do',
+			type:'post',
+			data:{board_num:$('#p_num').val()},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인 후 찜 추가해주세요!');
+				}else if(param.result == 'success'){
+					displayWish(param);
+				}else{
+					alert('찜 등록 시 오류 발생!');	
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	}); //좋아요 등록 끝
+	
+
+	//찜 표시
+	function displayWish(param){
+		let output;
+		if(param.status == 'noWish'){
+			output = '../images/heart_blank.png';
+		}else{
+			output = '../images/heart_full.png';
+		}
+		//문서 객체에 추가
+		$('#wishlist').attr('src',output);
+	}
+	
+	
+	//초기 데이터 표시
+	selectData($('#p_num').val());
+
+	
 	
 	
 	

@@ -52,7 +52,7 @@ $(function(){
       <div class="community2">
          <a href="${pageContext.request.contextPath}/community/list.do?c_category=1" id="communication">Communication</a>
           <br><br><br> 
-         <a href="${pageContext.request.contextPath}/faq/faqlist.do" id="QnA">QnA</a>
+         <a href="${pageContext.request.contextPath}/faq/faqlist.do" id="QnA">FAQ</a>
       </div>
    </div>
 </div>

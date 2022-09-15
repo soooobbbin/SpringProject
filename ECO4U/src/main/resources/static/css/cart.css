@@ -4,7 +4,7 @@
 }
 .content-main{
 	background-color:white;
-	width: 500px;
+	width: 100%;
     height: 210px;
     margin-bottom: 20px;
 }
@@ -14,20 +14,18 @@
     padding-top: 50px;
     width: 80%;
 }
-#cart-delete {
+input#delete_btn {
     border: none;
     background: none;
 }
 .cart-left{
+	width:70%;
 	float:left;	
-}
-.cart-right1{
-	float:left;
-	padding-left: 77%;	
 	font-weight: 700;
+    font-size: x-large;
 }
-.cart-right2{
-	float:left;	
+.cart-right {
+    float: right;
 }
 
 /*장바구니에 담긴 상품 없음*/
@@ -38,8 +36,11 @@
 }
 
 /*장바구니에 담긴 상품*/
+.box-brand {
+    margin-top: 3px;
+}
 .box-parent {
-    width:fit-content;
+    width:100%;
 }
 .check-box {
     float: left;
@@ -48,6 +49,7 @@
 .cart-choice {
     margin: 0 auto;
     width: 80%;
+    padding-bottom: 10px;
 }
 .product-image {
     width: fit-content;
@@ -57,17 +59,75 @@
 .product-box {
     padding-top: 20px;
 }
-.cart-list-ul{
-	margin: auto;
+/*content 영역*/
+.content {
     width: 80%;
+    margin: 0 auto;
+}
+.content1{
+    float: left;
+    width: 60%;
+    margin: 0 auto;
+    margin-right: 50px;
+}
+.content2{
+    width: 30%;
+    height: 400px;
+    background: white;
+    float: left;
+    margin: 0 auto;
+}
+.cart-list-ul{
+	margin: 0;
+    width: 100%;
     padding-left: 0;
 }
 .div1 {
     width: 500px;
     padding-top: 10px;
 }
+.div2-parent {
+    display: flex;
+}
 .div2 {
     clear: both;
+    width: 90%;
+    height: 110px;
+}
+.div2-1 {
+    float: right;
+    width: 50%;
+    padding-top: 10px;
+}
+/*수량변경 버튼*/
+button.minus, button.plus {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+input.quantity-width {
+    width: 30px;
+}
+input.cart-modify {
+    margin-left: 20px;
+    margin-top: 3px;
+    background: none;
+    border: 1px solid;
+    color: dimgray;
+}
+/*개별 상품 삭제 부분*/
+.div2-2 {
+    float: right;
+    width: 10%;
+}
+input.delete-pro {
+    margin-top: 10px;
+    border: none;
+    width: 15px;
+    text-align: center;
+    background: none;
+    color: darkgray;
+    font-size: 10px;
 }
 .div3 {
     clear: both;
@@ -75,6 +135,27 @@
     background: #d1ddd5;
     height: 66px;
 }
-
-
+.cart-bottom-price {
+    padding: 20px;
+    margin: 0 auto;
+}
+.price-span {
+    text-align: center;
+}
+.price-span.sale {
+    color: red;
+}
+span.span-sym {
+    margin: 20px 0px;
+    font-size: 2em;
+    color: darkgray;
+}
 /*결제하기*/
+.cart-order {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+
+

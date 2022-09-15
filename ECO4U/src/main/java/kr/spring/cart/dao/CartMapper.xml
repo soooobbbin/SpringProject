@@ -29,6 +29,7 @@
              p_photo,
              p_photoname,
              p_brand,
+             p_status,
             (order_quantity * p_price) + p_dprice cart_total
            FROM cart JOIN product 
            USING(p_num) 

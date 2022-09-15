@@ -94,10 +94,10 @@
 			</c:if>
 		</form>
 	</div>
-<!--  -->
+	<!-- 댓글 목록 -->
 	<div id="output"></div>
 	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
+		<input type="button" value="더보기">
 	</div>
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/faq/loading.gif" width="100" height="100">

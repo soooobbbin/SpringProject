@@ -32,9 +32,8 @@ $(function(){
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
-					output += '<h4>';
-					
-					output += item.mem_name + '</h4>';
+					output += '<span id="commentname">';
+					output += item.mem_name + '님' + '</span>';
 					
 					output += '<div class="sub-item">';
 					output += '<p>' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
@@ -42,13 +41,14 @@ $(function(){
 					if(item.modify_date){
 						output += '<span class="modify-date">최근 수정일 : ' + item.modify_date + '</span>';
 					}else{
-						output += '<span class="modify-date">등록일 : ' + item.reg_date + '</span>';
+						output += '<span class="modify-date">' + item.reg_date + '</span>';
 					}
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.qc_num +'" value="수정" class="modify-btn">';
 						output += ' <input type="button" data-num="'+ item.qc_num +'" value="삭제" class="delete-btn">';
+						output += '<span style="float:right; font-weight:bold">' + '&nbsp;&nbsp;|&nbsp;' + '</span>';
+						output += ' <input type="button" data-num="'+ item.qc_num +'" value="수정" class="modify-btn">';
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';
@@ -78,7 +78,7 @@ $(function(){
 	
 	//다음 댓글 보기 버튼 클릭시 데이터 추가
 	$('.paging-button input').click(function(){
-		selectList(currentPage + 1);
+		selectQnAList(currentPage + 1);
 	});
 	
 	//댓글 등록
@@ -153,12 +153,12 @@ $(function(){
 		let modifyUI = '<form id="mqc_form">';
 		modifyUI += '<input type="hidden" name="qc_num" id="mqc_num" value="'+ qc_num +'">';
 		modifyUI += '<textarea rows="1" cols="100" name="qc_content" id="mqc_content" class="qcom-content">'+ content +'</textarea>';
-		modifyUI += '<div id="mqc_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mqc_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
 		modifyUI += ' <input type="button" value="취소" class="qc-reset">';
+		modifyUI += '<span style="float:right; font-weight:bold">' + '&nbsp;&nbsp;|&nbsp;' + '</span>';
+		modifyUI += '<input type="submit" value="완료">';
 		modifyUI += '</div>';
-		modifyUI += '<hr size="1" noshade width="96%">';
+		modifyUI += '<hr size="1" noshade width="100%">';
 		modifyUI += '</form>';
 		
 		//이전에 이미 수정하는 댓글이 있을 경우 수정 버튼을
@@ -273,6 +273,7 @@ $(function(){
 
 	//초기 데이터(목록) 호출
 	selectQnAList(1);
+	
 });
 
 

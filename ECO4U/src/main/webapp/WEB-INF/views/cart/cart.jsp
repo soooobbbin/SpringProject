@@ -67,8 +67,8 @@ function selectAll(selectAll)  {
 							 onclick="checkSelectAll()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}">
 						 </div>
 						<span class="box-brand">[${cart.productVO.p_brand}]</span>
-					</div>
-					
+					</div>  
+					  
 					<hr color="gray" width="95%" size="1">
 					<div class="div2">
 						<div class="product-image">

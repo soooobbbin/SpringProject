@@ -25,7 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.P_reviewVO;
+import kr.spring.product.vo.ProductVO;
 import kr.spring.product.vo.R_favVO;
+import kr.spring.cart.vo.CartVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -52,23 +54,29 @@ public class ProductAjaxController {
 	@RequestMapping("/product/writeReview.do")
 	// 등록 폼
 	@GetMapping("/product/writeReview.do")
-	public String form() {
+	public String form(Model model) {
+		model.addAttribute("reviewVO", new P_reviewVO());
 		return "writeReview";
 	}
 
 	// 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/product/writeReview.do")
-	public String submit(@Valid P_reviewVO reviewVO, BindingResult result, HttpServletRequest request,
+	public String submit(@ModelAttribute("reviewVO") @Valid P_reviewVO reviewVO, BindingResult result, HttpServletRequest request,
 			HttpSession session, Model model) {
 
 		logger.debug("<<리뷰 등록>> : " + reviewVO);
 
 		// 유효성 검사 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
-			return form();
+			return form(model);
 		}
 
-		MemberVO user = (MemberVO) session.getAttribute("user");
+	      Map<String,String> mapAjax = new HashMap<String,String>();
+	      MemberVO user = (MemberVO)session.getAttribute("user");
+	      if(user==null) {//로그인이 되지 않은 경우
+	         mapAjax.put("result", "logout");
+	      }else {
+	         reviewVO.setMem_num(user.getMem_num());
 
 		// 회원번호 셋팅
 		reviewVO.setMem_num(user.getMem_num());
@@ -79,7 +87,8 @@ public class ProductAjaxController {
 		// View에 표시할 메시지
 		model.addAttribute("message", "리뷰 등록이 완료되었습니다.");
 		model.addAttribute("url", request.getContextPath() + "/product/listReview.do");
-
+	    }
+	      
 		return "common/resultView";
 	}
 

@@ -1,11 +1,12 @@
 $(function() {
 	$('#review_write_btn03').click(function(){
 		alert("취소가 완료되었습니다.");
-		/*location.href="주문내역으로.do";*/
-	});
-	$('#review_write_btn01').click(function(){
-		alert("취소가 완료되었습니다.");
 		history.back();
+	});
+	$('#review_write_btn02').click(function(){
+		alert("등록이 완료되었습니다.");
+		history.back();
+		/*location.href="주문내역으로.do";*/
 	});
 	
 	//처음 화면에 보여지는 이미지 읽기

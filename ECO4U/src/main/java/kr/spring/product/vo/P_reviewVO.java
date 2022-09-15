@@ -23,6 +23,8 @@ public class P_reviewVO {
 	
 	private String id; //회원id
 	
+	private ProductVO productVO;
+	
 	// ========이미지 BLOB 처리===============//
 	// (주의) 폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야 함
 	public void setUpload(MultipartFile upload) throws IOException {
@@ -97,10 +99,19 @@ public class P_reviewVO {
 	}
 	
 
+	public ProductVO getProductVO() {
+		return productVO;
+	}
+
+	public void setProductVO(ProductVO productVO) {
+		this.productVO = productVO;
+	}
+	
+
 	//byte[] 타입의 프로퍼티 제외
 	@Override
 	public String toString() {
 		return "P_reviewVO [r_num=" + r_num + ", r_title=" + r_title + ", r_content=" + r_content + ", r_photoname=" + r_photoname
-				+ ", p_num=" + p_num + ", mem_num=" + mem_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", id=" + id + "]";
+				+ ", p_num=" + p_num + ", mem_num=" + mem_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", id=" + id + ", productVO=" + productVO + "]";
 	}
 }

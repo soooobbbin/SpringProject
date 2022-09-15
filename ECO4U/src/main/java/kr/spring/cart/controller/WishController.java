@@ -109,16 +109,16 @@ public class WishController {
 
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user == null) {
-			mapJson.put("status", "noFav");
+			mapJson.put("status", "noWish");
 		}else { //로그인 된 경우
 			wish.setMem_num(user.getMem_num());
 			
 			//등록된 좋아요 정보 읽기
 			WishVO productWish = wishService.selectWish(wish);
 			if(productWish!=null) {//좋아요 등록
-				mapJson.put("status", "yesFav");
+				mapJson.put("status", "yesWish");
 			}else {//좋아요 미등록
-				mapJson.put("status", "noFav");
+				mapJson.put("status", "noWish");
 			}
 		}
 		return mapJson;

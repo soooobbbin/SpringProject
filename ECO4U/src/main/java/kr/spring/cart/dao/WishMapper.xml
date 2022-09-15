@@ -15,7 +15,7 @@
 		<result property="productVO.p_brand" column="p_brand"/>
 	</resultMap>
 	 
-  	<select id="selectRowCount" parameterType="integer" resultMap="wishMap">
+  	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
 		FROM wish w JOIN product p
@@ -36,7 +36,7 @@
 		</where>
   	</select>
   	
-  	<select id="selectList" parameterType="integer" resultMap="wishMap">
+  	<select id="selectList" parameterType="map" resultType="WishVO">
   		SELECT
   		   *
   		FROM (SELECT

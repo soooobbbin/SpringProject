@@ -39,7 +39,7 @@ $(function(){
 	//========= 찜목록에 상품 담기 =========//
 	//좋아요 읽기
 	//좋아요 선택 여부와 총개수 표시
-	function selectData(board_num){
+	function selectData(p_num){
 		$.ajax({
 			url:'../cart/getWish.do',
 			type:'post',
@@ -61,7 +61,7 @@ $(function(){
 		$.ajax({
 			url:'../cart/writeWish.do',
 			type:'post',
-			data:{board_num:$('#p_num').val()},
+			data:{p_num:$('#p_num').val()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -70,6 +70,8 @@ $(function(){
 					alert('로그인 후 찜 추가해주세요!');
 				}else if(param.result == 'success'){
 					displayWish(param);
+					alert('찜 목록에 추가했습니다.');
+					location.href='../cart/wishList.do';
 				}else{
 					alert('찜 등록 시 오류 발생!');	
 				}

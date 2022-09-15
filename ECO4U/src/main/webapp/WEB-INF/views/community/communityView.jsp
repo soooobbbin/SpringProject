@@ -31,8 +31,11 @@
 	</p>
 	<div>
 		<%-- 좋아요 --%>
-		<img id="output_like" src="${pageContext.request.contextPath}/images/community/fav01.gif" width="40">
+		<img id="output_like" src="${pageContext.request.contextPath}/images/community/like01.png" width="40">
 		<span id="output_lcount"></span>
+		<%-- 댓글 카운트 --%>
+		&nbsp;<img id="output_comment" src="${pageContext.request.contextPath}/images/community/comment02.png" width="40">
+
 	</div>
 	<hr size="1" width="100%">
 	<div class="align-right">
@@ -56,12 +59,22 @@
 	</div>
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->
+	
+	<!-- 댓글 목록 출력 -->
+	<div id="output"></div>
+	<div class="paging-button" style="display:none;">
+		<input type="button" value="다음글 보기">
+	</div>
+	<div id="loading" style="display:none;">
+		<img src="${pageContext.request.contextPath}/images/community/loading.gif" width="100" height="100">
+	</div>
+	<!-- 댓글 UI 끝 -->
 	<div id="comment_div">
 		<span class="com-title">댓글 달기</span>
 		<form id="com_form">
 			<input type="hidden" name="c_num"
 			   value="${community.c_num}" id="c_num">
-			<textarea rows="3" cols="50"  name="com_content" id="com_content" class="comm-content"
+			<textarea rows="5" cols="65"  name="com_content" id="com_content" class="comm-content"
 			  <c:if test="${empty user}">disabled="disabled"</c:if>>
 			  <c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 			<c:if test="${!empty user}">
@@ -74,14 +87,5 @@
 			</c:if>
 		</form>
 	</div>
-	<!-- 댓글 목록 출력 -->
-	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
-	</div>
-	<div id="loading" style="display:none;">
-		<img src="${pageContext.request.contextPath}/images/community/loading.gif" width="100" height="100">
-	</div>
-	<!-- 댓글 UI 끝 -->
 </div>
 <!-- 내용 끝 -->

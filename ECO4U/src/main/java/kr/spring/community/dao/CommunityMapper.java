@@ -51,6 +51,8 @@ public interface CommunityMapper{
 		public void deleteLike(Integer c_like_num);
 		@Delete("DELETE FROM c_like WHERE c_num=#{c_num}")
 		public void deleteLikeByCNum(Integer c_num);
+		@Update("UPDATE c_like SET like_count=like_count+1 WHERE c_num=#{c_num}")
+		public void updateLike_count(Integer c_num);
 		
 		//댓글
 		
@@ -77,6 +79,7 @@ public interface CommunityMapper{
 		@Delete("DELETE FROM c_comment "
 				+ "WHERE c_num=#{c_num}")
 		public void deleteCommentByCNum(Integer c_num);
+	
 		
 			
 			

@@ -70,7 +70,7 @@ public class CommunityServiceImpl implements CommunityService{
 		return communityMapper.selectLike(like);
 	}
 	
-
+	
 	@Override
 	public int selectLikeCount(Integer c_num) {
 		return communityMapper.selectLikeCount(c_num);

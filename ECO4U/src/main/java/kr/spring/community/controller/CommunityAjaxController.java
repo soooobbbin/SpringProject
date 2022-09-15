@@ -82,6 +82,7 @@ public class CommunityAjaxController {
 			CommunityLikeVO communityLike = 
 					communityService.selectLike(like);
 			
+			
 			if(communityLike!=null) {//등록된 좋아요 정보가 있는 경우
 				communityService.deleteLike(communityLike.getC_like_num());
 				

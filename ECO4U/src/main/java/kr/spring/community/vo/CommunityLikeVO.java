@@ -7,7 +7,6 @@ public class CommunityLikeVO {
 	private int c_num;
 	private int mem_num;
 	
-	
 	public int getMem_num() {
 		return mem_num;
 	}

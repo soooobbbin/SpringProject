@@ -25,6 +25,7 @@ public interface CommunityService {
 	public void insertLike(CommunityLikeVO communityLike);
 	public void deleteLike(Integer c_like_num);
 
+
 	//댓글
 	public List<CommunityCommentVO> selectListComment(Map<String,Object> map);
 	public int selectRowCountComment(Map<String,Object> map);

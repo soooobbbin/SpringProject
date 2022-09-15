@@ -21,7 +21,7 @@ public interface WishMapper {
 	//찜목록
 	public List<WishVO> selectList(Map<String,Object>map);
 	public int selectRowCount(Map<String,Object> map);
-	@Select("SELECT * FROM wish WHERE w_num=#{w_num} AND mem_num=#{mem_num}")
+	@Select("SELECT * FROM wish WHERE p_num=#{p_num} AND mem_num=#{mem_num}")
 	public WishVO selectWish(WishVO wish);
 	public void updateWish(Integer w_num);
 	@Delete("DELETE FROM wish WHERE w_num=#{w_num}")

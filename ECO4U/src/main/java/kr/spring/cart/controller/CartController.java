@@ -64,7 +64,6 @@ public class CartController {
          
          //기존에 등록된 동일 상품이 있는지 체크
          CartVO db_cart = cartService.selectCart(cartVO);
-         System.out.println("eeeeeee"+ db_cart);
          if(db_cart==null) {//등록된 동일 상픔 없음
             cartService.insertCart(cartVO);
             mapAjax.put("result", "success");

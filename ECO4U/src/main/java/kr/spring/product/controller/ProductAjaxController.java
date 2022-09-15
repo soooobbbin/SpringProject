@@ -52,20 +52,21 @@ public class ProductAjaxController {
 	@RequestMapping("/product/writeReview.do")
 	// 등록 폼
 	@GetMapping("/product/writeReview.do")
-	public String form() {
+	public String form(Model model) {
+		model.addAttribute("reviewVO", new P_reviewVO());
 		return "writeReview";
 	}
 
 	// 등록 폼에서 전송된 데이터 처리
 	@PostMapping("/product/writeReview.do")
-	public String submit(@Valid P_reviewVO reviewVO, BindingResult result, HttpServletRequest request,
+	public String submit(@ModelAttribute("reviewVO") @Valid P_reviewVO reviewVO, BindingResult result, HttpServletRequest request,
 			HttpSession session, Model model) {
 
 		logger.debug("<<리뷰 등록>> : " + reviewVO);
 
 		// 유효성 검사 결과 오류가 있으면 폼 호출
 		if (result.hasErrors()) {
-			return form();
+			return form(model);
 		}
 
 		MemberVO user = (MemberVO) session.getAttribute("user");

@@ -1,6 +1,6 @@
 #wrapper{
 	width: 900px;
-	margin: 100px auto 0 auto;
+	margin: 100px auto auto 450px;
 }
 
 /*상품 헤더*/
@@ -78,7 +78,7 @@ button.plus{
 /*본문*/
 .product-category{
 	margin:60px 0;
-	width:900px;
+	width:1000px;
 	border:2px solid #797979;
 	 border-collapse: collapse;
 	text-align:center;

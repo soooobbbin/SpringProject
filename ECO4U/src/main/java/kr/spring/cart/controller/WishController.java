@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.WishService;
+import kr.spring.cart.vo.CartVO;
 import kr.spring.cart.vo.WishVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
@@ -39,6 +41,89 @@ public class WishController {
 		return new WishVO();
 	}
 	
+	//찜 등록
+//	@RequestMapping("/cart/registerWish.do")
+//	@ResponseBody
+//	public Map<String,String> submit(WishVO wishVO, HttpSession session){
+//		logger.debug("<<WishVO>> : " + wishVO);
+//		
+//		Map<String,String> mapAjax = new HashMap<String,String>();
+//		MemberVO user = (MemberVO)session.getAttribute("user");
+//		if(user==null) {//로그인이 되지 않은 경우
+//			mapAjax.put("result", "logout");
+//		}else {
+//			wishVO.setMem_num(user.getMem_num());
+//			
+//			//기존에 등록된 동일 상품이 있는지 체크
+//			WishVO db_cart = wishService.selectWish(wishVO);
+//			if(db_cart==null) {//등록된 동일 상픔 없음
+//				wishService.insertWish(wishVO);
+//				mapAjax.put("result", "success");
+//				mapAjax.put("status", "yesWish");
+//			}
+//		}
+//		return mapAjax;
+//	}
+	//찜 등록
+	@RequestMapping("/cart/writeWish.do")
+	@ResponseBody
+	public Map<String,Object> writeFav(WishVO wish, 
+			HttpSession session){
+		logger.debug("<<부모글 좋아요 등록>> : " + wish);
+
+		Map<String,Object> mapJson = new HashMap<String,Object>();
+
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user == null) {
+			mapJson.put("result", "logout");
+		}else {
+			//로그인된 회원번호 세팅
+			wish.setMem_num(user.getMem_num());
+
+			//기존에 등록된 좋아요 확인
+			WishVO productWish = wishService.selectWish(wish);
+
+			if(productWish!=null) { //등록된 좋아요 정보가 있는 경우
+				wishService.deleteWish(productWish.getW_num());
+
+				mapJson.put("result", "success");
+				mapJson.put("status", "noWish");
+		
+			}else { 
+				wishService.insertWish(wish);
+
+				mapJson.put("result", "success");
+				mapJson.put("status", "yesWish");
+			}
+		}
+		return mapJson;
+	}
+	//부모글 좋아요 읽기
+	@RequestMapping("/cart/getWish.do")
+	@ResponseBody
+	public Map<String,Object> getFav(WishVO wish, 
+									HttpSession session){
+		logger.debug("<<게시판 좋아요 등록>> : " + wish);
+
+		Map<String,Object> mapJson = new HashMap<String,Object>();
+
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user == null) {
+			mapJson.put("status", "noFav");
+		}else { //로그인 된 경우
+			wish.setMem_num(user.getMem_num());
+			
+			//등록된 좋아요 정보 읽기
+			WishVO productWish = wishService.selectWish(wish);
+			if(productWish!=null) {//좋아요 등록
+				mapJson.put("status", "yesFav");
+			}else {//좋아요 미등록
+				mapJson.put("status", "noFav");
+			}
+		}
+		return mapJson;
+	}
+
 	
 	
 	//=======찜 목록=======//

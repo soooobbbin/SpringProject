@@ -6,7 +6,6 @@
 <!-- 내용 시작 -->
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/review.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product.review.js"></script>
@@ -45,7 +44,7 @@
 			</div>
 			<div class="wishlist">
 				<img src="${pageContext.request.contextPath}/images/heart_blank.png"
-					width="30" height="30" class="wishlist">
+					width="30" height="30" id="wishlist">
 			</div>
 			<div class="detail-dprice" id="detail-div">
 				<label class="text">배송비</label>

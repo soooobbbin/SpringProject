@@ -26,12 +26,8 @@ public class WishServiceImpl implements WishService{
 	public int selectRowCount(Map<String, Object> map) {
 		return wishMapper.selectRowCount(map);
 	}
-
-	@Override
-	public WishVO selectWish(Integer w_num) {
-		return wishMapper.selectWish(w_num);
-	}
-
+	
+	
 	@Override
 	public void updateWish(Integer w_num) {
 		// TODO Auto-generated method stub
@@ -40,8 +36,24 @@ public class WishServiceImpl implements WishService{
 
 	@Override
 	public void deleteWish(Integer w_num) {
-		// TODO Auto-generated method stub
-		
+		wishMapper.deleteWish(w_num);
 	}
+
+	@Override
+	public WishVO selectWish(WishVO wish) {
+		return wishMapper.selectWish(wish);
+	}
+
+	@Override
+	public void insertWish(WishVO wishVO) {
+		wishMapper.insertWish(wishVO);
+	}
+
+	@Override
+	public void deleteWishByProductNum(Integer p_num) {
+		wishMapper.deleteWishByProductNum(p_num);
+	}
+
+	
 
 }

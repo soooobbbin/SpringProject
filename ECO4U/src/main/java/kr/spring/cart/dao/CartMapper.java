@@ -26,7 +26,7 @@ public interface CartMapper {
 			+ "JOIN product p ON c.p_num=p.p_num WHERE mem_num=#{mem_num})")
 	public int selectTotalByMem_num(int mem_num);
 	public List<CartVO> selectList(int mem_num);
-	@Select("SELECT * FROM cart WHERE cart_num=#{cart_num} AND mem_num=#{mem_num}")
+	@Select("SELECT * FROM cart WHERE p_num=#{p_num} AND mem_num=#{mem_num}")
 	public CartVO selectCart(CartVO cart);
 	public int selectRowCount(Map<String,Object> map);
 	public void updateCart(CartVO cart);

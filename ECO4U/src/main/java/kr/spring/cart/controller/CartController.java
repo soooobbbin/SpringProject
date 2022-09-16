@@ -135,6 +135,7 @@ public class CartController {
 	@RequestMapping("/cart/cart.do")
 	public String list(HttpSession session, Model model) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		Map<String,Object> map = new HashMap<String,Object>();
 		//회원번호별 총 구매액
 		int all_total = cartService.selectTotalByMem_num(user.getMem_num());
 		
@@ -142,7 +143,13 @@ public class CartController {
 		if(all_total > 0) {
 			list = cartService.selectList(user.getMem_num());
 		}
-		
+		//찜 목록의 총 개수(검색된 목록 개수)
+		int count = cartService.selectRowCount(map);
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("cart");
+		mav.addObject("count", count);
+		map.put("count", count);
 		model.addAttribute("all_total", all_total);
 		model.addAttribute("list", list);
 		return "cart";

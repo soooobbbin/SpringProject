@@ -12,6 +12,7 @@ public interface CartService {
 	public void insertCart(CartVO cart);
 	//회원번호별(mem_num)총 구매액
 	public int selectTotalByMem_num(int mem_num);
+	public int selectRowCount(Map<String,Object> map);
 	public List<CartVO> selectList(int mem_num);
 	public CartVO selectCart(CartVO cart);
 	public void updateCart(CartVO cart);

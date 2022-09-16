@@ -27,21 +27,6 @@
 	filter: brightness(95%);
 }
 </style>
-<script>
-  window.kakaoAsyncInit = function() {
-    Kakao.Channel.createChatButton({
-      container: '#kakao-talk-channel-chat-button',
-    });
-  };
-
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  })(document, 'script', 'kakao-js-sdk');
-</script>
 <!-- 내용 시작 -->
 <div class="page-main" style="min-height: 775px;">
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
@@ -84,15 +69,7 @@
  			<a href="https://kauth.kakao.com/oauth/authorize?client_id=dedecdcafbdb9f4a5cba8d8079ef6606&redirect_uri=http://localhost:8080/member/kakaologin.do&response_type=code">
 			<img src="${pageContext.request.contextPath}/images/kakao_login.jpg" alt="위의 이미지를 누르면 연결됩니다." style="width:80%; border-radius:5px;">
 			</a>
-<div
-  id="kakao-talk-channel-chat-button"
-  data-channel-public-id="_Zxfxmxdxj"
-  data-title="consult"
-  data-size="large"
-  data-color="yellow"
-  data-shape="pc"
-  data-support-multiple-densities="true"
-></div>               
+		</div>    
 	</form:form>
 </div>
 <!-- 내용 끝 -->

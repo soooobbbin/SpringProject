@@ -125,15 +125,11 @@ $(function(){
 					</div>
 				</c:forEach>
 			</div>
-			<div class="align-right chatbot">
-				<a href="${pageContext.request.contextPath}/chatbot/main.do">
-					<img src="${pageContext.request.contextPath}/images/chatbot.png" id="chatbot">
-				</a>
-			</div>
-    </div>
-    <div class="section" id="section3">3
-    
 		
+    </div>
+   
+    <div class="section" id="section3">3
+  	
     </div>
 	
     

@@ -48,7 +48,7 @@ function selectAll(selectAll)  {
 	<h2>My Page</h2>
 	<div class="user">
 		<img src="${pageContext.request.contextPath}/images/user.png">
-		<p>${user.mem_name}</p>
+		<p>${member.mem_name}</p>
 		<p>${user.id}</p>
 	</div>
 	<a href="#" id="all"><h3>전체 주문 내역</h3></a>
@@ -71,8 +71,8 @@ function selectAll(selectAll)  {
 			<ul class="category-ul" id="category" name="category">
 			<li class="myqna_btn01">
 				<input type="button" value="   전체   " onclick="location.href='/faq/qnalist.do?category=0'">
-				<input type="button" value="   회원   " onclick="location.href='/faq/qnalist.do?category=1'" style="border-left:none;">
-				<input type="button" value="   상품/배송   "  onclick="location.href='/faq/qnalist.do?category=2'" style="border-left:none;">
+				<input type="button" value="   회원   " onclick="location.href='/faq/qnalist.do?category=1'">
+				<input type="button" value="   상품/배송   "  onclick="location.href='/faq/qnalist.do?category=2'">
 				<input type="button" value="   기타   "  onclick="location.href='/faq/qnalist.do?category=3'">
 			</li>
 			</ul>
@@ -80,11 +80,14 @@ function selectAll(selectAll)  {
 		<div class="no-wish">문의 내역이 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		<div class="align-right">
-			<span><input type="checkbox" id="selectall" name="selectall"
-			 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
-			<span> | <input type="button" value="선택 삭제" id="delete_btn"></span> 
+		<!-- 전체 선택 체크박스 -->
+		<div id="qnacb" class="align-right">
+				<input type="checkbox" id="selectall" name="selectall" value="전체 선택"  onclick="selectAll(this)">전체 선택
+			 | 
+				<input type="button" value="선택 삭제" id="delete_btn">
+			 
 		</div>
+		<!-- 전체 선택 체크박스 끝 -->
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
 			<li class="qnalist-list">
@@ -96,7 +99,7 @@ function selectAll(selectAll)  {
 					 onclick="checkSelectAll()">
 					</div> -->
 					<div class="qnalist-image01">
-						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor2.png'" onclick="location.href='detail.do?q_num=${qna.q_num}'">
+						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='detail.do?q_num=${qna.q_num}'">
 					</div>
 					
 					<div class="qnalist-span01">
@@ -104,8 +107,8 @@ function selectAll(selectAll)  {
 						<div class="box-content">
 						<img src="../images/faq/enterdarkgray.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-3px">
 						<c:choose>
-				        <c:when test="${fn:length(qna.q_content) gt 58}">
-				        <c:out value="${fn:substring(qna.q_content, 0, 57)}">
+				        <c:when test="${fn:length(qna.q_content) gt 45}">
+				        <c:out value="${fn:substring(qna.q_content, 0, 44)}">
 				        </c:out><a href="detail.do?q_num=${qna.q_num}" style="font-size:11px; font-weight:bold; color:#999999;">... 더보기</a>
 				        </c:when>
 				        <c:otherwise>
@@ -126,7 +129,6 @@ function selectAll(selectAll)  {
 		</ul>
 		</c:if>
 		<div class="qnalistspanbottom">
-		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
 		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
 		</div>
 		<div class="page align-center">${page}</div>

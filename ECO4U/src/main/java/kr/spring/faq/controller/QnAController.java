@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.faq.service.QnAService;
 import kr.spring.faq.vo.QnAVO;
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -37,6 +38,9 @@ public class QnAController {
 	
 	@Autowired
 	private QnAService qnaService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	
 	//자바빈(VO) 초기화
@@ -90,6 +94,7 @@ public class QnAController {
 			@RequestParam(value="category",defaultValue="") String category) {
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO member = memberService.selectMember(user.getMem_num());
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -116,6 +121,7 @@ public class QnAController {
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
+		mav.addObject("member", member);
 		
 		return mav;
 	}

@@ -81,6 +81,15 @@ public class QnAServiceImpl implements QnAService{
 		qnaMapper.deleteComment(qc_num);
 	}
 
+	@Override
+	public void deleteQnAChecked(String del_qna) {
+		String[] ajaxMsg = del_qna.split(",");
+		
+		for(int i=0; i<ajaxMsg.length; i++) {
+			qnaMapper.deleteQnA(Integer.parseInt(ajaxMsg[i]));
+		}
+	}
+
 //	@Override
 //	public int maxNum() {
 //		return qnaMapper.maxNum();

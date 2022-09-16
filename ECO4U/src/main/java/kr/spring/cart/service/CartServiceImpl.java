@@ -59,6 +59,10 @@ public class CartServiceImpl implements CartService{
 			cartMapper.deleteCart(Integer.parseInt(ajaxMsg[i]));
 		}
 	}
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		return cartMapper.selectRowCount(map);
+	}
 
 	
 

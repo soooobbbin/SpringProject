@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
@@ -84,7 +85,7 @@ function selectAll(selectAll)  {
 								<a href="${pageContext.request.contextPath}/product/detail.do?p_num=${cart.p_num}">
 								<span class="box-title">${cart.productVO.p_name}</span><br>
 								</a>
-								<span class="box-price"><strong>${cart.productVO.p_price}</strong></span>
+								<span class="box-price"><strong><fmt:formatNumber value="${cart.productVO.p_price}"/>원</strong></span>
 							</div>
 							
 						</div>
@@ -108,22 +109,23 @@ function selectAll(selectAll)  {
 					<div class="div3">
 						<div class="cart-bottom-price">
 							<span>상품금액</span><br>
-							<div class="price-span">${cart.productVO.p_price}</div>
+							<div class="price-span"><fmt:formatNumber value="${cart.productVO.p_price}"/>원</div>
 						</div>
 						<span class="span-sym">-</span>
 						<div class="cart-bottom-price">
 							<span>할인금액</span><br>
-							<div class="price-span sale">0</div>
+							<div class="price-span sale">0원</div>
 						</div>
 						<span class="span-sym">+</span>
 						<div class="cart-bottom-price">
 							<span>배송비</span><br>
-							<div class="price-span">${cart.productVO.p_dprice}</div>
+							<div class="price-span"><fmt:formatNumber value="${cart.productVO.p_dprice}"/>원</div>
+							
 						</div>
 						<span class="span-sym">=</span>
 						<div class="cart-bottom-price">
 							<span>주문금액</span><br>
-							<div id="item_total" class="price-span">${cart.cart_total}</div>
+							<div id="item_total" class="price-span"><fmt:formatNumber value="${cart.cart_total}"/>원</div>
 						</div>
 					</div>
 				</div>

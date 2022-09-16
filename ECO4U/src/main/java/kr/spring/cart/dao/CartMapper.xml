@@ -36,5 +36,11 @@
            WHERE mem_num=#{mem_num}
            ORDER BY cart_num ASC
   	</select>
-  	
+  	<select id="selectRowCount" parameterType="map"
+  	                    resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM cart c JOIN product p
+		ON c.p_num = p.p_num 
+  	</select>
 </mapper>

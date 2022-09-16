@@ -1,0 +1,202 @@
+
+div#main_body{
+	margin-top:0;
+	padding-top:70px;	
+}
+.page-main{
+	width:100%;
+	margin:0 auto;
+}
+.menu{
+ 	width:35%;
+ 	height: 785px;
+ 	background-color:#fafafa;
+ 	float:left; 
+	margin-top:-10px;
+}
+.mypage-menu{
+	width:40%;
+	float:right;
+ 	height: 785px;
+ 	background-color:white;
+	box-shadow: 2px 2px 7px lightgray; 
+	border:1px solid white; 
+	margin-top:-4px;
+	padding-left: 100px;
+}
+.mypage-content{
+	padding-top:30px; 
+	margin-left:100px;
+	width:40%;
+	float:left; 
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.mypage-menu h2{
+	margin:50px auto 100px auto;
+	font-size:25pt;
+	font-weight:normal;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.mypage-menu h3{
+	margin:20px auto;
+	font-size:15pt;
+	font-weight:500;
+	font-family: 'Noto Sans KR', sans-serif;
+
+}
+.mypage-menu p{
+	margin:0px auto;
+	font-size:12pt;
+	color:darkgray;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.user{
+	text-align:center;
+	margin:-50px 0px 80px -100px;
+}
+.user img{
+	width:150px;
+	height:150px;
+	border-radius:100px;
+}
+.user p{
+	margin:5px;
+	font-size:13pt;
+	color:gray;
+}
+/* .mypage-div{
+	border-radius:3px; 
+	width:60%; 
+	height:600px; 
+	padding-top:30px; 
+	margin-top: 50px; 
+	margin-left: -250px;
+} */
+/*버튼*/
+#btnmodify{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -30px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 20px;
+}
+#btnmodify:hover{
+	filter: brightness(95%);
+}
+#btnupdate{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -30px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 20px;
+}
+#btnupdate:hover{
+	filter: brightness(95%);
+}
+#btndelete{
+	color:white;
+	font-size: 15px;
+	background-color: gray;
+	padding: 9px;
+	margin-top: -30px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+	margin-right: 80px;
+}
+#btndelete:hover{
+	filter: brightness(95%);
+}
+/*
+#all{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+}
+#all:hover{
+	filter: brightness(95%);
+}
+#my-wish{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width: 20%;
+	height:45px;
+	cursor:pointer;
+}
+#my-wish:hover{
+	filter: brightness(95%);
+} */
+/*가로 슬라이드*/
+.menu-v2{
+	left:384px;
+	width:193px;
+	position:relative;
+}
+#my-write{
+	color:white;
+	font-size: 15px;
+	background-color: rgba(110, 131, 118, 0.85);
+	padding: 9px;
+	margin-top: -10px;
+	border: none;
+	border-radius: 5px;
+	width:193px;
+	height:45px;
+	cursor:pointer;
+}
+#my-write:hover{
+	filter: brightness(95%);
+}
+.submenu{
+	position:absolute;
+	width:193px;
+	left:0px;
+	top:35px;
+	display:none;
+	border:1px solid white;
+	box-shadow: 2px 2px 7px gray;
+	border-radius:10px;
+	height:120px;
+	background-color:white;
+}
+.submenu2{
+	margin-top:25px;
+	height: 30px;
+	font-size: 15px;
+	cursor:pointer;
+}
+.submenu2:hover{
+	color: gray;
+}
+/*li*/
+.page-content li{
+	font-size: 20px;
+	list-style: none;
+	
+}

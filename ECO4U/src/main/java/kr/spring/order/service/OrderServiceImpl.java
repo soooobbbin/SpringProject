@@ -73,4 +73,10 @@ public class OrderServiceImpl implements OrderService{
 		return null;
 	}
 
+	@Override
+	public void insertOrder(OrderVO order) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

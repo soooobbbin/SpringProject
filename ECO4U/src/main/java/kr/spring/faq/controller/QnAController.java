@@ -82,7 +82,7 @@ public class QnAController {
 	}
 	
 	//===========게시판 글 목록============//
-	@RequestMapping(value="/faq/qnalist.do",method=RequestMethod.GET)
+	@RequestMapping("/faq/qnalist.do")
 	public ModelAndView process(
 			HttpSession session,
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
@@ -98,7 +98,6 @@ public class QnAController {
 		
 		//글의 총개수(검색된 글의 개수)
 		int count = qnaService.selectRowCount(map);
-		
 		logger.debug("<<count>> : " + count);
 		
 		//페이지 처리

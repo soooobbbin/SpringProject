@@ -81,4 +81,19 @@ public class QnAServiceImpl implements QnAService{
 		qnaMapper.deleteComment(qc_num);
 	}
 
+//	@Override
+//	public int maxNum() {
+//		return qnaMapper.maxNum();
+//	}
+//
+//	@Override
+//	public int maxStep(Integer ref) {
+//		return qnaMapper.maxStep(ref);
+//	}
+//
+//	@Override
+//	public void updateStep(QnAcommentVO qnacommentVO) {
+//		qnaMapper.updateStep(qnacommentVO);
+//	}
+
 }

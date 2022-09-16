@@ -63,12 +63,10 @@
  	<!-- 글수정 -->
  	<update id="updateQnA" parameterType="qnaVO">
  		UPDATE qna SET
- 			<if test="q_photo_name != ''">
-  		    q_photo=#{q_photo},
- 			q_photo_name=#{q_photo_name},
-  		    </if>
  			q_title=#{q_title},
  			q_content=#{q_content},
+ 			q_photo=#{q_photo},
+ 			q_photo_name=#{q_photo_name},
  			q_category=#{q_category},
  			modify_date=SYSDATE 
  		WHERE q_num=#{q_num}
@@ -100,6 +98,27 @@
   		]]>
   	</select>
   	
+  	<!-- 대댓글 -->
+  	<!-- <select id="maxNum" resultType="integer">
+  		ref와 num을 구분하기 위해서
+  		SELECT 
+  			NVL(MAX(qc_num), 0) + 1 FROM qna_comment
+  	</select>
+  	
+  	<select id="maxStep" parameterType="integer" resultType="integer">
+  		ref와 num을 구분하기 위해서
+  		SELECT 
+  			NVL(MAX(re_step), 0) + 1 
+  			FROM qna_comment
+  			WHERE ref = #{ref}	
+  	</select>
+  	
+  	<update id="updateStep" parameterType="qnacommentVO">
+  		UPDATE qna_comment SET
+  			re_step = re_step + 1
+  		WHERE ref = #{ref}
+  		AND re_step > #{re_step}
+  	</update> -->
 </mapper>
 
 

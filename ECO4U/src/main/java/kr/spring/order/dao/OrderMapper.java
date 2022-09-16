@@ -32,8 +32,8 @@ public interface OrderMapper {
 	public void updateAuth(Integer zip_num);
 	@Update("UPDATE zipcode SET zip_name=#{zip_name},zip_rec=#{zip_rec},zipcode=#{zipcode},address1=#{address1},address2=#{address2} WHERE zip_num=#{zip_num}")
 	public void updateZipcode(ZipcodeVO zipcode);
-	public OrderVO selectOrder(Integer order_num);
-
+	public OrderVO selectOrder(Integer mem_num);
+	public void insertOrder(OrderVO order);
 	
 
 }

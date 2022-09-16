@@ -49,6 +49,8 @@ $(function(){
 						output += ' <input type="button" data-num="'+ item.qc_num +'" value="삭제" class="delete-btn">';
 						output += '<span style="float:right; font-weight:bold">' + '&nbsp;&nbsp;|&nbsp;' + '</span>';
 						output += ' <input type="button" data-num="'+ item.qc_num +'" value="수정" class="modify-btn">';
+						output += '<span style="float:right; font-weight:bold">' + '&nbsp;&nbsp;|&nbsp;' + '</span>';
+						output += ' <input type="button" data-num="'+ item.qc_num +'" value="답글" class="re-btn">';
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';
@@ -83,6 +85,7 @@ $(function(){
 	
 	//댓글 등록
 	$('#qcom_form').submit(function(event){
+		
 		if($('#qc_content').val().trim()==''){
 			alert('내용을 입력하세요');
 			$('#qc_content').val('').focus();
@@ -111,12 +114,46 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생 등록폼');
 			}
 		});
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
+	
+	/**/
+/*	function rr(nor_num, no_num) {
+			var nor_content = frm2.nor_content.value;
+			alert(nor_content);
+			if(frm2.nor_content.value == "") {
+				alert("댓글을 입력해주세요");
+				frm2.nor_content.focus();
+				return false;
+			}
+	
+			$.post('rInsert.do?qc_num='+qc_num+"&q_num="+q_num+"&qc_content="+qc_content, function(data) {
+				alert("대댓글이 작성 되었습니다");	
+				$('#nrListDisp').html(data);
+				frm2.nor_content.value="";  // 작성했던 댓글 지우기
+			});
+		}
+	function rpInsert(nor_num, no_num) {
+			if (${empty id && empty admin}) {
+				alert("댓글은 로그인후 작성할 수 있습니다.");
+				location.href="${path}/member/loginForm.do";		
+			}
+	//		댓글을 읽어서 textarea에 넣어서 수정 가능하게 만들어야 한다
+	//		input, textarea에 있는 데이터를 읽을 때는 jquery val()
+	//		td등 일반 태그에 있는 데이터를 읽을때는 jquery에서는 text()로 읽는다
+			$('.reply_'+nor_num).html("<form action='' id='frm2' name='frm2'>"+
+				"<input type='hidden' name='nor_num' value='"+nor_num+"'>"+
+				"<table> &nbsp;&nbsp;&nbsp;"+
+				"<tr><td><textarea rows='3' cols='100' name='nor_content'></textarea> &nbsp;&nbsp;"+ 
+				"<input type='button' onclick='rr("+nor_num+","+no_num+")' value='등록'>"+
+				"<input type='button' onclick='lst("+no_num+")' value='취소'></td></tr></table>");
+	}*/
+	/**/
+	
 	//댓글 작성 폼 초기화
 	function initForm(){
 		$('textarea').val('');
@@ -270,7 +307,7 @@ $(function(){
 		});
 		
 	});
-
+	
 	//초기 데이터(목록) 호출
 	selectQnAList(1);
 	

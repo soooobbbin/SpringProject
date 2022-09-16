@@ -20,7 +20,7 @@
 						<img src="${pageContext.request.contextPath}/images/faq/camera_img.png" class="my-photo2">
 						</c:if>
 						<c:if test="${!empty qna.q_photo_name}">
-						<img src="${pageContext.request.contextPath}/image_upload/${qna.q_photo}" width="130" height="160" class="my-photo">
+						<img src="${pageContext.request.contextPath}/image_upload/${qna.q_photo}" width="130" height="160" class="my-photo2">
 						</c:if>
 					</li>
 					<li class="qna_write_btn02">

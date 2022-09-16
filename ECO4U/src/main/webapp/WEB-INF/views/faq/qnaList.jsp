@@ -8,8 +8,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishList.css">
-<!-- <script type="text/javascript">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<script type="text/javascript">
 function checkSelectAll()  {
 	  // 전체 체크박스
 	  const checkboxes 
@@ -36,37 +38,33 @@ function selectAll(selectAll)  {
 	    checkbox.checked = selectAll.checked
 	  })
 }
-</script> -->
-<div class="page" style="height: 835px;">
+</script>
+<div class="page" style="height: 775px;">
 	<form action="qnalist.do" id="search_form"  method="get">
 	
 	<!-- 좌측 메뉴바 -->
-	<div class="align-center" style="width: 50%; float:left; padding-top: 65px;">
-		<div class="menu">
-		<input type="button" value="전체주문내역" id="all" onclick="location.href='#'">
-		</div>
-		<div class="menu">
-		<input type="button" value="나의 관심" id="my-wish" onclick="location.href='${pageContext.request.contextPath}/cart/wishList.do'">
-		</div>
-		<div id="nav-v2">
-			<div class="menu-v2"><input type="button" value="내가 쓴 글" id="my-write" onclick="location.href='#'">
-				<div class="submenu">
-					<div class="submenu2">
-						<a href="${pageContext.request.contextPath}/faq/qnalist.do">문의/답변</a>
-					</div>
-					<div class="submenu2">
-						<a href="#">상품평</a>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="menu">
+	<div class="mypage-menu">
+	<h2>My Page</h2>
+	<div class="user">
+		<img src="${pageContext.request.contextPath}/images/user.png">
+		<p>${user.mem_name}</p>
+		<p>${user.id}</p>
+	</div>
+	<a href="#" id="all"><h3>전체 주문 내역</h3></a>
+	<a href="${pageContext.request.contextPath}/cart/wishList.do" id="all">
+	<h3>나의 관심</h3></a>
+	<h3>내가 쓴 글</h3>
+	<a href="${pageContext.request.contextPath}/faq/qnalist.do"><p>- 문의/답변</p></a><br>
+	<a href="#"><p>- 상품평</p></a>
+	</div>
 	</div>
 	<!-- 좌측 메뉴바 종료 -->
 	
 	<!-- 초반 기반 폼 추후 삭제 작업필요 -->
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
-		<div style="padding-left: 27px; margin-top:-10px">
+		<div style="padding-left: 53px;">
 		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/member/myPage.do'"> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
 		<div class ="page-content02">
@@ -82,9 +80,13 @@ function selectAll(selectAll)  {
 		<div class="no-wish">문의 내역이 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
+		<div class="align-right">
+			<span><input type="checkbox" id="selectall" name="selectall"
+			 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
+			<span> | <input type="button" value="선택 삭제" id="delete_btn"></span> 
+		</div>
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
-			<!--  -->
 			<li class="qnalist-list">
 				<div class="box-parent">
 					<input type="hidden" value="${qna.q_category}">
@@ -147,58 +149,4 @@ $(document).ready(function(){
 	
 });
 </script>
-<%--
-<div class="page-main">
-	<div class="wish-top">
-	<h2>관심 상품</h2>
-	<div class="wish-category">
-		<form action="qnalist.do" id="search_form"  method="get">
-			<ul class="wish-category-ul" id="category" name="category">
-				<li><input type="button" value="all" onclick="location.href='/cart/wishList.do?category=0'"></li>
-				<li><input type="button" value="living" onclick="location.href='/cart/wishList.do?category=1'"></li>
-				<li><input type="button" value="beauty"  onclick="location.href='/cart/wishList.do?category=2'"></li>
-				<li><input type="button" value="fassion"  onclick="location.href='/cart/wishList.do?category=3'"></li>
-			</ul>
-		</form>
-	</div>
-	</div>
-	
-	<div class="wish-choice">
-		<span><input type="checkbox" id="selectall" name="selectall"
-		 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
-		<span> | 선택 삭제</span> <!-- 버튼으로 만들어서 선택한 상품 삭제 가능하게 하기 -->
-	</div>
-	
-		<!-- 찜 목록에 상품이 담기지 않은 경우 -->
-		<c:if test="${count == 0}">
-		<div class="no-wish">관심 상품이 없습니다.</div>
-		</c:if>
-		
-		<!-- 찜 목록에 상품이 담긴 경우 -->
-		<c:if test="${count > 0}">
-		
-		<ul class="wish-list-ul">
-			<c:forEach var="wish" items="${list}">
-			<li class="wish-list-li">
-				<div class="box-parent">
-					<input type="hidden" value="${wish.p_category}">
-					<div class="wish-check">
-					<input type="checkbox" id="select_product" name="select_product" 
-					 onclick="checkSelectAll()">
-					</div>
-					<div class="product-image">
-						<img src="../images/product/${wish.p_photoname}" width="80" height="80">
-					</div>
-					<div class="product-box">
-						<span class="box-brand">[${wish.p_brand}]</span><br>
-						<span class="box-title">${wish.p_name}</span><br>
-						<span class="box-price"><strong>${wish.p_price}</strong></span><br>
-						<span class="box-dprice">배송비 ${wish.p_dprice}</span><br>
-						<span class="box-pcate">카테고리 ${wish.p_category}</span>
-					</div>
-				</div>
-			</li>
-			</c:forEach>
-		</ul>
-		</c:if> --%>
 <!-- 내용 끝 -->

@@ -16,7 +16,7 @@
 	<div id="main_body">
 		<tiles:insertAttribute name="body"/>
 	</div>
-	<div id="main_chat">
+	<div id="main_chat" style="position: relative; z-index:999;">
 		<tiles:insertAttribute name="chatbot"/>
 	</div>
 	<div id="main_footer">

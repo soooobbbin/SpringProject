@@ -173,6 +173,7 @@
 	content:'';
 }
 .pop_wrap .pop_inner{
+	margin-top:3%;
 	display:inline-block; 
 	padding:20px 30px; 
 	background:#fff; 

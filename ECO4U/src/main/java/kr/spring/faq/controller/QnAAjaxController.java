@@ -32,6 +32,26 @@ public class QnAAjaxController {
 	@Autowired
 	private QnAService qnaService;
 	
+	//==========장바구니 선택 삭제=============//
+	@RequestMapping("/faq/deleteQnA.do")
+	@ResponseBody
+	public Map<String,String> processFile(
+			         @RequestParam String del_qna,
+			         HttpSession session,
+			         HttpServletRequest request){
+		Map<String,String> mapJson = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		if(user==null) {
+			mapJson.put("result", "logout");
+		}else {
+			qnaService.deleteQnAChecked(del_qna);
+			mapJson.put("result", "success");
+		}
+		return mapJson;
+	}
+	
 	//========댓글 등록=========//
 	@RequestMapping("/faq/writeComment.do")
 	@ResponseBody

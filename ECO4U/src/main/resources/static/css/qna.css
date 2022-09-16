@@ -50,7 +50,7 @@ body{
 	font-family: 'Noto Sans KR', sans-serif;
 }
 .qnalist-ul{
-	margin-top:-36px;
+	margin-top:-16px;
 	margin-left: 20px;
 }
 .qnalistspanbottom{
@@ -73,13 +73,13 @@ body{
 	margin:9px;
 }
 .box-title{
-	margin-top:6px;
+	margin-top:7px;
 	font-size:15px;
 	font-weight:bold;
 }
 .box-content{
 	margin-top:-15px;
-	margin-bottom:8px;
+	margin-bottom:5px;
 	font-size: 11px;
 }
 .box-date{
@@ -92,13 +92,23 @@ body{
 	cursor:pointer;
 }
 #qnacb{
-	margin-right:5%;
+	margin-top:-22px;
+	margin-right:6%;
+	float:right;
 	font-size:11px;
 }
+
 #qnacb input[type="button"]{
 	font-size:11px;
 	border:none;
 	background:none;
+	cursor:pointer;
+}
+#qnacb input[type="checkbox"]{
+	width:12px;
+	height:13px;
+	cursor:pointer;
+	font-size: 11px;
 }
 /* end of qnalist */
 

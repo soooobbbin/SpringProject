@@ -14,14 +14,11 @@
 <script type="text/javascript">
 function checkSelectAll()  {
 	  // 전체 체크박스
-	  const checkboxes 
-	    = document.querySelectorAll('input[name="select_product"]');
+	  const checkboxes = document.querySelectorAll('input[name="select_qna"]');
 	  // 선택된 체크박스
-	  const checked 
-	    = document.querySelectorAll('input[name="select_product"]:checked');
+	  const checked = document.querySelectorAll('input[name="select_qna"]:checked');
 	  // select all 체크박스
-	  const selectAll 
-	    = document.querySelector('input[name="selectall"]');
+	  const selectAll = document.querySelector('input[name="selectall"]');
 	  
 	  if(checkboxes.length === checked.length)  {
 	    selectAll.checked = true;
@@ -31,8 +28,7 @@ function checkSelectAll()  {
 }
 
 function selectAll(selectAll)  {
-	  const checkboxes 
-	     = document.getElementsByName('select_product');
+	  const checkboxes = document.getElementsByName('select_qna');
 	  
 	  checkboxes.forEach((checkbox) => {
 	    checkbox.checked = selectAll.checked
@@ -51,17 +47,15 @@ function selectAll(selectAll)  {
 		<p>${member.mem_name}</p>
 		<p>${user.id}</p>
 	</div>
-	<a href="#" id="all"><h3>전체 주문 내역</h3></a>
-	<a href="${pageContext.request.contextPath}/cart/wishList.do" id="all">
-	<h3>나의 관심</h3></a>
+	<h3><a href="#" id="all">전체 주문 내역</a></h3>
+	<h3><a href="${pageContext.request.contextPath}/cart/wishList.do" id="all">나의 관심</a></h3>
 	<h3>내가 쓴 글</h3>
-	<a href="${pageContext.request.contextPath}/faq/qnalist.do"><p>- 문의/답변</p></a><br>
-	<a href="#"><p>- 상품평</p></a>
+	<p><a href="${pageContext.request.contextPath}/faq/qnalist.do" style="color:darkgray;">- 문의/답변</a></p><br>
+	<p><a href="#" style="color:darkgray;">- 상품평</a></p>
 	</div>
 	</div>
 	<!-- 좌측 메뉴바 종료 -->
 	
-	<!-- 초반 기반 폼 추후 삭제 작업필요 -->
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
 		<div style="padding-left: 53px;">
@@ -80,28 +74,28 @@ function selectAll(selectAll)  {
 		<div class="no-wish">문의 내역이 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		<!-- 전체 선택 체크박스 -->
-		<div id="qnacb" class="align-right">
-				<input type="checkbox" id="selectall" name="selectall" value="전체 선택"  onclick="selectAll(this)">전체 선택
-			 | 
-				<input type="button" value="선택 삭제" id="delete_btn">
-			 
-		</div>
-		<!-- 전체 선택 체크박스 끝 -->
 		<ul class="qnalist-ul">
+		<!-- 전체 선택 체크박스 -->
+		<li id="qnacb">
+			<span style="float:left;"><input type="checkbox" id="selectall" name="selectall" value="전체 선택"  onclick="selectAll(this)"></span>
+			<span style="float:right; margin-top:1px;">전체 선택&nbsp;&nbsp;|<input type="button" value="삭제" id="qnadelete_btn">
+			</span>
+		</li>
+		<!-- 전체 선택 체크박스 끝 -->
 			<c:forEach var="qna" items="${list}">
 			<li class="qnalist-list">
 				<div class="box-parent">
 					<input type="hidden" value="${qna.q_category}">
 					<input type="hidden" value="${qna.mem_num}">
-					<!-- <div class="wish-check">
-					<input type="checkbox" id="select_product" name="select_product" 
-					 onclick="checkSelectAll()">
-					</div> -->
+					<!-- 선택 체크박스 -->
+					<div class="qnacheck-box">
+						<input type="checkbox" class="select-qna" name="select_qna" 
+						 onclick="checkSelectAll()" data-cartnum="${qna.q_num}" value="${qna.q_num}">
+					</div>
+					<!-- 선택 체크박스 끝 -->
 					<div class="qnalist-image01">
 						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='detail.do?q_num=${qna.q_num}'">
 					</div>
-					
 					<div class="qnalist-span01">
 						<div class="box-title"><a href="detail.do?q_num=${qna.q_num}">${qna.q_title}</a></div><br>
 						<div class="box-content">

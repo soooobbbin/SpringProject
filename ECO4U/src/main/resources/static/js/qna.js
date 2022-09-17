@@ -57,7 +57,7 @@ $(function() {
 		}
 	});
 	
-	//글 선택 삭제
+	//문의글 선택 삭제
 	$(document).on('click','#qnadelete_btn',function(){
 		
 		if($(".select-qna:checked").length == 0){

@@ -23,7 +23,6 @@ public interface QnAService {
 	public void insertComment(QnAcommentVO qnacomment);
 	public void updateComment(QnAcommentVO qnacomment);
 	public void deleteComment(Integer qc_num);
-	/* public void deleteCommentChecked(String del_qnacomment); */
 	
 	//대댓글
 //	public int maxNum();

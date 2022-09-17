@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.spring.faq.dao.QnAMapper;
 import kr.spring.faq.vo.QnAVO;
 import kr.spring.faq.vo.QnAcommentVO;
-import kr.spring.member.vo.MemberVO;
 
 
 
@@ -86,9 +85,12 @@ public class QnAServiceImpl implements QnAService{
 		String[] ajaxMsg = del_qna.split(",");
 		
 		for(int i=0; i<ajaxMsg.length; i++) {
+			qnaMapper.deleteComment(Integer.parseInt(ajaxMsg[i]));
+			qnaMapper.deleteCommentByQNum(Integer.parseInt(ajaxMsg[i]));
 			qnaMapper.deleteQnA(Integer.parseInt(ajaxMsg[i]));
 		}
 	}
+
 
 //	@Override
 //	public int maxNum() {

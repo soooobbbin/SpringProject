@@ -32,7 +32,7 @@ public class QnAAjaxController {
 	@Autowired
 	private QnAService qnaService;
 	
-	//==========장바구니 선택 삭제=============//
+	//==========문의글 선택 삭제=============//
 	@RequestMapping("/faq/deleteQnA.do")
 	@ResponseBody
 	public Map<String,String> processFile(

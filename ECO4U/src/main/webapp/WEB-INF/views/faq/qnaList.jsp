@@ -125,7 +125,7 @@ function selectAll(selectAll)  {
 		<div class="qnalistspanbottom">
 		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
 		</div>
-		<div class="page align-center">${page}</div>
+		<div class="page align-center" style="margin-left:5%;">${page}</div>
 		</div>
 	</div>
 	<!-- 문의 내역 폼 끝 -->

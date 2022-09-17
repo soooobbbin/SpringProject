@@ -1,6 +1,6 @@
 .page-main {
-    margin: auto;
-    width: 70%;
+    margin:0 auto;
+    width: 65%;
 }
 .content-main{
 	background-color:white;
@@ -9,40 +9,37 @@
     margin-bottom: 10px;
 }
 .page-main form {
-	width: 800px;
     border: #000;
     margin: 0;
     padding: 0px 0px 30px 0px;
 }
 /*[찜]상품 카테고리 */
 .wish-category{
-	width: 800px;
     height: 30px;
-     margin: auto;
+     margin:0 auto;
 }
 .wish-category-ul li{
     float: left;
-    width: 198px;
+    width: 215px;
     padding: 5px 0;
-    margin: 0;
     border: 1px solid gray;
     text-align:center;
 }
 .wish-category-ul {
     list-style: none;
     padding: 0;
-    width: 800px;
+    width: 900px;
 }
-
-
 .wish-top {
-    margin: auto;
+    margin:0 auto;
     padding-top: 50px;
     width: 70%;
 }
 .wish-choice {
-    margin: 0 auto;
+    margin: 20px auto;
+    font-size:11pt;
     width: 70%;
+    clear:both;
 }
 .wish-category-ul input[type="button"]{
 	border: none;

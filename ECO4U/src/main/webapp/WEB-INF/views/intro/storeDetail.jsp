@@ -11,7 +11,7 @@
 		<h1>${store.s_name}</h1>
 	</div>
 	<c:if test="${user.auth == 2}"> 
-	<div class="align-right" style="margin-bottom:20px;">
+	<div class="align-right" style="margin:0px 30px 20px 0px;">
 		<input type="button" value="수정" 
 			onclick="location.href='update.do?s_num=${store.s_num}'">
 		<input type="button" value="삭제" id="delete_btn"

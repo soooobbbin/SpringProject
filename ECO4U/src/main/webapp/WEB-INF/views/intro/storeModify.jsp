@@ -7,7 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/store.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/store.css">
 <div class="page-main">
-	<h2>오프라인 가게 수정</h2>
+	<h1 style="padding:30px 240px;">오프라인 가게 수정</h1>
 	<form:form id="update_form" action="update.do" modelAttribute="storeVO" enctype="multipart/form-data">
 		<form:hidden path="s_num"/>
 		<form:errors element="div" cssClass="error-color"/>

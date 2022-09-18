@@ -44,11 +44,14 @@
 					  b.c_content,
 					  b.c_hit,
 					  b.filename,
+					  com_cnt,
+					  like_cnt,
 					  b.reg_date,
+					  b.reg_date2,
 					  b.modify_date,
 					  m.id					  
 		            FROM community b JOIN member m
-		            ON b.mem_num = m.mem_num
+		            ON b.mem_num = m.mem_num 
 					WHERE b.c_category = #{c_category}
 					<if test="keyword != null and keyword != ''">
 						<if test="keyfield == 1">
@@ -111,5 +114,9 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
   	</select>
+  	
+  
+  	
+  	
   	
 </mapper>

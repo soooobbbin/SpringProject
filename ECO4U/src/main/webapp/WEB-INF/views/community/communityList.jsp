@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.like.js"></script>
@@ -79,8 +82,8 @@
         
          <tr>
             <td><img src="${pageContext.request.contextPath}/images/community/hit.png" width="18" height="18"> ${community.c_hit} 
-            <img src="${pageContext.request.contextPath}/images/community/like03.png" width="18" height="18"> <span id="output_lcount"></span>
-            <img src="${pageContext.request.contextPath}/images/community/comment.png" width="18" height="18"></td>
+            <img src="${pageContext.request.contextPath}/images/community/like03.png" width="18" height="18"> ${community.like_cnt}
+            <img src="${pageContext.request.contextPath}/images/community/comment.png" width="18" height="18"> ${community.com_cnt}</td>
             
          </tr>
          </table> 
@@ -103,8 +106,8 @@
         
          <tr>
             <td><img src="${pageContext.request.contextPath}/images/community/hit.png" width="18" height="18"> ${community.c_hit} 
-            <img src="${pageContext.request.contextPath}/images/community/like03.png" width="18" height="18"> <span id="output_lcount"></span>
-            <img src="${pageContext.request.contextPath}/images/community/comment.png" width="18" height="18"></td>
+            <img src="${pageContext.request.contextPath}/images/community/like03.png" width="18" height="18"> ${community.like_cnt}
+            <img src="${pageContext.request.contextPath}/images/community/comment.png" width="18" height="18"> ${community.com_cnt}</td>
             
          </tr>
          </table> 
@@ -120,8 +123,10 @@
 			 <c:if test="${empty community.filename}">
 				<a href="detail.do?c_num=${community.c_num}"><img src="${pageContext.request.contextPath}/images/no_image.png" width="150" height="120"> </a>
 			</c:if>
-	  			  <span class="news_title"><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></span>
-	 			 <span class="news_date">${community.reg_date}</span>
+	  		  <span class="news_title"><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></span>
+	 			 <span class="news_date">
+	 			
+	 			 ${community.reg_date2}</span> 
       	</div>
       </c:if>
           

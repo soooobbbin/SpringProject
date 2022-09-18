@@ -114,6 +114,7 @@ public class CommunityAjaxController {
 		Map<String,Object> mapJson = 
 				new HashMap<String,Object>();
 		
+		
 		MemberVO user = 
 			  (MemberVO)session.getAttribute("user");
 		if(user==null) {//로그인이 되지 않은 경우
@@ -187,6 +188,11 @@ public class CommunityAjaxController {
 		int count = 
 			communityService.selectRowCountComment(map);
 		
+		//댓글수 업데이트
+		communityService.updateComCnt(c_num);
+		//좋아요수 업데이트
+		communityService.updateLikeCnt(c_num);
+				
 		PagingUtil page = 
 				new PagingUtil(currentPage,count,
 						rowCount,pageCount,null);

@@ -8,12 +8,12 @@ $(function(){
 			data:{c_num:c_num},
 			dataType:'json',
 			cache:false,
-			timeout:30000,
+			timeout:10000,
 			success:function(param){
 				displayLike(param);
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생 : 좋아요 수 조회');
 			}
 		});
 	}
@@ -26,7 +26,7 @@ $(function(){
 			data:{c_num:$('#c_num').val()},
 			dataType:'json',
 			cache:false,
-			timeout:30000,
+			timeout:10000,
 			success:function(param){
 				if(param.result == 'logout'){
 					alert('로그인 후 좋아요를 눌러주세요!');

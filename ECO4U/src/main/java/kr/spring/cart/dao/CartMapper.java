@@ -29,6 +29,8 @@ public interface CartMapper {
 	@Select("SELECT * FROM cart WHERE p_num=#{p_num} AND mem_num=#{mem_num}")
 	public CartVO selectCart(CartVO cart);
 	public int selectRowCount(Map<String,Object> map);
+	@Update("UPDATE cart SET order_quantity=#{order_quantity} "
+		  + "WHERE cart_num=#{cart_num}")
 	public void updateCart(CartVO cart);
 	//장바구니 수정(회원번호별 상품 수량 수정)
 	@Update("UPDATE cart SET order_quantity=#{order_quantity} "

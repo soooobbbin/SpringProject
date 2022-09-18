@@ -9,12 +9,9 @@ public class QnAcommentVO {
 	private Date modify_date;//수정일
 	private int mem_num;//회원번호
 	private int q_num;//1:1문의 글번호
-//	private int ref;//대댓글의 부모번호
-//	private int re_step;//대댓글 수
-//	private int re_level;//들여쓰기순서
-//	private int re_num;//대댓글번호
 	
 	private String mem_name;//회원이름
+	private int auth;//1 일반, 2 관리자
 
 	public int getQc_num() {
 		return qc_num;
@@ -72,11 +69,18 @@ public class QnAcommentVO {
 		this.mem_name = mem_name;
 	}
 
+	public int getAuth() {
+		return auth;
+	}
+
+	public void setAuth(int auth) {
+		this.auth = auth;
+	}
+
 	@Override
 	public String toString() {
 		return "QnAcommentVO [qc_num=" + qc_num + ", qc_content=" + qc_content + ", reg_date=" + reg_date
 				+ ", modify_date=" + modify_date + ", mem_num=" + mem_num + ", q_num=" + q_num + ", mem_name="
-				+ mem_name + "]";
+				+ mem_name + ", auth=" + auth + "]";
 	}
-	
 }

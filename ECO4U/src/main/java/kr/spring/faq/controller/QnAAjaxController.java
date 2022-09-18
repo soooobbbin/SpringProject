@@ -73,67 +73,13 @@ public class QnAAjaxController {
 			qnacommentVO.setMem_num(user.getMem_num());
 			//댓글 등록
 			qnaService.insertComment(qnacommentVO);
+			
 			mapAjax.put("result","success");
 		}
 		
 		return mapAjax;
 	}
 	
-	//==========대댓글==========//
-	/*
-	@RequestMapping("faq/rInsert")
-	public String rInsert(
-			QnAcommentVO qnacommentVO, 
-			HttpSession session) {
-		
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		int number = qnaService.maxNum(); // 새 댓글 번호 생성, ref는 nor_num이랑 똑같음
-		
-		// ref 답변글끼리 뭉칠때, re_step 답변글 순서, re_level 들여쓰기
-		int re_step = 0, re_level = 0; // 첫번째 댓글은 0,0 기본 세팅
-		int q_num = qnacommentVO.getQ_num(); // 어떤 글에 댓글 썼는지 번호 가져오기(jsp에서 보냈음)
-		int qc_num = qnacommentVO.getQc_num(); // 어떤 댓글에 댓글 남긴건지(jsp에서 보냈음)
-		String qc_content = qnacommentVO.getQc_content(); // 댓글내용(jsp에서 보냈음)
-		
-		if(qc_num != 0) { // 댓글에 댓글을 달 때
-			
-			QnAcommentVO rqnacommentVO = qnaService.selectComment(qc_num); // 읽어온 댓글의 re_step과 re_level을 알기 위해서
-			
-			if(rqnacommentVO.getRe_step() == 0 && rqnacommentVO.getRe_level() == 0) {
-				
-				qnacommentVO.setRef(qc_num); // 대댓글끼리 뭉치기위해, 부모댓글의 댓글번호로 ref 세팅
-				
-				int maxStep = qnaService.maxStep(rqnacommentVO.getRef()); // 댓글중에서 새로운 댓글 달때 맨 밑으로 가기 위해서
-				qnacommentVO.setRe_step(maxStep);
-				qnacommentVO.setRe_level(rqnacommentVO.getRe_level() + 1);
-			}else { // 댓글의 대댓글을 달 때
-				qnacommentVO.setRef(rqnacommentVO.getRef()); // 대댓글끼리 뭉치기위해, 부모댓글의 댓글번호로 ref 세팅
-				qnacommentVO.setRe_step(rqnacommentVO.getRe_step());
-				
-				// 새로운 댓글은 사이에 껴야되기 때문에
-				qnaService.updateStep(qnacommentVO); // 글을 읽고 ref가 같고 re_step이 읽은 글의 re_step보다 크면 그글의 re_step + 1
-				
-				qnacommentVO.setRef(rqnacommentVO.getRef());
-				qnacommentVO.setRe_step(rqnacommentVO.getRe_step() + 1);   // 댓글(읽은값)단 re_step보다 1 증가
-				qnacommentVO.setRe_level(rqnacommentVO.getRe_level() + 1); // 댓글(읽은값)단 re_level보다 1 증가
-			}
-		}else {
-			qnacommentVO.setRef(number);
-			qnacommentVO.setRe_step(re_step); // 기본 댓글에는 0세팅
-			qnacommentVO.setRe_level(re_level); //     "
-		}
-	
-		qnacommentVO.setQc_content(qc_content);
-		qnacommentVO.setQc_num(number);
-		qnacommentVO.setQ_num(q_num);
-		qnacommentVO.setMem_num(user.getMem_num());
-	
-		qnaService.insertComment(qnacommentVO);
-		
-	//  결과를 jsp로 보내지 않고 controller내에서 찾을 때 : redirect 또는 forward
-		return "redirect:/faq/noticeReplyList.do?q_num="+qnacommentVO.getQ_num();
-	}
-	*/
 	
 	//==========댓글 목록==========//
 	@RequestMapping("/faq/listComment.do")

@@ -88,37 +88,17 @@
   		              qc.modify_date,
   		              q_num,
   		              mem_num,
-  		              mem_name
+  		              mem_name,
+  		              m.auth
   		            FROM qna_comment qc
+  		            JOIN member m USING(mem_num)
   		            JOIN member_detail d USING(mem_num)
   		            WHERE q_num = #{q_num}
-  		            ORDER BY qc_num DESC)a)
+  		            ORDER BY qc_num ASC)a)
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
   	</select>
-  	
-  	<!-- 대댓글 -->
-  	<!-- <select id="maxNum" resultType="integer">
-  		ref와 num을 구분하기 위해서
-  		SELECT 
-  			NVL(MAX(qc_num), 0) + 1 FROM qna_comment
-  	</select>
-  	
-  	<select id="maxStep" parameterType="integer" resultType="integer">
-  		ref와 num을 구분하기 위해서
-  		SELECT 
-  			NVL(MAX(re_step), 0) + 1 
-  			FROM qna_comment
-  			WHERE ref = #{ref}	
-  	</select>
-  	
-  	<update id="updateStep" parameterType="qnacommentVO">
-  		UPDATE qna_comment SET
-  			re_step = re_step + 1
-  		WHERE ref = #{ref}
-  		AND re_step > #{re_step}
-  	</update> -->
 </mapper>
 
 

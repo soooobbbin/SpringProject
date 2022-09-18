@@ -31,26 +31,41 @@ $(function(){
 				
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
+					
+					
 					let output = '<div class="item">';
-					output += '<span id="commentname">';
-					output += item.mem_name + '님' + '</span>';
-					
-					output += '<div class="sub-item">';
-					output += '<p>' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
-					
-					if(item.modify_date){
-						output += '<span class="modify-date">최근 수정일 : ' + item.modify_date + '</span>';
-					}else{
-						output += '<span class="modify-date">' + item.reg_date + '</span>';
-					}
 					
 					if(param.user_num==item.mem_num){
+						output += '<img src="../images/faq/reply02.png" width="21" height="21" style="margin-left:3%; margin-top:-4px;">';
+						output += '<span id="commentname">&nbsp;&nbsp;&nbsp;&nbsp;';
+						output += item.mem_name + '님' + '</span>';
+						output += '<div class="sub-item">';
+						output += '<p style="margin-left:6%; color:black;">' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
+						
+						if(item.modify_date){
+							output += '<span class="modify-date" style="margin-left:6%">최근 수정일 : ' + item.modify_date + '</span>';
+						}else{
+							output += '<span class="modify-date" style="margin-left:6%">' + item.reg_date + '</span>';
+						}
+						
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
 						output += ' <input type="button" data-num="'+ item.qc_num +'" value="삭제" class="delete-btn">';
 						output += '<span style="float:right; font-weight:bold">' + '&nbsp;&nbsp;|&nbsp;' + '</span>';
 						output += ' <input type="button" data-num="'+ item.qc_num +'" value="수정" class="modify-btn">';
-						output += '<span style="float:right; font-weight:bold">' + '&nbsp;&nbsp;|&nbsp;' + '</span>';
-						output += ' <input type="button" data-num="'+ item.qc_num +'" value="답글" class="re-btn">';
+					}else if(item.auth==2){
+						output += '<div class="managerbox">' + (/\r\n/g,'<br>');
+						output += '<span id="commentname" style="margin-left:1%">';
+						output += '<img src="../images/faq/management3.png" width="18" height="18" style="margin-top:-2px;">';
+						output += '&nbsp;관리자' + '</span>';
+						output += '<div class="sub-item">';
+						output += '<p style="margin-left:1%; color:black;">&nbsp;' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
+						
+						if(item.modify_date){
+							output += '<span class="modify-date" style="margin-left:1%">&nbsp;최근 수정일 : ' + item.modify_date + '</span>';
+						}else{
+							output += '<span class="modify-date" style="margin-left:1%">&nbsp;' + item.reg_date + '</span>';
+						}
+						output += '</div>';
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';
@@ -85,7 +100,6 @@ $(function(){
 	
 	//댓글 등록
 	$('#qcom_form').submit(function(event){
-		
 		if($('#qc_content').val().trim()==''){
 			alert('내용을 입력하세요');
 			$('#qc_content').val('').focus();
@@ -114,45 +128,12 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생 등록폼');
+				alert('네트워크 문의 등록 오류 발생');
 			}
 		});
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
-	
-	/**/
-/*	function rr(nor_num, no_num) {
-			var nor_content = frm2.nor_content.value;
-			alert(nor_content);
-			if(frm2.nor_content.value == "") {
-				alert("댓글을 입력해주세요");
-				frm2.nor_content.focus();
-				return false;
-			}
-	
-			$.post('rInsert.do?qc_num='+qc_num+"&q_num="+q_num+"&qc_content="+qc_content, function(data) {
-				alert("대댓글이 작성 되었습니다");	
-				$('#nrListDisp').html(data);
-				frm2.nor_content.value="";  // 작성했던 댓글 지우기
-			});
-		}
-	function rpInsert(nor_num, no_num) {
-			if (${empty id && empty admin}) {
-				alert("댓글은 로그인후 작성할 수 있습니다.");
-				location.href="${path}/member/loginForm.do";		
-			}
-	//		댓글을 읽어서 textarea에 넣어서 수정 가능하게 만들어야 한다
-	//		input, textarea에 있는 데이터를 읽을 때는 jquery val()
-	//		td등 일반 태그에 있는 데이터를 읽을때는 jquery에서는 text()로 읽는다
-			$('.reply_'+nor_num).html("<form action='' id='frm2' name='frm2'>"+
-				"<input type='hidden' name='nor_num' value='"+nor_num+"'>"+
-				"<table> &nbsp;&nbsp;&nbsp;"+
-				"<tr><td><textarea rows='3' cols='100' name='nor_content'></textarea> &nbsp;&nbsp;"+ 
-				"<input type='button' onclick='rr("+nor_num+","+no_num+")' value='등록'>"+
-				"<input type='button' onclick='lst("+no_num+")' value='취소'></td></tr></table>");
-	}*/
-	/**/
 	
 	//댓글 작성 폼 초기화
 	function initForm(){
@@ -160,25 +141,6 @@ $(function(){
 		$('#qc_first .letter-count').text('300/300');
 	}
 	//textarea에 내용 입력시 글자수 체크
-	$(document).on('keyup','textarea',function(){
-		//입력한 글자수 구하기
-		let inputLength = $(this).val().length;
-		
-		if(inputLength>300){//300자를 넘어선 경우
-			$(this).val($(this).val().substring(0,300));
-		}else{//300자 이하인 경우
-			//남은 글자수 구하기
-			let remain = 300 - inputLength;
-			remain += '/300';
-			if($(this).attr('id')=='qc_content'){
-				//등록 폼 글자수
-				$('#qc_first .letter-count').text(remain);
-			}else{
-				//수정 폼 글자수
-				$('#mqc_first .letter-count').text(remain);
-			}
-		}
-	});
 	//댓글 수정 버튼 클릭시 수정 폼 노출
 	$(document).on('click','.modify-btn',function(){
 		//댓글 글번호

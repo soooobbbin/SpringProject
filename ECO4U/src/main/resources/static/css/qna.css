@@ -322,7 +322,7 @@ body{
 	float:right;
 }
 #commentname{
-	font-size:14px;
+	font-size:13px;
 	font-weight:bold;
 }
 .sub-item p{
@@ -330,6 +330,7 @@ body{
 }
 .modify-date{
 	font-size:11px;
+	color:#CCCCCC;
 }
 .paging-button input[type="button"]{
 	background-color: white;
@@ -369,12 +370,9 @@ body{
 #mqc_content{
 	width:100%;
 }
-/*end qna-comment*/
-
-/*qnaView comment*/
 #qc_content{
 	margin-right: -13%;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 	width:75%;
 	border:none;
 	border-bottom:1px solid black;
@@ -386,5 +384,12 @@ body{
 	background:white;
 	border:none;
 	font-size:30px;
+}
+.managerbox{
+	background:#F7F8F9;
+	margin-top:-16px;
+}
+.item{
+	color:gray;
 }
 /*end qnaView comment*/

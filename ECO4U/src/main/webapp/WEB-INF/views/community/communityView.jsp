@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -20,7 +22,7 @@
 			최근 수정일 : ${community.modify_date}	
 			</c:if>
 			<c:if test="${empty community.modify_date}">
-			작성일 : ${community.reg_date}	
+			작성일 : ${community.reg_date2}	
 			</c:if>
 			조회 : ${community.c_hit}
 		</li>
@@ -35,6 +37,7 @@
 		<span id="output_lcount"></span>
 		<%-- 댓글 카운트 --%>
 		&nbsp;<img id="output_comment" src="${pageContext.request.contextPath}/images/community/comment02.png" width="40">
+		${community.com_cnt}
 
 	</div>
 	<hr size="1" width="100%">

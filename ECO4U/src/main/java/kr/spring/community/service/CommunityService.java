@@ -17,14 +17,15 @@ public interface CommunityService {
 	public void updateC_hit(Integer c_num);
 	public void updateCommunity(CommunityVO community);
 	public void deleteCommunity(Integer c_num);
-	public void deleteFile(Integer c_num);
+	public void deleteFile(Integer c_num);	
+	public void updateComCnt(Integer c_num);
+	public void updateLikeCnt(Integer c_num);
 	
 	//부모글 좋아요
 	public CommunityLikeVO selectLike(CommunityLikeVO like);
 	public int selectLikeCount(Integer c_num);
 	public void insertLike(CommunityLikeVO communityLike);
 	public void deleteLike(Integer c_like_num);
-
 
 	//댓글
 	public List<CommunityCommentVO> selectListComment(Map<String,Object> map);
@@ -33,6 +34,7 @@ public interface CommunityService {
 	public void insertComment(CommunityCommentVO communityComment);
 	public void updateComment(CommunityCommentVO communityComment);
 	public void deleteComment(Integer com_num);
+	
 
 
 }

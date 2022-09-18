@@ -67,13 +67,13 @@ public class CommunityServiceImpl implements CommunityService{
 
 	@Override
 	public CommunityLikeVO selectLike(CommunityLikeVO like) {
-		return communityMapper.selectLike(like);
+		return communityMapper.selectLike(like); //데이터가 등록 돼 있는지 확인해주는 부분
 	}
 	
 	
 	@Override
 	public int selectLikeCount(Integer c_num) {
-		return communityMapper.selectLikeCount(c_num);
+		return communityMapper.selectLikeCount(c_num); 
 	}
 
 	@Override
@@ -118,6 +118,17 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public void deleteComment(Integer com_num) {
 		communityMapper.deleteComment(com_num);
+		
+	}
+
+	@Override
+	public void updateComCnt(Integer c_num) {
+		communityMapper.updateComCnt(c_num);
+	}
+
+	@Override
+	public void updateLikeCnt(Integer c_num) {
+		communityMapper.updateLikeCnt(c_num);
 		
 	}
 

@@ -35,10 +35,9 @@ $(function(){
 					output += '<h4>';
 									
 					output += item.id + '</h4>';
-					
-					
+										
 					output += '<div class="sub-item">';
-					output += item.com_content.replace(/\r\n/g,'<br>');
+					output += '<p>' + item.com_content.replace(/\r\n/g,'<br>') + '</p>';
 					
 					
 					if(item.modify_date){
@@ -154,13 +153,12 @@ $(function(){
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mcom_form">';
 		modifyUI += '<input type="hidden" name="com_num" id="mcom_num" value="'+ com_num +'">';
-		modifyUI += '<textarea rows="3" cols="50" name="com_content" id="mcom_content" class="rep-content">'+ content +'</textarea>';
+		modifyUI += '<textarea rows="3" cols="65" name="com_content" id="mcom_content" class="comm-content">'+ content +'</textarea>';
 		modifyUI += '<div id="mcom_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mcom_second" class="align-right">';
 		modifyUI += '<input type="submit" value="수정">';
 		modifyUI += ' <input type="button" value="취소" class="com-reset">';
 		modifyUI += '</div>';
-		modifyUI += '<hr size="1" noshade width="96%">';
 		modifyUI += '</form>';
 		
 		//이전에 이미 수정하는 댓글이 있을 경우 수정 버튼을
@@ -236,7 +234,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생 댓글 수정');
 			}
 		});
 		//기본 이벤트 제거

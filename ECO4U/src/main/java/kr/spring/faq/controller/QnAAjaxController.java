@@ -26,11 +26,32 @@ public class QnAAjaxController {
 	private static final Logger logger =
 			LoggerFactory.getLogger(QnAAjaxController.class);
 	
-	private int rowCount = 10;
+	private int rowCount = 5;
 	private int pageCount = 10;
 	
 	@Autowired
 	private QnAService qnaService;
+	
+	//==========문의글 선택 삭제=============//
+	@RequestMapping("/faq/deleteQnA.do")
+	@ResponseBody
+	public Map<String,String> processFile(
+			         @RequestParam String del_qna,
+			         HttpSession session,
+			         HttpServletRequest request){
+		Map<String,String> mapJson = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		if(user==null) {
+			mapJson.put("result", "logout");
+		}else {
+			qnaService.deleteQnAChecked(del_qna);
+			mapJson.put("result", "success");
+		}
+		return mapJson;
+	}
+	
 	
 	//========댓글 등록=========//
 	@RequestMapping("/faq/writeComment.do")
@@ -53,10 +74,13 @@ public class QnAAjaxController {
 			qnacommentVO.setMem_num(user.getMem_num());
 			//댓글 등록
 			qnaService.insertComment(qnacommentVO);
+			
 			mapAjax.put("result","success");
 		}
+		
 		return mapAjax;
 	}
+	
 	
 	//==========댓글 목록==========//
 	@RequestMapping("/faq/listComment.do")
@@ -75,6 +99,9 @@ public class QnAAjaxController {
 		
 		//총 글의 개수
 		int count = qnaService.selectRowCountComment(map);
+		
+		//댓글수 업데이트
+		qnaService.updateComCnt(q_num);
 		
 		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,null);
 		
@@ -96,15 +123,14 @@ public class QnAAjaxController {
 		//로그인 한 회원정보 셋팅
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user!=null) {
-			mapAjax.put(
-					"user_num", user.getMem_num());
+			mapAjax.put("user_num", user.getMem_num());
 		}
 		
 		return mapAjax;
 	}
 	
 	//==========댓글 수정==========//
-	@RequestMapping("/qna/updateComment.do")
+	@RequestMapping("/faq/updateComment.do")
 	@ResponseBody
 	public Map<String,String> modifyComment(
 				  QnAcommentVO qnacommentVO,
@@ -133,7 +159,7 @@ public class QnAAjaxController {
 		return mapAjax;
 	}
 	//==========댓글 삭제==========//
-	@RequestMapping("/qna/deleteComment.do")
+	@RequestMapping("/faq/deleteComment.do")
 	@ResponseBody
 	public Map<String,String> deleteComment(
 			            @RequestParam int qc_num,
@@ -148,8 +174,7 @@ public class QnAAjaxController {
 		if(user==null) {
 			//로그인이 되지 않은 경우
 			mapAjax.put("result", "logout");
-		}else if(user!=null && 
-		  user.getMem_num()==db_comment.getMem_num()) {
+		}else if(user!=null && user.getMem_num()==db_comment.getMem_num()) {
 			//로그인이 되어 있고 
 			//로그인한 회원번호와 작성자 회원번호 일치
 			

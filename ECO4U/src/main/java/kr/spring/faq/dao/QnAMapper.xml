@@ -37,7 +37,8 @@
 		 	   			q.q_category,
 		 	   			q.mem_num,
 		 	   			q_photo,
-		 	   			q_photo_name
+		 	   			q_photo_name,
+		 	   			com_cnt
 		 	   		 FROM qna q JOIN member m
 		 	   		 ON q.mem_num = m.mem_num AND q.mem_num=#{mem_num}
 		 	   		 <where>
@@ -63,12 +64,10 @@
  	<!-- 글수정 -->
  	<update id="updateQnA" parameterType="qnaVO">
  		UPDATE qna SET
- 			<if test="q_photo_name != ''">
-  		    q_photo=#{q_photo},
- 			q_photo_name=#{q_photo_name},
-  		    </if>
  			q_title=#{q_title},
  			q_content=#{q_content},
+ 			q_photo=#{q_photo},
+ 			q_photo_name=#{q_photo_name},
  			q_category=#{q_category},
  			modify_date=SYSDATE 
  		WHERE q_num=#{q_num}
@@ -86,21 +85,21 @@
   		              <![CDATA[
   		              REPLACE(REPLACE(qc_content,'<','&lt;'),'>','&gt;') qc_content,
   		              ]]>
-  		              reg_date,
-  		              modify_date,
+  		              qc.reg_date,
+  		              qc.modify_date,
   		              q_num,
   		              mem_num,
-  		              mem_name
-  		            FROM qna_comment
-  		            JOIN member USING(mem_num) 
-  		            JOIN member_detail USING(mem_num)
+  		              mem_name,
+  		              m.auth
+  		            FROM qna_comment qc
+  		            JOIN member m USING(mem_num)
+  		            JOIN member_detail d USING(mem_num)
   		            WHERE q_num = #{q_num}
-  		            ORDER BY qc_num DESC)a)
+  		            ORDER BY qc_num ASC)a)
   		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
   	</select>
-  	
 </mapper>
 
 

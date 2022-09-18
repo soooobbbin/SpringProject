@@ -3,12 +3,17 @@ package kr.spring.cart.vo;
 import java.sql.Date;
 import java.util.Arrays;
 
+import kr.spring.product.vo.ProductVO;
+
 public class WishVO {
 	private int w_num;
 	private Date reg_date;
 	private Date modify_date;
 	private int mem_num;
 	private int p_num;
+	
+//	private ProductVO productVO;
+	
 	private String p_name;
 	private int p_price;
 	private int p_dprice;
@@ -60,14 +65,18 @@ public class WishVO {
 	public void setP_price(int p_price) {
 		this.p_price = p_price;
 	}
+	public int getP_dprice() {
+		return p_dprice;
+	}
+	public void setP_dprice(int p_dprice) {
+		this.p_dprice = p_dprice;
+	}
 	public int getP_quantity() {
 		return p_quantity;
 	}
 	public void setP_quantity(int p_quantity) {
 		this.p_quantity = p_quantity;
 	}
-	
-	
 	public byte[] getP_photo() {
 		return p_photo;
 	}
@@ -80,30 +89,20 @@ public class WishVO {
 	public void setP_photoname(String p_photoname) {
 		this.p_photoname = p_photoname;
 	}
-	public int getP_dprice() {
-		return p_dprice;
-	}
-	public void setP_dprice(int p_dprice) {
-		this.p_dprice = p_dprice;
-	}
-	
-	
-	
 	public int getP_category() {
 		return p_category;
 	}
 	public void setP_category(int p_category) {
 		this.p_category = p_category;
 	}
-	
-	
-	
 	public String getP_brand() {
 		return p_brand;
 	}
 	public void setP_brand(String p_brand) {
 		this.p_brand = p_brand;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "WishVO [w_num=" + w_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", mem_num="
@@ -111,10 +110,6 @@ public class WishVO {
 				+ p_dprice + ", p_quantity=" + p_quantity + ", p_photoname=" + p_photoname + ", p_category="
 				+ p_category + ", p_brand=" + p_brand + "]";
 	}
-	
-	
-	
-	
-	
+ 
 	
 }

@@ -2,9 +2,20 @@
 <!DOCTYPE mapper   
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
-<mapper namespace="kr.spring.cart.dao.WishMapper">  
-  	<select id="selectRowCount" parameterType="map"
-  	                    resultType="integer">
+<mapper namespace="kr.spring.cart.dao.WishMapper"> 
+		<resultMap type="wishVO" id="wishMap">
+		<result property="productVO.p_name" column="p_name"/>
+		<result property="productVO.p_status" column="p_status"/>
+		<result property="productVO.p_price" column="p_price"/>
+		<result property="productVO.p_dprice" column="p_dprice"/>
+		<result property="productVO.p_quantity" column="p_quantity"/>
+		<result property="productVO.p_category" column="p_category"/>
+		<result property="productVO.p_photo" column="p_photo"/>
+		<result property="productVO.p_photoname" column="p_photoname"/>
+		<result property="productVO.p_brand" column="p_brand"/>
+	</resultMap>
+	 
+  	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
 		FROM wish w JOIN product p
@@ -25,8 +36,7 @@
 		</where>
   	</select>
   	
-  	<select id="selectList" parameterType="map"
-  	                         resultType="WishVO">
+  	<select id="selectList" parameterType="map" resultType="WishVO">
   		SELECT
   		   *
   		FROM (SELECT

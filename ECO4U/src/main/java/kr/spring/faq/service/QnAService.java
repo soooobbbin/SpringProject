@@ -14,6 +14,7 @@ public interface QnAService {
 	public QnAVO selectQnA(Integer q_num);
 	public void updateQnA(QnAVO qna);
 	public void deleteQnA(Integer q_num);
+	public void deleteQnAChecked(String del_qna);
 	
 	//댓글
 	public List<QnAcommentVO> selectListComment(Map<String,Object> map);
@@ -22,4 +23,5 @@ public interface QnAService {
 	public void insertComment(QnAcommentVO qnacomment);
 	public void updateComment(QnAcommentVO qnacomment);
 	public void deleteComment(Integer qc_num);
+	public void updateComCnt(Integer q_num);
 }

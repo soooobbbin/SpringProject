@@ -4,7 +4,7 @@
 <!-- 내용 시작 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/store.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<div class="page-main">
+<div class="page-main1">
 	<div>
 		<h1>오프라인 가게</h1>
 	</div>

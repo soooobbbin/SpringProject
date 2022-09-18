@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/community.like.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/community.css">
+
 <!-- 내용 시작 -->
 <div class="page-main">
    <div class="align-center">
@@ -54,10 +59,15 @@
    <c:if test="${count == 0}">
       <div class="community-result-display">표시할 게시물이 없습니다.</div>   
    </c:if>
+
    <c:if test="${count > 0}">
-   <table>         
+   
+      
+          
       <c:forEach var="community" items="${list}">
-  
+      
+      <c:if test="${community.c_category==1}">
+       <table> 
          <tr>
             <td>${community.id}   · ${community.reg_date}</td>
          </tr>
@@ -65,19 +75,68 @@
             <td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></td>
             <td>
 	              	<c:if test="${!empty community.filename}">
-	              <img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
-	               </c:if>
+	              <a href="detail.do?c_num=${community.c_num}"><img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
+	              </a></c:if>
 	              </td>
 	              </tr>
         
          <tr>
-            <td>${community.c_hit}</td>
+            <td><img src="${pageContext.request.contextPath}/images/community/hit.png" width="18" height="18"> ${community.c_hit} 
+            <img src="${pageContext.request.contextPath}/images/community/like03.png" width="18" height="18"> ${community.like_cnt}
+            <img src="${pageContext.request.contextPath}/images/community/comment.png" width="18" height="18"> ${community.com_cnt}</td>
+            
          </tr>
-       
-      </c:forEach>
-   </table>
+         </table> 
+        </c:if>
+        
+     <!--함께해요 -->
+     <c:if test="${community.c_category==2}">
+       <table> 
+         <tr>
+            <td>${community.id}   · ${community.reg_date}</td>
+         </tr>
+         <tr>
+            <td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></td>
+            <td>
+	              	<c:if test="${!empty community.filename}">
+	              <a href="detail.do?c_num=${community.c_num}"><img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
+	              </a></c:if>
+	              </td>
+	              </tr>
+        
+         <tr>
+            <td><img src="${pageContext.request.contextPath}/images/community/hit.png" width="18" height="18"> ${community.c_hit} 
+            <img src="${pageContext.request.contextPath}/images/community/like03.png" width="18" height="18"> ${community.like_cnt}
+            <img src="${pageContext.request.contextPath}/images/community/comment.png" width="18" height="18"> ${community.com_cnt}</td>
+            
+         </tr>
+         </table> 
+        </c:if>
+ 
+     <!-- 친환경소식 -->
+       <c:if test="${community.c_category==3}">
+         
+         <div class="news">
+	         <c:if test="${!empty community.filename}">
+				<a href="detail.do?c_num=${community.c_num}"><img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo"> </a>
+			 </c:if>
+			 <c:if test="${empty community.filename}">
+				<a href="detail.do?c_num=${community.c_num}"><img src="${pageContext.request.contextPath}/images/no_image.png" width="150" height="120"> </a>
+			</c:if>
+	  		  <span class="news_title"><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></span>
+	 			 <span class="news_date">
+	 			
+	 			 ${community.reg_date2}</span> 
+      	</div>
+      </c:if>
+          
+   </c:forEach>
+   
    <div class="align-center">${page}</div>
-   </c:if>   
+   </c:if>  
+  
    </div>
+   
+   
 </div>
 <!-- 내용 끝 -->

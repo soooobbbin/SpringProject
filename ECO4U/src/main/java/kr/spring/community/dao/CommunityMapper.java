@@ -35,7 +35,17 @@ public interface CommunityMapper{
 		@Update("UPDATE community SET uploadfile='',"
 				+ "filename='' WHERE c_num=#{c_num}")
 		public void deleteFile(Integer c_num);
-		
+		//댓글수 카운트
+		@Update("UPDATE community b SET b.com_cnt = "
+				+ "(select count(com_num) from c_comment where c_num = #{c_num}) "
+				+ "where b.c_num = #{c_num}")
+		public void updateComCnt(Integer c_num);
+		//좋아요수 카운트
+		@Update("UPDATE community b SET b.like_cnt = "
+				+ "(select count(c_like_num) from c_like where c_num = #{c_num}) "
+				+ "where b.c_num = #{c_num}")
+		public void updateLikeCnt(Integer c_num);
+				
 	
 		//부모글 좋아요
 		@Select("SELECT * FROM c_like "
@@ -51,6 +61,7 @@ public interface CommunityMapper{
 		public void deleteLike(Integer c_like_num);
 		@Delete("DELETE FROM c_like WHERE c_num=#{c_num}")
 		public void deleteLikeByCNum(Integer c_num);
+		
 		
 		//댓글
 		
@@ -77,6 +88,10 @@ public interface CommunityMapper{
 		@Delete("DELETE FROM c_comment "
 				+ "WHERE c_num=#{c_num}")
 		public void deleteCommentByCNum(Integer c_num);
+		
+		
+		
+	
 		
 			
 			

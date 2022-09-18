@@ -7,7 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/store.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/store.css">
 <div class="page-main">
-	<h2>오프라인 가게 등록</h2>
+	<h1 style="padding:30px 240px;">오프라인 가게 등록</h1>
 	<form:form id="register_form" action="register.do" modelAttribute="storeVO" enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color"/>
 		<%-- 가게 이미지 등록 --%>

@@ -31,26 +31,41 @@ $(function(){
 				
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
+					
+					
 					let output = '<div class="item">';
-					output += '<h4>';
-					
-					if(item.mem_name){
-						output += item.mem_name + '</h4>';
-					}
-					
-					output += '<div class="sub-item">';
-					output += '<p>' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
-					
-					if(item.modify_date){
-						output += '<span class="modify-date">최근 수정일 : ' + item.modify_date + '</span>';
-					}else{
-						output += '<span class="modify-date">등록일 : ' + item.reg_date + '</span>';
-					}
 					
 					if(param.user_num==item.mem_num){
+						output += '<img src="../images/faq/reply02.png" width="21" height="21" style="margin-left:3%; margin-top:-4px;">';
+						output += '<span id="commentname">&nbsp;&nbsp;&nbsp;&nbsp;';
+						output += item.mem_name + '님' + '</span>';
+						output += '<div class="sub-item">';
+						output += '<p style="margin-left:6%; color:black;">' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
+						
+						if(item.modify_date){
+							output += '<span class="modify-date" style="margin-left:6%">최근 수정일 : ' + item.modify_date + '</span>';
+						}else{
+							output += '<span class="modify-date" style="margin-left:6%">' + item.reg_date + '</span>';
+						}
+						
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.qc_num +'" value="수정" class="modify-btn">';
 						output += ' <input type="button" data-num="'+ item.qc_num +'" value="삭제" class="delete-btn">';
+						output += '<span style="float:right; font-weight:bold">' + '&nbsp;&nbsp;|&nbsp;' + '</span>';
+						output += ' <input type="button" data-num="'+ item.qc_num +'" value="수정" class="modify-btn">';
+					}else if(item.auth==2){
+						output += '<div class="managerbox">' + (/\r\n/g,'<br>');
+						output += '<span id="commentname" style="margin-left:1%">';
+						output += '<img src="../images/faq/management3.png" width="18" height="18" style="margin-top:-2px;">';
+						output += '&nbsp;관리자' + '</span>';
+						output += '<div class="sub-item">';
+						output += '<p style="margin-left:1%; color:black;">&nbsp;' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
+						
+						if(item.modify_date){
+							output += '<span class="modify-date" style="margin-left:1%">&nbsp;최근 수정일 : ' + item.modify_date + '</span>';
+						}else{
+							output += '<span class="modify-date" style="margin-left:1%">&nbsp;' + item.reg_date + '</span>';
+						}
+						output += '</div>';
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';
@@ -72,7 +87,7 @@ $(function(){
 			error:function(){
 				//로딩 이미지 감추기
 				 $('#loading').hide();
-				 alert('네트워크 오류 발생');
+				 alert('네트워크 오류 발생 등록 폼');
 			}
 		});
 		
@@ -80,7 +95,7 @@ $(function(){
 	
 	//다음 댓글 보기 버튼 클릭시 데이터 추가
 	$('.paging-button input').click(function(){
-		selectList(currentPage + 1);
+		selectQnAList(currentPage + 1);
 	});
 	
 	//댓글 등록
@@ -113,37 +128,19 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 문의 등록 오류 발생');
 			}
 		});
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
+	
 	//댓글 작성 폼 초기화
 	function initForm(){
 		$('textarea').val('');
 		$('#qc_first .letter-count').text('300/300');
 	}
 	//textarea에 내용 입력시 글자수 체크
-	$(document).on('keyup','textarea',function(){
-		//입력한 글자수 구하기
-		let inputLength = $(this).val().length;
-		
-		if(inputLength>300){//300자를 넘어선 경우
-			$(this).val($(this).val().substring(0,300));
-		}else{//300자 이하인 경우
-			//남은 글자수 구하기
-			let remain = 300 - inputLength;
-			remain += '/300';
-			if($(this).attr('id')=='qc_content'){
-				//등록 폼 글자수
-				$('#qc_first .letter-count').text(remain);
-			}else{
-				//수정 폼 글자수
-				$('#mqc_first .letter-count').text(remain);
-			}
-		}
-	});
 	//댓글 수정 버튼 클릭시 수정 폼 노출
 	$(document).on('click','.modify-btn',function(){
 		//댓글 글번호
@@ -155,12 +152,12 @@ $(function(){
 		let modifyUI = '<form id="mqc_form">';
 		modifyUI += '<input type="hidden" name="qc_num" id="mqc_num" value="'+ qc_num +'">';
 		modifyUI += '<textarea rows="1" cols="100" name="qc_content" id="mqc_content" class="qcom-content">'+ content +'</textarea>';
-		modifyUI += '<div id="mqc_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mqc_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
 		modifyUI += ' <input type="button" value="취소" class="qc-reset">';
+		modifyUI += '<span style="float:right; font-weight:bold">' + '&nbsp;&nbsp;|&nbsp;' + '</span>';
+		modifyUI += '<input type="submit" value="완료">';
 		modifyUI += '</div>';
-		modifyUI += '<hr size="1" noshade width="96%">';
+		modifyUI += '<hr size="1" noshade width="100%">';
 		modifyUI += '</form>';
 		
 		//이전에 이미 수정하는 댓글이 있을 경우 수정 버튼을
@@ -236,7 +233,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생 댓글 수정');
 			}
 		});
 		//기본 이벤트 제거
@@ -272,9 +269,10 @@ $(function(){
 		});
 		
 	});
-
+	
 	//초기 데이터(목록) 호출
 	selectQnAList(1);
+	
 });
 
 

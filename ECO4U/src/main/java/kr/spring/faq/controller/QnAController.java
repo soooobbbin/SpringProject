@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.faq.service.QnAService;
 import kr.spring.faq.vo.QnAVO;
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -37,6 +38,9 @@ public class QnAController {
 	
 	@Autowired
 	private QnAService qnaService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	
 	//자바빈(VO) 초기화
@@ -82,7 +86,7 @@ public class QnAController {
 	}
 	
 	//===========게시판 글 목록============//
-	@RequestMapping(value="/faq/qnalist.do",method=RequestMethod.GET)
+	@RequestMapping("/faq/qnalist.do")
 	public ModelAndView process(
 			HttpSession session,
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
@@ -90,6 +94,7 @@ public class QnAController {
 			@RequestParam(value="category",defaultValue="") String category) {
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO member = memberService.selectMember(user.getMem_num());
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -98,7 +103,6 @@ public class QnAController {
 		
 		//글의 총개수(검색된 글의 개수)
 		int count = qnaService.selectRowCount(map);
-		
 		logger.debug("<<count>> : " + count);
 		
 		//페이지 처리
@@ -117,6 +121,7 @@ public class QnAController {
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
+		mav.addObject("member", member);
 		
 		return mav;
 	}

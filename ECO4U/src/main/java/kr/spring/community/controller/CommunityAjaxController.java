@@ -82,6 +82,7 @@ public class CommunityAjaxController {
 			CommunityLikeVO communityLike = 
 					communityService.selectLike(like);
 			
+			
 			if(communityLike!=null) {//등록된 좋아요 정보가 있는 경우
 				communityService.deleteLike(communityLike.getC_like_num());
 				
@@ -112,6 +113,7 @@ public class CommunityAjaxController {
 		
 		Map<String,Object> mapJson = 
 				new HashMap<String,Object>();
+		
 		
 		MemberVO user = 
 			  (MemberVO)session.getAttribute("user");
@@ -186,6 +188,11 @@ public class CommunityAjaxController {
 		int count = 
 			communityService.selectRowCountComment(map);
 		
+		//댓글수 업데이트
+		communityService.updateComCnt(c_num);
+		//좋아요수 업데이트
+		communityService.updateLikeCnt(c_num);
+				
 		PagingUtil page = 
 				new PagingUtil(currentPage,count,
 						rowCount,pageCount,null);

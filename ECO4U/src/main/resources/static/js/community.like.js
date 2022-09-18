@@ -8,12 +8,12 @@ $(function(){
 			data:{c_num:c_num},
 			dataType:'json',
 			cache:false,
-			timeout:30000,
+			timeout:10000,
 			success:function(param){
-				displayFav(param);
+				displayLike(param);
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 오류 발생 : 좋아요 수 조회');
 			}
 		});
 	}
@@ -26,7 +26,7 @@ $(function(){
 			data:{c_num:$('#c_num').val()},
 			dataType:'json',
 			cache:false,
-			timeout:30000,
+			timeout:10000,
 			success:function(param){
 				if(param.result == 'logout'){
 					alert('로그인 후 좋아요를 눌러주세요!');
@@ -40,15 +40,15 @@ $(function(){
 				alert('네트워크 오류 발생');
 			}
 		});
-	});//좋아요 등록 끝
+	});//좋아요 등록 끝 
 	
 	//좋아요 표시
 	function displayLike(param){
 		let output;
 		if(param.status == 'noLike'){
-			output = '../images/community/fav01.gif';
+			output = '../images/community/like01.png';
 		}else{
-			output = '../images/community/fav02.gif';
+			output = '../images/community/like02.png';
 		}
 		//문서 객체에 추가
 		$('#output_like').attr('src',output);

@@ -20,7 +20,7 @@
 						<img src="${pageContext.request.contextPath}/images/faq/camera_img.png" class="my-photo2">
 						</c:if>
 						<c:if test="${!empty qna.q_photo_name}">
-						<img src="${pageContext.request.contextPath}/image_upload/${qna.q_photo}" width="130" height="160" class="my-photo">
+						<img src="${pageContext.request.contextPath}/image_upload/${qna.q_photo}" width="130" height="160" class="my-photo2">
 						</c:if>
 					</li>
 					<li class="qna_write_btn02">
@@ -36,7 +36,7 @@
 				<option value="2"<c:if test="${q_category == 2}">selected</c:if>>상품/배송문의</option>
 				<option value="3"<c:if test="${q_category == 3}">selected</c:if>>기타</option>
 			</select>
-			<form:input path="q_title" maxlength='42' placeholder="제목을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '제목을 입력하세요.'" autocomplete="off"/>
+			<form:input path="q_title" maxlength='40' placeholder="제목을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder = '제목을 입력하세요.'" autocomplete="off"/>
 			<form:errors path="q_title" cssClass="error-color"/>
 			</li>
 		    	<li>

@@ -26,7 +26,7 @@
 .submit-btn:hover{
 	filter: brightness(95%);
 }
-</style>    
+</style>
 <!-- 내용 시작 -->
 <div class="page-main" style="min-height: 775px;">
 	<div class="align-center" style="margin-top: 60px; margin-bottom: 30px;">
@@ -68,8 +68,8 @@
 		<div class="align-center">
  			<a href="https://kauth.kakao.com/oauth/authorize?client_id=dedecdcafbdb9f4a5cba8d8079ef6606&redirect_uri=http://localhost:8080/member/kakaologin.do&response_type=code">
 			<img src="${pageContext.request.contextPath}/images/kakao_login.jpg" alt="위의 이미지를 누르면 연결됩니다." style="width:80%; border-radius:5px;">
-			</a> 
-		</div>                  
+			</a>
+		</div>    
 	</form:form>
 </div>
 <!-- 내용 끝 -->

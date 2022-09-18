@@ -18,13 +18,20 @@ public class CommunityVO {
 	private String c_content;//내용
 	private int c_hit;//조회수
 	private String reg_date; //등록일
+	private Date reg_date2; //등록일 yyyy-mm-dd형식
 	private String modify_date; //수정일
 	private byte[] uploadfile;//파일
 	private String filename;//파일명
 	private int c_category;//카테고리
 	private int c_auth;//공지
+	private int com_cnt; //댓글 수 추가
+	private int like_cnt; //댓글 수 추가
 	
+
 	private int mem_num; //회원번호
+	
+	
+
 	private String id; //회원아이디
 	
 	//파일 업로드 처리
@@ -73,13 +80,27 @@ public class CommunityVO {
 	public void setReg_date(String reg_date) {
 		this.reg_date = DurationFromNow.getTimeDiffLabel(reg_date);
 	}
+	public Date getReg_date2() {
+		return reg_date2;
+	}
+	public void setReg_date2(Date reg_date2) {
+		this.reg_date2 = reg_date2;
+	}
+	
+	public void setModify_date(String modify_date) {
+		this.modify_date = modify_date;
+	}
 	public String getModify_date() {
 		return modify_date;
 	}
-	public void setModify_date(Date modify_date) {
-		this.modify_date = DurationFromNow.getTimeDiffLabel(modify_date);
+	public int getCom_cnt() {
+		return com_cnt;
 	}
-	
+
+	public void setCom_cnt(int com_cnt) {
+		this.com_cnt = com_cnt;
+	}
+
 	public byte[] getUploadfile() {
 		return uploadfile;
 	}
@@ -118,12 +139,20 @@ public class CommunityVO {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public int getLike_cnt() {
+		return like_cnt;
+	}
+
+	public void setLike_cnt(int like_cnt) {
+		this.like_cnt = like_cnt;
+	}
 
 	@Override
 	public String toString() {
 		return "CommunityVO [c_num=" + c_num + ", c_title=" + c_title + ", c_content=" + c_content + ", c_hit=" + c_hit
-				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date  + ", filename=" + filename + ", c_category="
-				+ c_category + ", c_auth=" + c_auth + ", mem_num=" + mem_num + ", id=" + id + "]";
+				+ ", reg_date=" + reg_date + ", reg_date2=" + reg_date2 + ", modify_date=" + modify_date  + ", filename=" + filename + ", c_category="
+				+ c_category + ", c_auth=" + c_auth + ", mem_num=" + mem_num + ", com_cnt=" + com_cnt + ", like_cnt=" + like_cnt + ", id=" + id + "]";
 	}
 
 	

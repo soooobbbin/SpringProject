@@ -1,5 +1,6 @@
 package kr.spring.community.vo;
 
+
 import kr.spring.util.DurationFromNow;
 
 public class CommunityCommentVO {
@@ -11,6 +12,14 @@ public class CommunityCommentVO {
 	private int mem_num; //회원번호
 	private String id; //아이디
 	
+	private CommunityVO communityVO;
+	
+	public CommunityVO getCommunityVO() {
+		return communityVO;
+	}
+	public void setCommunityVO(CommunityVO communityVO) {
+		this.communityVO = communityVO;
+	}
 	public String getId() {
 		return id;
 	}
@@ -60,6 +69,6 @@ public class CommunityCommentVO {
 	@Override
 	public String toString() {
 		return "CommunityCommentVO [com_num=" + com_num + ", com_content=" + com_content + ", reg_date=" + reg_date + ", modify_date="
-				+ modify_date + ", c_num=" + c_num + ", mem_num=" + mem_num + ", id=" + id + "]";
+				+ modify_date + ", c_num=" + c_num + ", mem_num=" + mem_num + ", id=" + id + ", communityVO=" + communityVO + "]";
 	}
 }

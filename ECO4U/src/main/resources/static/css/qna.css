@@ -43,8 +43,8 @@ body{
 	margin-left:16px;
 }
 .mypage-div02{
-	padding-top:30px; 
-	margin-left:100px;
+	padding-top:3%; 
+	margin-left:103px;
 	width:40%;
 	float:left; 
 	font-family: 'Noto Sans KR', sans-serif;
@@ -73,13 +73,13 @@ body{
 	margin:9px;
 }
 .box-title{
-	margin-top:6px;
+	margin-top:4px;
 	font-size:15px;
 	font-weight:bold;
 }
 .box-content{
-	margin-top:-15px;
-	margin-bottom:5px;
+	margin-top:-13px;
+	margin-bottom:6px;
 	font-size: 11px;
 }
 .box-date{

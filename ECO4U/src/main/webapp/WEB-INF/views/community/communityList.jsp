@@ -126,7 +126,7 @@
 	  		  <span class="news_title"><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></span>
 	 			 <span class="news_date">
 	 			
-	 			 ${community.reg_date2}</span>
+	 			 ${community.reg_date2}</span> 
       	</div>
       </c:if>
           

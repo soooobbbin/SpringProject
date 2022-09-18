@@ -30,7 +30,12 @@
              p_photoname,
              p_brand,
              p_status,
-            (order_quantity * p_price) + p_dprice cart_total
+             <if test="(order_quantity * p_price) gte 30000">
+             order_quantity * p_price cart_total
+             </if>
+             <if test="(order_quantity * p_price) lt 30000">
+             (order_quantity * p_price)+ p_dprice cart_total
+             </if>
            FROM cart JOIN product 
            USING(p_num) 
            WHERE mem_num=#{mem_num}

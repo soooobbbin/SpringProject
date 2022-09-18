@@ -94,13 +94,14 @@ function selectAll(selectAll)  {
 							<c:if test="${cart.productVO.p_status == 1 and cart.productVO.p_quantity >= cart.order_quantity}">
 								<button class="minus">-</button>
 								<input type="number" name="order_quantity" min="1" max="99999" 
-								value="${cart.order_quantity}" class="quantity-width">
+								value="${cart.order_quantity}" class="quantity-width" data-cartnum="${cart.cart_num}">
 								<button class="plus">+</button>
 								<br>
 								<input type="button" value="변경" class="cart-modify"
-								data-cartnum="${cart.cart_num}" data-pmnum="${cart.p_num}">
+								data-cartnum="${cart.cart_num}" data-pnum="${cart.p_num}">
 							</c:if>
 	                    </div>
+	                    
 	                    <div class="div2-2">
 								<input type="button" value="X" class="delete-pro" data-cartnum="${cart.cart_num}">
 						</div>
@@ -109,7 +110,7 @@ function selectAll(selectAll)  {
 					<div class="div3">
 						<div class="cart-bottom-price">
 							<span>상품금액</span><br>
-							<div class="price-span"><fmt:formatNumber value="${cart.productVO.p_price}"/>원</div>
+							<div class="price-span"><fmt:formatNumber value="${cart.productVO.p_price * cart.order_quantity}"/>원</div>
 						</div>
 						<span class="span-sym">-</span>
 						<div class="cart-bottom-price">
@@ -119,7 +120,12 @@ function selectAll(selectAll)  {
 						<span class="span-sym">+</span>
 						<div class="cart-bottom-price">
 							<span>배송비</span><br>
+							<c:if test="${cart.cart_total >= 30000}">
+							<div class="price-span">0원</div>
+							</c:if>
+							<c:if test="${cart.cart_total < 30000}">
 							<div class="price-span"><fmt:formatNumber value="${cart.productVO.p_dprice}"/>원</div>
+							</c:if>
 							
 						</div>
 						<span class="span-sym">=</span>
@@ -144,37 +150,52 @@ function selectAll(selectAll)  {
 				
 			});
 			
+			$('.minus').click(function(){
+				let num = $(this).parent('div').find('.quantity-width').val();
+				$(this).parent('div').find('.quantity-width').val(--num);
+			});
+			
+			
+			$('.plus').click(function(){
+				let num = $(this).parent('div').find('.quantity-width').val();
+				$(this).parent('div').find('.quantity-width').val(++num);
+			});
 		</script> 
+		<script type="text/javascript">
+			
+			
+			
+		</script>
 		
 		<div class="content2">
-			<span>결제정보</span>
-			<hr color="gray" width="95%" size="1">
+			<span class="content2-span">결제정보</span>
+			<hr color="black" width="95%" size="1">
 			<br>
 			<div class="order-info">
 				<table class="order-info-table">
 					<tr>
 						<td>상품수</td>
-						<td>${count}개</td>
+						<td class="td-right">${count}개</td>
 					</tr>
 					<tr>
 						<td>상품금액</td>
-						<td>${all_total}원</td>
+						<td class="td-right"><fmt:formatNumber value="${all_total}"/>원</td>
 					</tr>
 					<tr>
 						<td>할인금액</td>
-						<td>0원</td>
+						<td class="td-right td-discount">-0원</td>
 					</tr>
 					<tr>
 						<td>배송비</td>
-						<td>${cart.productVO.p_dprice}원</td>
+						<td class="td-right"><fmt:formatNumber value="${cart.productVO.p_dprice}"/>원</td>
 					</tr>
 				</table>
-				<hr color="gray" width="95%" size="1">
+				<hr color="black" width="95%" size="1">
 				<div class="order-total">
-					<table>
+					<table class="order-info-table">
 						<tr>
-							<td>총 결제금액</td>
-							<td>${all_total + cart.productVO.p_dprice}</td>
+							<td class="order-bottom">총 결제금액</td>
+							<td class="order-bottom-total"><fmt:formatNumber value="${all_total + cart.productVO.p_dprice}"/>원</td>
 						</tr>
 					</table>
 				</div>
@@ -182,7 +203,8 @@ function selectAll(selectAll)  {
 			
 			
 			<div class="cart-order">
-			<input type="button" value="결제하기" onclick="location.href='orders.do'">
+			<input type="button" value="결제하기" onclick="location.href='orders.do'"
+				class="order-btn">
 			</div>
 		</div>
 		

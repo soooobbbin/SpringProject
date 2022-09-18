@@ -42,8 +42,7 @@ public class CartServiceImpl implements CartService{
 	
 	@Override
 	public void updateCart(CartVO cart) {
-		// TODO Auto-generated method stub
-		
+		cartMapper.updateCart(cart);
 	}
 
 	@Override

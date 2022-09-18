@@ -90,9 +90,19 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
+	public List<MemberVO> selectDelList(Map<String, Object> map) {
+		return memberMapper.selectDelList(map);
+	}
+	
+	@Override
 	public int selectRowCount(Map<String, Object> map) {
 		return memberMapper.selectRowCount(map);
 	}
+	@Override
+	public int selectDelCount(Map<String, Object> map) {
+		return memberMapper.selectDelCount(map);
+	}
+	
 
 	
 }

@@ -27,16 +27,10 @@ public class MemberAdminController {
 	@Autowired
 	private MemberService memberService;
 	
-	//회원등록 폼 호출
-	@GetMapping("/admin/registerUser.do")
-	public String form() {
-		       //타일스 설정의 식별자
-		return "memberRegister";
-	}
-	
 	//==========회원목록==========//
+	//전체 회원 조회
 	@RequestMapping("/admin/admin_list.do")
-	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
+	public ModelAndView processAll(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
 								@RequestParam(value="keyfield", defaultValue="")String keyfield,
 								@RequestParam(value="keyword", defaultValue="")String keyword) {
 		Map<String,Object> map = new HashMap<String, Object>();
@@ -65,5 +59,37 @@ public class MemberAdminController {
 		
 		return mav;
 	}
+	
+	//탈퇴 회원 조회
+		@RequestMapping("/admin/delete_list.do")
+		public ModelAndView processDel(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
+									@RequestParam(value="keyfield", defaultValue="")String keyfield,
+									@RequestParam(value="keyword", defaultValue="")String keyword) {
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			
+			//총 글의 개수 또는 검색된 글의 개수
+			int count = memberService.selectDelCount(map);
+			
+			logger.debug("<<count>>: "+count);
+			
+			//페이지 처리
+			PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "admin_list.do");
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			List<MemberVO> list = null;
+			if(count > 0)
+				list = memberService.selectDelList(map);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("admin_delList");
+			mav.addObject("count",count);
+			mav.addObject("list", list);
+			mav.addObject("page", page.getPage());
+			
+			return mav;
+		}
 	
 }

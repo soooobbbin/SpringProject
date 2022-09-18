@@ -53,11 +53,6 @@ public interface QnAMapper {
 	@Delete("DELETE FROM qna_comment "
 			+ "WHERE q_num=#{q_num}")
 	public void deleteCommentByQNum(Integer q_num);
-	
-	//대댓글
-//	public int maxNum();
-//	public int maxStep(Integer ref);
-//	public void updateStep(QnAcommentVO qnacommentVO);
 }
 
 

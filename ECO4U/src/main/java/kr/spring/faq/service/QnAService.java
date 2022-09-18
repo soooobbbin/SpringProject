@@ -23,9 +23,4 @@ public interface QnAService {
 	public void insertComment(QnAcommentVO qnacomment);
 	public void updateComment(QnAcommentVO qnacomment);
 	public void deleteComment(Integer qc_num);
-	
-	//대댓글
-//	public int maxNum();
-//	public int maxStep(Integer ref);
-//	public void updateStep(QnAcommentVO qnacommentVO);
 }

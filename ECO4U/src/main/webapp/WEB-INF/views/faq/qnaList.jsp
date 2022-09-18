@@ -99,7 +99,7 @@ function selectAll(selectAll)  {
 					<div class="qnalist-span01">
 						<div class="box-title"><a href="detail.do?q_num=${qna.q_num}">${qna.q_title}</a></div><br>
 						<div class="box-content">
-						<img src="../images/faq/enterdarkgray.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-3px">
+						<img src="../images/faq/reply00.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-2px">
 						<c:choose>
 				        <c:when test="${fn:length(qna.q_content) gt 45}">
 				        <c:out value="${fn:substring(qna.q_content, 0, 44)}">

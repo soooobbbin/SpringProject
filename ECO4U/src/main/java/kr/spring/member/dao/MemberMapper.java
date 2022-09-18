@@ -68,7 +68,9 @@ public interface MemberMapper {
 	
 	//회원관리-관리자
 	public List<MemberVO> selectList(Map<String,Object>map);
+	public List<MemberVO> selectDelList(Map<String,Object>map);
 	public int selectRowCount(Map<String,Object>map);
+	public int selectDelCount(Map<String,Object>map);
 	
 	
 }

@@ -20,6 +20,7 @@ public class QnAVO {
 	private byte[] q_photo;
 	private String q_photo_name;
 	private int mem_num;//회원번호
+	private int com_cnt; //댓글 수 추가
 	
 	private String mem_name;//회원 이름
 	
@@ -111,13 +112,20 @@ public class QnAVO {
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
 	}
+	
+	public int getCom_cnt() {
+		return com_cnt;
+	}
+
+	public void setCom_cnt(int com_cnt) {
+		this.com_cnt = com_cnt;
+	}
 
 	@Override
 	public String toString() {
 		return "QnAVO [q_num=" + q_num + ", q_title=" + q_title + ", q_content=" + q_content + ", q_category="
 				+ q_category + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", q_photo="
-				+ Arrays.toString(q_photo) + ", q_photo_name=" + q_photo_name + ", mem_num=" + mem_num + ", mem_name="
-				+ mem_name + "]";
+				+ Arrays.toString(q_photo) + ", q_photo_name=" + q_photo_name + ", mem_num=" + mem_num + ", com_cnt="
+				+ com_cnt + ", mem_name=" + mem_name + "]";
 	}
-
 }

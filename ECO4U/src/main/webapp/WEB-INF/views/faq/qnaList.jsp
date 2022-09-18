@@ -114,7 +114,7 @@ function selectAll(selectAll)  {
 						<span class="box-date">${qna.reg_date}</span>
 						<span class="box-comment" style="font-size:5px">
 						<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">
-						(0)
+						(${qna.com_cnt})
 						</span>
 					</div>
 				</div>

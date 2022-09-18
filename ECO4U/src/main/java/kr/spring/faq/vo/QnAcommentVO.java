@@ -12,6 +12,16 @@ public class QnAcommentVO {
 	
 	private String mem_name;//회원이름
 	private int auth;//1 일반, 2 관리자
+	
+	private QnAVO qnaVO;
+
+	public QnAVO getQnaVO() {
+		return qnaVO;
+	}
+
+	public void setQnaVO(QnAVO qnaVO) {
+		this.qnaVO = qnaVO;
+	}
 
 	public int getQc_num() {
 		return qc_num;
@@ -81,6 +91,7 @@ public class QnAcommentVO {
 	public String toString() {
 		return "QnAcommentVO [qc_num=" + qc_num + ", qc_content=" + qc_content + ", reg_date=" + reg_date
 				+ ", modify_date=" + modify_date + ", mem_num=" + mem_num + ", q_num=" + q_num + ", mem_name="
-				+ mem_name + ", auth=" + auth + "]";
+				+ mem_name + ", auth=" + auth + ", qnaVO=" + qnaVO + "]";
 	}
+
 }

@@ -92,4 +92,9 @@ public class QnAServiceImpl implements QnAService{
 			qnaMapper.deleteQnA(Integer.parseInt(ajaxMsg[i]));
 		}
 	}
+
+	@Override
+	public void updateComCnt(Integer q_num) {
+		qnaMapper.updateComCnt(q_num);
+	}
 }

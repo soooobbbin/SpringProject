@@ -52,6 +52,7 @@ public class QnAAjaxController {
 		return mapJson;
 	}
 	
+	
 	//========댓글 등록=========//
 	@RequestMapping("/faq/writeComment.do")
 	@ResponseBody
@@ -98,6 +99,9 @@ public class QnAAjaxController {
 		
 		//총 글의 개수
 		int count = qnaService.selectRowCountComment(map);
+		
+		//댓글수 업데이트
+		qnaService.updateComCnt(q_num);
 		
 		PagingUtil page = new PagingUtil(currentPage,count,rowCount,pageCount,null);
 		

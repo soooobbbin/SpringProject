@@ -37,7 +37,8 @@
 		 	   			q.q_category,
 		 	   			q.mem_num,
 		 	   			q_photo,
-		 	   			q_photo_name
+		 	   			q_photo_name,
+		 	   			com_cnt
 		 	   		 FROM qna q JOIN member m
 		 	   		 ON q.mem_num = m.mem_num AND q.mem_num=#{mem_num}
 		 	   		 <where>

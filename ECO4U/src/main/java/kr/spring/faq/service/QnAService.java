@@ -23,4 +23,5 @@ public interface QnAService {
 	public void insertComment(QnAcommentVO qnacomment);
 	public void updateComment(QnAcommentVO qnacomment);
 	public void deleteComment(Integer qc_num);
+	public void updateComCnt(Integer q_num);
 }

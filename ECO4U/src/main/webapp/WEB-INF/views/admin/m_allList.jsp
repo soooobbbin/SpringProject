@@ -5,7 +5,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 <div class="page-main">
-	<h2>회원목록(관리자용)</h2>
+	<h2>전체회원</h2>
+	<div class="sub-menu">
+		<ul>
+			<li><a href="admin_list.do">전체회원 조회</a>
+			<li><a href="delete_list.do">탈퇴회원 조회</a>
+		</ul>
+	</div>
 	<form action="admin_list.do" id="search_form" method="get">
 		<ul class="search">
 			<li>
@@ -42,7 +48,7 @@
 			<c:forEach var="member" items="${list}">
 			<tr>
 				<td>
-					<c:if test="${member.auth==0}">${member.id}</c:if>
+					<c:if test="${member.auth==0}">${membe666r.id}</c:if>
 					<c:if test="${member.auth > 0}"><a href="#">${member.id}</a></c:if>
 				</td>
 				<td>${member.mem_name}</td>

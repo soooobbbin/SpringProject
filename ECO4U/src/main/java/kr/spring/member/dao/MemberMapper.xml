@@ -54,6 +54,61 @@
 			 </if>
 		</where>
 	</select>
+	
+	<select id="selectDelList"  parameterType="map" resultType="memberVO">
+		SELECT
+				*
+		FROM (SELECT 
+					a.*, 
+					rownum rnum
+			  FROM (SELECT 
+			  				*
+			  		FROM member m LEFT OUTER
+			  		JOIN member_detail d
+			  		ON m.mem_num = d.mem_num
+			  		<where>
+			  			<if test="keyword != null and keyword != ''">
+			  				<if test="keyfield == 1">
+			  					m.id LIKE '%' || #{keyword} || '%'
+			  				</if>
+			  				<if test="keyfield == 2">
+			  					d.name LIKE '%' || #{keyword} || '%'
+			  				</if>
+			  				<if test="keyfield == 3">
+			  					d.email LIKE '%' || #{keyword} || '%'
+			  				</if>
+			  				<if test="keyfield == 4">
+			  					m.id LIKE '%' || #{keyword} || '%' OR
+			  					d.name LIKE '%' || #{keyword} || '%' OR
+			  					d.email LIKE '%' || #{keyword} || '%'
+			  				</if>
+			  			</if>
+			  		</where>
+			  		ORDER BY d.reg_date DESC) a
+			  	WHERE a.auth = 0
+			  	)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<select id="selectDelCount" parameterType="map" resultType="integer">
+		SELECT COUNT(*)
+		FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num = d.mem_num
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				<if test="keyfield == 1">m.id LIKE '%' || #{keyword} || '%'</if>
+				<if test="keyfield == 2">d.name LIKE '%' || #{keyword} || '%'</if>
+				<if test="keyfield == 3">d.email LIKE '%' || #{keyword} || '%'</if>
+				<if test="keyfield == 4">
+					m.id LIKE '%' || #{keyword} || '%' OR
+					d.name LIKE '%' || #{keyword} || '%' OR
+					d.email LIKE '%' || #{keyword} || '%'
+				</if>
+			 </if>
+			 m.auth=0
+		</where>
+	</select>
 </mapper>
 
 

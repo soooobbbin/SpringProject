@@ -47,6 +47,8 @@ public class QnAServiceImpl implements QnAService{
 
 	@Override
 	public void deleteQnA(Integer q_num) {
+		qnaMapper.deleteComment(q_num);
+		qnaMapper.deleteCommentByQNum(q_num);
 		qnaMapper.deleteQnA(q_num);
 	}
 

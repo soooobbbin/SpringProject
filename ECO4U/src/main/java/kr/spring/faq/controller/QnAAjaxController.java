@@ -170,8 +170,7 @@ public class QnAAjaxController {
 		if(user==null) {
 			//로그인이 되지 않은 경우
 			mapAjax.put("result", "logout");
-		}else if(user!=null && 
-		  user.getMem_num()==db_comment.getMem_num()) {
+		}else if(user!=null && user.getMem_num()==db_comment.getMem_num()) {
 			//로그인이 되어 있고 
 			//로그인한 회원번호와 작성자 회원번호 일치
 			

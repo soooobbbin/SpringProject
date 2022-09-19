@@ -14,6 +14,7 @@ public interface WishService {
 	public WishVO selectWish(WishVO wish);
 	public void updateWish(Integer w_num);
 	public void deleteWish(Integer w_num);
+	public void deleteWishChecked(String del_product);
 	public void deleteWishByProductNum(Integer p_num);
 
 }

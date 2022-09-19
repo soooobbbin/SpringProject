@@ -14,28 +14,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.spring.cart.service.CartService;
-import kr.spring.cart.vo.CartVO;
+import kr.spring.cart.service.WishService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.product.service.ProductService;
-import kr.spring.product.vo.ProductVO;
 
 @Controller
-public class CartAjaxController {
+public class WishAjaxController {
 	private static final Logger logger =
-			LoggerFactory.getLogger(CartAjaxController.class);
-	
+			LoggerFactory.getLogger(WishAjaxController.class);
 	
 	
 	@Autowired
-	private CartService cartService;
+	private WishService wishService;
 	
 	@Autowired
 	private ProductService productService;
 
 	
 	//==========장바구니 선택 삭제=============//
-	@RequestMapping("/cart/deleteCart.do")
+	@RequestMapping("/cart/deleteWish.do")
 	@ResponseBody
 	public Map<String,String> processFile(
 			         @RequestParam String del_product,
@@ -49,13 +46,13 @@ public class CartAjaxController {
 		if(user==null) {
 			mapJson.put("result", "logout");
 		}else {
-
-			cartService.deleteCartChecked(del_product);
+			wishService.deleteWishChecked(del_product);
 			
 			mapJson.put("result", "success");
 		}
 		
 		return mapJson;
 	}
+
 	
 }

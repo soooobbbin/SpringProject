@@ -54,6 +54,15 @@ public class WishServiceImpl implements WishService{
 		wishMapper.deleteWishByProductNum(p_num);
 	}
 
+	@Override
+	public void deleteWishChecked(String del_product) {
+		String[] ajaxMsg = del_product.split(",");
+		for(int i=0; i<ajaxMsg.length; i++) {
+			wishMapper.deleteWish(Integer.parseInt(ajaxMsg[i]));
+			wishMapper.deleteWishByProductNum(Integer.parseInt(ajaxMsg[i]));
+		}
+	}
+
 	
 
 }

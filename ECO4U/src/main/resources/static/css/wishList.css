@@ -48,7 +48,12 @@
     font-weight: 600;
     cursor:pointer;
 }
-
+input#delete_btn {
+    border: 0.5px solid #ced8cf;
+    background: white;
+    border-radius: 2px;
+    color: black;
+}
 /*찜한 상품 없음*/
 .no-wish {
     margin: 200px;

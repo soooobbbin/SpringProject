@@ -31,7 +31,7 @@ public class QnAMNAjaxController {
 	@Autowired
 	private QnAService qnaService;
 	
-//	//==========문의글 선택 삭제=============//
+	//==========문의글 선택 삭제=============//
 //	@RequestMapping("/faq/deleteQnA.do")
 //	@ResponseBody
 //	public Map<String,String> processFile(
@@ -50,9 +50,9 @@ public class QnAMNAjaxController {
 //		}
 //		return mapJson;
 //	}
-//	
-//	
-//	//========댓글 등록=========//
+	
+	
+	//========댓글 등록=========//
 //	@RequestMapping("/faq/writeComment.do")
 //	@ResponseBody
 //	public Map<String,String> writeComment(

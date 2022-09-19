@@ -8,7 +8,7 @@
 <div class="align-center" id="header_center">
 	<a href="${pageContext.request.contextPath}/admin/admin_list.do" id="admin_member">회원관리</a>
 	<a href="${pageContext.request.contextPath}/product/admin_plist.do" id="admin_product">상품관리</a> 
-	<a href="${pageContext.request.contextPath}/admin/qna.do" id="admin_community">문의관리</a>
+	<a href="${pageContext.request.contextPath}/faq/qnamanagementlist.do" id="admin_qna">문의관리</a>
 </div>
 <div class="align-right" id="header_right">
 	<c:if test="${!empty user}">

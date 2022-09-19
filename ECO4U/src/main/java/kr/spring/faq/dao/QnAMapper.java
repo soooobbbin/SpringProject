@@ -59,6 +59,10 @@ public interface QnAMapper {
 			+ "(SELECT COUNT(qc_num) FROM qna_comment WHERE q_num = #{q_num}) "
 			+ "WHERE q.q_num = #{q_num}")
 	public void updateComCnt(Integer q_num);
+	
+	//관리자
+	public List<QnAVO> selectmnQnAList(Map<String,Object> map);
+	public int selectmnRowCount(Map<String,Object> map);
 }
 
 

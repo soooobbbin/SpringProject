@@ -19,7 +19,7 @@ public class QnAServiceImpl implements QnAService{
 	
 	@Autowired
 	private QnAMapper qnaMapper;
-
+	
 	@Override
 	public void insertQnA(QnAVO qna) {
 		qnaMapper.insertQnA(qna);
@@ -96,5 +96,16 @@ public class QnAServiceImpl implements QnAService{
 	@Override
 	public void updateComCnt(Integer q_num) {
 		qnaMapper.updateComCnt(q_num);
+	}
+	
+	//관리자
+	@Override
+	public List<QnAVO> selectmnQnAList(Map<String, Object> map) {
+		return qnaMapper.selectmnQnAList(map);
+	}
+
+	@Override
+	public int selectmnRowCount(Map<String, Object> map) {
+		return qnaMapper.selectmnRowCount(map);
 	}
 }

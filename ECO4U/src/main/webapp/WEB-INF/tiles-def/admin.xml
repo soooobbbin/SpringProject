@@ -49,6 +49,12 @@
     	<put-attribute name="header" value="/WEB-INF/views/template/admin_header.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/faq/qnaManagementList.jsp"/>          
     </definition>
+    
+    <definition name="qnaManagementView" extends="main">
+    	<put-attribute name="title" value="관리자 설정"/>
+    	<put-attribute name="header" value="/WEB-INF/views/template/admin_header.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/faq/qnaManagementView.jsp"/>          
+    </definition>
 </tiles-definitions>
 
 

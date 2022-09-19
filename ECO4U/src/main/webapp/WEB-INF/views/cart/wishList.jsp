@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/wish.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishList.css">
 <script type="text/javascript">
 function checkSelectAll()  {
@@ -39,10 +39,10 @@ function selectAll(selectAll)  {
 	<div class="wish-category">
 		<form action="wishList.do" id="search_form"  method="get">
 			<ul class="wish-category-ul" id="category" name="category">
-				<li><input type="button" value="all" onclick="location.href='/cart/wishList.do?category=0'"></li>
-				<li><input type="button" value="living" onclick="location.href='/cart/wishList.do?category=1'"></li>
-				<li><input type="button" value="beauty"  onclick="location.href='/cart/wishList.do?category=2'"></li>
-				<li><input type="button" value="fassion"  onclick="location.href='/cart/wishList.do?category=3'"></li>
+				<li id="all"><input type="button"  value="all"  onclick="location.href='/cart/wishList.do?category=0'"></li>
+				<li id="living"><input type="button" value="living"  onclick="location.href='/cart/wishList.do?category=1'"></li>
+				<li id="beauty"><input type="button" value="beauty"  onclick="location.href='/cart/wishList.do?category=2'"></li>
+				<li id="fassion"><input type="button" value="fassion" onclick="location.href='/cart/wishList.do?category=3'"></li>
 			</ul>
 		</form>
 	</div>
@@ -51,7 +51,7 @@ function selectAll(selectAll)  {
 	<div class="wish-choice">
 		<span><input type="checkbox" id="selectall" name="selectall"
 		 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
-		<span> | 선택 삭제</span> <!-- 버튼으로 만들어서 선택한 상품 삭제 가능하게 하기 -->
+		<span> | <input type="button" value="선택 삭제" id="delete_btn"></span> <!-- 버튼으로 만들어서 선택한 상품 삭제 가능하게 하기 -->
 	</div>
 	
 		<!-- 찜 목록에 상품이 담기지 않은 경우 -->
@@ -69,7 +69,7 @@ function selectAll(selectAll)  {
 					<input type="hidden" value="${wish.p_category}">
 					<input type="hidden" value="${wish.mem_num}">
 					<div class="wish-check">
-					<input type="checkbox" id="select_product" name="select_product" 
+					<input type="checkbox" class="select-product" data-wishnum="${wish.w_num}" name="select_product" 
 					 onclick="checkSelectAll()">
 					</div>
 					<div class="product-image">

@@ -47,5 +47,7 @@
 		  COUNT(*)
 		FROM cart c JOIN product p
 		ON c.p_num = p.p_num 
+		WHERE c.mem_num = #{mem_num}
+		GROUP BY c.mem_num
   	</select>
 </mapper>

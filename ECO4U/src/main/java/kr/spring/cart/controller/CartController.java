@@ -88,54 +88,13 @@ public class CartController {
    }
 
 	//=======장바구니 목록=======//
-//	@RequestMapping(value="/cart/cart.do",method=RequestMethod.GET)
-//	public ModelAndView list(
-//						HttpSession session,
-//						Model model,
-//						@RequestParam(value="pageNum",defaultValue="1") 
-//						int currentPage,
-//						@RequestParam(value="keyfield",defaultValue="")
-//						String keyfield,
-//						@RequestParam(value="keyword",defaultValue="")
-//						String keyword) {
-//		
-//		MemberVO user = (MemberVO)session.getAttribute("user");
-//		
-//		Map<String,Object> map = 
-//				new HashMap<String,Object>();
-//		map.put("keyfield", keyfield);
-//		map.put("keyword", keyword);
-//		map.put("mem_num",user.getMem_num());
-//		
-//		//찜 목록의 총 개수(검색된 목록 개수)
-//		int count = cartService.selectRowCount(map);
-//		
-//		logger.debug("<<count>> : " + count);
-//		
-//		//페이지 처리
-//		PagingUtil page = 
-//				new PagingUtil(keyfield,keyword,currentPage,
-//						count,rowCount,pageCount,"cart.do");
-//		List<CartVO> list = null;
-//		if(count > 0) {
-//			map.put("start", page.getStartRow());
-//			map.put("end", page.getEndRow());
-//			
-//			list = cartService.selectList(mem_num);
-//		}
-//		ModelAndView mav = new ModelAndView();
-//		//뷰이름.jsp
-//		mav.setViewName("cart");
-//		mav.addObject("count",count);
-//		mav.addObject("list",list);
-//		mav.addObject("page",page.getPage());
-//		
-//		return mav;
-//	}
 	@RequestMapping("/cart/cart.do")
 	public String list(HttpSession session, Model model) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("mem_num",user.getMem_num());
+		
+		
 		//회원번호별 총 구매액
 		int all_total = cartService.selectTotalByMem_num(user.getMem_num());
 		
@@ -146,10 +105,10 @@ public class CartController {
 		//찜 목록의 총 개수(검색된 목록 개수)
 		int count = cartService.selectRowCount(map);
 
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("cart");
-		mav.addObject("count", count);
-		map.put("count", count);
+		
+		logger.debug("<<count>> : " + count);
+		
+		model.addAttribute("count", count);
 		model.addAttribute("all_total", all_total);
 		model.addAttribute("list", list);
 		return "cart";

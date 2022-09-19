@@ -143,6 +143,9 @@ a:hover{
 	text-decoration:underline;
 	color:#999999;
 }
+a.logout:hover, a.home:hover, a.cart:hover, a.wish:hover{
+	text-decoration:none;
+}
 
 .image-space .horizontal-area{
 	margin:2px;

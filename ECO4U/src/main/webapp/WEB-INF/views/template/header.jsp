@@ -67,23 +67,23 @@ $(function(){
       </a>
    </c:if>
    <c:if test="${!empty user}">
-      <a href="${pageContext.request.contextPath}/member/logout.do"> 
+      <a href="${pageContext.request.contextPath}/member/logout.do" class="logout"> 
       <img src="${pageContext.request.contextPath}/images/logout.png" class="logout">
       </a>
    </c:if>
    <c:if test="${!empty user && user.auth == 1}">
-      <a href="${pageContext.request.contextPath}/member/myPage.do"> 
+      <a href="${pageContext.request.contextPath}/member/myPage.do" class="home"> 
       <img src="${pageContext.request.contextPath}/images/home.png" class="home">
       </a>
-      <a href="${pageContext.request.contextPath}/cart/cart.do"> 
+      <a href="${pageContext.request.contextPath}/cart/cart.do" class="cart"> 
       <img src="${pageContext.request.contextPath}/images/cart.png" class="cart">
       </a>
-      <a href="${pageContext.request.contextPath}/cart/wishList.do"> 
+      <a href="${pageContext.request.contextPath}/cart/wishList.do" class="wish"> 
       <img src="${pageContext.request.contextPath}/images/wish.png" class="wish">
       </a>
    </c:if>
    <c:if test="${!empty user && user.auth == 2}">
-      <a href="${pageContext.request.contextPath}/admin/admin_list.do"> 
+      <a href="${pageContext.request.contextPath}/admin/admin_list.do" class="home"> 
       <img src="${pageContext.request.contextPath}/images/home.png" class="home">
       </a>
    </c:if>

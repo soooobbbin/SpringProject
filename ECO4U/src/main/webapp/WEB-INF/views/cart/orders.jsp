@@ -34,7 +34,7 @@
 									</div>
 									<div class="pop_content2">
 										<input type="button" value="배송지 내용 수정" id="btn-modify" onclick="location.href='/cart/zipcodeUpdate.do?zip_num=${zip.zip_num}'">
-										<input type="button" value="배송지 선택" id="btn-check" onclick="location.href='/cart/updateauth.do?zip_num=${zip.zip_num}'">
+										<input type="button" value="대표 배송지 선택" id="btn-check" onclick="location.href='/cart/updateauth.do?zip_num=${zip.zip_num}'">
 									</div>
 							 	</c:forEach>
 							 </div>

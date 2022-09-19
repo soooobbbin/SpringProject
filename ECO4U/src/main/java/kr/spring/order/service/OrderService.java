@@ -25,9 +25,8 @@ public interface OrderService {
 	public void updateZipcode(ZipcodeVO zipcode);
 
 	public OrderVO selectOrder(Integer mem_num);
-	public void insertOrder(OrderVO order);
-
-
+	public void insertOrder(Integer cart_num);
+	public void insertOrderChecked(String del_product);
 
 }
 

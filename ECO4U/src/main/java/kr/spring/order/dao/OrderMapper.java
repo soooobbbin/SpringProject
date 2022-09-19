@@ -33,7 +33,9 @@ public interface OrderMapper {
 	@Update("UPDATE zipcode SET zip_name=#{zip_name},zip_rec=#{zip_rec},zipcode=#{zipcode},address1=#{address1},address2=#{address2} WHERE zip_num=#{zip_num}")
 	public void updateZipcode(ZipcodeVO zipcode);
 	public OrderVO selectOrder(Integer mem_num);
-	public void insertOrder(OrderVO order);
+	@Insert ("INSERT INTO orders (o_num,o_name,o_total,p_num,mem_num) "
+			+ "VALUES(order_seq.nextval,#{o_name},#{o_total},#{p_num},#{mem_num})")
+	public void insertOrder(Integer p_num);
 	
 
 }

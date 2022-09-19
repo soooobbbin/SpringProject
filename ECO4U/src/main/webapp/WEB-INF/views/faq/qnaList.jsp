@@ -58,11 +58,6 @@ function selectAll(selectAll)  {
 	
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
-	
-	<!-- 관리자 페이지 연결 -->
-	<input type="button" value="관리자페이지" onclick="location.href='/faq/qnamanagementlist.do'">
-	<!--  -->
-	
 		<div style="padding-left: 53px;">
 		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/member/myPage.do'"> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
 		</div>

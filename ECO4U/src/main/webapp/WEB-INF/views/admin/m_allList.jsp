@@ -48,8 +48,8 @@
 			<c:forEach var="member" items="${list}">
 			<tr>
 				<td>
-					<c:if test="${member.auth==0}">${membe666r.id}</c:if>
-					<c:if test="${member.auth > 0}"><a href="#">${member.id}</a></c:if>
+					<c:if test="${member.auth==0}">${member.id}</c:if>
+					<c:if test="${member.auth > 0}"><a href="admin_detail.do?mem_num=${member.mem_num}">${member.id}</a></c:if>
 				</td>
 				<td>${member.mem_name}</td>
 				<td>${member.mem_email}</td>

@@ -72,5 +72,8 @@ public interface MemberMapper {
 	public int selectRowCount(Map<String,Object>map);
 	public int selectDelCount(Map<String,Object>map);
 	
+	@Update("UPDATE member SET auth=#{auth} WHERE mem_num=#{mem_num}")
+	public void updateByAdmin(MemberVO memberVO);
+	
 	
 }

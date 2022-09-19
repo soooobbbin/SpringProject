@@ -102,6 +102,10 @@ public class MemberServiceImpl implements MemberService{
 	public int selectDelCount(Map<String, Object> map) {
 		return memberMapper.selectDelCount(map);
 	}
+	@Override
+	public void updateByAdmin(MemberVO memberVO) {
+		memberMapper.updateByAdmin(memberVO);
+	}
 	
 
 	

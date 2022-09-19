@@ -24,5 +24,6 @@ public interface MemberService {
 	public List<MemberVO> selectDelList(Map<String,Object>map);
 	public int selectRowCount(Map<String,Object>map);
 	public int selectDelCount(Map<String,Object>map);
+	public void updateByAdmin(MemberVO memberVO);
 }
 

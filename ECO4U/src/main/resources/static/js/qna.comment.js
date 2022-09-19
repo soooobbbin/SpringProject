@@ -40,7 +40,7 @@ $(function(){
 						output += '<span id="commentname">&nbsp;&nbsp;&nbsp;&nbsp;';
 						output += item.mem_name + '님' + '</span>';
 						output += '<div class="sub-item">';
-						output += '<p style="margin-left:6%; color:black;">' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
+						output += '<p style="margin-left:6%; margin-right:7%; color:black;">' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
 						
 						if(item.modify_date){
 							output += '<span class="modify-date" style="margin-left:6%">최근 수정일 : ' + item.modify_date + '</span>';
@@ -58,7 +58,7 @@ $(function(){
 						output += '<img src="../images/faq/management3.png" width="18" height="18" style="margin-top:-2px;">';
 						output += '&nbsp;관리자' + '</span>';
 						output += '<div class="sub-item">';
-						output += '<p style="margin-left:1%; color:black;">&nbsp;' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
+						output += '<p style="margin-left:1%; color:black;">' + item.qc_content.replace(/\r\n/g,'<br>') + '</p>';
 						
 						if(item.modify_date){
 							output += '<span class="modify-date" style="margin-left:1%">&nbsp;최근 수정일 : ' + item.modify_date + '</span>';

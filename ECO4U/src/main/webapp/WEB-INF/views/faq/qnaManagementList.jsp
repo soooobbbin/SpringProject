@@ -35,46 +35,19 @@ function selectAll(selectAll)  {
 	  })
 }
 </script>
-<div class="page" style="height: 775px;">
-	<form action="qnalist.do" id="search_form"  method="get">
-	
-	<!-- 좌측 메뉴바 -->
-	<div class="menu">
-	<div class="mypage-menu">
-	<h2>My Page</h2>
-	<div class="user">
-		<img src="${pageContext.request.contextPath}/images/user.png">
-		<p>${member.mem_name}</p>
-		<p>${user.id}</p>
-	</div>
-	<h3><a href="#" id="all">전체 주문 내역</a></h3>
-	<h3><a href="${pageContext.request.contextPath}/cart/wishList.do" id="all">나의 관심</a></h3>
-	<h3>내가 쓴 글</h3>
-	<p><a href="${pageContext.request.contextPath}/faq/qnalist.do" style="color:darkgray;">- 문의/답변</a></p><br>
-	<p><a href="#" style="color:darkgray;">- 상품평</a></p>
-	</div>
-	</div>
-	<!-- 좌측 메뉴바 종료 -->
-	
+<style>
+.page-content02{
+	margin-top: 10%;
+}
+</style>
+<div class="page" style="height: 835px;">
+	<form action="qnamanagementlist.do" id="search_form"  method="get">
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
-	
-	<!-- 관리자 페이지 연결 -->
-	<input type="button" value="관리자페이지" onclick="location.href='/faq/qnamanagementlist.do'">
-	<!--  -->
-	
 		<div style="padding-left: 53px;">
-		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/member/myPage.do'"> > <a href="/faq/qnalist.do" style="font-weight:bold">문의내역</a></span>
+		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/faq/qnalist.do'"> > <a href="qnamanagementlist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
 		<div class ="page-content02">
-			<ul class="category-ul" id="category" name="category">
-			<li class="myqna_btn01">
-				<input type="button" value="   전체   " onclick="location.href='/faq/qnalist.do?category=0'">
-				<input type="button" value="   회원   " onclick="location.href='/faq/qnalist.do?category=1'">
-				<input type="button" value="   상품/배송   "  onclick="location.href='/faq/qnalist.do?category=2'">
-				<input type="button" value="   기타   "  onclick="location.href='/faq/qnalist.do?category=3'">
-			</li>
-			</ul>
 		<c:if test="${count == 0}">
 		<div class="no-wish">문의 내역이 없습니다.</div>
 		</c:if>
@@ -91,7 +64,7 @@ function selectAll(selectAll)  {
 			<li class="qnalist-list">
 				<div class="box-parent">
 					<input type="hidden" value="${qna.q_category}">
-					<input type="hidden" value="${qna.mem_num}">
+					<%-- <input type="hidden" value="${qna.mem_num}"> --%>
 					<!-- 선택 체크박스 -->
 					<div class="qnacheck-box">
 						<input type="checkbox" class="select-qna" name="select_qna" 
@@ -137,7 +110,7 @@ function selectAll(selectAll)  {
 	</form>
 </div>
 <!-- 내가 쓴 글 subbar.js -->
-<script>
+<!-- <script>
 //script.js
 $(document).ready(function(){	
 	//menu v2
@@ -149,5 +122,5 @@ $(document).ready(function(){
 	});
 	
 });
-</script>
+</script> -->
 <!-- 내용 끝 -->

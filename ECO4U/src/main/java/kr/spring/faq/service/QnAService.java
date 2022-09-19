@@ -24,4 +24,8 @@ public interface QnAService {
 	public void updateComment(QnAcommentVO qnacomment);
 	public void deleteComment(Integer qc_num);
 	public void updateComCnt(Integer q_num);
+	
+	//관리자
+	public List<QnAVO> selectmnQnAList(Map<String,Object> map);
+	public int selectmnRowCount(Map<String,Object> map);
 }

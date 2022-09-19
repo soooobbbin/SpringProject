@@ -23,8 +23,7 @@ import kr.spring.util.PagingUtil;
 
 @Controller
 public class QnAAjaxController {
-	private static final Logger logger =
-			LoggerFactory.getLogger(QnAAjaxController.class);
+	private static final Logger logger = LoggerFactory.getLogger(QnAAjaxController.class);
 	
 	private int rowCount = 5;
 	private int pageCount = 10;

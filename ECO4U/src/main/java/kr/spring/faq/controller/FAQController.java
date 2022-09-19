@@ -25,7 +25,6 @@ import kr.spring.faq.service.FAQService;
 import kr.spring.faq.vo.FAQVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
-import kr.spring.util.StringUtil;
 
 @Controller
 public class FAQController {

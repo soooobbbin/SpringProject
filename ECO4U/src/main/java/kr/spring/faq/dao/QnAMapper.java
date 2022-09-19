@@ -54,7 +54,7 @@ public interface QnAMapper {
 			+ "WHERE q_num=#{q_num}")
 	public void deleteCommentByQNum(Integer q_num);
 	
-	//댓글수 카운트
+	//댓글수
 	@Update("UPDATE qna q SET q.com_cnt = "
 			+ "(SELECT COUNT(qc_num) FROM qna_comment WHERE q_num = #{q_num}) "
 			+ "WHERE q.q_num = #{q_num}")

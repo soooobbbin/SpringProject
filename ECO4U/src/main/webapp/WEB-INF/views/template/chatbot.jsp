@@ -8,7 +8,7 @@
 .chatbot_pop_wrap{
 	position:fixed; 
 	top:37%; 
-	right:20%; 
+	right:18%; 
 	width:10px;
 	height:10px; 
 	text-align:left;
@@ -23,7 +23,7 @@
 	display:inline-block; 
 	padding:20px 30px; 
 	background: rgba(250,249,248); 
-	width:300px;
+	width:280px;
 	height:400px; 
 	vertical-align:middle; 
 	font-size:15px;

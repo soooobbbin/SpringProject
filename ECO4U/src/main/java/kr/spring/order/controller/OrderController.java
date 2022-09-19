@@ -19,11 +19,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.cart.vo.CartVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.order.service.OrderService;
 import kr.spring.order.vo.OrderVO;
+import kr.spring.product.vo.ProductVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.zipcode.vo.ZipcodeVO;
 
@@ -50,7 +53,7 @@ public class OrderController {
 	}
 	
 	//=============주문메인===============//
-	//주문메인 폼 호출
+	//장바구니에서 주문메인 폼 호출
 	@RequestMapping("/cart/orders.do")
 	public ModelAndView process(
 			@RequestParam(value="pageNum",defaultValue="1") 
@@ -107,7 +110,66 @@ public class OrderController {
 		
 		return mav;
 	}
+	//상품에서 주문메인 폼 호출
+	@RequestMapping("/product/orders.do")
+	public ModelAndView process2(
+								@RequestParam(value="pageNum",defaultValue="1") 
+								int currentPage,
+								@RequestParam(value="keyfield",defaultValue="")
+								String keyfield,
+								@RequestParam(value="keyword",defaultValue="")
+								String keyword,
+								HttpSession session) {
+		
+		//session에 저장된 정보 읽기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		//배송지 1건 레코드 읽기
+		ZipcodeVO zipcode = orderService.selectZipcode(user.getMem_num());
+		logger.debug("<<회원 주소지>> : " + zipcode);
+
+		
+		Map<String,Object> zip_map = new HashMap<String,Object>();
+		zip_map.put("keyfield", keyfield);
+		zip_map.put("keyword", keyword);
+		
+		
+		//주문의 총개수(검색된 글의 개수)
+		int zip_count = orderService.selectZipRowCount(zip_map,user.getMem_num());
+		
+		logger.debug("<<count>> : " + zip_count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,zip_count,rowCount,pageCount,"orders.do");
+		
+		List<ZipcodeVO> zip_list = null;
+		if(zip_count > 0) {
+			
+			zip_map.put("mem_num",user.getMem_num());
+			zip_map.put("start", page.getStartRow());
+			zip_map.put("end", page.getEndRow());
+			
+			zip_list = orderService.selectZipList(zip_map);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("orders");
+        
+		//대표 배송지 정보 가져오기
+		mav.addObject("zipcode", zipcode);
+		
+		logger.debug("<<list>> : " + zip_list);
+		
+		mav.addObject("count", zip_count);
+		mav.addObject("zip_list", zip_list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}
+		
 	
+
 	//============주문결제 배송시 요청사항 입력=====================//
 	@PostMapping("/cart/notice.do")
 	public String submit(@Valid OrderVO OrderVO,BindingResult result,HttpServletRequest request,HttpSession session,Model model) {

@@ -6,7 +6,9 @@ $(function(){
 			$('#order_quantity').focus();
 			return false;
 		}
+		var check = confirm('상품을 장바구니에 추가하시겠습니까?');
 		
+		if(check){
 		let form_data = $(this).serialize();
 		
 		$.ajax({
@@ -34,6 +36,7 @@ $(function(){
 		});
 		//기본 이벤트 제거
 		event.preventDefault();
+		}
 	});
 	
 	//========= 찜목록에 상품 담기 =========//
@@ -58,6 +61,10 @@ $(function(){
 	
 	//좋아요 등록
 	$('#wishlist').click(function(){
+		
+		var check = confirm('상품을 찜 목록에 추가하시겠습니까?');
+			
+		if(check){
 		$.ajax({
 			url:'../cart/writeWish.do',
 			type:'post',
@@ -80,6 +87,7 @@ $(function(){
 				alert('네트워크 오류 발생');
 			}
 		});
+		}
 	}); //좋아요 등록 끝
 	
 

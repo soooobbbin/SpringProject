@@ -74,9 +74,15 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void insertOrder(OrderVO order) {
-		// TODO Auto-generated method stub
-		
+	public void insertOrder(Integer cart_num) {
+		orderMapper.insertOrder(order);
+	}
+	@Override
+	public void insertOrderChecked(String del_product) {
+		String[] ajaxMsg = del_product.split(",");
+		for(int i=0; i<ajaxMsg.length; i++) {
+			orderMapper.insertOrder(Integer.parseInt(ajaxMsg[i]));
+		}
 	}
 
 }

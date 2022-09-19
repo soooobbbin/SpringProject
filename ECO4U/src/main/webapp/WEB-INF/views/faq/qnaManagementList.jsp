@@ -72,16 +72,16 @@ function selectAll(selectAll)  {
 					</div>
 					<!-- 선택 체크박스 끝 -->
 					<div class="qnalist-image01">
-						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='detail.do?q_num=${qna.q_num}'">
+						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='admindetail.do?q_num=${qna.q_num}'">
 					</div>
 					<div class="qnalist-span01">
-						<div class="box-title"><a href="detail.do?q_num=${qna.q_num}">${qna.q_title}</a></div><br>
+						<div class="box-title"><a href="admindetail.do?q_num=${qna.q_num}">${qna.q_title}</a></div><br>
 						<div class="box-content">
 						<img src="../images/faq/reply00.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-2px">
 						<c:choose>
 				        <c:when test="${fn:length(qna.q_content) gt 45}">
 				        <c:out value="${fn:substring(qna.q_content, 0, 44)}">
-				        </c:out><a href="detail.do?q_num=${qna.q_num}" style="font-size:11px; font-weight:bold; color:#999999;">... 더보기</a>
+				        </c:out><a href="admindetail.do?q_num=${qna.q_num}" style="font-size:11px; font-weight:bold; color:#999999;">... 더보기</a>
 				        </c:when>
 				        <c:otherwise>
 				        <c:out value="${qna.q_content}">

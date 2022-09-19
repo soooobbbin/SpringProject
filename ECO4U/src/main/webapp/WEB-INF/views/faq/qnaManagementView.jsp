@@ -17,11 +17,11 @@
 </style>
 <!-- 내용 시작 -->
 <div class="qna-main">
-<%-- <div class="align-right" style="font-size:12px">
+<div class="align-right" style="font-size:12px">
 <a href="/member/myPage.do">HOME</a> > 
 <a href="/faq/qnamanagementlist.do">문의내역</a> > 
 <a href="admindetail.do?q_num=${qna.q_num}" style="color:black;">문의상세</a></div>
-<h3>「 ${qna.mem_name} 」 님의 문의</h3>
+<h3>관리자 문의상세 페이지입니다.</h3>
 <div class="qnaViewtb">
 <img class="qnarefresh" width="20px" height="20px" src="${pageContext.request.contextPath}/images/faq/refresh.png" onclick="location.href='admindetail.do?q_num=${qna.q_num}'">
 	<div class="align-right" id="qnadiv01"><a href="${pageContext.request.contextPath}/faq/qnawrite.do" style="color:#666666;">다시 문의하기</a></div>
@@ -102,7 +102,7 @@
 	<div id="loading" style="display:none;">
 		<img src="${pageContext.request.contextPath}/images/faq/loading.gif" width="100" height="100">
 	</div>
-	<!-- 댓글 UI 끝 --> --%>
+	<!-- 댓글 UI 끝 -->
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </div>

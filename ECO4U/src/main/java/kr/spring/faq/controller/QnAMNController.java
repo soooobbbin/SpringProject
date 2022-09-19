@@ -93,7 +93,7 @@ public class QnAMNController {
 			@RequestParam(value="category",defaultValue="") String category) {
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
-//		MemberVO member = memberService.selectMember(user.getMem_num());
+		MemberVO member = memberService.selectMember(user.getMem_num());
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
@@ -120,25 +120,25 @@ public class QnAMNController {
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("page", page.getPage());
-//		mav.addObject("member", member);
+		mav.addObject("member", member);
 		
 		return mav;
 	}
 	
 	//========게시판 글상세===========//
-//	@RequestMapping("/faq/detail.do")
-//	public ModelAndView detail(@RequestParam int q_num) {
-//		
-//		logger.debug("<<q_num>> : " + q_num);
-//		QnAVO qna = qnaService.selectQnA(q_num);
-//		
-//		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
-//		qna.setQ_content(StringUtil.useBrNoHtml(qna.getQ_content()));
-//		
-//		return new ModelAndView("qnaView","qna",qna);
-//	}
-//	
-//	//=========이미지 출력=========//
+	@RequestMapping("/faq/admindetail.do")
+	public ModelAndView detail(@RequestParam int q_num) {
+		
+		logger.debug("<<q_num>> : " + q_num);
+		QnAVO qna = qnaService.selectQnA(q_num);
+		
+		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
+		qna.setQ_content(StringUtil.useBrNoHtml(qna.getQ_content()));
+		
+		return new ModelAndView("qnaManagementView","qna",qna);
+	}
+	
+	//=========이미지 출력=========//
 //	@RequestMapping("/faq/imageView.do")
 //	public ModelAndView viewImage(@RequestParam int q_num) {
 //		
@@ -187,7 +187,8 @@ public class QnAMNController {
 //		
 //		return "common/resultView";
 //	}
-	//=========== 게시판 글 삭제 =============//
+//	
+//	//=========== 게시판 글 삭제 =============//
 //	@RequestMapping("/faq/qnadelete.do")
 //	public String submitDelete(@RequestParam int q_num,
 //							HttpServletRequest request,Model model) {

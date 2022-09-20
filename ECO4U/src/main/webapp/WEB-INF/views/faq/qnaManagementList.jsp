@@ -11,33 +11,20 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishList.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-<script type="text/javascript">
-function checkSelectAll()  {
-	  // 전체 체크박스
-	  const checkboxes = document.querySelectorAll('input[name="select_qna"]');
-	  // 선택된 체크박스
-	  const checked = document.querySelectorAll('input[name="select_qna"]:checked');
-	  // select all 체크박스
-	  const selectAll = document.querySelector('input[name="selectall"]');
-	  
-	  if(checkboxes.length === checked.length)  {
-	    selectAll.checked = true;
-	  }else {
-	    selectAll.checked = false;
-	  }
-}
-
-function selectAll(selectAll)  {
-	  const checkboxes = document.getElementsByName('select_qna');
-	  
-	  checkboxes.forEach((checkbox) => {
-	    checkbox.checked = selectAll.checked
-	  })
-}
-</script>
 <style>
 .page-content02{
-	margin-top: 8%;
+	margin-top: 7%;
+}
+.box-parent {
+    display: flex;
+    width:fit-content;
+}
+.mypage-div02{
+	padding-top:3%; 
+	margin-left:50px;
+	width:47%;
+	float:left; 
+	font-family: 'Noto Sans KR', sans-serif;
 }
 </style>
 <div class="page" style="height: 775px;">
@@ -74,26 +61,12 @@ function selectAll(selectAll)  {
 		</c:if>
 		<c:if test="${count > 0}">
 		<ul class="qnalist-ul">
-		<!-- 전체 선택 체크박스 -->
-		<li id="qnacb">
-			<span style="float:left;"><input type="checkbox" id="selectall" name="selectall" value="전체 선택"  onclick="selectAll(this)"></span>
-			<span style="float:right; margin-top:1px;">전체 선택&nbsp;&nbsp;|<input type="button" value="삭제" id="qnadelete_btn">
-			</span>
-		</li>
-		<!-- 전체 선택 체크박스 끝 -->
 			<c:forEach var="qna" items="${list}">
 			<li class="qnalist-list">
 				<div class="box-parent">
 					<input type="hidden" value="${qna.q_category}">
 					<input type="hidden" value="${qna.mem_num}">
-					<!-- 선택 체크박스 -->
-					<div class="qnacheck-box">
-						<input type="checkbox" class="select-qna" name="select_qna" 
-						 onclick="checkSelectAll()" data-cartnum="${qna.q_num}" value="${qna.q_num}">
-					</div>
-					<!-- 선택 체크박스 끝 -->
-					<div>${qna.mem_name}</div>
-					<div>(상태)</div>
+					<!-- <div style="margin-left:3%; margin-top:4%; margin-right:1%;">상태상태</div> -->
 					<div class="qnalist-image01">
 						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='admindetail.do?q_num=${qna.q_num}'">
 					</div>
@@ -112,6 +85,7 @@ function selectAll(selectAll)  {
 				        </c:otherwise>
 						</c:choose>
 						</div>
+						<div class="align-right" style="width:620px; margin-top:-28px; margin-bottom:10px;">${qna.mem_name}</div>
 						<span class="box-date">${qna.reg_date}</span>
 						<span class="box-comment" style="font-size:5px">
 						<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">

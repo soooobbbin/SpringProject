@@ -44,8 +44,8 @@ body{
 }
 .mypage-div02{
 	padding-top:3%; 
-	margin-left:45px;
-	width:50%;
+	margin-left:103px;
+	width:40%;
 	float:left; 
 	font-family: 'Noto Sans KR', sans-serif;
 }
@@ -306,15 +306,6 @@ body{
 	width:35px;
 	height:20px;
 	margin-left:-3px;
-	background-color: white;
-	border: none;
-	font-weight:bold;
-	font-size:12px;
-	float:right;
-}
-.re-btn{
-	width:35px;
-	height:20px;
 	background-color: white;
 	border: none;
 	font-weight:bold;

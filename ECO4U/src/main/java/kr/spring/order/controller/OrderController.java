@@ -1,10 +1,12 @@
 package kr.spring.order.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -22,10 +24,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.cart.service.CartService;
 import kr.spring.cart.vo.CartVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.order.service.OrderService;
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
+import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.zipcode.vo.ZipcodeVO;
@@ -39,6 +44,10 @@ public class OrderController {
 	
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private CartService cartService;
+	@Autowired
+	private ProductService productService;
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -62,7 +71,9 @@ public class OrderController {
 			String keyfield,
 			@RequestParam(value="keyword",defaultValue="")
 			String keyword,
-			HttpSession session) {
+			HttpSession session,OrderVO orderVO,
+			HttpServletRequest request,Model model,
+			HttpServletResponse response) {
 		
 		//session에 저장된 정보 읽기
 		MemberVO user = (MemberVO)session.getAttribute("user");
@@ -95,7 +106,64 @@ public class OrderController {
 			zip_list = orderService.selectZipList(zip_map);
 		}
 		
+		int all_total = cartService.selectTotalByMem_num(user.getMem_num());
 		ModelAndView mav = new ModelAndView();
+		
+		if(all_total<=0) {
+			model.addAttribute("message", "정상적인 주문이 아니거나 상품의 수량이 부족합니다.");
+			model.addAttribute("url", request.getContextPath()+"/product/list.do");
+			mav.setViewName("common/resultView");
+			return mav;
+		}
+		List<CartVO> cartList = cartService.selectList(user.getMem_num());
+		logger.debug("<<cart>> : " + cartList);
+		//주문상품의 대표 상품명 생성
+		String item_name = "";
+		if(cartList.size()==1) {//주문 상품 1건
+			item_name = cartList.get(0).getProductVO().getP_name();
+		}else {//주문 상품 2건 이상
+			item_name = cartList.get(0).getProductVO().getP_name() + " 외 "+
+						(cartList.size()-1)+ "건";
+		}
+		
+		//개별 상품 정보 저장
+		List<OrderDetailVO> orderDetailList = new ArrayList<OrderDetailVO>();
+		for(CartVO cart : cartList) {
+			//상품 재고 수량 부족
+			ProductVO product = productService.selectProduct(cart.getP_num());
+			
+			if(product.getP_status() == 2) {
+				//상품 미표시
+				model.addAttribute("message","["+product.getP_name()+"]상품판매 중지");
+				model.addAttribute("url",request.getContextPath()+"/cart/cart.do");
+				mav.setViewName("common/resultView");
+				return mav;
+			}
+			
+			if(product.getP_quantity() < cart.getOrder_quantity()) {
+				//상품 재고 수량 부족
+				model.addAttribute("message","["+product.getP_name()+"]재고 수량 부족으로 주문 불가");
+				model.addAttribute("url",request.getContextPath()+"/cart/cart.do");
+				mav.setViewName("common/resultView");
+				return mav;
+			}
+			
+			OrderDetailVO orderDetail = new OrderDetailVO();
+			orderDetail.setItem_num(cart.getP_num());
+			orderDetail.setItem_name(cart.getProductVO().getP_name());
+			orderDetail.setItem_price(cart.getProductVO().getP_price());
+			orderDetail.setOd_quantity(cart.getOrder_quantity());
+			orderDetail.setItem_total(cart.getCart_total());
+			
+			orderDetailList.add(orderDetail);
+		}//end of for문
+		
+		orderVO.setO_name(item_name);
+		orderVO.setO_total(all_total);
+		orderVO.setMem_num(user.getMem_num());
+		
+		//orderService.insertOrder(orderVO, orderDetailList);
+		
 		
 		mav.setViewName("orders");
         
@@ -106,6 +174,7 @@ public class OrderController {
 		
 		mav.addObject("count", zip_count);
 		mav.addObject("zip_list", zip_list);
+		mav.addObject("cartList", cartList);
 		mav.addObject("page", page.getPage());
 		
 		return mav;

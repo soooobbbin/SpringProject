@@ -3,6 +3,7 @@ package kr.spring.order.service;
 import java.util.List;
 import java.util.Map;
 
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 import kr.spring.zipcode.vo.ZipcodeVO;
 
@@ -25,8 +26,10 @@ public interface OrderService {
 	public void updateZipcode(ZipcodeVO zipcode);
 
 	public OrderVO selectOrder(Integer mem_num);
-	public void insertOrder(Integer cart_num);
-	public void insertOrderChecked(String del_product);
+	
+	//주문등록
+	public void insertOrder(OrderVO order,List<OrderDetailVO> list);
+
 
 }
 

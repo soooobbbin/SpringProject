@@ -147,8 +147,8 @@ public class ProductController {
 		
 		// 뷰 이름
 		mav.setViewName("imageView");
-		mav.addObject("p_photo", product.getP_photo());
-		mav.addObject("p_photoname", product.getP_photoname());
+		mav.addObject("imageFile", product.getP_photo());
+		mav.addObject("filename", product.getP_photoname());
 		
 		logger.debug("<<ImageView 확인>>: "+mav);
 		return mav;

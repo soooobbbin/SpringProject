@@ -9,7 +9,7 @@
 	<div class="sub-menu">
 		<ul>
 			<li><a href="admin_list.do">전체회원 조회</a>
-			<li><a href="delete_list.do">탈퇴회원 조회</a>
+			<li><a href="delete_list.do">탈퇴/정지회원 조회</a>
 		</ul>
 	</div>
 	<form action="admin_list.do" id="search_form" method="get">

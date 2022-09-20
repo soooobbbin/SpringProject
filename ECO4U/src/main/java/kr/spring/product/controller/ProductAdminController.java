@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
 import kr.spring.util.PagingUtil;
@@ -109,5 +110,18 @@ public class ProductAdminController {
 		model.addAttribute("url",request.getContextPath()+"/product/admin_plist.do");
 		
 		return "common/resultView";
+	}
+	
+	//==========개별상품 관리(관리자용)==========//
+	//상품 상세
+	@GetMapping("/product/admin_pdetail.do")
+	public String proDetail(@RequestParam int p_num,Model model) {
+		ProductVO product = productService.selectProduct(p_num);
+		model.addAttribute("product", product);
+		
+		logger.debug("<<상품 상세페이지 연결|상품번호>>: "+p_num);
+		logger.debug("<<상품 상세페이지 연결|상품정보>>: "+product);
+
+		return "productAdminDetail";
 	}
 }

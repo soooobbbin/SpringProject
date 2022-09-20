@@ -5,7 +5,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 <div class="page-main">
-	<h2>탈퇴한 회원</h2>
+	<h2>탈퇴/정지회원</h2>
 	<div class="sub-menu">
 		<ul>
 			<li><a href="admin_list.do">전체회원 조회</a>

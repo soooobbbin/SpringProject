@@ -37,11 +37,32 @@ function selectAll(selectAll)  {
 </script>
 <style>
 .page-content02{
-	margin-top: 10%;
+	margin-top: 8%;
 }
 </style>
-<div class="page" style="height: 835px;">
+<div class="page" style="height: 775px;">
 	<form action="qnamanagementlist.do" id="search_form"  method="get">
+	
+	<!-- 좌측 메뉴바 -->
+	<div class="menu">
+	<div class="mypage-menu">
+	<div class="user2" style="margin-top:42%; margin-bottom:30%; margin-left:24%;">
+		<img src="${pageContext.request.contextPath}/images/faq/management3.png" style="margin-left:-20%; margin-bottom:2%; width:74%; height:72%;">
+		<p>${member.mem_name}</p>
+	</div>
+	<div style="margin-left:23%; margin-top:-5%;">
+	<h3 style="margin-left:-13%; margin-bottom:5%;">회원관리</h3>
+	<p><a href="${pageContext.request.contextPath}/admin/admin_list.do" style="color:darkgray;">- 전체회원</a></p><br>
+	<p><a href="${pageContext.request.contextPath}/admin/delete_list.do" style="color:darkgray;">- 탈퇴회원</a></p><br>
+	<h3 style="margin-left:-13%; margin-bottom:5%;">상품관리</h3>
+	<p><a href="${pageContext.request.contextPath}/product/admin_plist.do" style="color:darkgray;">- 전체상품</a></p><br>
+	<p><a href="${pageContext.request.contextPath}/product/admin_write.do" style="color:darkgray;">- 상품등록</a></p><br>
+	<h3 style="margin-left:-13%; margin-bottom:5%;"><a href="${pageContext.request.contextPath}/faq/qnamanagementlist.do">문의관리</a></h3>
+	</div>
+	</div>
+	</div>
+	<!-- 좌측 메뉴바 종료 -->
+	
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
 		<div style="padding-left: 53px;">
@@ -64,13 +85,15 @@ function selectAll(selectAll)  {
 			<li class="qnalist-list">
 				<div class="box-parent">
 					<input type="hidden" value="${qna.q_category}">
-					<%-- <input type="hidden" value="${qna.mem_num}"> --%>
+					<input type="hidden" value="${qna.mem_num}">
 					<!-- 선택 체크박스 -->
 					<div class="qnacheck-box">
 						<input type="checkbox" class="select-qna" name="select_qna" 
 						 onclick="checkSelectAll()" data-cartnum="${qna.q_num}" value="${qna.q_num}">
 					</div>
 					<!-- 선택 체크박스 끝 -->
+					<div>${qna.mem_name}</div>
+					<div>(상태)</div>
 					<div class="qnalist-image01">
 						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='admindetail.do?q_num=${qna.q_num}'">
 					</div>
@@ -109,18 +132,4 @@ function selectAll(selectAll)  {
 	<!-- 문의 내역 폼 끝 -->
 	</form>
 </div>
-<!-- 내가 쓴 글 subbar.js -->
-<!-- <script>
-//script.js
-$(document).ready(function(){	
-	//menu v2
-	$(".menu-v2").mouseover(function(){
-		$(this).children(".submenu").show(400);
-	});
-	$(".menu-v2").mouseleave(function(){
-		$(this).children(".submenu").hide(200);
-	});
-	
-});
-</script> -->
 <!-- 내용 끝 -->

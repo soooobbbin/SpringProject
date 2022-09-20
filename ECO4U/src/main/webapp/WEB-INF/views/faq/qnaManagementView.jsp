@@ -5,26 +5,52 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.comment.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.mncomment.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
 <style>
-	body{
+body{
 	background-color:white;
-	}
-	#main_header{
+}
+#main_header{
 	background-color:#f4f9f2;
-	}
+}
+#qnadiv01{
+	margin-top:50px;
+	font-size:12px;
+	font-weight:bold;
+	color:red;
+}
+.modify-btn{
+	width:35px;
+	height:20px;
+	background-color: #F7F8F9;
+	border: none;
+	font-weight:bold;
+	font-size:12px;
+	float:right;
+}
+
+.delete-btn{
+	margin-right:1%;
+	width:35px;
+	height:20px;
+	margin-left:-3px;
+	background-color: #F7F8F9;
+	border: none;
+	font-weight:bold;
+	font-size:12px;
+	float:right;
+}
 </style>
 <!-- 내용 시작 -->
 <div class="qna-main">
 <div class="align-right" style="font-size:12px">
-<a href="/member/myPage.do">HOME</a> > 
+<a href="${pageContext.request.contextPath}/admin/admin_list.do">HOME</a> > 
 <a href="/faq/qnamanagementlist.do">문의내역</a> > 
 <a href="admindetail.do?q_num=${qna.q_num}" style="color:black;">문의상세</a></div>
-<h3>관리자 문의상세 페이지입니다.</h3>
 <div class="qnaViewtb">
 <img class="qnarefresh" width="20px" height="20px" src="${pageContext.request.contextPath}/images/faq/refresh.png" onclick="location.href='admindetail.do?q_num=${qna.q_num}'">
-	<div class="align-right" id="qnadiv01"><a href="${pageContext.request.contextPath}/faq/qnawrite.do" style="color:#666666;">다시 문의하기</a></div>
+	<div class="align-right" id="qnadiv01">관리자 문의 상세</div>
 	<table class="qnaViewtable">
 		<tr>
 			<th width="15%" style="border-top: 2px solid lightgray;">제목</th>
@@ -60,20 +86,6 @@
 	      </button>
 	    </h2>
     <div id="collapse" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#accordionExample">
-    <div class="qna_btn_group" align="right">
-	      <input type="button" value="수정" onclick="location.href='qnaupdate.do?q_num=${qna.q_num}'">
-		  <input type="button" value="삭제" id="delete_btn">
-		  <script type="text/javascript">
-			let delete_btn = document.getElementById('delete_btn');
-			//이벤트 연결
-			delete_btn.onclick=function(){
-				let choice = confirm('삭제하시겠습니까?');
-				if(choice){
-					location.replace('qnadelete.do?q_num=${qna.q_num}');
-				}
-			};
-			</script> 
-	  </div>
       <div class="accordion-body">
       <div class="align-center"><img id="qnalist-image03" src="imageView.do?q_num=${qna.q_num}" onerror="this.style.display='none';"></div>
       ${qna.q_content}

@@ -33,7 +33,7 @@ public class QnAMNController {
 	private static final Logger logger = LoggerFactory.getLogger(QnAMNController.class);
 	
 	private int rowCount = 5;
-	private int pageCount = 10;
+	private int pageCount = 20;
 	
 	@Autowired
 	private QnAService qnaService;

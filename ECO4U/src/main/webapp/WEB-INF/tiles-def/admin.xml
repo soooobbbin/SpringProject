@@ -30,6 +30,7 @@
     	<put-attribute name="body" value="/WEB-INF/views/admin/m_modify.jsp"/>          
     </definition>
     
+    
     <!-- 상품관리 -->
     <definition name="productAdminList" extends="main">
     	<put-attribute name="title" value="관리자 설정"/>
@@ -48,6 +49,13 @@
     	<put-attribute name="header" value="/WEB-INF/views/template/admin_header.jsp"/>
     	<put-attribute name="body" value="/WEB-INF/views/admin/p_detail.jsp"/>          
     </definition>
+    
+    <definition name="productAdminModify" extends="main">
+    	<put-attribute name="title" value="관리자 설정"/>
+    	<put-attribute name="header" value="/WEB-INF/views/template/admin_header.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/admin/p_modify.jsp"/>          
+    </definition>
+    
     
     <!-- 문의관리 -->
     <definition name="qnaManagementList" extends="main">

@@ -47,6 +47,7 @@ public class ProductController {
 	public String form() {
 		return "productWrite";
 	}
+	
 	//등록 폼에서 전송된 데이터 처리
 	@PostMapping("/product/write.do")
 	public String submit(@Valid ProductVO productVO,

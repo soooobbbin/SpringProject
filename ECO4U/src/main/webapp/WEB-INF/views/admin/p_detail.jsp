@@ -7,7 +7,6 @@
 <!-- 자바스크립트 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.number.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/product.detail.js"></script>
 
 <!-- 본문 -->
 <div class="page-main">
@@ -17,7 +16,19 @@
 	</ul>
 	
 	<div class="align-right">
-			<input type="button" value="수정" onclick="location.href='admin_pmodify.do?p_num=${p_num}'">
+			<input type="button" value="수정" onclick="location.href='admin_pmodify.do?p_num=${product.p_num}'">
+			<input type="button" value="삭제" id="delete_btn">
+			<script type="text/javascript">
+				let delete_btn = document.getElementById('delete_btn');
+				
+				//삭제 이벤트 연결
+				delete_btn.onclick=function(){
+					let choice = confirm('삭제하시겠습니까?');
+					if(choice){
+						location.replace('admin_pdelete.do?p_num=${product.p_num}');
+					}
+				};
+			</script>
 			<input type="button" value="목록" onclick="location.href='admin_plist.do'">
 		</div>
 	

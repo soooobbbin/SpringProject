@@ -124,4 +124,48 @@ public class ProductAdminController {
 
 		return "productAdminDetail";
 	}
+	
+	//상품삭제
+	@RequestMapping("/product/admin_pdelete.do")
+	public String submitDelete(@RequestParam int p_num, Model model, HttpServletRequest request) {
+		logger.debug("<<상품 삭제>>: "+ p_num);
+		
+		//상품삭제
+		productService.deleteProduct(p_num);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "상품삭제 완료!");
+		model.addAttribute("url",request.getContextPath()+"/product/admin_plist.do");
+		
+		return "common/resultView";
+	}
+	
+	//상품 수정폼
+	@GetMapping("/product/admin_pmodify.do")
+	public String productModify(@RequestParam int p_num, Model model) {
+		
+		ProductVO productVO = productService.selectProduct(p_num);
+		model.addAttribute("productVO", productVO);
+		logger.debug("<<관리자 상품 수정 폼 호출>>: "+ productVO);
+		
+		return "productAdminModify";
+	}
+	
+	//수정폼에서 전송된 데이터 처리
+	@PostMapping("/product/admin_pmodify.do")
+	public String submitPUpdate(@Valid ProductVO vo, BindingResult result, Model model, HttpServletRequest request) {
+		logger.debug("<<관리자 상품 수정>>: "+vo);
+		
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors())
+			return "productAdminModify";
+		
+		productService.updateProduct(vo);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "상품수정 완료!");
+		model.addAttribute("url", request.getContextPath()+"/product/admin_pdetail.do?p_num="+vo.getP_num());
+		
+		return "common/resultView";
+	}
 }

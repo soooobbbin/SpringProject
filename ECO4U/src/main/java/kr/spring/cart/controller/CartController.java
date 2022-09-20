@@ -104,6 +104,7 @@ public class CartController {
 			list = cartService.selectList(user.getMem_num());
 		}
 		
+		
 		//찜 목록의 총 개수(검색된 목록 개수)
 		int count = cartService.selectRowCount(map);
 		

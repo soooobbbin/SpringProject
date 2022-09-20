@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css">
 <!-- 내용 시작 -->
 <div class="page-main">
@@ -57,11 +59,110 @@
 			</div>
 			<div class="order-kind">
 				<div class="order-kind-content">
+			
 				</div>
 			</div>
 		</div>
 		<div class="order-main-list">
 			<div class="list-content">
+				<ul class="cart-list-ul">
+				<h2>주문상품 ${pcount}개</h2>
+				<hr color="gray" width="95%" size="1">
+				<c:forEach var="cart" items="${cartList}">
+				<div class="content-main">
+				<li class="cart-list-li">
+					<div class="box-parent">
+						<input type="hidden" value="${cart.productVO.p_category}">
+						<input type="hidden" value="${cart.mem_num}">
+						<input type="hidden" value="${cart.cart_num}">
+						<input type="hidden" value="${cart.p_num}">
+						<input type="hidden" value="${cart.productVO.p_status}">
+						
+						<div class="div1">
+							<div class="box-brand">[${cart.productVO.p_brand}]</div>
+						</div>
+						
+						<div class="div2-parent">
+							<div class="div2">
+								<div class="product-image">
+								<a href="${pageContext.request.contextPath}/product/detail.do?p_num=${cart.p_num}">
+									<img src="../images/product/${cart.productVO.p_photoname}" width="80" height="80">
+								</a>
+								</div>
+								<div class="product-box">
+									<a href="${pageContext.request.contextPath}/product/detail.do?p_num=${cart.p_num}">
+									<span class="box-title">${cart.productVO.p_name}</span><br>
+									</a><br>
+									<span class="box-price"><strong><fmt:formatNumber value="${cart.productVO.p_price}"/>원</strong>
+														/ ${cart.order_quantity}개
+									</span>
+								</div>
+							</div>
+	                    </div>
+	                    
+						<div class="div3">
+							<div class="cart-bottom-price">
+								<span style="color:dimgray;">배송비</span><br>
+								<c:if test="${cart.cart_total >= 30000}">
+								<div class="price-span">무료배송</div>
+								</c:if>
+								<c:if test="${cart.cart_total < 30000}">
+								<div class="price-span"><fmt:formatNumber value="${cart.productVO.p_dprice}"/>원</div>
+								</c:if>
+							</div>
+						</div>
+					</div>
+				</li>
+				</div>
+			
+				</c:forEach>
+			</ul>
+			<br>
+				<hr color="gray" width="95%" size="1">
+				<div class="content2">
+				<div class="order-info">
+					<table class="order-info-table">
+						<tr>
+							<td>상품금액</td>
+							<td class="td-right"><fmt:formatNumber value="${all_total}"/>원</td>
+						</tr>
+						<tr>
+							<td>할인금액</td>
+							<td class="td-right td-discount">-0원</td>
+						</tr>
+						<tr>
+							<td>배송비</td>
+							<c:if test="${all_total >= 30000}">
+							<td class="td-right">0원</td>
+							</c:if>
+							<c:if test="${all_total < 30000}">
+							<td class="td-right"><fmt:formatNumber value="2500"/>원</td>
+							</c:if>
+						</tr>
+					</table>
+					<hr color="black" width="95%" size="1">
+					<div class="order-total">
+						<table class="order-info-table">
+							<tr>
+								<td class="order-bottom">총 결제금액</td>
+								<c:if test="${all_total >= 30000}">
+								<td class="order-bottom-total"><fmt:formatNumber value="${all_total}"/>원</td>
+								</c:if>
+								<c:if test="${all_total < 30000}">
+								<td class="order-bottom-total"><fmt:formatNumber value="${all_total + 2500}"/>원</td>
+								</c:if>
+								
+							</tr>
+						</table>
+					</div>
+				</div>
+		
+				<div class="cart-order">
+				<input type="button" value="결제하기" onclick="location.href='#'"
+					class="order-btn">
+				</div>
+				</div>
+		
 			</div>
 		</div>
 	</div>

@@ -23,7 +23,7 @@ public class CommunityVO {
 	private byte[] uploadfile;//파일
 	private String filename;//파일명
 	private int c_category;//카테고리
-	private int c_auth;//공지
+	private int c_auth;//공지사항 0:공지아님 1:공지
 	private int com_cnt; //댓글 수 추가
 	private int like_cnt; //댓글 수 추가
 	

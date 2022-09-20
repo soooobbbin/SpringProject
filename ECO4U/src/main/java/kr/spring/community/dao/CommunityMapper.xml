@@ -44,6 +44,7 @@
 					  b.c_content,
 					  b.c_hit,
 					  b.filename,
+					  b.c_auth,
 					  com_cnt,
 					  like_cnt,
 					  b.reg_date,
@@ -82,6 +83,7 @@
   		    filename=#{filename},
   		    </if>
   			c_title=#{c_title},
+  			c_auth=#{c_auth},
   			c_content=#{c_content},
   		    c_category=#{c_category},
   		    modify_date=SYSDATE

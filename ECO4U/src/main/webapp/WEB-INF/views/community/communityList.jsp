@@ -20,6 +20,13 @@
          <li class="tip1"><a href="list.do?c_category=1">TIP</a></li>
          <li class="tip2"><a href="list.do?c_category=2">함께해요</a></li>
          <li class="tip3"><a href="list.do?c_category=3">친환경 소식</a></li>
+         <li> 
+		<select name="keyfield" id="order">
+			<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>조회수순</option>
+			<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>추천순</option>
+			<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>댓글순</option>
+		</select>
+	</li>
       </ul>
    </div>
    <form action="list.do" id="search_form" method="get">
@@ -43,18 +50,13 @@
       <c:if test="${!empty user}">
          <input type="button" id="writeBtn" value="글쓰기" onclick="location.href='write.do'">
       </c:if>
+     
+     
    </form>
-   <!-- 목록 내용 -->
+  
+     
+     <!-- 목록 내용 -->
    <div class="content">
-   <div class="community-list-sort">
-      <div class="community-list-sort">
-		<select name="keyfield" id="order">
-			<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>조회수순</option>
-			<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>추천순</option>
-			<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>댓글순</option>
-		</select>
-	</div>
-   </div>
    <!-- 게시글 목록 -->
    <c:if test="${count == 0}">
       <div class="community-result-display">표시할 게시물이 없습니다.</div>   
@@ -63,11 +65,16 @@
    <c:if test="${count > 0}">
    
       
-          
       <c:forEach var="community" items="${list}">
-      
+       <c:if test="${community.c_auth==1}">
+       <tr>
+      	 <td><a href="detail.do?c_num=${community.c_num}">[공지] ${community.c_title}</a>
+      	 </td>
+       </tr></c:if>
+        <c:if test="${community.c_auth==0}">
       <c:if test="${community.c_category==1}">
        <table> 
+      
          <tr>
             <td>${community.id}   · ${community.reg_date}</td>
          </tr>
@@ -78,7 +85,7 @@
 	              <a href="detail.do?c_num=${community.c_num}"><img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
 	              </a></c:if>
 	              </td>
-	              </tr>
+	       </tr>
         
          <tr>
             <td><img src="${pageContext.request.contextPath}/images/community/hit.png" width="18" height="18"> ${community.c_hit} 
@@ -88,7 +95,7 @@
          </tr>
          </table> 
         </c:if>
-        
+        </c:if>
      <!--함께해요 -->
      <c:if test="${community.c_category==2}">
        <table> 
@@ -112,31 +119,35 @@
          </tr>
          </table> 
         </c:if>
- 
+   </c:forEach>
      <!-- 친환경소식 -->
-       <c:if test="${community.c_category==3}">
-         
-         <div class="news">
+      <c:forEach var="community" items="${list}">
+       <c:if test="${community.c_category==3}">       
+         <div class="news2" style="width: 300px; border: 0px;"> 
 	         <c:if test="${!empty community.filename}">
-				<a href="detail.do?c_num=${community.c_num}"><img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo"> </a>
-			 </c:if>
-			 <c:if test="${empty community.filename}">
-				<a href="detail.do?c_num=${community.c_num}"><img src="${pageContext.request.contextPath}/images/no_image.png" width="150" height="120"> </a>
-			</c:if>
-	  		  <span class="news_title"><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></span>
-	 			 <span class="news_date">
-	 			
-	 			 ${community.reg_date2}</span> 
+				<a href="detail.do?c_num=${community.c_num}">
+				<img src="imageView.do?&c_num=${community.c_num}" width="300" height="240" class="com-photo" ><br> 
+				<span>${community.c_title}</span><br>
+	 			<span>${community.reg_date2}</span></a>
+		 </c:if>
+		 
+		 <c:if test="${empty community.filename}" >
+				<a href="detail.do?c_num=${community.c_num}">
+				<img src="${pageContext.request.contextPath}/images/no_image.png" width="300" height="240"><br> 
+				<span>${community.c_title}</span><br>
+	 			<span>${community.reg_date2}</span></a>
+		</c:if>
+			
       	</div>
       </c:if>
           
    </c:forEach>
-   
+  
    <div class="align-center">${page}</div>
    </c:if>  
   
    </div>
-   
+   </div>
    
 </div>
 <!-- 내용 끝 -->

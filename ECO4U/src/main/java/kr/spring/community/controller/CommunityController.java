@@ -104,6 +104,7 @@ public class CommunityController {
 		map.put("keyword", keyword);
 		map.put("c_category", c_category);
 		
+		
 		//글의 총개수(검색된 글의 개수)
 		int count = communityService.selectRowCount(map);
 		

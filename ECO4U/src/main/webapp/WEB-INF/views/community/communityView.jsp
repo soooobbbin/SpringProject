@@ -9,15 +9,17 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.like.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.comment.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/community.css">
 
 <div class="page-main">
+ <div class="align-center">
+      <h2 onclick="location.href='list.do?c_category=1'">Community</h2>
+   </div>
 	<h2>${community.c_title}</h2>
 	<ul class="detail-info">
 	
 		<li>
-			${community.id}
-			
-			<br>
+			<b>${community.id}</b>
 			<c:if test="${!empty community.modify_date}">
 			최근 수정일 : ${community.modify_date}	
 			</c:if>
@@ -45,6 +47,7 @@
 		<c:if test="${!empty user && user.mem_num == community.mem_num}">
 		<input type="button" value="수정" 
 		  onclick="location.href='update.do?c_num=${community.c_num}'">
+		
 		<input type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
@@ -57,6 +60,9 @@
 			};
 		</script>  
 		</c:if>
+		
+		  
+		
 		<input type="button" value="목록"
 		       onclick="location.href='list.do?c_category=1'">
 	</div>

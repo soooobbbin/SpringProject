@@ -25,11 +25,18 @@
 	    <form:hidden path="c_num"/>    
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>
+			<li><c:if test="${user.auth == 2}">
+				<label for="c_auth">공지</label>
+				<input type='checkbox' name='notice' value='notice' id='notice' /> 공지로 지정합니다.
+				</c:if></li><br>
+				
 			<li><label for="c_category">카테고리</label>
-			<select name="c_category" id="c_category">
+				<select name="c_category" id="c_category">
 					<option value="1"<c:if test="${c_category == 1}">selected</c:if>>TIP</option>
 					<option value="2"<c:if test="${c_category == 2}">selected</c:if>>함께해요</option>
+					<c:if test="${user.auth == 2}">
 					<option value="3"<c:if test="${c_category == 3}">selected</c:if>>친환경 소식</option>
+					</c:if>
 				</select><br><br>
 			</li>
 			<li>

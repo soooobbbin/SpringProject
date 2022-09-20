@@ -15,9 +15,7 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
- <script type="text/javascript" src="${pageContext.request.contextPath}/js/community.js"></script>
-
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/product.control.js"></script>
 
 <!-- 본문 -->
 <div class="page-main">
@@ -32,7 +30,7 @@
 		
 		<li>
 			<label>카테고리</label>
-			<form:select path="p_category" style="">
+			<form:select path="p_category">
 				<option value="1">Living</option>
 				<option value="2">Beauty</option>
 				<option value="3">Fashion</option>
@@ -104,7 +102,7 @@
 	</ul>
 	<div class="align-center">
 		<form:button>등록</form:button>
-		<input type="button" value="목록" onclick="#">
+		<input type="button" value="목록" onclick="admin_plist.do">
 	</div>
 	</form:form>
 </div>

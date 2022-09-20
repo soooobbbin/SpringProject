@@ -19,11 +19,9 @@ public interface ProductMapper {
 	//부모글(상품페이지)
 	public List<ProductVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
-	@Insert("INSERT INTO product (p_num,p_name,p_price,p_dprice,p_quantity,"
-			+ "p_brand,p_photo,p_photoname,p_cont1,p_cont2,p_category) "
-			+ "VALUES (product_seq.nextval,#{p_name},#{p_price},#{p_dprice},"
-			+ "#{p_quantity},#{p_brand},#{p_photo},#{p_photoname},#{p_cont1},"
-			+ "#{p_cont2},#{p_category})")
+	@Insert("INSERT INTO product (p_num,p_name,p_price,p_dprice,p_quantity,p_brand,p_photo,p_photoname,p_cont1,p_cont2,p_category) "
+			+ "VALUES (product_seq.nextval,#{p_name},#{p_price},#{p_dprice},#{p_quantity},#{p_brand},#{p_photo},#{p_photoname},"
+			+ "#{p_cont1},#{p_cont2},#{p_category})")
 	public void insertProduct(ProductVO product);
 	@Select("SELECT * FROM product WHERE p_num=#{p_num}")
 	public ProductVO selectProduct(Integer p_num);
@@ -37,7 +35,8 @@ public interface ProductMapper {
 			+ "(select count(r_num) from p_review where p_num = #{p_num}) "
 			+ "where p.p_num = #{p_num}")
 	public void updateReviewCount(Integer p_num);
-	//상품 검색 및 검색 결과(관리자)
+	
+	//상품관리(관리자)
 	public int selectProductCount(Map<String,Object>map);
 	public List<ProductVO> selectProductList(Map<String,Object> map);
 	

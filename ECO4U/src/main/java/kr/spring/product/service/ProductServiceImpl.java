@@ -122,4 +122,15 @@ public class ProductServiceImpl implements ProductService{
 	public void deleteFav(Integer r_fav_num) {
 		productMapper.deleteFav(r_fav_num);
 	}
+
+	//상품 관리(관리자)
+	@Override
+	public int selectProductCount(Map<String, Object> map) {
+		return productMapper.selectProductCount(map);
+	}
+
+	@Override
+	public List<ProductVO> selectProductList(Map<String, Object> map) {
+		return productMapper.selectProductList(map);
+	}
 }

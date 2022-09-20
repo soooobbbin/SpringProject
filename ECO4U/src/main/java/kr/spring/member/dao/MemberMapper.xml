@@ -85,7 +85,7 @@
 			  			</if>
 			  		</where>
 			  		ORDER BY d.reg_date DESC) a
-			  	WHERE a.auth = 0
+			  	WHERE a.auth = 0 OR a.auth = 3
 			  	)
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
@@ -106,7 +106,7 @@
 					d.email LIKE '%' || #{keyword} || '%'
 				</if>
 			 </if>
-			 m.auth=0
+			 m.auth=0 OR m.auth=3
 		</where>
 	</select>
 </mapper>

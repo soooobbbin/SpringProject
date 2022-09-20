@@ -38,13 +38,27 @@
 		<table>
 			<tr>
 				<th>ID</th>
+				<th>이름</th>
+				<th>이메일</th>
+				<th>전화번호</th>
+				<th>가입일</th>
 				<th>등급</th>
 			</tr>
 			
 			<c:forEach var="member" items="${list}">
 			<tr>
-				<td><c:if test="${member.auth==0}">${member.id}</c:if></td>
-				<td><c:if test="${member.auth==0}">탈퇴</c:if></td>
+				<td>
+					<c:if test="${member.auth==0}">${member.id}</c:if>
+					<c:if test="${member.auth==3}"><a href="admin_detail.do?mem_num=${member.mem_num}">${member.id}</a></c:if>
+				</td>
+				<td>${member.mem_name}</td>
+				<td>${member.mem_email}</td>
+				<td>${member.mem_cell}</td>
+				<td>${member.reg_date}</td>
+				<td>
+					<c:if test="${member.auth==0}">탈퇴</c:if>
+					<c:if test="${member.auth==3}">정지</c:if>
+				</td>
 			</tr>			
 			</c:forEach>
 		</table>

@@ -21,6 +21,7 @@
 			<c:if test="${memberVO.auth < 2}">
 				<form:radiobutton path="auth" value="0"/>탈퇴
 				<form:radiobutton path="auth" value="1"/>일반
+				<form:radiobutton path="auth" value="3"/>정지
 			</c:if>
 			<c:if test="${memberVO.auth == 2}">관리자</c:if>
 		</li>

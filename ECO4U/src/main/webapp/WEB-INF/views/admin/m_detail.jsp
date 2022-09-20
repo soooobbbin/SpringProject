@@ -16,6 +16,7 @@
 			<c:if test="${memberVO.auth==0}">탈퇴</c:if>
 			<c:if test="${memberVO.auth==1}">일반</c:if>
 			<c:if test="${memberVO.auth==2}">관리자</c:if>
+			<c:if test="${memberVO.auth==3}">정지</c:if>
 		</li>
 		<li><b>이름</b> ${memberVO.mem_name}</li>
 		<li><b>아이디</b> ${memberVO.id}</li>

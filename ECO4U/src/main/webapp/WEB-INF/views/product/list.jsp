@@ -84,12 +84,11 @@
 								style="background-color: #f4f9f2; color: #000000; border-color: #f4f9f2;">
 								<img class="card-img-top"
 								style="width: 278px; height: 278px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;"
-								src="${pageContext.request.contextPath}/images/product/${product.p_photoname}" alt="thumbnail">
+								src="${pageContext.request.contextPath}/product/imageView.do?p_num=${product.p_num}" alt="thumbnail">
 								<div class="card-body">
 									<span class="p_name">[${product.p_brand}]</span>
 									<span class="p_name">${product.p_name}</span><br>
-									<span class="price">￦<fmt:formatNumber type="number"
-											maxFractionDigits="3" value="${product.p_price}" /></span>
+									<span class="price">￦<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.p_price}" /></span>
 								</div>
 							</a>
 						</div>

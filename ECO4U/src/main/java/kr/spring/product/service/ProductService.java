@@ -19,6 +19,9 @@ public interface ProductService {
 	public void deleteProduct(Integer p_num);
 	public void deletePhoto(Integer p_num); 
 	public void updateReviewCount(Integer p_num);
+	//상품관리(관리자)
+	public int selectProductCount(Map<String,Object>map);
+	public List<ProductVO> selectProductList(Map<String,Object> map);
 
 	//리뷰
 	public List<P_reviewVO> selectListReview(Map<String,Object> map);

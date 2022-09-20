@@ -1,6 +1,7 @@
 package kr.spring.product.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
+import kr.spring.util.PagingUtil;
 
 
 @Controller
@@ -41,11 +43,44 @@ public class ProductAdminController {
 	}
 	
 	//==========상품 목록(관리자용)==========//
-	@GetMapping("/product/admin_plist.do")
-	public String adminList() {
-		return "productAdminList";
+	@RequestMapping("/product/admin_plist.do")
+	public ModelAndView adminList(@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+								  @RequestParam(value="keyfield",defaultValue="")String keyfield,
+								  @RequestParam(value="keyword",defaultValue="")String keyword) {
+		
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		//status가 0이면 표시/미표시 항목 모두 체크
+		map.put("p_status", 0);
+		
+		//상품의 총 개수 또는 검색된 상품의 개수
+		int count = productService.selectProductCount(map);
+		
+		logger.debug("<<count>>: "+count);
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "admin_plist.do");
+		
+		List<ProductVO> list = null;
+		
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = productService.selectProductList(map);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("productAdminList");
+		mav.addObject("count",count);
+		mav.addObject("list",list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
 	}
 	
+	//==========상품 등록(관리자용)==========//
 	//상품 등록 폼 호출
 	@GetMapping("/product/admin_write.do")
 	public String form() {

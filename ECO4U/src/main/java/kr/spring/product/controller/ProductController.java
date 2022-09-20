@@ -140,15 +140,17 @@ public class ProductController {
 	// =========이미지 출력=========//
 	@RequestMapping("/product/imageView.do")
 	public ModelAndView viewImage(@RequestParam int p_num) {
-
 		ProductVO product = productService.selectProduct(p_num);
-
+		logger.debug("<<이미지 파라미터 확인>>: "+p_num);
+		logger.debug("<<이미지 VO확인>>: "+product);
 		ModelAndView mav = new ModelAndView();
+		
 		// 뷰 이름
 		mav.setViewName("imageView");
-
 		mav.addObject("p_photo", product.getP_photo());
 		mav.addObject("p_photoname", product.getP_photoname());
+		
+		logger.debug("<<ImageView 확인>>: "+mav);
 		return mav;
 	}
 	

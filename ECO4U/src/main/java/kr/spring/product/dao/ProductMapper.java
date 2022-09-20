@@ -37,6 +37,9 @@ public interface ProductMapper {
 			+ "(select count(r_num) from p_review where p_num = #{p_num}) "
 			+ "where p.p_num = #{p_num}")
 	public void updateReviewCount(Integer p_num);
+	//상품 검색 및 검색 결과(관리자)
+	public int selectProductCount(Map<String,Object>map);
+	public List<ProductVO> selectProductList(Map<String,Object> map);
 	
 	//리뷰
 	public List<P_reviewVO> selectListReview(Map<String,Object> map);

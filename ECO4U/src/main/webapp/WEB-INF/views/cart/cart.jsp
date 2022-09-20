@@ -47,7 +47,7 @@ function selectAll(selectAll)  {
 	<c:if test="${!empty list}">
 	<div class="cart-choice">
 	<span><input type="checkbox" id="selectall" name="selectall"
-	 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
+	 value="전체 선택"  onclick="selectAll(this)" checked="checked">전체 선택</span>
 	<span> | <input type="button" value="선택 삭제" id="delete_btn"></span> 
 	</div>
 	

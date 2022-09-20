@@ -3,11 +3,13 @@ package kr.spring.order.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 import kr.spring.zipcode.vo.ZipcodeVO;
 
@@ -33,10 +35,27 @@ public interface OrderMapper {
 	@Update("UPDATE zipcode SET zip_name=#{zip_name},zip_rec=#{zip_rec},zipcode=#{zipcode},address1=#{address1},address2=#{address2} WHERE zip_num=#{zip_num}")
 	public void updateZipcode(ZipcodeVO zipcode);
 	public OrderVO selectOrder(Integer mem_num);
-	@Insert ("INSERT INTO orders (o_num,o_name,o_total,p_num,mem_num) "
-			+ "VALUES(order_seq.nextval,#{o_name},#{o_total},#{p_num},#{mem_num})")
-	public void insertOrder(Integer p_num);
 	
+	@Insert ("INSERT INTO orders (o_num,o_name,o_total,p_num,mem_num) "
+			+ "VALUES(orders_seq.nextval,#{o_name},#{o_total},#{p_num},#{mem_num})")
+	public void insertOrder(OrderVO order);
+	//주문번호 생성
+	@Select("SELECT orders_seq.nextval FROM dual")
+	public int selectOrderNum();
+	//개별상품 주문등록
+	@Insert("INSERT INTO order_detail (od_num,item_num,item_name,"
+			+ "item_price,item_total,od_quantity,o_num) VALUES ("
+			+ "order_detail_seq.nextval,#{item_num},#{item_name},"
+			+ "#{item_price},#{item_total},#{od_quantity},#{o_num})")
+	public void insertOrderDetail(OrderDetailVO vo);
+	//재고수 업데이트
+	@Update("UPDATE product SET p_quantity=p_quantity-#{od_quantity} "
+			+ "WHERE p_num=#{p_num}")
+	public void updateQuantity(OrderDetailVO orderDetailVO);
+	//장바구니에서 주문상품 삭제
+	@Delete("DELETE FROM spcart WHERE mem_num=#{mem_num}")
+	public void deleteCartItem(Integer mem_num);
+
 
 }
 

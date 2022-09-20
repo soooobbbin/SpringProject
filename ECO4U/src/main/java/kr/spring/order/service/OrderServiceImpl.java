@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.order.dao.OrderMapper;
+import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 import kr.spring.zipcode.vo.ZipcodeVO;
 
@@ -74,15 +75,23 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void insertOrder(Integer cart_num) {
+	public void insertOrder(OrderVO order, List<OrderDetailVO> list) {
+		//주문번호 생성
+		order.setO_num(orderMapper.selectOrderNum());
+		//주문등록
 		orderMapper.insertOrder(order);
-	}
-	@Override
-	public void insertOrderChecked(String del_product) {
-		String[] ajaxMsg = del_product.split(",");
-		for(int i=0; i<ajaxMsg.length; i++) {
-			orderMapper.insertOrder(Integer.parseInt(ajaxMsg[i]));
+		//개별상품 주문등록
+		for(OrderDetailVO vo : list) {
+			//(주의)orderMapper.selectOrderNum()를 명시하면 
+			//시퀀스가 증가하기 때문에 사용불가
+			vo.setO_num(order.getO_num());
+			orderMapper.insertOrderDetail(vo);
+			//재고수 업데이트
+			orderMapper.updateQuantity(vo);
 		}
+		//주문 상품 장바구니에서 제거
+		orderMapper.deleteCartItem(order.getMem_num());
 	}
 
+	
 }

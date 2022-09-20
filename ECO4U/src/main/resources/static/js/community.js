@@ -9,7 +9,7 @@ $(function(){
 			}
 			});
 			
-	//===== MYPage 프로필 사진 처리 ======//
+	//===== 사진 처리 ======//
 	//확인 버튼 처리
 	$('#photo_btn').click(function(){
 		$('#photo_choice').show(); //수정 폼 노출
@@ -54,5 +54,5 @@ $(function(){
 	
 	
 	
-	
+
 });

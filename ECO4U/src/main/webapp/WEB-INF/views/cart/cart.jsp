@@ -39,7 +39,7 @@ function selectAll(selectAll)  {
 		<div class="cart-left">장바구니</div>
 		<div class="cart-right"><b>장바구니</b> > 주문/결제 > 주문완료</div>
 	</div>
-	<c:if test="${empty list}">
+	<c:if test="${empty list && count == null}">
 	<div class="result-display">
 		장바구니에 담은 상품이 없습니다.
 	</div>
@@ -47,7 +47,7 @@ function selectAll(selectAll)  {
 	<c:if test="${!empty list}">
 	<div class="cart-choice">
 	<span><input type="checkbox" id="selectall" name="selectall"
-	 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
+	 value="전체 선택"  onclick="selectAll(this)" checked="checked">전체 선택</span>
 	<span> | <input type="button" value="선택 삭제" id="delete_btn"></span> 
 	</div>
 	
@@ -67,7 +67,7 @@ function selectAll(selectAll)  {
 					<div class="div1">
 						<div class="check-box">
 							<input type="checkbox" class="select-product" name="select_product" 
-							 onclick="checkSelectAll()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}">
+							 onclick="checkSelectAll()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}" checked="checked">
 						 </div>
 						<div class="box-brand">[${cart.productVO.p_brand}]</div>
 					</div>
@@ -187,7 +187,13 @@ function selectAll(selectAll)  {
 					</tr>
 					<tr>
 						<td>배송비</td>
-						<td class="td-right"><fmt:formatNumber value="${cart.productVO.p_dprice}"/>원</td>
+						<c:if test="${all_total >= 30000}">
+						<td class="td-right">0원</td>
+						</c:if>
+						<c:if test="${all_total < 30000}">
+						<td class="td-right"><fmt:formatNumber value="2500"/>원</td>
+						</c:if>
+						<!-- <td class="td-right"><fmt:formatNumber value="${cart.productVO.p_dprice}"/>원</td> -->
 					</tr>
 				</table>
 				<hr color="black" width="95%" size="1">
@@ -195,7 +201,13 @@ function selectAll(selectAll)  {
 					<table class="order-info-table">
 						<tr>
 							<td class="order-bottom">총 결제금액</td>
-							<td class="order-bottom-total"><fmt:formatNumber value="${all_total + cart.productVO.p_dprice}"/>원</td>
+							<c:if test="${all_total >= 30000}">
+							<td class="order-bottom-total"><fmt:formatNumber value="${all_total}"/>원</td>
+							</c:if>
+							<c:if test="${all_total < 30000}">
+							<td class="order-bottom-total"><fmt:formatNumber value="${all_total + 2500}"/>원</td>
+							</c:if>
+							
 						</tr>
 					</table>
 				</div>

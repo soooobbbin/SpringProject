@@ -89,7 +89,7 @@ public class CartController {
 
 	//=======장바구니 목록=======//
 	@RequestMapping("/cart/cart.do")
-	public String list(HttpSession session, Model model) {
+	public String list(HttpSession session, Model model,CartVO cartVO) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("mem_num",user.getMem_num());
@@ -99,15 +99,18 @@ public class CartController {
 		int all_total = cartService.selectTotalByMem_num(user.getMem_num());
 		
 		List<CartVO> list = null;
+		
 		if(all_total > 0) {
 			list = cartService.selectList(user.getMem_num());
 		}
+		
 		//찜 목록의 총 개수(검색된 목록 개수)
 		int count = cartService.selectRowCount(map);
-
 		
 		logger.debug("<<count>> : " + count);
+		logger.debug("<<cartVO>> : " + cartVO);
 		
+		model.addAttribute("cartVO", cartVO);
 		model.addAttribute("count", count);
 		model.addAttribute("all_total", all_total);
 		model.addAttribute("list", list);

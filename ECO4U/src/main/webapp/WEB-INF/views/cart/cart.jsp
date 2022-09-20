@@ -120,10 +120,10 @@ function selectAll(selectAll)  {
 						<span class="span-sym">+</span>
 						<div class="cart-bottom-price">
 							<span>배송비</span><br>
-							<c:if test="${cart.cart_total >= 30000}">
+							<c:if test="${cart.productVO.p_price * cart.order_quantity >= 30000}">
 							<div class="price-span">0원</div>
 							</c:if>
-							<c:if test="${cart.cart_total < 30000}">
+							<c:if test="${cart.productVO.p_price * cart.order_quantity < 30000}">
 							<div class="price-span"><fmt:formatNumber value="${cart.productVO.p_dprice}"/>원</div>
 							</c:if>
 							

@@ -26,7 +26,7 @@
 	<div id="wrapper">
 	<!-- 상품 헤더 시작 -->
 		<div class="detail-thumbnail">
-			<img src="${pageContext.request.contextPath}/images/product/${product.p_photoname}"
+			<img src="${pageContext.request.contextPath}/product/imageView.do?p_num=${product.p_num}"
 					width="400" height="400" class="thumbnail">
 		</div>
 		<div class="thumbnail-side">

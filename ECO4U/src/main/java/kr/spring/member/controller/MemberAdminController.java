@@ -65,69 +65,69 @@ public class MemberAdminController {
 	}
 	
 	//탈퇴 회원 조회
-		@RequestMapping("/admin/delete_list.do")
-		public ModelAndView processDel(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
-									@RequestParam(value="keyfield", defaultValue="")String keyfield,
-									@RequestParam(value="keyword", defaultValue="")String keyword) {
-			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("keyfield", keyfield);
-			map.put("keyword", keyword);
-			
-			//총 글의 개수 또는 검색된 글의 개수
-			int count = memberService.selectDelCount(map);
-			
-			logger.debug("<<count>>: "+count);
-			
-			//페이지 처리
-			PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "admin_list.do");
-			map.put("start", page.getStartRow());
-			map.put("end", page.getEndRow());
-			
-			List<MemberVO> list = null;
-			if(count > 0)
-				list = memberService.selectDelList(map);
-			
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("admin_delList");
-			mav.addObject("count",count);
-			mav.addObject("list", list);
-			mav.addObject("page", page.getPage());
-			
-			return mav;
-		}
-		
-		//========회원정보수정=========//
-		//회원정보 조회
-		@GetMapping("/admin/admin_detail.do")
-		public String memDetail(@RequestParam int mem_num,Model model) {
-			MemberVO memberVO = memberService.selectMember(mem_num);
-			model.addAttribute("memberVO", memberVO);
-			
-			return "admin_memDetail";
-		}
-		
-		//회원정보 수정
-		@GetMapping("/admin/admin_modify.do")
-		public String memModiForm(@RequestParam int mem_num,Model model) {
-			MemberVO memberVO = memberService.selectMember(mem_num);
-			model.addAttribute("memberVO", memberVO);
+	@RequestMapping("/admin/delete_list.do")
+	public ModelAndView processDel(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
+			@RequestParam(value="keyfield", defaultValue="")String keyfield,
+			@RequestParam(value="keyword", defaultValue="")String keyword) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 
-			return "admin_memModify";
-		}
-		
-		//수정 폼에서 전송된 데이터 처리
-		@PostMapping("/admin/admin_update.do")
-		public String submit(MemberVO memberVO, Model model, HttpServletRequest request) {
-			logger.debug("<<관리자 회원등급 수정>>: "+memberVO);
-			
-			//회원정보 수정
-			memberService.updateByAdmin(memberVO);
-			
-			//View에 표시할 메시지
-			model.addAttribute("message", "회원등급 수정 완료!");
-			model.addAttribute("url", request.getContextPath()+"/admin/admin_detail.do?mem_num="+memberVO.getMem_num());
-			
-			return "common/resultView";
-		}
+		//총 글의 개수 또는 검색된 글의 개수
+		int count = memberService.selectDelCount(map);
+
+		logger.debug("<<count>>: "+count);
+
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "admin_list.do");
+		map.put("start", page.getStartRow());
+		map.put("end", page.getEndRow());
+
+		List<MemberVO> list = null;
+		if(count > 0)
+			list = memberService.selectDelList(map);
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin_delList");
+		mav.addObject("count",count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+
+		return mav;
+	}
+
+	//========회원정보수정=========//
+	//회원정보 조회
+	@GetMapping("/admin/admin_detail.do")
+	public String memDetail(@RequestParam int mem_num,Model model) {
+		MemberVO memberVO = memberService.selectMember(mem_num);
+		model.addAttribute("memberVO", memberVO);
+
+		return "admin_memDetail";
+	}
+
+	//회원정보 수정
+	@GetMapping("/admin/admin_modify.do")
+	public String memModiForm(@RequestParam int mem_num,Model model) {
+		MemberVO memberVO = memberService.selectMember(mem_num);
+		model.addAttribute("memberVO", memberVO);
+
+		return "admin_memModify";
+	}
+
+	//수정 폼에서 전송된 데이터 처리
+	@PostMapping("/admin/admin_update.do")
+	public String submit(MemberVO memberVO, Model model, HttpServletRequest request) {
+		logger.debug("<<관리자 회원등급 수정>>: "+memberVO);
+
+		//회원정보 수정
+		memberService.updateByAdmin(memberVO);
+
+		//View에 표시할 메시지
+		model.addAttribute("message", "회원등급 수정 완료!");
+		model.addAttribute("url", request.getContextPath()+"/admin/admin_detail.do?mem_num="+memberVO.getMem_num());
+
+		return "common/resultView";
+	}
 	
 }

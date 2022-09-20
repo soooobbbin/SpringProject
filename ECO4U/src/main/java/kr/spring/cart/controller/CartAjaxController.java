@@ -57,6 +57,37 @@ public class CartAjaxController {
 		
 		return mapJson;
 	}
+	//=======장바구니 수량 수정========//
+	@RequestMapping("/cart/modifyCart.do")
+	@ResponseBody
+	public Map<String,String> submitModify(CartVO cartVO,
+										   HttpSession session){
+		Map<String,String> mapAjax = new HashMap<String,String>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user==null) {//로그인 안된 경우
+			mapAjax.put("result", "logout");
+		}else {//로그인 된 경우
+			//현재 구매하고자 하는 상품의 재고수를 구함
+			ProductVO product = productService.selectProduct(cartVO.getP_num());
+			
+			logger.debug("<<cartVO.getP_num>> : "  + cartVO.getP_num());
+			
+			if(product.getP_status()==2) {//상품 미표시
+				mapAjax.put("result", "noSale");
+			}else if(product.getP_quantity() < cartVO.getOrder_quantity()) {
+				//재고 부족
+				mapAjax.put("result", "noQuantity");
+			}else {
+				//상품 수량 변경 가능
+				cartService.updateCart(cartVO);
+				mapAjax.put("result", "success");
+			}
+			
+		}
+		
+		return mapAjax;
+	}
 	//=====장바구니 결제정보창 수량 변경=====//
 	
 	

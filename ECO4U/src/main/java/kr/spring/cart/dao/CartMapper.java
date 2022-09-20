@@ -22,7 +22,7 @@ public interface CartMapper {
 	public void insertCart(CartVO cart);
 	//회원번호별(mem_num)총 구매액
 	@Select("SELECT NVL(SUM(cart_total),0) FROM (SELECT c.mem_num,"
-			+ "c.order_quantity*p.p_price+p.p_dprice cart_total FROM cart c "
+			+ "c.order_quantity*p.p_price cart_total FROM cart c "
 			+ "JOIN product p ON c.p_num=p.p_num WHERE mem_num=#{mem_num})")
 	public int selectTotalByMem_num(int mem_num);
 	public List<CartVO> selectList(int mem_num);

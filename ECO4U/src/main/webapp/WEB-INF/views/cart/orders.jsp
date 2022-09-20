@@ -77,6 +77,7 @@
 						<input type="hidden" value="${cart.cart_num}">
 						<input type="hidden" value="${cart.p_num}">
 						<input type="hidden" value="${cart.productVO.p_status}">
+						<input type="hidden" value="${cart_num}">
 						
 						<div class="div1">
 							<div class="box-brand">[${cart.productVO.p_brand}]</div>

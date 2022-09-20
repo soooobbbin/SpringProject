@@ -212,15 +212,10 @@ function selectAll(selectAll)  {
 					</table>
 				</div>
 			</div>
-			
-			
 			<div class="cart-order">
-			<input type="button" value="결제하기" onclick="location.href='orders.do'"
-				class="order-btn">
+				<input type="button" value="결제하기" onclick="location.href='orders.do'" class="order-btn">
 			</div>
 		</div>
-		
-		
 	</div> <!-- end of content -->
 	</c:if>
 		

@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.CartService;
@@ -73,8 +72,9 @@ public class OrderController {
 			String keyword,
 			HttpSession session,OrderVO orderVO,
 			HttpServletRequest request,Model model,
-			HttpServletResponse response) {
-		
+			HttpServletResponse response,
+			@RequestParam(value="cart_num",defaultValue="")
+			String[] cart_numArray) {
 		//session에 저장된 정보 읽기
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
@@ -90,14 +90,16 @@ public class OrderController {
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("mem_num",user.getMem_num());
-		int pcount = cartService.selectRowCount(map);
+		//int pcount = cartService.selectRowCount(map);
+		//넘어온 파라미터값의 갯수를 이용
+		int pcount = cart_numArray.length;
 		
-		//주문의 총개수(검색된 글의 개수)
+		//주문자의 배송지 총 개수
 		int zip_count = orderService.selectZipRowCount(zip_map,user.getMem_num());
 		
 		logger.debug("<<count>> : " + zip_count);
 		
-		//페이지 처리
+		//배송지 페이지 처리
 		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,zip_count,rowCount,pageCount,"orders.do");
 		
 		List<ZipcodeVO> zip_list = null;
@@ -109,8 +111,14 @@ public class OrderController {
 			
 			zip_list = orderService.selectZipList(zip_map);
 		}
+		//map total에 cart_num을 넣어서 mapper에서 구하기 위해
+		Map<String, Object> total = new HashMap<String, Object>();
+		total.put("cart_numArray",cart_numArray);
+		total.put("mem_num",user.getMem_num());
 		
-		int all_total = cartService.selectTotalByMem_num(user.getMem_num());
+		int all_total = cartService.selectTotalByMem_numCart_num(total);
+		logger.debug("<<all_total>> : " + all_total);
+		//int all_total = cartService.selectTotalByMem_num(user.getMem_num());
 		ModelAndView mav = new ModelAndView();
 		
 		if(all_total<=0) {
@@ -119,7 +127,8 @@ public class OrderController {
 			mav.setViewName("common/resultView");
 			return mav;
 		}
-		List<CartVO> cartList = cartService.selectList(user.getMem_num());
+		//List<CartVO> cartList = cartService.selectList(user.getMem_num());
+		List<CartVO> cartList = cartService.selectOrderList(total);
 		logger.debug("<<cart>> : " + cartList);
 		//주문상품의 대표 상품명 생성
 		String item_name = "";

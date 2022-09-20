@@ -89,6 +89,30 @@ $(function(){
 		});
 	});
 	
-	
+	//========상품 선택 확인===========//
+	$('.order-btn').on('click',function(){
+		
+		if($(".select-product:checked").length == 0){
+			alert('결제할 상품을 선택해 주세요.');
+			location.replace('cart.do');
+		}else {
+		
+		
+			const checkArr = [];	
+			$(".select-product:checked").each(function(index,item){
+				checkArr.push($(this).attr("data-cartnum"));
+			});
+			var checkArrnum = "";
+			for(var i=0; i<=(checkArr.length)-1; i++){
+				if(i==(checkArr.length)-1){
+					checkArrnum += checkArr[i];
+				}else{
+					checkArrnum += checkArr[i]+',';
+				}
+			}
+			
+			location.replace("orders.do?cart_num=" + checkArrnum);
+		}
+	});
 	
 });

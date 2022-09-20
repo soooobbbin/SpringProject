@@ -38,6 +38,34 @@
            WHERE mem_num=#{mem_num}
            ORDER BY cart_num ASC
   	</select>
+  	<select id="selectOrderList" parameterType="map" resultMap="cartMap">
+  		SELECT
+             cart_num,
+             mem_num,
+             order_quantity,
+             p_num,
+             p_name,
+             p_price,
+             p_quantity,
+             p_dprice,
+             p_category,
+             p_photo,
+             p_photoname,
+             p_brand,
+             p_status,
+             CASE WHEN order_quantity * p_price >= 30000 THEN order_quantity * p_price
+                  ELSE order_quantity * p_price + p_dprice
+             END cart_total
+           FROM cart JOIN product 
+           USING(p_num) 
+           <where>
+				mem_num=#{mem_num} AND cart_num in 
+				<foreach collection="cart_numArray" item="arr" open="(" close=")" separator=",">
+ 					#{arr}
+				</foreach>				
+			</where>
+           ORDER BY cart_num ASC
+  	</select>
   	<select id="selectRowCount" parameterType="map"
   	                    resultType="integer">
 		SELECT
@@ -45,6 +73,28 @@
 		FROM cart c JOIN product p
 		ON c.p_num = p.p_num 
 		WHERE c.mem_num = #{mem_num}
+		
+  	</select>
+  	<select id="selectTotalByMem_numCart_num" parameterType="map"
+  	                    resultType="integer">
+		SELECT 
+			NVL(SUM(cart_total),0) 
+		FROM (
+			SELECT 
+				c.mem_num,c.order_quantity*p.p_price cart_total 
+			FROM 
+				cart c 
+			JOIN 
+				product p 
+			ON 
+				c.p_num=p.p_num 
+			<where>
+				mem_num=#{mem_num} AND cart_num in 
+				<foreach collection="cart_numArray" item="arr" open="(" close=")" separator=",">
+ 					#{arr}
+				</foreach>
+				)
+			</where>
 		
   	</select>
 </mapper>

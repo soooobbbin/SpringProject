@@ -78,6 +78,7 @@ public class OrderController {
 		//session에 저장된 정보 읽기
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
+		//찜 목록의 총 개수(검색된 목록 개수)
 		//배송지 1건 레코드 읽기
 		ZipcodeVO zipcode = orderService.selectZipcode(user.getMem_num());
 		logger.debug("<<회원 주소지>> : " + zipcode);
@@ -87,6 +88,9 @@ public class OrderController {
 		zip_map.put("keyfield", keyfield);
 		zip_map.put("keyword", keyword);
 		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("mem_num",user.getMem_num());
+		int pcount = cartService.selectRowCount(map);
 		
 		//주문의 총개수(검색된 글의 개수)
 		int zip_count = orderService.selectZipRowCount(zip_map,user.getMem_num());
@@ -172,6 +176,8 @@ public class OrderController {
 		
 		logger.debug("<<list>> : " + zip_list);
 		
+		mav.addObject("all_total", all_total);
+		mav.addObject("pcount", pcount);
 		mav.addObject("count", zip_count);
 		mav.addObject("zip_list", zip_list);
 		mav.addObject("cartList", cartList);

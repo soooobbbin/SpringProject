@@ -158,9 +158,6 @@
 			FROM (SELECT
 				  r_num,
 				  <![CDATA[
-  		          REPLACE(REPLACE(r_title,'<','&lt;'),'>','&gt;') r_title,
-  		          ]]>
-				  <![CDATA[
   		          REPLACE(REPLACE(r_content,'<','&lt;'),'>','&gt;') r_content,
   		          ]]>
 				  r_photoname,

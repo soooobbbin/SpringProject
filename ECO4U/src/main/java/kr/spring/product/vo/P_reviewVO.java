@@ -11,8 +11,6 @@ public class P_reviewVO {
 
 	private int r_num; //리뷰id
 	@NotEmpty
-	private String r_title; //리뷰제목
-	@NotEmpty
 	private String r_content; //리뷰내용
 	private byte[] r_photo; //이미지
 	private String r_photoname; //이미지이름 
@@ -22,8 +20,6 @@ public class P_reviewVO {
 	private int mem_num; //회원번호
 	
 	private String id; //회원id
-	
-	private ProductVO productVO;
 	
 	// ========이미지 BLOB 처리===============//
 	// (주의) 폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야 함
@@ -39,12 +35,6 @@ public class P_reviewVO {
 	}
 	public void setR_num(int r_num) {
 		this.r_num = r_num;
-	}
-	public String getR_title() {
-		return r_title;
-	}
-	public void setR_title(String r_title) {
-		this.r_title = r_title;
 	}
 	public String getR_content() {
 		return r_content;
@@ -97,21 +87,13 @@ public class P_reviewVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
 
-	public ProductVO getProductVO() {
-		return productVO;
-	}
-
-	public void setProductVO(ProductVO productVO) {
-		this.productVO = productVO;
-	}
 	
 
 	//byte[] 타입의 프로퍼티 제외
 	@Override
 	public String toString() {
-		return "P_reviewVO [r_num=" + r_num + ", r_title=" + r_title + ", r_content=" + r_content + ", r_photoname=" + r_photoname
-				+ ", p_num=" + p_num + ", mem_num=" + mem_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", id=" + id + ", productVO=" + productVO + "]";
+		return "P_reviewVO [r_num=" + r_num + ", r_content=" + r_content + ", r_photoname=" + r_photoname
+				+ ", p_num=" + p_num + ", mem_num=" + mem_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", id=" + id + "]";
 	}
 }

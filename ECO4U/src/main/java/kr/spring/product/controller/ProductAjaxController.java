@@ -52,44 +52,30 @@ public class ProductAjaxController {
 	
 	// ========리뷰 등록=========//
 	@RequestMapping("/product/writeReview.do")
-	// 등록 폼
-	@GetMapping("/product/writeReview.do")
-	public String form(Model model) {
-		model.addAttribute("reviewVO", new P_reviewVO());
-		return "writeReview";
-	}
-
-	// 등록 폼에서 전송된 데이터 처리
-	@PostMapping("/product/writeReview.do")
-	public String submit(@ModelAttribute("reviewVO") @Valid P_reviewVO reviewVO, BindingResult result, HttpServletRequest request,
-			HttpSession session, Model model) {
-
-		logger.debug("<<리뷰 등록>> : " + reviewVO);
-
-		// 유효성 검사 결과 오류가 있으면 폼 호출
-		if (result.hasErrors()) {
-			return form(model);
+	@ResponseBody
+	public Map<String,String> writeReply(
+			  P_reviewVO reviewVO,
+			  HttpSession session,
+			  HttpServletRequest request){
+		
+		logger.debug("<<상품평 등록>> : " + reviewVO);
+		
+		Map<String,String> mapAjax = 
+				new HashMap<String,String>();
+		
+		MemberVO user = 
+			(MemberVO)session.getAttribute("user");
+		if(user==null) {//로그인 안 됨
+			mapAjax.put("result", "logout");
+		}else {//로그인 됨
+			//회원번호 등록
+			reviewVO.setMem_num(
+					             user.getMem_num());
+			//댓글 등록
+			productService.insertReview(reviewVO);
+			mapAjax.put("result","success");
 		}
-
-	      Map<String,String> mapAjax = new HashMap<String,String>();
-	      MemberVO user = (MemberVO)session.getAttribute("user");
-	      if(user==null) {//로그인이 되지 않은 경우
-	         mapAjax.put("result", "logout");
-	      }else {
-	         reviewVO.setMem_num(user.getMem_num());
-
-		// 회원번호 셋팅
-		reviewVO.setMem_num(user.getMem_num());
-
-		// 글쓰기
-		productService.insertReview(reviewVO);
-
-		// View에 표시할 메시지
-		model.addAttribute("message", "리뷰 등록이 완료되었습니다.");
-		model.addAttribute("url", request.getContextPath() + "/product/listReview.do");
-	    }
-	      
-		return "common/resultView";
+		return mapAjax;
 	}
 
 	// ==========리뷰 목록==========//

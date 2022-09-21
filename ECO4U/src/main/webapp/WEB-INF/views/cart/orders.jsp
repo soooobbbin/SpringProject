@@ -95,7 +95,8 @@
 									<span class="box-title">${cart.productVO.p_name}</span><br>
 									</a><br>
 									<span class="box-price"><strong><fmt:formatNumber value="${cart.productVO.p_price}"/>원</strong>
-														/ ${cart.order_quantity}개
+														/ <c:if test="${cart.order_quantity!=0}">${cart.order_quantity}개</c:if>  
+														  <c:if test="${cart.order_quantity==0}">${order_quantity}개</c:if>
 									</span>
 								</div>
 							</div>

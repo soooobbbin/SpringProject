@@ -322,6 +322,7 @@ public class OrderController {
 		
 		logger.debug("<<list>> : " + zip_list);
 		
+		mav.addObject("order_quantity", order_quantity);
 		mav.addObject("all_total", all_total);
 		mav.addObject("pcount", pcount);
 		mav.addObject("count", zip_count);

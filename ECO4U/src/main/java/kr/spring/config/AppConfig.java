@@ -40,6 +40,7 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/community/delete.do")
 				.addPathPatterns("/cart/wishList.do")
 				.addPathPatterns("/cart/cart.do")
+				.addPathPatterns("/product/orders.do")
 				.addPathPatterns("/faq/faqwrite.do")
 				.addPathPatterns("/faq/faqupdate.do")
 				.addPathPatterns("/faq/delete.do")

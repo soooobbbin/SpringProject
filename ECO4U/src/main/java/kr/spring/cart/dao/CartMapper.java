@@ -26,8 +26,10 @@ public interface CartMapper {
 			+ "JOIN product p ON c.p_num=p.p_num WHERE mem_num=#{mem_num})")
 	public int selectTotalByMem_num(int mem_num);
 	public int selectTotalByMem_numCart_num(Map<String,Object> total);
+	public int selectTotalByMem_numP_num(Map<String,Object> total);
 	public List<CartVO> selectList(int mem_num);
 	public List<CartVO> selectOrderList(Map<String,Object> total);
+	public List<CartVO> selectOrderList2(Map<String,Object> total);
 	@Select("SELECT * FROM cart WHERE p_num=#{p_num} AND mem_num=#{mem_num}")
 	public CartVO selectCart(CartVO cart);
 	public int selectRowCount(Map<String,Object> map);

@@ -100,7 +100,7 @@
 			<hr class="hr">
 			<div class="cart-buy">
 				<button type="submit" class="addCart_btn button">장바구니</button>
-				<button type="button" class="button" value="구매하기" onclick="location.href='orders.do'">구매하기</button>
+				<button type="button" class="button" id="orderBtn" value="구매하기" onclick="location.href='orders.do?p_num=${product.p_num}'">구매하기</button>
 			</div>
 			<!-- 최종 금액 끝 -->
 			</c:if>

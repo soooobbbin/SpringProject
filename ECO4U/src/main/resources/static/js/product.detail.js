@@ -38,6 +38,21 @@ $(function(){
 		event.preventDefault();
 		}
 	});
+	//=========  상품 주문 =========//
+	$('#orderBtn').click(function(){
+		if($('#order_quantity').val()==''){
+			alert('수량을 입력하세요!');
+			$('#order_quantity').focus();
+			return;
+		}
+		var check = confirm('상품을 주문하시겠습니까?');
+		var order_quantity = $('#order_quantity').val();
+		var p_num = $('#p_num').val();
+		
+		if(check){
+			location.replace("orders.do?p_num="+p_num+"&order_quantity=" +order_quantity);
+		}
+	});
 	
 	//========= 찜목록에 상품 담기 =========//
 	//좋아요 읽기

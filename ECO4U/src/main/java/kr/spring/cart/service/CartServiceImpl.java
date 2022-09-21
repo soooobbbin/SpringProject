@@ -77,4 +77,14 @@ public class CartServiceImpl implements CartService{
 		return cartMapper.selectRowCount(map);
 	}
 
+	@Override
+	public int selectTotalByMem_numP_num(Map<String, Object> total) {
+		return cartMapper.selectTotalByMem_numP_num(total);
+	}
+
+	@Override
+	public List<CartVO> selectOrderList2(Map<String, Object> total) {
+		return cartMapper.selectOrderList2(total);
+	}
+
 }

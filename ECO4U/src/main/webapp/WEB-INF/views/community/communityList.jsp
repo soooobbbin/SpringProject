@@ -65,14 +65,15 @@
    <c:if test="${count > 0}">
    
       
-      <c:forEach var="community" items="${list}">
-       <c:if test="${community.c_auth==1}">
+     <c:forEach var="community" items="${list}">
+      <c:if test="${community.c_auth==1}">
        <tr>
-      	 <td><a href="detail.do?c_num=${community.c_num}">[공지] ${community.c_title}</a>
-      	 </td>
-       </tr></c:if>
-        <c:if test="${community.c_auth==0}">
-      <c:if test="${community.c_category==1}">
+      	 <td><a href="detail.do?c_num=${community.c_num}"><span class="notice-icon">공지</span> ${community.c_title}<br><br></a></td>
+       </tr></c:if></c:forEach>
+       
+       <!-- TIP 게시판, 함께해요 게시판 -->
+       <c:forEach var="community" items="${list}">
+       <c:if test="${community.c_auth==0 && community.c_category==1 || community.c_category==2}">
        <table> 
       
          <tr>
@@ -81,10 +82,10 @@
          <tr>
             <td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></td>
             <td>
-	              	<c:if test="${!empty community.filename}">
+	              <c:if test="${!empty community.filename}">
 	              <a href="detail.do?c_num=${community.c_num}"><img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
 	              </a></c:if>
-	              </td>
+	         </td>
 	       </tr>
         
          <tr>
@@ -95,30 +96,7 @@
          </tr>
          </table> 
         </c:if>
-        </c:if>
-     <!--함께해요 -->
-     <c:if test="${community.c_category==2}">
-       <table> 
-         <tr>
-            <td>${community.id}   · ${community.reg_date}</td>
-         </tr>
-         <tr>
-            <td><a href="detail.do?c_num=${community.c_num}">${community.c_title}</a></td>
-            <td>
-	              	<c:if test="${!empty community.filename}">
-	              <a href="detail.do?c_num=${community.c_num}"><img src="imageView.do?&c_num=${community.c_num}" width="150" height="120" class="com-photo">
-	              </a></c:if>
-	              </td>
-	              </tr>
-        
-         <tr>
-            <td><img src="${pageContext.request.contextPath}/images/community/hit.png" width="18" height="18"> ${community.c_hit} 
-            <img src="${pageContext.request.contextPath}/images/community/like03.png" width="18" height="18"> ${community.like_cnt}
-            <img src="${pageContext.request.contextPath}/images/community/comment.png" width="18" height="18"> ${community.com_cnt}</td>
-            
-         </tr>
-         </table> 
-        </c:if>
+      
    </c:forEach>
      <!-- 친환경소식 -->
       <c:forEach var="community" items="${list}">

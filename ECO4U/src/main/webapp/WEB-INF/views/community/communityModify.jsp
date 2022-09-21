@@ -26,9 +26,9 @@
 	    <form:errors element="div" cssClass="error-color"/>    
 		<ul>
 			<li><c:if test="${user.auth == 2}">
-				<label for="c_auth">공지</label>
-				<input type='checkbox' name='notice' value='notice' id='notice' /> 공지로 지정합니다.
-				</c:if></li><br>
+			<label for="c_auth">공지</label>
+			<form:checkbox path="c_auth" name="c_auth" value='1' id="c_auth" /> 공지로 지정합니다.
+		</c:if><br><br></li>
 				
 			<li><label for="c_category">카테고리</label>
 				<select name="c_category" id="c_category">

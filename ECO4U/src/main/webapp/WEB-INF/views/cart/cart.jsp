@@ -39,7 +39,7 @@ function selectAll(selectAll)  {
 		<div class="cart-left">장바구니</div>
 		<div class="cart-right"><b>장바구니</b> > 주문/결제 > 주문완료</div>
 	</div>
-	<c:if test="${empty list && count == null}">
+	<c:if test="${empty list || count == null}">
 	<div class="result-display">
 		장바구니에 담은 상품이 없습니다.
 	</div>
@@ -213,7 +213,7 @@ function selectAll(selectAll)  {
 				</div>
 			</div>
 			<div class="cart-order">
-				<input type="button" value="결제하기" onclick="location.href='orders.do'" class="order-btn">
+				<input type="button" value="결제하기" class="order-btn">
 			</div>
 		</div>
 	</div> <!-- end of content -->

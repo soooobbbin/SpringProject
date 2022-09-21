@@ -75,6 +75,9 @@ public class OrderController {
 			HttpServletResponse response,
 			@RequestParam(value="cart_num",defaultValue="")
 			String[] cart_numArray) {
+		
+		logger.debug("<<11111111111111111111111>>");
+		
 		//session에 저장된 정보 읽기
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		

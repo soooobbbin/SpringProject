@@ -27,6 +27,7 @@
 		<ul>
 			<li><c:if test="${user.auth == 2}">
 			<label for="c_auth">공지</label>
+			<form:hidden path="c_auth"  value='0' id="c_auth_hidden" /> 
 			<form:checkbox path="c_auth" name="c_auth" value='1' id="c_auth" /> 공지로 지정합니다.
 		</c:if><br><br></li>
 				

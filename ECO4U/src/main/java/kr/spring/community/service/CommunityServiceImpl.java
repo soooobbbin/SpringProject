@@ -131,5 +131,7 @@ public class CommunityServiceImpl implements CommunityService{
 		communityMapper.updateLikeCnt(c_num);
 		
 	}
+	
+	
 
 }

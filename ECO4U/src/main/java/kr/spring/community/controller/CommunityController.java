@@ -96,7 +96,8 @@ public class CommunityController {
 			String keyfield,
 			@RequestParam(value="keyword",defaultValue="")
 			String keyword,
-			@RequestParam int c_category){
+			@RequestParam (value="c_category",defaultValue="") 
+			String c_category){
 		
 		Map<String,Object> map = 
 				    new HashMap<String,Object>();
@@ -109,12 +110,13 @@ public class CommunityController {
 		int count = communityService.selectRowCount(map);
 		
 		logger.debug("<<count>> : " + count);
+		logger.debug("<<map>> : " + map);
 		
 		//페이지 처리
 		PagingUtil page = 
 				new PagingUtil(keyfield,keyword,
 						currentPage,count,
-						rowCount,pageCount,"list.do?","&c_category="+c_category);
+						rowCount,pageCount,"list.do","&c_category="+c_category);
 		
 		List<CommunityVO> list = null;
 		if(count > 0) {

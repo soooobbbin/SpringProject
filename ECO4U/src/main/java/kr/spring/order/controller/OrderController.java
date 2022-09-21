@@ -197,17 +197,23 @@ public class OrderController {
 	//상품에서 주문메인 폼 호출
 	@RequestMapping("/product/orders.do")
 	public ModelAndView process2(
-								@RequestParam(value="pageNum",defaultValue="1") 
-								int currentPage,
-								@RequestParam(value="keyfield",defaultValue="")
-								String keyfield,
-								@RequestParam(value="keyword",defaultValue="")
-								String keyword,
-								HttpSession session) {
-		
+			@RequestParam(value="pageNum",defaultValue="1") 
+			int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")
+			String keyfield,
+			@RequestParam(value="keyword",defaultValue="")
+			String keyword,
+			HttpSession session,OrderVO orderVO,
+			HttpServletRequest request,Model model,
+			HttpServletResponse response,
+			@RequestParam(value="p_num",defaultValue="")
+			int cart_numArray,
+			@RequestParam(value="order_quantity", defaultValue="")
+			int order_quantity) {
 		//session에 저장된 정보 읽기
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
+		//찜 목록의 총 개수(검색된 목록 개수)
 		//배송지 1건 레코드 읽기
 		ZipcodeVO zipcode = orderService.selectZipcode(user.getMem_num());
 		logger.debug("<<회원 주소지>> : " + zipcode);
@@ -217,13 +223,18 @@ public class OrderController {
 		zip_map.put("keyfield", keyfield);
 		zip_map.put("keyword", keyword);
 		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("mem_num",user.getMem_num());
+		//int pcount = cartService.selectRowCount(map);
+		//넘어온 파라미터값의 갯수를 이용
+		int pcount = 1;
 		
-		//주문의 총개수(검색된 글의 개수)
+		//주문자의 배송지 총 개수
 		int zip_count = orderService.selectZipRowCount(zip_map,user.getMem_num());
 		
 		logger.debug("<<count>> : " + zip_count);
 		
-		//페이지 처리
+		//배송지 페이지 처리
 		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,zip_count,rowCount,pageCount,"orders.do");
 		
 		List<ZipcodeVO> zip_list = null;
@@ -235,8 +246,74 @@ public class OrderController {
 			
 			zip_list = orderService.selectZipList(zip_map);
 		}
+		//map total에 cart_num을 넣어서 mapper에서 구하기 위해
+		Map<String, Object> total = new HashMap<String, Object>();
+		total.put("cart_numArray",cart_numArray);
+		total.put("mem_num",user.getMem_num());
+		total.put("order_quantity",order_quantity);
 		
+		
+		int all_total = cartService.selectTotalByMem_numP_num(total);
+		logger.debug("<<all_total>> : " + all_total);
+		//int all_total = cartService.selectTotalByMem_num(user.getMem_num());
 		ModelAndView mav = new ModelAndView();
+		
+		if(all_total<=0) {
+			model.addAttribute("message", "정상적인 주문이 아니거나 상품의 수량이 부족합니다.");
+			model.addAttribute("url", request.getContextPath()+"/product/list.do");
+			mav.setViewName("common/resultView");
+			return mav;
+		}
+		//List<CartVO> cartList = cartService.selectList(user.getMem_num());
+		List<CartVO> cartList = cartService.selectOrderList2(total);
+		logger.debug("<<cart>> : " + cartList);
+		//주문상품의 대표 상품명 생성
+		String item_name = "";
+		if(cartList.size()==1) {//주문 상품 1건
+			item_name = cartList.get(0).getProductVO().getP_name();
+		}else {//주문 상품 2건 이상
+			item_name = cartList.get(0).getProductVO().getP_name() + " 외 "+
+						(cartList.size()-1)+ "건";
+		}
+		
+		//개별 상품 정보 저장
+		List<OrderDetailVO> orderDetailList = new ArrayList<OrderDetailVO>();
+		for(CartVO cart : cartList) {
+			//상품 재고 수량 부족
+			ProductVO product = productService.selectProduct(cart.getP_num());
+			
+			if(product.getP_status() == 2) {
+				//상품 미표시
+				model.addAttribute("message","["+product.getP_name()+"]상품판매 중지");
+				model.addAttribute("url",request.getContextPath()+"/cart/cart.do");
+				mav.setViewName("common/resultView");
+				return mav;
+			}
+			
+			if(product.getP_quantity() < cart.getOrder_quantity()) {
+				//상품 재고 수량 부족
+				model.addAttribute("message","["+product.getP_name()+"]재고 수량 부족으로 주문 불가");
+				model.addAttribute("url",request.getContextPath()+"/cart/cart.do");
+				mav.setViewName("common/resultView");
+				return mav;
+			}
+			
+			OrderDetailVO orderDetail = new OrderDetailVO();
+			orderDetail.setItem_num(cart.getP_num());
+			orderDetail.setItem_name(cart.getProductVO().getP_name());
+			orderDetail.setItem_price(cart.getProductVO().getP_price());
+			orderDetail.setOd_quantity(cart.getOrder_quantity());
+			orderDetail.setItem_total(cart.getCart_total());
+			
+			orderDetailList.add(orderDetail);
+		}//end of for문
+		
+		orderVO.setO_name(item_name);
+		orderVO.setO_total(all_total);
+		orderVO.setMem_num(user.getMem_num());
+		
+		//orderService.insertOrder(orderVO, orderDetailList);
+		
 		
 		mav.setViewName("orders");
         
@@ -245,8 +322,11 @@ public class OrderController {
 		
 		logger.debug("<<list>> : " + zip_list);
 		
+		mav.addObject("all_total", all_total);
+		mav.addObject("pcount", pcount);
 		mav.addObject("count", zip_count);
 		mav.addObject("zip_list", zip_list);
+		mav.addObject("cartList", cartList);
 		mav.addObject("page", page.getPage());
 		
 		return mav;

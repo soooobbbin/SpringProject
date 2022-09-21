@@ -66,6 +66,25 @@
 			</where>
            ORDER BY cart_num ASC
   	</select>
+  	<select id="selectOrderList2" parameterType="map" resultMap="cartMap">
+  		SELECT
+             p_num,
+             p_name,
+             p_price,
+             p_quantity,
+             p_dprice,
+             p_category,
+             p_photo,
+             p_photoname,
+             p_brand,
+             p_status,
+             CASE WHEN #{order_quantity} * p_price >= 30000 THEN #{order_quantity} * p_price
+                  ELSE #{order_quantity} * p_price + p_dprice
+             END cart_total
+           FROM product
+		   WHERE p_num=#{cart_numArray}
+           ORDER BY p_num ASC
+  	</select>
   	<select id="selectRowCount" parameterType="map"
   	                    resultType="integer">
 		SELECT
@@ -95,6 +114,14 @@
 				</foreach>
 				)
 			</where>
-		
   	</select>
+  	
+  	<select id="selectTotalByMem_numP_num" parameterType="map"
+  	                    resultType="integer">
+		SELECT 
+			NVL(SUM(#{order_quantity}*p_price),0) 
+		FROM product  
+		WHERE p_num=#{cart_numArray} 
+  	</select>
+  	
 </mapper>

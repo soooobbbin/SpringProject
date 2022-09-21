@@ -49,7 +49,8 @@
 
 
 
-	<form action="list.do" id="search_form" method="get">
+	 <form action="list.do" id="search_form" method="get">
+         <input type="hidden" name="c_category" value="${param.c_category}">
 		<ul class="search">
 			<li><select name="keyfield" id="keyfield">
 					<option value="1"

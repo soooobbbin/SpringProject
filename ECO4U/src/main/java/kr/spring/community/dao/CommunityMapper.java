@@ -45,7 +45,8 @@ public interface CommunityMapper{
 				+ "(select count(c_like_num) from c_like where c_num = #{c_num}) "
 				+ "where b.c_num = #{c_num}")
 		public void updateLikeCnt(Integer c_num);
-				
+		//좋아요 순 정렬
+		public List<CommunityVO> likeSelect();
 	
 		//부모글 좋아요
 		@Select("SELECT * FROM c_like "

@@ -94,7 +94,7 @@
 						<td><a href="detail.do?c_num=${community.c_num}"><span
 								class="notice-icon">공지</span> ${community.c_title}<br> <br></a></td>
 					</tr>
-					<hr>
+					<hr width="100%" size="1">
 				</c:if>
 			</c:forEach>
 
@@ -140,7 +140,7 @@
 					<c:forEach var="community" items="${list}">
 						<c:if test="${community.c_category==3}">
 
-							<div class="news2" style="margin-top: 15px;">
+							<div class="news2" style="margin-top: 15px;padding:0px 50px;">
 
 								<div class="card" style="border: 0px;">
 									<a href="detail.do?c_num=${community.c_num}"> <c:if

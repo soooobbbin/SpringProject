@@ -236,6 +236,9 @@
 }
 #payment_form ul li{
 	font-size:12pt;
+	margin: 0px 20px 20px -130px;
+}
+input[type="radio"]{
 	margin:0 20px;
 }
 /* 결제 */

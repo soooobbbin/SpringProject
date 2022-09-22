@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -54,9 +55,11 @@ public class KakaopayController {
 	
 	@RequestMapping("/cart/kakaopay.do")
 	@ResponseBody
-	public String kakaopay1(@RequestParam(value="pcount",defaultValue="") int pcount,
-						   @RequestParam(value="p_name",defaultValue="") String p_name,
-						   @RequestParam(value="all_total",defaultValue="") int all_total) {
+	public String kakaopay1(HttpSession session, HttpServletRequest request) {
+		
+		int pcount = Integer.parseInt(request.getParameter("pcount"));
+		String p_name = request.getParameter("p_name");
+		int all_total = Integer.parseInt(request.getParameter("all_total"));
 		
 		logger.debug("<<pcount>> : " + pcount + " <<p_name>> : " + p_name + " <<all_total>> : " + all_total);
 		
@@ -67,6 +70,7 @@ public class KakaopayController {
 		}else {
 			pcount -= 1;
 			item_name = p_name + " 외 " + pcount+"건";
+			pcount += 1;
 		}
 		
 		try {

@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css">
 <!-- 내용 시작 -->
 <div class="page-main">
+<form id="main_form" style="width:100%; border:none;">
 	<div class="header">
 		<div class="header-left">
 			주문결제
@@ -51,26 +52,20 @@
 					<div class="zip-content3">
 						${zipcode.zip_rec} ${zipcode.zip_cell}<br>
 						${zipcode.address1} ${zipcode.address2}<br>
-						<form:form id="notice_form" action="notice.do" modelAttribute="orderVO" style="border:none; width:100%; margin-left:-38px; margin-top:20px">
-							<form:input path="notice" placeholder="배송시 요청사항을 입력해주세요." style="width:85%; height:70px; float:left; font-size:15px; border-radius:5px; border:1px solid gray; padding-left: 0.75rem;"/>
-							<form:button id="sub_btn" style="width:10%; height:75px; float:right; border-radius:5px; border:1px solid gray; cursor:pointer;">></form:button>
-						</form:form>
+						<input type="text" id="notice" name="notice" placeholder="배송시 요청사항을 입력해주세요." style="width:97%; height:70px; margin-top:30px; font-size:15px; border-radius:5px; border:1px solid gray; padding-left: 0.75rem;"/>
 					</div>
 				</div>
 			</div>
 			<div class="order-kind">
 				<div class="order-kind-content">
-					<button id="apibtn">카카오페이</button>
 					<h2>결제 수단</h2>
 					<hr color="gray" width="98%" size="1">
-					<form id="payment_form" action="payment.do" method="post" >
 					<ul>
 						<li>
-							<input type="radio" name="payment" id="payment1" value="1">통장입금
-							<input type="radio" name="payment" id="apibtn" value="2">카카오페이
+							<input type="radio" class="payment" name="payment" id="payment1" value="1">통장입금
+							<input type="radio" class="payment" name="payment" id="payment2" value="2">카카오페이
 						</li>
 					</ul>
-					</form>
 				</div>
 			</div>
 		</div>
@@ -79,19 +74,21 @@
 				<ul class="cart-list-ul">
 				<h2>주문상품 ${pcount}개</h2>
 				<hr color="gray" width="95%" size="1">
+				<%int i=0; %>
 				<c:forEach var="cart" items="${cartList}">
 				<div class="content-main">
 				<li class="cart-list-li">
 					<div class="box-parent">
 						<input type="hidden" value="${cart.productVO.p_category}">
 						<input type="hidden" value="${cart.mem_num}">
-						<input type="hidden" value="${cart.cart_num}">
+						<input type="hidden" value="${cart.cart_num}" id="cart_num" name="cart_num<%=i%>">
+						<%i++;%>
 						<input type="hidden" value="${cart.p_num}">
 						<input type="hidden" value="${cart.productVO.p_status}">
 						<input type="hidden" value="${cart_num}">
-						<input type="hidden" value="${pcount}" id="pcount">
-						<input type="hidden" value="${cart.productVO.p_name}" id="p_name">
-						<input type="hidden" value="${all_total}" id="all_total">
+						<input type="hidden" value="${pcount}" id="pcount" name="pcount">
+						<input type="hidden" value="${cart.productVO.p_name}" id="p_name" name="p_name">
+						<input type="hidden" value="${all_total}" id="all_total" name="all_total">
 						
 						<div class="div1">
 							<div class="box-brand">[${cart.productVO.p_brand}]</div>
@@ -174,13 +171,13 @@
 				</div>
 		
 				<div class="cart-order">
-				<input type="button" value="결제하기" onclick="location.href='#'"
-					class="order-btn">
+					<input type="submit" value="결제하기" class="order-btn">
 				</div>
 				</div>
 		
 			</div>
 		</div>
 	</div>
+</form>
 </div>
 <!-- 내용 끝 -->

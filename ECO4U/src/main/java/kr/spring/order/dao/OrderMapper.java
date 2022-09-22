@@ -36,9 +36,8 @@ public interface OrderMapper {
 	public void updateZipcode(ZipcodeVO zipcode);
 	public OrderVO selectOrder(Integer mem_num);
 	
-	@Insert ("INSERT INTO orders (o_num,o_name,o_total,p_num,mem_num) "
-			+ "VALUES(orders_seq.nextval,#{o_name},#{o_total},#{p_num},#{mem_num})")
-	public void insertOrder(OrderVO order);
+	@Insert ("INSERT INTO orders (o_num,o_name,o_total,payment,notice,mem_num) VALUES (#{o_num},#{o_name},#{o_total},#{payment},#{notice},#{mem_num})")
+	public void insertOrder(Map<String,Object> order);
 	//주문번호 생성
 	@Select("SELECT orders_seq.nextval FROM dual")
 	public int selectOrderNum();

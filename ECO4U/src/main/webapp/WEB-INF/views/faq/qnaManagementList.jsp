@@ -52,13 +52,14 @@
 	<h3 style="margin-left:-13%; margin-bottom:5%;">상품관리</h3>
 	<p><a href="${pageContext.request.contextPath}/product/admin_plist.do" style="color:darkgray;">- 전체상품</a></p><br>
 	<p><a href="${pageContext.request.contextPath}/product/admin_write.do" style="color:darkgray;">- 상품등록</a></p><br>
-	<h3 style="margin-left:-13%; margin-bottom:5%;"><a href="${pageContext.request.contextPath}/faq/qnamanagementlist.do?q_category=1">문의관리</a></h3>
+	<h3 style="margin-left:-13%; margin-bottom:5%;"><a href="${pageContext.request.contextPath}/faq/qnamanagementlist.do">문의관리</a></h3>
 	</div>
 	</div>
 	</div>
 	<!-- 좌측 메뉴바 종료 -->
 	
 	<!-- 검색 필드 -->
+		<input type="hidden" name="q_category" value="${param.q_category}">
 		<ul class="search">
          <li>
          <select name="keyfield" id="keyfield">
@@ -70,15 +71,6 @@
             <input type="submit" value="찾기">
          </li>
       	</ul>
-      	
-      	<ul class="category-ul" id="category" name="category">
-		<li class="myqna_btn01">
-			<input type="button" value="   전체   " onclick="location.href='qnamanagementlist.do?category=0'">
-			<input type="button" value="   회원   " onclick="location.href='qnamanagementlist.do?q_category=1'">
-			<input type="button" value="   상품/배송   "  onclick="location.href='qnamanagementlist.do?q_category=2'">
-			<input type="button" value="   기타   "  onclick="location.href='qnamanagementlist.do?q_category=3'">
-		</li>
-	</ul>
 	
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
@@ -86,16 +78,23 @@
 		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/faq/qnalist.do'"> > <a href="qnamanagementlist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
 		<div class ="page-content02">
+		<ul class="category-ul" id="category">
+			<li class="myqna_btn01">
+				<input type="button" value="   전체   " onclick="location.href='/faq/qnamanagementlist.do?q_category'">
+				<input type="button" value="   회원   " onclick="location.href='/faq/qnamanagementlist.do?q_category=1'">
+				<input type="button" value="   상품/배송   "  onclick="location.href='/faq/qnamanagementlist.do?q_category=2'">
+				<input type="button" value="   기타   "  onclick="location.href='/faq/qnamanagementlist.do?q_category=3'">
+			</li>
+			</ul>
 		<c:if test="${count == 0}">
 		<div class="no-wish">문의 내역이 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		
+      	
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
 			<li class="qnalist-list">
 				<div class="box-parent">
-					<input type="hidden" value="${qna.q_category}">
 					<input type="hidden" value="${qna.mem_num}">
 					<div style="margin-left:2%; margin-top:4%; width:85px;">
 					<c:if test="${qna.q_category == 1}">&nbsp;&nbsp;&nbsp;회원</c:if>

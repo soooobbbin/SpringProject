@@ -87,4 +87,10 @@ public class CartServiceImpl implements CartService{
 		return cartMapper.selectOrderList2(total);
 	}
 
+	@Override
+	public void addCart(CartVO cart) {
+		cartMapper.addCart(cart);
+		
+	}
+
 }

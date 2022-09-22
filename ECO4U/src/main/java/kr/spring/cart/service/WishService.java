@@ -17,4 +17,5 @@ public interface WishService {
 	public void deleteWishChecked(String del_product);
 	public void deleteWishByProductNum(Integer p_num);
 
+	
 }

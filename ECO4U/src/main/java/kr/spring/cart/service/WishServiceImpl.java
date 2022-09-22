@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.cart.dao.WishMapper;
+
 import kr.spring.cart.vo.WishVO;
 
 @Service
@@ -25,13 +26,6 @@ public class WishServiceImpl implements WishService{
 	@Override
 	public int selectRowCount(Map<String, Object> map) {
 		return wishMapper.selectRowCount(map);
-	}
-	
-	
-	@Override
-	public void updateWish(Integer w_num) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -63,6 +57,14 @@ public class WishServiceImpl implements WishService{
 		}
 	}
 
+
+	@Override
+	public void updateWish(Integer w_num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 	
 
 }

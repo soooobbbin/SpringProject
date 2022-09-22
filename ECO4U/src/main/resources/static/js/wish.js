@@ -43,29 +43,45 @@ $(function(){
 		
 	}); //end of click #delete_btn
 	
+	//========= 장바구니에 상품 담기 =========//
+	$(document).on('click','#addCart_btn',function(){
 	
+		alert('버튼눌림');
+		
+		var check = confirm('상품을 장바구니에 추가하시겠습니까?');
+		
+		if(check){
+		let form_data = $(this).serialize();
+		
+		$.ajax({
+			url:'addWishToCart.do',
+			type:'post',
+			data:form_data,
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인 후 사용하세요!');
+				}else if(param.result == 'success'){
+					alert('장바구니에 담았습니다.');
+					//location.href='../cart/cart.do';
+				}else if(param.result == 'overquantity'){
+					alert('기존에 주문한 상품입니다. 개수를 추가하면 재고가 부족합니다.');
+				}else{
+					alert('장바구니 담기 오류');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+		//기본 이벤트 제거
+		event.preventDefault();
+		}
+	});
 
-	/*	
-	$('li#all').click(function(){
-		$('li#all').css('background','#eee').css('font-weight','bold');
-		initForm1();
-	});
-	$('li#living').click(function(){
-		$('li#living').css('background','#eee').css('font-weight','bold');
-		initForm2();
-	});
-	$('li#beauty').click(function(){
-		$('li#beauty').css('background','#eee').css('font-weight','bold');
-		initForm3();
-	});
-	$('li#fassion').click(function(){
-		$('li#fassion').css('background','#eee').css('font-weight','bold');
-		initForm4();
-	});
-	
-	//수정 폼 초기화
-*/
-	
+
 	
 	
 });

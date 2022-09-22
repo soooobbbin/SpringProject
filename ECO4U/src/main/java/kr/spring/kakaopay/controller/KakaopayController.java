@@ -54,7 +54,66 @@ public class KakaopayController {
 	
 	@RequestMapping("/cart/kakaopay.do")
 	@ResponseBody
-	public String kakaopay(@RequestParam(value="pcount",defaultValue="") int pcount,
+	public String kakaopay1(@RequestParam(value="pcount",defaultValue="") int pcount,
+						   @RequestParam(value="p_name",defaultValue="") String p_name,
+						   @RequestParam(value="all_total",defaultValue="") int all_total) {
+		
+		logger.debug("<<pcount>> : " + pcount + " <<p_name>> : " + p_name + " <<all_total>> : " + all_total);
+		
+		//상품명 외 건 찍어주기
+		String item_name="";
+		if(pcount == 1) {
+			item_name = p_name;
+		}else {
+			pcount -= 1;
+			item_name = p_name + " 외 " + pcount+"건";
+		}
+		
+		try {
+			item_name = URLEncoder.encode(item_name,"UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
+			HttpURLConnection serve = (HttpURLConnection) url.openConnection();
+			serve.setRequestMethod("POST");
+			serve.setRequestProperty("Authorization", "KakaoAK 1168b0ed2ea3aeb2276c989b3d6ae453");
+			serve.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+			serve.setDoOutput(true);
+			String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name="+item_name+"&quantity="+pcount+"&total_amount="+all_total+"&vat_amount=0&tax_free_amount=0&approval_url=http://localhost:8080/common/notice_success.do&fail_url=http://localhost:8080/common/notice_fail.do&cancel_url=http://localhost:8080/common/notice_cancel.do";
+			OutputStream output = serve.getOutputStream();
+			DataOutputStream dataoutput = new DataOutputStream(output);
+			dataoutput.writeBytes(param);
+			dataoutput.close();
+			
+			int result = serve.getResponseCode();
+			
+			InputStream input;
+			if(result == 200) {
+				input = serve.getInputStream();
+			} else {
+				input = serve.getErrorStream();
+			}
+			InputStreamReader reader = new InputStreamReader(input);
+			BufferedReader buffer = new BufferedReader(reader);
+			return buffer.readLine();
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "{\"result\":\"NO\"}";
+	}
+	
+	//단건 결제
+	@RequestMapping("/product/kakaopay.do")
+	@ResponseBody
+	public String kakaopay2(@RequestParam(value="pcount",defaultValue="") int pcount,
 						   @RequestParam(value="p_name",defaultValue="") String p_name,
 						   @RequestParam(value="all_total",defaultValue="") int all_total) {
 		

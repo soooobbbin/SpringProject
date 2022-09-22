@@ -34,6 +34,10 @@
 .qnalist-span01{
 	margin:9px;
 }
+.search{
+	float: right;
+	margin-top:5px;
+}
 </style>
 <div class="page" style="height: 775px;">
 	<form action="qnamanagementlist.do" id="search_form"  method="get">
@@ -58,7 +62,13 @@
 	</div>
 	<!-- 좌측 메뉴바 종료 -->
 	
-	<!-- 검색 필드 -->
+	<!-- 문의 내역 폼 시작 -->
+	<div class="mypage-div02">
+		<div style="padding-left: 53px;">
+		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='#'"> > <a href="qnamanagementlist.do" style="font-weight:bold">문의내역</a></span>
+		</div>
+		<div class ="page-content02" style="margin-top:-3px;">
+		<!-- 검색 필드 -->
 		<input type="hidden" name="q_category" value="${param.q_category}">
 		<ul class="search">
          <li>
@@ -71,16 +81,9 @@
             <input type="submit" value="찾기">
          </li>
       	</ul>
-	
-	<!-- 문의 내역 폼 시작 -->
-	<div class="mypage-div02">
-		<div style="padding-left: 53px;">
-		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/faq/qnalist.do'"> > <a href="qnamanagementlist.do" style="font-weight:bold">문의내역</a></span>
-		</div>
-		<div class ="page-content02">
 		<ul class="category-ul" id="category">
 			<li class="myqna_btn01">
-				<input type="button" value="   전체   " onclick="location.href='/faq/qnamanagementlist.do?q_category'">
+				<input type="button" value="   전체   " onclick="location.href='/faq/qnamanagementlist.do'">
 				<input type="button" value="   회원   " onclick="location.href='/faq/qnamanagementlist.do?q_category=1'">
 				<input type="button" value="   상품/배송   "  onclick="location.href='/faq/qnamanagementlist.do?q_category=2'">
 				<input type="button" value="   기타   "  onclick="location.href='/faq/qnamanagementlist.do?q_category=3'">
@@ -90,7 +93,6 @@
 		<div class="no-wish">문의 내역이 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
-      	
 		<ul class="qnalist-ul">
 			<c:forEach var="qna" items="${list}">
 			<li class="qnalist-list">
@@ -105,7 +107,7 @@
 						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='admindetail.do?q_num=${qna.q_num}'">
 					</div>
 					<div class="qnalist-span01">
-						<div class="box-title"><a href="admindetail.do?q_num=${qna.q_num}">${qna.q_title}</a></div><br>
+						<div class="box-title"><a href="admindetail.do?q_num=${qna.q_num}">${qna.q_title}</a></div><br><br>
 						<div class="box-content">
 						<img src="../images/faq/reply00.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-2px">
 						<c:choose>
@@ -119,7 +121,7 @@
 				        </c:otherwise>
 						</c:choose>
 						</div>
-						<div class="align-right" style="width:575px; margin-top:-28px; margin-bottom:10px;">${qna.mem_name}</div>
+						<div class="align-right" style="width:570px; margin-top:-28px; margin-bottom:10px;">${qna.mem_name}</div>
 						<span class="box-date">${qna.reg_date}</span>
 						<span class="box-comment" style="font-size:5px">
 						<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">
@@ -131,10 +133,7 @@
 			</c:forEach>
 		</ul>
 		</c:if>
-		<div class="qnalistspanbottom">
-		<span>*1:1문의 등록은 고객센터 우측 말풍선 아이콘 누르시면 됩니다.</span><br>
-		</div>
-		<div class="page align-center" style="margin-left:5%;">${page}</div>
+		<div class="page align-center" style="margin-left:5%; margin-top:-15px;">${page}</div>
 		</div>
 	</div>
 	<!-- 문의 내역 폼 끝 -->

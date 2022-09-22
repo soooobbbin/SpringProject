@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/wish.js"></script>
@@ -35,7 +36,10 @@ function selectAll(selectAll)  {
 </script>
 <div class="page-main">
 	<div class="wish-top">
-	<h2>관심 상품</h2>
+		<div class="wish-title">
+		<h2 class="wish-title-h2">관심 상품</h2>
+		<span class="wish-title-span">총 ${count}개</span>
+		</div>
 	<div class="wish-category">
 		<form action="wishList.do" id="search_form"  method="get">
 			<ul class="wish-category-ul" id="category" name="category">
@@ -50,7 +54,7 @@ function selectAll(selectAll)  {
 	
 	<div class="wish-choice">
 		<span><input type="checkbox" id="selectall" name="selectall"
-		 value="전체 선택"  onclick="selectAll(this)">전체 선택</span>
+		 value="전체 선택"  onclick="selectAll(this)" checked="checked">전체 선택</span>
 		<span> | <input type="button" value="선택 삭제" id="delete_btn"></span> <!-- 버튼으로 만들어서 선택한 상품 삭제 가능하게 하기 -->
 	</div>
 	
@@ -61,31 +65,55 @@ function selectAll(selectAll)  {
 		
 		<!-- 찜 목록에 상품이 담긴 경우 -->
 		<c:if test="${count > 0}">
-		
+		<form action="addWishToCart.do" method="post">
 		<ul class="wish-list-ul">
 			<c:forEach var="wish" items="${list}">
 			<li class="wish-list-li">
 				<div class="box-parent">
-					<input type="hidden" value="${wish.p_category}">
+					<input type="hidden" value="${wish.w_num}">
 					<input type="hidden" value="${wish.mem_num}">
-					<div class="wish-check">
+					<!-- parent 자식1 -->
+					<div class="wish-check"> 
 					<input type="checkbox" class="select-product" data-wishnum="${wish.w_num}" name="select_product" 
-					 onclick="checkSelectAll()">
+					 onclick="checkSelectAll()" checked="checked">
 					</div>
-					<div class="product-image">
+					<!-- parent 자식2 -->
+					<div class="product-image"> 
 						<img src="../images/product/${wish.p_photoname}" width="80" height="80">
 					</div>
-					<div class="product-box">
-						<span class="box-brand">[${wish.p_brand}]</span><br>
-						<span class="box-title">${wish.p_name}</span><br>
-						<span class="box-price"><strong>${wish.p_price}</strong></span><br>
-						<span class="box-dprice">배송비 ${wish.p_dprice}</span><br>
-						<span class="box-pcate">카테고리 ${wish.p_category}</span>
+					<!-- parent 자식3 -->
+					<div class="product-box"> 
+						<div class="box-notice pb-span">30,000원 이상 무료배송</div>
+						<div class="box-1">
+							<div class="box-brand pb-span">[${wish.p_brand}]</div>
+							<div class="box-title pb-span">${wish.p_name}</div>
+						</div>
+						<div class="box-price pb-span"><strong><fmt:formatNumber value="${wish.p_price}"/>원</strong></div>
 					</div>
+					<!-- parent 자식4 -->
+					<div class="product-button"> 
+				        <div class="wishTocart-btn">
+				        	<input type="button" id="addCart_btn" class="wishButton" data-pnum="${wish.p_num}" value="장바구니">
+				        </div>
+				        <div class="delete_btn">
+				        	<input type="button" class="delete-pro wishButton" data-wishnum="${wish.w_num}" value="삭제">
+				        </div>
+				    </div>
 				</div>
 			</li>
 			</c:forEach>
 		</ul>
+		</form>
+		<script type="text/javascript">
+			$('.delete-pro').click(function(){
+				let choice = confirm('삭제하시겠습니까?');
+				if(choice){
+			        let del_btn = $(this).attr('data-wishnum');
+					location.replace('delWish.do?w_num=' + del_btn);
+				}
+				
+			});
+		</script>
 		</c:if>
 </div>
 

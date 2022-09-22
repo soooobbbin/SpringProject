@@ -244,6 +244,49 @@ public class CommunityController {
 		
 		return "common/resultView";
 	}
+	
+	
+	//==========게시판 글 공지지정==========//
+		@RequestMapping("/community/updatenotice.do")
+		public String submitUpdate(
+				       @RequestParam int c_num,
+				       Model model,
+				       HttpServletRequest request) {
+			
+			logger.debug("<<공지지정>> : " + c_num);
+			
+			//공지지정
+			communityService.updateNotice(c_num);
+			
+			//View에 표시할 메시지
+			model.addAttribute("message", "공지지정 완료!!");
+			model.addAttribute("url", 
+					request.getContextPath()+"/community/list.do?c_category="+1);
+			
+			return "common/resultView";
+		}
+
+
+
+	//==========게시판 글 공지지정==========//
+		@RequestMapping("/community/updatenotice2.do")
+		public String submitUpdate2(
+				       @RequestParam int c_num,
+				       Model model,
+				       HttpServletRequest request) {
+			
+			logger.debug("<<공지지정 해제>> : " + c_num);
+			
+			//공지지정
+			communityService.updateNotice2(c_num);
+			
+			//View에 표시할 메시지
+			model.addAttribute("message", "공지지정 해제 완료!!");
+			model.addAttribute("url", 
+					request.getContextPath()+"/community/list.do?c_category="+1);
+			
+			return "common/resultView";
+		}
 
 }
 

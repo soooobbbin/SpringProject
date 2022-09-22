@@ -40,6 +40,12 @@ public interface CommunityMapper{
 				+ "(select count(com_num) from c_comment where c_num = #{c_num}) "
 				+ "where b.c_num = #{c_num}")
 		public void updateComCnt(Integer c_num);
+		@Update("UPDATE community SET c_auth=1 WHERE c_num=#{c_num}")
+		public void updateNotice(Integer c_num);
+		@Update("UPDATE community SET c_auth=0 WHERE c_num=#{c_num}")
+		public void updateNotice2(Integer c_num);
+		
+		
 		//좋아요수 카운트
 		@Update("UPDATE community b SET b.like_cnt = "
 				+ "(select count(c_like_num) from c_like where c_num = #{c_num}) "
@@ -89,6 +95,7 @@ public interface CommunityMapper{
 		@Delete("DELETE FROM c_comment "
 				+ "WHERE c_num=#{c_num}")
 		public void deleteCommentByCNum(Integer c_num);
+	
 		
 		
 		

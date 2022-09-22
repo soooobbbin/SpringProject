@@ -140,7 +140,7 @@ $(function(){
 								<c:if test="${!empty community.filename}">
 									<img class="card-img-top"
 									src="/community/imageView.do?&c_num=${community.c_num}" 
-									style="width: 300px; height: 265px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;">
+									style="width: 300px; height: 250px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;">
 									<div class="align-center">
 									<br>
 										<span style="font-weight:bold;">${community.c_title}</span>
@@ -149,12 +149,14 @@ $(function(){
 									</div>
 								</c:if> 
 								<c:if test="${empty community.filename}">
-										<img src="${pageContext.request.contextPath}/images/no_image.png"
-											width="300" height="240">
-										<br>
-										<span>${community.c_title}</span>
-										<br>
-										<span>${community.reg_date2}</span>
+									<img src="${pageContext.request.contextPath}/images/no_image.png"
+										style="width: 300px; height: 250px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;">
+									<div class="align-center">
+									<br>
+									<span>${community.c_title}</span>
+									<br>
+									<span>${community.reg_date2}</span>
+									</div>
 								</c:if>
 								</a>
 							</div>

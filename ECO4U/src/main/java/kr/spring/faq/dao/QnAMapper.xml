@@ -1,194 +1,175 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.faq.dao.QnAMapper">  
-	<select id="selectRowCount" parameterType="map" resultType="integer">
-		SELECT
-		  COUNT(*)
-		FROM qna q JOIN member m
-		ON q.mem_num = m.mem_num AND q.mem_num=#{mem_num}
-		<where>
-			<if test="category == 0">
-				q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3
-			</if>
-			<if test="category == 1">
-				q.q_category = 1
-			</if>
-			<if test="category == 2">
-				q.q_category = 2
-			</if>
-			<if test="category == 3">
-				q.q_category = 3
-			</if>
-		</where>
-	</select>
-  	<select id="selectQnAList" parameterType="map" resultType="qnAVO">
-		SELECT 
-		  *
-		 FROM (SELECT
-		 		a.*,
-		 		rownum rnum
-		 	   FROM (SELECT
-		 	   			q.q_num,
-		 	   			<![CDATA[
-		 	   			REPLACE(REPLACE(q.q_title,'<','&lt;'),'>','&gt;') q_title,
-		 	   			]]>
-		 	   			q.q_content,
-		 	   			q.reg_date,
-		 	   			q.q_category,
-		 	   			q.mem_num,
-		 	   			q_photo,
-		 	   			q_photo_name,
-		 	   			com_cnt
-		 	   		 FROM qna q JOIN member m
-		 	   		 ON q.mem_num = m.mem_num AND q.mem_num=#{mem_num}
-		 	   		 <where>
-							<if test="category == 0">
-								q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3 
-							</if>
-							<if test="category == 1">
-								q.q_category = 1
-							</if>
-							<if test="category == 2">
-								q.q_category = 2
-							</if>
-							<if test="category == 3">
-							q.q_category = 3
-							</if>
-					</where>
-		 	   		 ORDER BY q.q_num DESC)a)
-		 <![CDATA[
-		 WHERE rnum >= #{start} AND rnum <= #{end}
-		 ]]>
-	</select>
-	
- 	<!-- 글수정 -->
- 	<update id="updateQnA" parameterType="qnaVO">
- 		UPDATE qna SET
- 			q_title=#{q_title},
- 			q_content=#{q_content},
- 			q_photo=#{q_photo},
- 			q_photo_name=#{q_photo_name},
- 			q_category=#{q_category},
- 			modify_date=SYSDATE 
- 		WHERE q_num=#{q_num}
- 	</update>
-  	
-  	<!-- 댓글 목록 -->
-  	<select id="selectListComment" parameterType="map" resultType="qnAcommentVO">
-  		SELECT
-  		   *
-  		FROM (SELECT
-  		        a.*,
-  		        rownum rnum
-  		      FROM (SELECT
-  		              qc_num,
-  		              <![CDATA[
-  		              REPLACE(REPLACE(qc_content,'<','&lt;'),'>','&gt;') qc_content,
-  		              ]]>
-  		              qc.reg_date,
-  		              qc.modify_date,
-  		              q_num,
-  		              mem_num,
-  		              mem_name,
-  		              m.auth
-  		            FROM qna_comment qc
-  		            JOIN member m USING(mem_num)
-  		            JOIN member_detail d USING(mem_num)
-  		            WHERE q_num = #{q_num}
-  		            ORDER BY qc_num ASC)a)
-  		<![CDATA[
-  		WHERE rnum >= #{start} AND rnum <= #{end}
-  		]]>
-  	</select>
-  	
-  	<!-- 관리자 -->
-  	<select id="selectmnRowCount" parameterType="map" resultType="integer">
-		SELECT
-		  COUNT(*)
-		FROM qna q JOIN member_detail m
-		ON q.mem_num = m.mem_num
-		WHERE q.q_category = #{q_category}
-		<if test="q.q_category == 0">
-								q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3 
-							</if>
-							<if test="q.q_category == 1">
-								q.q_category = 1
-							</if>
-							<if test="q.q_category == 2">
-								q.q_category = 2
-							</if>
-							<if test="q.q_category == 3">
-							q.q_category = 3
-							</if>
-		<if test="keyword != null and keyword != ''">
-			<if test="keyfield == 1">
-				AND q.q_title LIKE '%' || #{keyword} || '%'
-			</if>
-			<if test="keyfield == 2">
-				AND m.mem_name LIKE '%' || #{keyword} || '%' 
-			</if>
-			<if test="keyfield == 3">
-				AND q.q_content LIKE '%' || #{keyword} || '%' 
-			</if>
-		</if>
-	</select>
-	<select id="selectmnQnAList" parameterType="map" resultType="qnAVO">
-		SELECT 
-		  *
-		 FROM (SELECT
-		 		a.*,
-		 		rownum rnum
-		 	   FROM (SELECT
-		 	   			q.q_num,
-		 	   			<![CDATA[
-		 	   			REPLACE(REPLACE(q.q_title,'<','&lt;'),'>','&gt;') q_title,
-		 	   			]]>
-		 	   			q.q_content,
-		 	   			q.reg_date,
-		 	   			q.q_category,
-		 	   			q.mem_num,
-		 	   			q_photo,
-		 	   			q_photo_name,
-		 	   			m.mem_name,
-		 	   			com_cnt
-		 	   		 FROM qna q JOIN member_detail m
-		 	   		 ON q.mem_num = m.mem_num
-		 	   		WHERE q.q_category = #{q_category}
-							<if test="q.q_category  1">
-								q.q_category = 1
-							</if>
-							<if test="q.q_category == 0">
-								q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3 
-					<if test="keyword != null and keyword != ''">
-						<if test="keyfield == 1">
-							AND q.q_title LIKE '%' || #{keyword} || '%'
-						</if>
-						<if test="keyfield == 2">
-							AND m.mem_name LIKE '%' || #{keyword} || '%' 
-						</if>
-						<if test="keyfield == 3">
-						AND q.q_content LIKE '%' || #{keyword} || '%' 
-						</if>
-					</if>
-					</if>
-		 	   		 ORDER BY q.q_num DESC)a)
-		 <![CDATA[
-		 WHERE rnum >= #{start} AND rnum <= #{end}
-		 ]]>
-	</select>
-	
-	<update id="updatemnQnA" parameterType="qnaVO">
- 		UPDATE qna SET
- 			q_title=#{q_title},
- 			q_content=#{q_content},
- 			q_photo=#{q_photo},
- 			q_photo_name=#{q_photo_name},
- 			q_category=#{q_category},
- 			modify_date=SYSDATE 
- 		WHERE q_num=#{q_num}
- 	</update>
+   <select id="selectRowCount" parameterType="map" resultType="integer">
+      SELECT
+        COUNT(*)
+      FROM qna q JOIN member m
+      ON q.mem_num = m.mem_num AND q.mem_num=#{mem_num}
+      <where>
+         <if test="category == 0">
+            q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3
+         </if>
+         <if test="category == 1">
+            q.q_category = 1
+         </if>
+         <if test="category == 2">
+            q.q_category = 2
+         </if>
+         <if test="category == 3">
+            q.q_category = 3
+         </if>
+      </where>
+   </select>
+     <select id="selectQnAList" parameterType="map" resultType="qnAVO">
+      SELECT 
+        *
+       FROM (SELECT
+             a.*,
+             rownum rnum
+             FROM (SELECT
+                      q.q_num,
+                      <![CDATA[
+                      REPLACE(REPLACE(q.q_title,'<','&lt;'),'>','&gt;') q_title,
+                      ]]>
+                      q.q_content,
+                      q.reg_date,
+                      q.q_category,
+                      q.mem_num,
+                      q_photo,
+                      q_photo_name,
+                      com_cnt
+                    FROM qna q JOIN member m
+                    ON q.mem_num = m.mem_num AND q.mem_num=#{mem_num}
+                    <where>
+                     <if test="category == 0">
+                        q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3 
+                     </if>
+                     <if test="category == 1">
+                        q.q_category = 1
+                     </if>
+                     <if test="category == 2">
+                        q.q_category = 2
+                     </if>
+                     <if test="category == 3">
+                     q.q_category = 3
+                     </if>
+               </where>
+                    ORDER BY q.q_num DESC)a)
+       <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+       ]]>
+   </select>
+   
+    <!-- 글수정 -->
+    <update id="updateQnA" parameterType="qnaVO">
+       UPDATE qna SET
+          q_title=#{q_title},
+          q_content=#{q_content},
+          q_photo=#{q_photo},
+          q_photo_name=#{q_photo_name},
+          q_category=#{q_category},
+          modify_date=SYSDATE 
+       WHERE q_num=#{q_num}
+    </update>
+     
+     <!-- 댓글 목록 -->
+     <select id="selectListComment" parameterType="map" resultType="qnAcommentVO">
+        SELECT
+           *
+        FROM (SELECT
+                a.*,
+                rownum rnum
+              FROM (SELECT
+                      qc_num,
+                      <![CDATA[
+                      REPLACE(REPLACE(qc_content,'<','&lt;'),'>','&gt;') qc_content,
+                      ]]>
+                      qc.reg_date,
+                      qc.modify_date,
+                      q_num,
+                      mem_num,
+                      mem_name,
+                      m.auth
+                    FROM qna_comment qc
+                    JOIN member m USING(mem_num)
+                    JOIN member_detail d USING(mem_num)
+                    WHERE q_num = #{q_num}
+                    ORDER BY qc_num ASC)a)
+        <![CDATA[
+        WHERE rnum >= #{start} AND rnum <= #{end}
+        ]]>
+     </select>
+     
+     <!-- 관리자 -->
+     <select id="selectmnRowCount" parameterType="map" resultType="integer">
+      SELECT
+        COUNT(*)
+      FROM qna q JOIN member_detail m
+      ON q.mem_num = m.mem_num
+      WHERE q.q_category = #{q_category}
+      <if test="keyword != null and keyword != ''">
+         <if test="keyfield == 1">
+            AND q.q_title LIKE '%' || #{keyword} || '%'
+         </if>
+         <if test="keyfield == 2">
+            AND m.mem_name LIKE '%' || #{keyword} || '%' 
+         </if>
+         <if test="keyfield == 3">
+            AND q.q_content LIKE '%' || #{keyword} || '%' 
+         </if>
+      </if>
+   </select>
+   <select id="selectmnQnAList" parameterType="map" resultType="qnAVO">
+      SELECT 
+        *
+       FROM (SELECT
+             a.*,
+             rownum rnum
+             FROM (SELECT
+                      q.q_num,
+                      <![CDATA[
+                      REPLACE(REPLACE(q.q_title,'<','&lt;'),'>','&gt;') q_title,
+                      ]]>
+                      q.q_content,
+                      q.reg_date,
+                      q.q_category,
+                      q.mem_num,
+                      q_photo,
+                      q_photo_name,
+                      m.mem_name,
+                      com_cnt
+                    FROM qna q JOIN member_detail m
+                    ON q.mem_num = m.mem_num
+                   WHERE q.q_category = #{q_category}
+               <if test="keyword != null and keyword != ''">
+                  <if test="keyfield == 1">
+                     AND q.q_title LIKE '%' || #{keyword} || '%'
+                  </if>
+                  <if test="keyfield == 2">
+                     AND m.mem_name LIKE '%' || #{keyword} || '%' 
+                  </if>
+                  <if test="keyfield == 3">
+                  AND q.q_content LIKE '%' || #{keyword} || '%' 
+                  </if>
+               </if>
+                    ORDER BY q.q_num DESC)a)
+       <![CDATA[
+       WHERE rnum >= #{start} AND rnum <= #{end}
+       ]]>
+   </select>
+   
+   <update id="updatemnQnA" parameterType="qnaVO">
+       UPDATE qna SET
+          q_title=#{q_title},
+          q_content=#{q_content},
+          q_photo=#{q_photo},
+          q_photo_name=#{q_photo_name},
+          q_category=#{q_category},
+          modify_date=SYSDATE 
+       WHERE q_num=#{q_num}
+    </update>
 </mapper>
-
 
 
 

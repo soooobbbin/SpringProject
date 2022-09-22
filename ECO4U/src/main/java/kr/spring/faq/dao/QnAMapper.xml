@@ -108,6 +108,18 @@
 		FROM qna q JOIN member_detail m
 		ON q.mem_num = m.mem_num
 		WHERE q.q_category = #{q_category}
+		<if test="q.q_category == 0">
+								q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3 
+							</if>
+							<if test="q.q_category == 1">
+								q.q_category = 1
+							</if>
+							<if test="q.q_category == 2">
+								q.q_category = 2
+							</if>
+							<if test="q.q_category == 3">
+							q.q_category = 3
+							</if>
 		<if test="keyword != null and keyword != ''">
 			<if test="keyfield == 1">
 				AND q.q_title LIKE '%' || #{keyword} || '%'
@@ -142,6 +154,11 @@
 		 	   		 FROM qna q JOIN member_detail m
 		 	   		 ON q.mem_num = m.mem_num
 		 	   		WHERE q.q_category = #{q_category}
+							<if test="q.q_category  1">
+								q.q_category = 1
+							</if>
+							<if test="q.q_category == 0">
+								q.q_category = 1 OR q.q_category = 2 OR q.q_category = 3 
 					<if test="keyword != null and keyword != ''">
 						<if test="keyfield == 1">
 							AND q.q_title LIKE '%' || #{keyword} || '%'
@@ -152,6 +169,7 @@
 						<if test="keyfield == 3">
 						AND q.q_content LIKE '%' || #{keyword} || '%' 
 						</if>
+					</if>
 					</if>
 		 	   		 ORDER BY q.q_num DESC)a)
 		 <![CDATA[

@@ -15,7 +15,8 @@
 .page-content02{
 	margin-top: 7%;
 }
-.box-parent {
+.box-parent{
+	margin-bottom:-5px;
     display: flex;
     width:fit-content;
 }
@@ -36,7 +37,35 @@
 }
 .search{
 	float: right;
-	margin-top:5px;
+	margin-top:10px;
+	margin-right:6%;
+}
+.search input[type="submit"]{
+	margin-bottom:-4px;
+	background-image:url("../images/faq/enter1.png");
+	background-size:20px;
+	background-repeat:no-repeat;
+	border: none;
+	background-color:#f4f9f2;
+	width:22px;
+	height:20px;
+	cursor:pointer;
+	
+}
+.qnalist-ul{
+	margin-top:-15px;
+	margin-left: 20px;
+}
+#keyfield{
+	margin-right:-1px;
+	border: 1px solid lightgray;
+}
+#keyword{
+	margin-right:1px;
+	width:140px;
+	height:19px;
+	border: 1px solid lightgray;
+	font-size:11px;
 }
 </style>
 <div class="page" style="height: 775px;">
@@ -78,9 +107,10 @@
             <option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
          </select>
             <input type="search" name="keyword" id="keyword" value="${param.keyword}">
-            <input type="submit" value="찾기">
+            <input type="submit" value="">
          </li>
       	</ul>
+      	<!-- 카테고리 -->
 		<ul class="category-ul" id="category">
 			<li class="myqna_btn01">
 				<input type="button" value="   전체   " onclick="location.href='/faq/qnamanagementlist.do'">
@@ -98,7 +128,7 @@
 			<li class="qnalist-list">
 				<div class="box-parent">
 					<input type="hidden" value="${qna.mem_num}">
-					<div style="margin-left:2%; margin-top:4%; width:85px;">
+					<div style="margin-left:2%; margin-top:34px; width:85px;">
 					<c:if test="${qna.q_category == 1}">&nbsp;&nbsp;&nbsp;회원</c:if>
 					<c:if test="${qna.q_category == 2}">상품/배송</c:if>
 					<c:if test="${qna.q_category == 3}">&nbsp;&nbsp;&nbsp;기타</c:if>
@@ -121,7 +151,7 @@
 				        </c:otherwise>
 						</c:choose>
 						</div>
-						<div class="align-right" style="width:570px; margin-top:-28px; margin-bottom:10px;">${qna.mem_name}</div>
+						<div class="align-right" style="width:570px; margin-top:-20px; margin-bottom:10px;">${qna.mem_name}</div>
 						<span class="box-date">${qna.reg_date}</span>
 						<span class="box-comment" style="font-size:5px">
 						<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">

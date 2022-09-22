@@ -86,6 +86,20 @@ body{
 	      </button>
 	    </h2>
     <div id="collapse" class="accordion-collapse collapse show" aria-labelledby="heading" data-bs-parent="#accordionExample">
+     <div class="qna_btn_group" align="right">
+	      <input type="button" value="수정" onclick="location.href='qnamnupdate.do?q_num=${qna.q_num}'">
+		  <input type="button" value="삭제" id="delete_btn">
+		  <script type="text/javascript">
+			let delete_btn = document.getElementById('delete_btn');
+			//이벤트 연결
+			delete_btn.onclick=function(){
+				let choice = confirm('삭제하시겠습니까?');
+				if(choice){
+					location.replace('qnamndelete.do?q_num=${qna.q_num}');
+				}
+			};
+			</script> 
+	  </div>
       <div class="accordion-body">
       <div class="align-center"><img id="qnalist-image03" src="imageView.do?q_num=${qna.q_num}" onerror="this.style.display='none';"></div>
       ${qna.q_content}

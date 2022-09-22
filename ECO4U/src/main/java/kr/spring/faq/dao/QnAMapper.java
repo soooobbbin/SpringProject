@@ -63,6 +63,7 @@ public interface QnAMapper {
 	//관리자
 	public List<QnAVO> selectmnQnAList(Map<String,Object> map);
 	public int selectmnRowCount(Map<String,Object> map);
+	public void updatemnQnA(QnAVO qna);
 }
 
 

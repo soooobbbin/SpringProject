@@ -52,7 +52,7 @@
 								q.q_category = 2
 							</if>
 							<if test="category == 3">
-								q.q_category = 3
+							q.q_category = 3
 							</if>
 					</where>
 		 	   		 ORDER BY q.q_num DESC)a)
@@ -105,8 +105,20 @@
   	<select id="selectmnRowCount" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
-		FROM qna q JOIN member m
+		FROM qna q JOIN member_detail m
 		ON q.mem_num = m.mem_num
+		WHERE q.q_category = #{q_category}
+		<if test="keyword != null and keyword != ''">
+			<if test="keyfield == 1">
+				AND q.q_title LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="keyfield == 2">
+				AND m.mem_name LIKE '%' || #{keyword} || '%' 
+			</if>
+			<if test="keyfield == 3">
+				AND q.q_content LIKE '%' || #{keyword} || '%' 
+			</if>
+		</if>
 	</select>
 	<select id="selectmnQnAList" parameterType="map" resultType="qnAVO">
 		SELECT 
@@ -129,11 +141,34 @@
 		 	   			com_cnt
 		 	   		 FROM qna q JOIN member_detail m
 		 	   		 ON q.mem_num = m.mem_num
+		 	   		WHERE q.q_category = #{q_category}
+					<if test="keyword != null and keyword != ''">
+						<if test="keyfield == 1">
+							AND q.q_title LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyfield == 2">
+							AND m.mem_name LIKE '%' || #{keyword} || '%' 
+						</if>
+						<if test="keyfield == 3">
+						AND q.q_content LIKE '%' || #{keyword} || '%' 
+						</if>
+					</if>
 		 	   		 ORDER BY q.q_num DESC)a)
 		 <![CDATA[
 		 WHERE rnum >= #{start} AND rnum <= #{end}
 		 ]]>
 	</select>
+	
+	<update id="updatemnQnA" parameterType="qnaVO">
+ 		UPDATE qna SET
+ 			q_title=#{q_title},
+ 			q_content=#{q_content},
+ 			q_photo=#{q_photo},
+ 			q_photo_name=#{q_photo_name},
+ 			q_category=#{q_category},
+ 			modify_date=SYSDATE 
+ 		WHERE q_num=#{q_num}
+ 	</update>
 </mapper>
 
 

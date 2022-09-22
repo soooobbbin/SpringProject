@@ -108,4 +108,9 @@ public class QnAServiceImpl implements QnAService{
 	public int selectmnRowCount(Map<String, Object> map) {
 		return qnaMapper.selectmnRowCount(map);
 	}
+
+	@Override
+	public void updatemnQnA(QnAVO qna) {
+		qnaMapper.updatemnQnA(qna);
+	}
 }

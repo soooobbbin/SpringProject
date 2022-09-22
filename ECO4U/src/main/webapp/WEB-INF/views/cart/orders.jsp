@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/order.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/order.css">
 <!-- 내용 시작 -->
 <div class="page-main">
@@ -59,7 +60,7 @@
 			</div>
 			<div class="order-kind">
 				<div class="order-kind-content">
-			
+					<button id="apibtn">카카오페이</button>		
 				</div>
 			</div>
 		</div>
@@ -169,24 +170,4 @@
 		</div>
 	</div>
 </div>
-<script>
-var target = document.querySelectorAll('.zipcodebtn');
-var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
-var targetID;
-
-// 팝업 열기
-for(var i = 0; i < target.length; i++){
-  target[i].addEventListener('click', function(){
-    targetID = this.getAttribute('href');
-    document.querySelector(targetID).style.display = 'block';
-  });
-}
-
-// 팝업 닫기
-for(var j = 0; j < target.length; j++){
-  btnPopClose[j].addEventListener('click', function(){
-    this.parentNode.parentNode.style.display = 'none';
-  });
-}
-</script>
 <!-- 내용 끝 -->

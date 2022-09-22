@@ -60,6 +60,7 @@
 			</div>
 			<div class="order-kind">
 				<div class="order-kind-content">
+					<button id="apibtn">카카오페이</button>
 					<h2>결제 수단</h2>
 					<hr color="gray" width="98%" size="1">
 					<form id="payment_form" action="payment.do" method="post" >
@@ -88,6 +89,9 @@
 						<input type="hidden" value="${cart.p_num}">
 						<input type="hidden" value="${cart.productVO.p_status}">
 						<input type="hidden" value="${cart_num}">
+						<input type="hidden" value="${pcount}" id="pcount">
+						<input type="hidden" value="${cart.productVO.p_name}" id="p_name">
+						<input type="hidden" value="${all_total}" id="all_total">
 						
 						<div class="div1">
 							<div class="box-brand">[${cart.productVO.p_brand}]</div>

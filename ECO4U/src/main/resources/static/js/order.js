@@ -1,7 +1,7 @@
 $(function(){
-var target = document.querySelectorAll('.zipcodebtn');
-var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
-var targetID;
+	var target = document.querySelectorAll('.zipcodebtn');
+	var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
+	var targetID;
 
 // 팝업 열기
 for(var i = 0; i < target.length; i++){
@@ -18,10 +18,17 @@ for(var j = 0; j < target.length; j++){
   });
 }
 
+//상품 총액
+	var all_total = parseInt($('#all_total').val());
+	if(all_total < 30000) 
+		all_total += 2500;
+	
+
 //카카오페이
 $('#apibtn').click(function(){
 	$.ajax({
 		url:'kakaopay.do',
+		data:{pcount:$('#pcount').val(),p_name:$('#p_name').val(),all_total:all_total},
 		dataType:'json',
 		success:function(data){
 			var box = data.next_redirect_pc_url;

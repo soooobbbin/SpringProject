@@ -60,7 +60,16 @@
 			</div>
 			<div class="order-kind">
 				<div class="order-kind-content">
-					<button id="apibtn">카카오페이</button>		
+					<h2>결제 수단</h2>
+					<hr color="gray" width="98%" size="1">
+					<form id="payment_form" action="payment.do" method="post" >
+					<ul>
+						<li>
+							<input type="radio" name="payment" id="payment1" value="1">통장입금
+							<input type="radio" name="payment" id="apibtn" value="2">카카오페이
+						</li>
+					</ul>
+					</form>
 				</div>
 			</div>
 		</div>

@@ -2,8 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 내용 시작 -->
+<!-- 자바스크립트 삽입 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
+
+<!-- 본문 내용 -->
+<!-- <jsp:inclue>로 좌측 메뉴바 삽입하기(하나하나 치기 귀찮다) -->
 <div class="page-main">
 	<h2>전체회원</h2>
 	<div class="sub-menu">

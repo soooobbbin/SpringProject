@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<!-- 내용 시작 -->
 <!-- include libraries(jquery,bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
@@ -12,12 +11,17 @@
 	min-height:250px;
 }
 </style>
+
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product.control.js"></script>
 
-<!-- 본문 -->
+<!-- css 삽입 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+
+<!-- 내용 시작 -->
+<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
 <div class="page-main">
 	<h2>상품 등록</h2>
 	<form:form action="admin_write.do" enctype="multipart/form-data" id="pwrite_form" modelAttribute="productVO">
@@ -102,7 +106,7 @@
 	</ul>
 	<div class="align-center">
 		<form:button>등록</form:button>
-		<input type="button" value="목록" onclick="admin_plist.do">
+		<input type="button" value="목록" onclick="location.href='admin_plist.do'">
 	</div>
 	</form:form>
 </div>

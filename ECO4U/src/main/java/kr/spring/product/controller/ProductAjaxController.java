@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +29,8 @@ import kr.spring.product.vo.P_reviewVO;
 import kr.spring.product.vo.ProductVO;
 import kr.spring.product.vo.R_favVO;
 import kr.spring.cart.vo.CartVO;
+import kr.spring.cart.vo.WishVO;
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
@@ -43,6 +46,9 @@ public class ProductAjaxController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	// 자바빈(VO) 초기화
 	@ModelAttribute
@@ -79,47 +85,42 @@ public class ProductAjaxController {
 	}
 
 	// ==========리뷰 목록==========//
-	@RequestMapping("/product/listReview.do")
-	@ResponseBody
-	public Map<String, Object> getList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
-			@RequestParam int p_num, HttpSession session) {
+	@RequestMapping(value="/product/listReview.do",method=RequestMethod.GET)
+	public ModelAndView list(
+			HttpSession session,
+			@RequestParam(value="pageNum",defaultValue="1") 
+			int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")
+			String keyfield,
+			@RequestParam(value="category",defaultValue="")
+			String category) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("mem_num",user.getMem_num());
 
-		logger.debug("<<currentPage>> : " + currentPage);
-		logger.debug("<<p_num>> : " + p_num);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("p_num", p_num);
-		
-		// 총 글의 개수
+		// 찜 목록의 총 개수(검색된 목록 개수)
 		int count = productService.selectRowCountReview(map);
-		
-		//상품에 들어가면 리뷰 수 업데이트
-		productService.updateReviewCount(p_num);
 
-		PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, null);
+		logger.debug("<<count>> : " + count);
 
-		map.put("start", page.getStartRow());
-		map.put("end", page.getEndRow());
-
+		// 페이지 처리
+		PagingUtil page = new PagingUtil(keyfield, category, currentPage, count, rowCount, pageCount, "wishList.do");
 		List<P_reviewVO> list = null;
 		if (count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+
 			list = productService.selectListReview(map);
-		} else {
-			list = Collections.emptyList();
 		}
 
-		Map<String, Object> mapAjax = new HashMap<String, Object>();
-		mapAjax.put("count", count);
-		mapAjax.put("rowCount", rowCount);
-		mapAjax.put("list", list);
-		
-		//로그인 한 회원정보 셋팅
-		MemberVO user = (MemberVO) session.getAttribute("user");
-		if (user != null) {
-			mapAjax.put("user_num", user.getMem_num());
-		}
+		ModelAndView mav = new ModelAndView();
+		// 뷰이름.jsp
+		mav.setViewName("listReview");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
 
-		return mapAjax;
+		return mav;
 	}
 	
 	// ========리뷰 상세===========//

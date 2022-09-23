@@ -157,18 +157,15 @@
 			  rownum rnum
 			FROM (SELECT
 				  r_num,
-				  <![CDATA[
-  		          REPLACE(REPLACE(r_content,'<','&lt;'),'>','&gt;') r_content,
-  		          ]]>
+				  r_content,
 				  r_photoname,
 				  reg_date,
 				  modify_date,
 				  p_num,
 				  mem_num,
-				  id
+				  like_cnt
 				FROM p_review
-				JOIN member USING(mem_num)
-				WHERE p_num = #{p_num} 
+				WHERE mem_num=#{mem_num}
 				ORDER BY r_num DESC)a)
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

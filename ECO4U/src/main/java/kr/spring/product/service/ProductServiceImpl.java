@@ -66,7 +66,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<P_reviewVO> selectListReview(Map<String, Object> map) {
+	public List<P_reviewVO> selectListReview(Map<String,Object>map) {
 		return productMapper.selectListReview(map);
 	}
 

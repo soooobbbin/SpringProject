@@ -41,7 +41,7 @@ public interface ProductMapper {
 	public List<ProductVO> selectProductList(Map<String,Object> map);
 	
 	//리뷰
-	public List<P_reviewVO> selectListReview(Map<String,Object> map);
+	public List<P_reviewVO> selectListReview(Map<String, Object> map);
 	@Select("SELECT COUNT(*) FROM p_review r "
 			+ "JOIN member m ON r.mem_num=m.mem_num "
 			+ "WHERE p_num=#{p_num}")

@@ -12,8 +12,7 @@
 <span class="faq_main"><a href="/main/main.do">홈</a>><a href="/faq/faqlist.do" style="font-weight:bold">자주찾는질문</a></span>
 <h2 align="center" class="faqh2"><img id="faq_main_img01" src="../images/faq/support.png">고객센터</h2>
  <c:if test="${empty user || user.auth == 2}">
- <br>
- <br>
+ <br><br><br><br>
  </c:if>
 <div class="faq_main">
 	<c:if test="${user.auth == 1}">

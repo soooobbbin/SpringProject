@@ -35,14 +35,14 @@ body{
 }
 #faq_btn01{
 	margin-right:5px;
-	margin-bottom:5px;
-	width:65px;
-	height:30px;
+	margin-bottom:-5px;
+	width:62px;
+	height:29px;
 	background-color: #7c8f83;
 	color:white;
 	border: none;
 	border-radius: 15px;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: bold;
 	cursor:pointer;
 }

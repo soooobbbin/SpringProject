@@ -24,7 +24,7 @@ public interface ProductService {
 	public List<ProductVO> selectProductList(Map<String,Object> map);
 
 	//리뷰
-	public List<P_reviewVO> selectListReview(Map<String,Object> map);
+	public List<P_reviewVO> selectListReview(Map<String,Object>map);
 	public int selectRowCountReview(Map<String,Object> map);
 	public P_reviewVO selectReview(Integer r_num);
 	public void insertReview(P_reviewVO review);

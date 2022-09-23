@@ -22,7 +22,7 @@
 	<h3>나의 관심</h3></a>
 	<h3>내가 쓴 글</h3>
 	<a href="${pageContext.request.contextPath}/faq/qnalist.do"><p>- 문의/답변</p></a><br>
-	<a href="${pageContext.request.contextPath}/product/reviewMypage.do"><p>- 상품평</p></a>
+	<a href="${pageContext.request.contextPath}/product/listReview.do"><p>- 상품평</p></a>
 	</div>
 </div>
 	<div class="mypage-content" >

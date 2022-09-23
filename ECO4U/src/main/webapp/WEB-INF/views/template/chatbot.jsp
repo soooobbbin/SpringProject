@@ -82,6 +82,7 @@ chatbot_btn_close:focus{
 	border-radius: 30px;
 	font-size:15px;
 	box-sizing: initial;
+	box-shadow: 1px 1px 3px gray;
 }
 .chatbot_pop_main_title{
 	font-size:18px;

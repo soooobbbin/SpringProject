@@ -28,7 +28,8 @@ public interface OrderService {
 	public OrderVO selectOrder(Integer mem_num);
 	
 	//주문등록
-	public void insertOrder(Map<String,Object> order);
+	public void insertOrder(Map<String,Object> order,List<OrderDetailVO> list);
+	public void insertOrder2(Map<String,Object> order);
 
 
 }

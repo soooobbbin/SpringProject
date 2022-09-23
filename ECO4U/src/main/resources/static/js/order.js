@@ -78,7 +78,8 @@ $('#main_form').submit(function(event){
 				data:form_data,
 				dataType:'json',
 				success:function(){
-					alert("통장 입금 결제 네트워크성공");
+					alert("결제 성공");
+					location.href='/main/main.do';
 				},
 				error:function(){
 					alert("통장 입금 결제 네트워크오류");

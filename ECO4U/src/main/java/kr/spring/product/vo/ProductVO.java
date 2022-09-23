@@ -15,7 +15,7 @@ public class ProductVO {
 	private String p_name; //상품명
 	@Range(min=1,max=99999999)
 	private int p_price; //상품 가격
-	@Range(min=1,max=9999)
+	@Range(min=0,max=9999)
 	private int p_dprice; //상품 배송비
 	@Range(min=1,max=99999)
 	private int p_quantity; //재고수량

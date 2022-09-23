@@ -3,10 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<!-- css 삽입 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+
 <!-- 내용 시작 -->
+<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
 <div class="page-main">
 <h2>회원 정보 상세</h2>
-<div style="width:700px; border:1px solid;">
 	<div class="align-right">
 		<input type="button" name="modify" value="수정" onclick="location.href='admin_modify.do?mem_num=${memberVO.mem_num}'">
 		<input type="button" name="list" value="목록" onclick="location.href='admin_list.do'">
@@ -24,8 +27,6 @@
 		<li><b>이메일</b> ${memberVO.mem_email}</li>
 		<li><b>가입일</b> ${memberVO.reg_date}</li>
 	</ul>
-</div>
-
 </div>
 
 <!-- 내용 끝 -->

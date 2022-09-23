@@ -132,4 +132,15 @@ public class CommunityServiceImpl implements CommunityService{
 		
 	}
 
+	@Override
+	public void updateNotice(Integer c_num) {
+		communityMapper.updateNotice(c_num);
+	}
+	@Override
+	public void updateNotice2(Integer c_num) {
+		communityMapper.updateNotice2(c_num);
+	}
+	
+	
+
 }

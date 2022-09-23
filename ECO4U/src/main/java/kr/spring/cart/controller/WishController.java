@@ -176,5 +176,23 @@ public class WishController {
 		return mav;
 	}
 	
-	
+	//==========찜목록 개별 상품 삭제==========//
+		@RequestMapping("/cart/delWish.do")
+		public String submitDelete(
+				       @RequestParam int w_num,
+				       Model model,
+				       HttpServletRequest request) {
+			
+			logger.debug("<<찜목록 개별삭제>> : " + w_num);
+			
+			//장바구니삭제
+			wishService.deleteWish(w_num);
+			
+			//View에 표시할 메시지
+			model.addAttribute("message", "선택 상품 삭제");
+			model.addAttribute("url", 
+					request.getContextPath()+"/cart/wishList.do");
+			
+			return "common/resultView";
+		}
 }

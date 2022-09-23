@@ -3,6 +3,8 @@ package kr.spring.community.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Update;
+
 import kr.spring.community.vo.CommunityLikeVO;
 
 import kr.spring.community.vo.CommunityCommentVO;
@@ -17,9 +19,11 @@ public interface CommunityService {
 	public void updateC_hit(Integer c_num);
 	public void updateCommunity(CommunityVO community);
 	public void deleteCommunity(Integer c_num);
+	public void updateNotice(Integer c_num);
 	public void deleteFile(Integer c_num);	
 	public void updateComCnt(Integer c_num);
 	public void updateLikeCnt(Integer c_num);
+	public void updateNotice2(Integer c_num);
 	
 	//부모글 좋아요
 	public CommunityLikeVO selectLike(CommunityLikeVO like);

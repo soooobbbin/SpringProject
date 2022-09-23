@@ -75,11 +75,13 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void insertOrder(OrderVO order, List<OrderDetailVO> list) {
+	public void insertOrder(Map<String,Object> order) {
 		//주문번호 생성
-		order.setO_num(orderMapper.selectOrderNum());
+		order.put("o_num",orderMapper.selectOrderNum());
 		//주문등록
 		orderMapper.insertOrder(order);
+		
+		/*
 		//개별상품 주문등록
 		for(OrderDetailVO vo : list) {
 			//(주의)orderMapper.selectOrderNum()를 명시하면 
@@ -91,7 +93,7 @@ public class OrderServiceImpl implements OrderService{
 		}
 		//주문 상품 장바구니에서 제거
 		orderMapper.deleteCartItem(order.getMem_num());
+		*/
+		
 	}
-
-	
 }

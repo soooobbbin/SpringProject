@@ -31,7 +31,7 @@ public class WishAjaxController {
 	private ProductService productService;
 
 	
-	//==========장바구니 선택 삭제=============//
+	//==========찜목록 선택 삭제=============//
 	@RequestMapping("/cart/deleteWish.do")
 	@ResponseBody
 	public Map<String,String> processFile(

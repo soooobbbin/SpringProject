@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- 내용 시작 -->
+
+<!-- 자바 스크립트 삽입 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
+
+<!-- css 삽입 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+
+<!-- 내용 시작 -->
+<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
 <div class="page-main">
 	<h2>탈퇴/정지회원</h2>
-	<div class="sub-menu">
-		<ul>
-			<li><a href="admin_list.do">전체회원 조회</a>
-			<li><a href="delete_list.do">탈퇴회원 조회</a>
-		</ul>
-	</div>
 	<form action="delete_list.do" id="search_form" method="get">
 		<ul class="search">
 			<li>

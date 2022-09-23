@@ -1,4 +1,4 @@
-@charset "UTF-8";
+
 /* 커뮤니티 목록 페이지*/
 .page-main{
 	margin: 0 auto;
@@ -47,25 +47,46 @@
 
 /* 커뮤니티 목록 내용*/
 .content{
-	clear:both;
+	padding: 50px;
 	margin: 50px auto;
 	background-color:white;
 	width:90%;
-	border-radius:5px;
-}
-/*
-.community-list-sort{
-	float:right;
-	margin:30px;
-}*/
-#order{
-	width:80px;
-	height:30px;
-	border:2px solid #7c8f83;
+	height:auto;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-menu {display: block;}
+
+.dropdown-item{
+	font-size: 12px;
+}
 #c_title{
 	width:300px;
+}
+.commu-photo{ 
+	 display: flex;
+  justify-content: space-between;
 }
 
 .notice-icon{
@@ -75,11 +96,12 @@
 	background-color:#7c8f83;
     color: white;
     text-decoration:none;
+    margin-left:50px;
 }
-
-.news2{
-	float:left;
-	padding: 10px;
+.row{
+	margin-bottom: 50px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
 

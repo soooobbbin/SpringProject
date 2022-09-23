@@ -1,9 +1,21 @@
 package kr.spring.order.controller;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +33,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.CartService;
@@ -75,9 +88,7 @@ public class OrderController {
 			HttpServletResponse response,
 			@RequestParam(value="cart_num",defaultValue="")
 			String[] cart_numArray) {
-		
-		logger.debug("<<11111111111111111111111>>");
-		
+				
 		//session에 저장된 정보 읽기
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		
@@ -454,6 +465,59 @@ public class OrderController {
 		model.addAttribute("url", request.getContextPath()+"/cart/orders.do");
 		
 		return "common/resultView";
+	}
+	
+	//===========통장입금결제=================//
+	@RequestMapping("/cart/pay.do")
+	@ResponseBody
+	public String process(HttpSession session, HttpServletRequest request) {
+		
+		//파라미터값 확인
+		Set<String> keySet = request.getParameterMap().keySet();
+		for(String key: keySet) {
+			logger.debug(key + ": " + request.getParameter(key));
+		}
+		//주문 총 개수
+		int pcount = Integer.parseInt(request.getParameter("pcount"));
+		//상품이름 - 외 건
+		String p_name = "";
+		if(pcount>1) {
+			pcount -= 1;
+			p_name = request.getParameter("p_name") + "외 " + pcount + "건";
+			pcount += 1;
+		}else {
+			p_name = request.getParameter("p_name");	
+		}
+		//주문 총 금액
+		int all_total = Integer.parseInt(request.getParameter("all_total"));
+		//결제 수단
+		int payment = Integer.parseInt(request.getParameter("payment"));
+		//특이사항
+		String notice = request.getParameter("notice");
+		//session에 저장된 정보 읽기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		//order테이블에 넣을 map 생성
+		Map<String, Object> order = new HashMap<String, Object>();
+		order.put("o_name", p_name);
+		order.put("o_total", all_total);
+		order.put("payment", payment);
+		order.put("notice", notice);
+		order.put("mem_num", user.getMem_num());
+		//order테이블에 INSERT
+		orderService.insertOrder(order);
+		
+		//cart_num 배열생성 후 값 넣기
+		Map<String, Object> cart_numArr = new HashMap<String, Object>();
+		for(int i=0; i<=pcount-1; i++) {
+			cart_numArr.put("cart_num"+i,request.getParameter("cart_num"+i));
+		}
+		logger.debug("total : " + cart_numArr);
+		
+		
+		
+		
+		return "{\"result\":\"NO\"}";
+		
 	}
 	
 }	

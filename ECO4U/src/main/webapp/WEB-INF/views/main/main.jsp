@@ -124,11 +124,46 @@ $(function(){
 						</div>
 					</div>
 				</c:forEach>
-			</div>
-		
+		</div>
     </div>
    
-    <div class="section" id="section3">3
+    <div class="section" id="section3">
+    	<h2 class="align-center">친환경 소식</h2>
+    	<hr style="border: solid 1px #999;" width="70%" >
+    	<div class="row cardmargin">
+			<c:forEach var="community" items="${list2}">
+					<c:if test="${community.c_category==3}">
+						<div class="col">
+							<div class="card" style="width: 300px; border: 0px;">
+								<a href="/community/detail.do?c_num=${community.c_num}"
+										style="background-color: ivory; color: #000000; border-color: ivory;"> 
+								<c:if test="${!empty community.filename}">
+									<img class="card-img-top"
+									src="/community/imageView.do?&c_num=${community.c_num}" 
+									style="width: 300px; height: 250px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;">
+									<div class="align-center">
+									<br>
+										<span style="font-weight:bold;">${community.c_title}</span>
+										<br>
+										<span>${community.reg_date2}</span>
+									</div>
+								</c:if> 
+								<c:if test="${empty community.filename}">
+									<img src="${pageContext.request.contextPath}/images/no_image.png"
+										style="width: 300px; height: 250px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;">
+									<div class="align-center">
+									<br>
+									<span>${community.c_title}</span>
+									<br>
+									<span>${community.reg_date2}</span>
+									</div>
+								</c:if>
+								</a>
+							</div>
+						</div>
+					</c:if>
+				</c:forEach>
+		</div>
   	
     </div>
 	

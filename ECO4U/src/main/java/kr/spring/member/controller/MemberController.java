@@ -316,7 +316,7 @@ public class MemberController {
 				String id = member.getId().substring(0,member.getId().length()-3);
 			
 	
-				model.addAttribute("accessMsg", "고객님의 아이디는" + id + "***입니다.");
+				model.addAttribute("accessMsg", "고객님의 아이디는 " + id + "***입니다.");
 				
 				return "common/notice_findid";
 			}

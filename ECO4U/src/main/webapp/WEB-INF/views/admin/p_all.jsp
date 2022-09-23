@@ -3,35 +3,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!-- 내용 시작 -->
+<!-- 자바 스크립트 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product.js"></script>
 
+<!-- css 삽입 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+
+<!-- 내용 시작 -->
+<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
+
 <h2>전체 상품 조회</h2>
 <div class="sub-menu">
-	<ul>
-		<li><a href="admin_plist.do">전체상품 조회</a>
-		<li><a href="admin_write.do">상품등록</a>
-	</ul>
-	
 	<form id="search_form" action="admin_plist.do" method="get">
-		<ul class="search">
-			<li>
-				<select name="keyfield">
-					<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>카테고리</option>
-					<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>상품명</option>
-					<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>브랜드</option>
-				</select>
-			</li>
-			
-			<li>
-				<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">
-			</li>
-			
-			<li>
-				<input type="submit" value="검색">
-			</li>
-		</ul>
+		<select name="keyfield">
+			<option value="1" <c:if test="${param.keyfield==1}">selected</c:if>>카테고리</option>
+			<option value="2" <c:if test="${param.keyfield==2}">selected</c:if>>상품명</option>
+			<option value="3" <c:if test="${param.keyfield==3}">selected</c:if>>브랜드</option>
+		</select>
+		<input type="search" size="16" name="keyword" id="keyword" value="${param.keyword}">
+		<input type="submit" value="검색">
 	</form>
 	
 	<div class="align-right">

@@ -228,6 +228,19 @@
 }#btn-add:hover{
 	filter: brightness(95%);
 }
+/* 결제 수단 */
+#payment_form{
+	border:none;
+    width: 400px;
+    padding:20px 0px;
+}
+#payment_form ul li{
+	font-size:12pt;
+	margin: 0px 20px 20px -130px;
+}
+input[type="radio"]{
+	margin:0 20px;
+}
 /* 결제 */
 .content-main{
 	background-color:white;

@@ -3,12 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!-- 내용 시작 -->
 <!-- 자바스크립트 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.number.min.js"></script>
 
-<!-- 본문 -->
+<!-- css 삽입 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+
+<!-- 내용 시작 -->
+<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
 <div class="page-main">
 	<ul>
 		<li><a href="admin_plist.do">전체상품 조회</a>

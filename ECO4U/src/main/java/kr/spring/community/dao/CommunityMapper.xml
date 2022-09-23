@@ -29,6 +29,7 @@
 		</if>
 </select>
 
+
 	<select id="selectList" parameterType="map" resultType="communityVO">
 		SELECT
   		   *
@@ -54,6 +55,7 @@
 		            FROM community b JOIN member m
 		            ON b.mem_num = m.mem_num 
 					WHERE b.c_category = #{c_category}
+				
 					<if test="keyword != null and keyword != ''">
 						<if test="keyfield == 1">
 							AND b.c_title LIKE '%' || #{keyword} || '%'

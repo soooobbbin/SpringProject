@@ -1,6 +1,6 @@
 package kr.spring.cart.controller;
 
-import java.sql.Array;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,28 +14,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.CartService;
 import kr.spring.cart.vo.CartVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
-import kr.spring.util.PagingUtil;
 
 @Controller
 public class CartController {
 
 	private static final Logger logger = 
 			LoggerFactory.getLogger(CartController.class);
-	
-	private int rowCount = 10;
-	private int pageCount = 10;
+
 	
 	@Autowired
 	private CartService cartService;

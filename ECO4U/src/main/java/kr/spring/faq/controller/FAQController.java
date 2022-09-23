@@ -25,6 +25,7 @@ import kr.spring.faq.service.FAQService;
 import kr.spring.faq.vo.FAQVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
+import kr.spring.util.StringUtil;
 
 @Controller
 public class FAQController {
@@ -85,29 +86,17 @@ public class FAQController {
 	}
 
 
-	/*
-	 * //===========게시판 글 목록============//
-	 * 
-	 * @GetMapping("/faq/faqlist.do") public String formFaq() { return "faqList"; }
-	 */
-	
+	//===========게시판 글 목록============//
 	@RequestMapping("/faq/faqlist.do")
 	public ModelAndView process(
-//			@RequestParam int f_num,
 			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
 			@RequestParam(value="category",defaultValue="") String category
 			) {
 		
-//		logger.debug("<<f_num>> : " + f_num);
-		
-//		logger.debug("<<process>> : 에 들어옴");
-		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("category", category);
-		
-//		FAQService.selectBoard(f_num);
 		
 		//글의 총개수(검색된 글의 개수)
 		int count = FAQService.selectRowCount(map);
@@ -115,9 +104,8 @@ public class FAQController {
 		logger.debug("<<count>> : " + count);
 		
 		//페이지 처리
-		PagingUtil page = 
-				new PagingUtil(keyfield,category,currentPage,count,rowCount,pageCount,"faqlist.do");
-				
+		PagingUtil page = new PagingUtil(keyfield,category,currentPage,count,rowCount,pageCount,"faqlist.do");
+		
 		List<FAQVO> list = null;
 		if(count > 0) {
 			map.put("start", page.getStartRow());
@@ -135,20 +123,6 @@ public class FAQController {
 		
 		return mav;
 	}
-	
-	//글상세
-//	@RequestMapping("/faq/faqdetail.do")
-//	public ModelAndView detail(
-//			@RequestParam int f_num
-//			) {
-//		
-//		logger.debug("<<f_num>> : " + f_num);
-//		
-//		FAQVO faq = FAQService.selectBoard(f_num);
-//		
-//		                          //뷰 이름    속성명   속성값
-//		return new ModelAndView("faqView","faq",faq);
-//	}
 	
 	//===========게시판 글수정===========//
 	//수정 폼

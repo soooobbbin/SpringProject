@@ -96,7 +96,8 @@ public class CommunityController {
 			String keyfield,
 			@RequestParam(value="keyword",defaultValue="")
 			String keyword,
-			@RequestParam int c_category){
+			@RequestParam (value="c_category",defaultValue="") 
+			String c_category){
 		
 		Map<String,Object> map = 
 				    new HashMap<String,Object>();
@@ -109,12 +110,13 @@ public class CommunityController {
 		int count = communityService.selectRowCount(map);
 		
 		logger.debug("<<count>> : " + count);
+		logger.debug("<<map>> : " + map);
 		
 		//페이지 처리
 		PagingUtil page = 
 				new PagingUtil(keyfield,keyword,
 						currentPage,count,
-						rowCount,pageCount,"list.do?","&c_category="+c_category);
+						rowCount,pageCount,"list.do","&c_category="+c_category);
 		
 		List<CommunityVO> list = null;
 		if(count > 0) {
@@ -242,6 +244,49 @@ public class CommunityController {
 		
 		return "common/resultView";
 	}
+	
+	
+	//==========게시판 글 공지지정==========//
+		@RequestMapping("/community/updatenotice.do")
+		public String submitUpdate(
+				       @RequestParam int c_num,
+				       Model model,
+				       HttpServletRequest request) {
+			
+			logger.debug("<<공지지정>> : " + c_num);
+			
+			//공지지정
+			communityService.updateNotice(c_num);
+			
+			//View에 표시할 메시지
+			model.addAttribute("message", "공지지정 완료!!");
+			model.addAttribute("url", 
+					request.getContextPath()+"/community/list.do?c_category="+1);
+			
+			return "common/resultView";
+		}
+
+
+
+	//==========게시판 글 공지지정==========//
+		@RequestMapping("/community/updatenotice2.do")
+		public String submitUpdate2(
+				       @RequestParam int c_num,
+				       Model model,
+				       HttpServletRequest request) {
+			
+			logger.debug("<<공지지정 해제>> : " + c_num);
+			
+			//공지지정
+			communityService.updateNotice2(c_num);
+			
+			//View에 표시할 메시지
+			model.addAttribute("message", "공지지정 해제 완료!!");
+			model.addAttribute("url", 
+					request.getContextPath()+"/community/list.do?c_category="+1);
+			
+			return "common/resultView";
+		}
 
 }
 

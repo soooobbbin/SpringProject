@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import kr.spring.cart.vo.CartVO;
+
 import kr.spring.cart.vo.WishVO;
 
 @Mapper
@@ -23,9 +23,12 @@ public interface WishMapper {
 	public int selectRowCount(Map<String,Object> map);
 	@Select("SELECT * FROM wish WHERE p_num=#{p_num} AND mem_num=#{mem_num}")
 	public WishVO selectWish(WishVO wish);
-	public void updateWish(Integer w_num);
+	//public void wishGotoCart(Integer w_num);
 	@Delete("DELETE FROM wish WHERE w_num=#{w_num}")
 	public void deleteWish(Integer w_num);
 	@Delete("DELETE FROM wish WHERE p_num=#{p_num}")
 	public void deleteWishByProductNum(Integer p_num);
+	
+	
+	
 }

@@ -114,6 +114,20 @@
 	background-color: #8C8C8C;
 }
 
+/* 검색결과 */
+.search-result{
+	color: white;
+	width: 400px;
+	height: 100px;
+	padding-top: 6%;
+	margin-top: 10%;
+	margin-left: 30%;
+	text-align: center;
+	background-color: #829488;
+	border-radius: 5px;
+	font-size: 15px;
+}
+
 /* 표 */
 .content-list{
 	width: 60%;

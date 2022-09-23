@@ -100,13 +100,12 @@
 				<if test="keyfield == 2">d.mem_name LIKE '%' || #{keyword} || '%'</if>
 				<if test="keyfield == 3">d.mem_email LIKE '%' || #{keyword} || '%'</if>
 				<if test="keyfield == 4">
-					m.mem_id LIKE '%' || #{keyword} || '%' OR
+					m.id LIKE '%' || #{keyword} || '%' OR
 					d.mem_name LIKE '%' || #{keyword} || '%' OR
 					d.mem_email LIKE '%' || #{keyword} || '%'
 				</if>
 			 </if>
-			AND m.auth=0 OR m.auth=3
-		</where>
+		</where> AND m.auth=0 OR m.auth=3
 	</select>
 </mapper>
 

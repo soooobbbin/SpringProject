@@ -37,14 +37,14 @@
 	<div class="content-list">
 		<!-- 회원 수가 0명일 경우 -->
 		<c:if test="${count == 0}">
-			<div class="align-center">표시할 회원 정보가 없습니다.</div>
+			<div class="search-result">표시할 회원 정보가 없습니다.</div>
 		</c:if>
 		
 		<!-- 회원 수가 0명 이상일 경우 -->
 		<c:if test="${count > 0}">
-		<table >
+		<table>
 			<tr>
-				<th>	ID</th>
+				<th>ID</th>
 				<th>이름</th>
 				<th>이메일</th>
 				<th>전화번호</th>

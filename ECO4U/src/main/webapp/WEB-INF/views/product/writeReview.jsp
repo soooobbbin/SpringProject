@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/review.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/review.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/product.review.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 
 

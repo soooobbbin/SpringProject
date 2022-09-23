@@ -26,7 +26,7 @@
 	<div id="wrapper">
 	<!-- 상품 헤더 시작 -->
 		<div class="detail-thumbnail">
-			<img src="${pageContext.request.contextPath}/product/imageView.do?p_num=${product.p_num}"
+			<img src="${pageContext.request.contextPath}/images/product/${product.p_photoname}"
 					width="400" height="400" class="thumbnail">
 		</div>
 		<div class="thumbnail-side">
@@ -100,7 +100,7 @@
 			<hr class="hr">
 			<div class="cart-buy">
 				<button type="submit" class="addCart_btn button">장바구니</button>
-				<button type="button" class="button" id="orderBtn" value="구매하기">구매하기</button>
+				<button type="button" class="button" value="구매하기" onclick="location.href='orders.do'">구매하기</button>
 			</div>
 			<!-- 최종 금액 끝 -->
 			</c:if>
@@ -144,8 +144,25 @@
 	<div id="target1">
 		<h4>후기 (${product.review_count}건)</h4>
 		<!-- 리뷰 등록 버튼 -->
-		<div class="review-write">
-			<button class="button" value="리뷰 등록" onclick="location.href='/product/writeReview.do?p_num=${product.p_num}'">리뷰 등록</button>
+		<div id="review_div">
+			<span class="re-name">상품평 달기</span>
+			<form id="re_form">
+				<input type="hidden" name="p_num"
+				   value="${product.p_num}" id="p_num">
+				<textarea rows="3" cols="50" 
+				  name="re_content" id="re_content"
+				  class="rep-content"
+				  <c:if test="${empty user}">disabled="disabled"</c:if>
+				  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+				<c:if test="${!empty user}">
+				<div id="re_first">
+					<span class="letter-count">300/300</span>
+				</div>
+				<div id="re_second" class="align-right">
+					<input type="submit" value="등록">
+				</div>
+				</c:if>
+			</form>
 		</div>
 		<!-- 리뷰 등록 버튼 끝-->
 		<div id="output"></div>

@@ -207,9 +207,9 @@ a.logout:hover, a.home:hover, a.cart:hover, a.wish:hover{
 
 /*등록,수정폼*/
 .page-main form{
-	width:500px;
+	width:450px;
 	margin:0 auto;
-	border:1px solid #000;
+	/*border:1px solid #000;*/
 	padding:10px 10px 10px 30px;
 }
 /*CKEditor 사용시 등록,수정폼*/

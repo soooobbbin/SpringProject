@@ -20,4 +20,9 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/product/writeReview.jsp"/> 
 	</definition>
+	<definition name="listReview" extends="main">
+    	<put-attribute name="title" value="리뷰목록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/product/reviewMypage.jsp"/>                   
+    </definition>
 </tiles-definitions>

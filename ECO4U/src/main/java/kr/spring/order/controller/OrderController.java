@@ -129,6 +129,7 @@ public class OrderController {
 		Map<String, Object> total = new HashMap<String, Object>();
 		total.put("cart_numArray",cart_numArray);
 		total.put("mem_num",user.getMem_num());
+		logger.debug("<<total>> : " + total);
 		
 		int all_total = cartService.selectTotalByMem_numCart_num(total);
 		logger.debug("<<all_total>> : " + all_total);
@@ -467,10 +468,10 @@ public class OrderController {
 		return "common/resultView";
 	}
 	
-	//===========통장입금결제=================//
+	//===========장바구니통장입금결제=================//
 	@RequestMapping("/cart/pay.do")
 	@ResponseBody
-	public String process(HttpSession session, HttpServletRequest request) {
+	public String processpay1(HttpSession session, HttpServletRequest request, Model model) {
 		
 		//파라미터값 확인
 		Set<String> keySet = request.getParameterMap().keySet();
@@ -488,8 +489,11 @@ public class OrderController {
 		}else {
 			p_name = request.getParameter("p_name");	
 		}
-		//주문 총 금액
+		//주문 총 금액 + 배송비 계산
 		int all_total = Integer.parseInt(request.getParameter("all_total"));
+		if(all_total < 30000) {
+			all_total += 2500;
+		}
 		//결제 수단
 		int payment = Integer.parseInt(request.getParameter("payment"));
 		//특이사항
@@ -503,21 +507,95 @@ public class OrderController {
 		order.put("payment", payment);
 		order.put("notice", notice);
 		order.put("mem_num", user.getMem_num());
-		//order테이블에 INSERT
-		orderService.insertOrder(order);
 		
 		//cart_num 배열생성 후 값 넣기
-		Map<String, Object> cart_numArr = new HashMap<String, Object>();
+		Map<String, Object> total = new HashMap<String, Object>();
+		int[] cart_numArray = new int[pcount];
 		for(int i=0; i<=pcount-1; i++) {
-			cart_numArr.put("cart_num"+i,request.getParameter("cart_num"+i));
+			cart_numArray[i]=(Integer.parseInt(request.getParameter("cart_num"+i)));
 		}
-		logger.debug("total : " + cart_numArr);
+		order.put("cart_numArray",cart_numArray);
+
+		total.put("cart_numArray",cart_numArray);
+		total.put("mem_num",user.getMem_num());
+		logger.debug("total : " + total);
 		
+		List<CartVO> cartList = cartService.selectOrderList(total);
+		logger.debug("<<cartList>> : " + cartList);
+		//개별 상품 정보 저장
+		List<OrderDetailVO> orderDetailList = new ArrayList<OrderDetailVO>();
+		for(CartVO cart : cartList) {
+			//상품 재고 수량 부족
+			ProductVO product = productService.selectProduct(cart.getP_num());
+						
+			OrderDetailVO orderDetail = new OrderDetailVO();
+			orderDetail.setItem_num(cart.getP_num());
+			orderDetail.setItem_name(cart.getProductVO().getP_name());
+			orderDetail.setItem_price(cart.getProductVO().getP_price());
+			orderDetail.setOd_quantity(cart.getOrder_quantity());
+			orderDetail.setItem_total(cart.getCart_total());
+			
+			orderDetailList.add(orderDetail);
+		}//end of for문
 		
+		//order테이블에 INSERT
+		orderService.insertOrder(order,orderDetailList);
+			
+		return "{\"result\":\"NO\"}";	
+	}
+	
+	//===========개별결제통장입금결제=================//
+	@RequestMapping("/product/pay.do")
+	@ResponseBody
+	public String processpay2(HttpSession session, HttpServletRequest request, Model model) {
 		
-		
-		return "{\"result\":\"NO\"}";
-		
+		//파라미터값 확인
+		Set<String> keySet = request.getParameterMap().keySet();
+		for(String key: keySet) {
+			logger.debug(key + ": " + request.getParameter(key));
+		}
+		//주문 총 개수
+		int pcount = Integer.parseInt(request.getParameter("pcount"));
+		//상품이름 - 외 건
+		String p_name = "";
+		if(pcount>1) {
+			pcount -= 1;
+			p_name = request.getParameter("p_name") + "외 " + pcount + "건";
+			pcount += 1;
+		}else {
+			p_name = request.getParameter("p_name");	
+		}
+		//주문 총 금액 + 배송비 계산
+		int o_price = Integer.parseInt(request.getParameter("all_total"));
+		int all_total = Integer.parseInt(request.getParameter("all_total"));
+		if(all_total < 30000) {
+			all_total += 2500;
+		}
+		//결제 수단
+		int payment = Integer.parseInt(request.getParameter("payment"));
+		//특이사항
+		String notice = request.getParameter("notice");
+		//상품번호
+		int p_num = Integer.parseInt(request.getParameter("p_num"));
+		//상품개수
+		int order_quantity = Integer.parseInt(request.getParameter("order_quantity"));
+		//session에 저장된 정보 읽기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		//order테이블에 넣을 map 생성
+		Map<String, Object> order = new HashMap<String, Object>();
+		order.put("p_num", p_num);
+		order.put("od_quantity", order_quantity);
+		order.put("o_name", p_name);
+		order.put("o_price", o_price);
+		order.put("o_total", all_total);
+		order.put("payment", payment);
+		order.put("notice", notice);
+		order.put("mem_num", user.getMem_num());
+				
+		//order테이블에 INSERT
+		orderService.insertOrder2(order);
+			
+		return "{\"result\":\"NO\"}";	
 	}
 	
 }	

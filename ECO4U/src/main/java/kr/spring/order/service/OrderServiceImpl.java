@@ -75,25 +75,40 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public void insertOrder(Map<String,Object> order) {
+	public void insertOrder(Map<String,Object> order,List<OrderDetailVO> list) {
 		//주문번호 생성
 		order.put("o_num",orderMapper.selectOrderNum());
 		//주문등록
 		orderMapper.insertOrder(order);
-		
-		/*
+	
 		//개별상품 주문등록
 		for(OrderDetailVO vo : list) {
 			//(주의)orderMapper.selectOrderNum()를 명시하면 
 			//시퀀스가 증가하기 때문에 사용불가
-			vo.setO_num(order.getO_num());
+			vo.setO_num((int) order.get("o_num"));
 			orderMapper.insertOrderDetail(vo);
 			//재고수 업데이트
 			orderMapper.updateQuantity(vo);
 		}
 		//주문 상품 장바구니에서 제거
-		orderMapper.deleteCartItem(order.getMem_num());
-		*/
-		
+		orderMapper.deleteCartItem(order);
 	}
+
+	@Override
+	public void insertOrder2(Map<String, Object> order) {
+		// TODO Auto-generated method stub
+		//주문번호 생성
+		order.put("o_num",orderMapper.selectOrderNum());
+		//주문등록
+		orderMapper.insertOrder(order);
+	
+		//개별상품 주문등록
+		//(주의)orderMapper.selectOrderNum()를 명시하면 
+		//시퀀스가 증가하기 때문에 사용불가
+		orderMapper.insertOrderDetai2(order);
+		//재고수 업데이트
+		orderMapper.updateQuantity2(order);
+			
+	}
+	
 }

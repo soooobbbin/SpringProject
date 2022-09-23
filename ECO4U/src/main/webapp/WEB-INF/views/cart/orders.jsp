@@ -83,12 +83,13 @@
 						<input type="hidden" value="${cart.mem_num}">
 						<input type="hidden" value="${cart.cart_num}" id="cart_num" name="cart_num<%=i%>">
 						<%i++;%>
-						<input type="hidden" value="${cart.p_num}">
+						<input type="hidden" value="${cart.p_num}" name="p_num">
 						<input type="hidden" value="${cart.productVO.p_status}">
 						<input type="hidden" value="${cart_num}">
 						<input type="hidden" value="${pcount}" id="pcount" name="pcount">
 						<input type="hidden" value="${cart.productVO.p_name}" id="p_name" name="p_name">
 						<input type="hidden" value="${all_total}" id="all_total" name="all_total">
+						<input type="hidden" value="${order_quantity}" id="order_quantity" name="order_quantity">
 						
 						<div class="div1">
 							<div class="box-brand">[${cart.productVO.p_brand}]</div>

@@ -3,8 +3,15 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.order.dao.OrderMapper">  
-
-  	  	
+  	<delete id="deleteCartItem" parameterType="map">
+		DELETE FROM cart 
+			<where>
+				mem_num=#{mem_num} AND cart_num in 
+				<foreach collection="cart_numArray" item="arr" open="(" close=")" separator=",">
+ 					#{arr}
+				</foreach>
+			</where>
+  	</delete>
 </mapper>
 
 

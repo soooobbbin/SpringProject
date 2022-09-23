@@ -50,10 +50,11 @@ body{
 	font-family: 'Noto Sans KR', sans-serif;
 }
 .qnalist-ul{
-	margin-top:-16px;
+	margin-top:-15px;
 	margin-left: 20px;
 }
 .qnalistspanbottom{
+	margin-top:-4px;
 	margin-bottom: 14px;
 	margin-left: 56px;
 	color:gray;
@@ -199,7 +200,7 @@ body{
 	font-size:11px;
 }
 .box-parent{
-	margin-bottom:-8px;
+	margin-bottom:-9px;
     display: flex;
     width:fit-content;
 }

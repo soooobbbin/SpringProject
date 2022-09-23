@@ -1,4 +1,14 @@
 $(function() {
+	
+	//검색 유효성 체크
+	$('#search_form').submit(function(){
+		if($('#keyword').val().trim()==''){
+			alert('검색어를 입력하세요!');
+			$('#keyword').val('').focus();
+			return false;
+		}
+	});
+	
 	$('#qna_write_btn03').click(function(){
 		alert("취소가 완료되었습니다.");
 		location.href="faqlist.do";

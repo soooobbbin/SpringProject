@@ -108,18 +108,22 @@
         COUNT(*)
       FROM qna q JOIN member_detail m
       ON q.mem_num = m.mem_num
-      WHERE q.q_category = #{q_category}
-      <if test="keyword != null and keyword != ''">
-         <if test="keyfield == 1">
-            AND q.q_title LIKE '%' || #{keyword} || '%'
-         </if>
-         <if test="keyfield == 2">
-            AND m.mem_name LIKE '%' || #{keyword} || '%' 
-         </if>
-         <if test="keyfield == 3">
-            AND q.q_content LIKE '%' || #{keyword} || '%' 
-         </if>
-      </if>
+      <where>
+      	  <if test="q_category > 0">
+      	  	q.q_category = #{q_category}
+      	  </if>	
+	      <if test="keyword != null and keyword != ''">
+	         <if test="keyfield == 1">
+	            AND q.q_title LIKE '%' || #{keyword} || '%'
+	         </if>
+	         <if test="keyfield == 2">
+	            AND m.mem_name LIKE '%' || #{keyword} || '%' 
+	         </if>
+	         <if test="keyfield == 3">
+	            AND q.q_content LIKE '%' || #{keyword} || '%' 
+	         </if>
+	      </if>
+      </where>
    </select>
    <select id="selectmnQnAList" parameterType="map" resultType="qnAVO">
       SELECT 
@@ -142,18 +146,22 @@
                       com_cnt
                     FROM qna q JOIN member_detail m
                     ON q.mem_num = m.mem_num
-                   WHERE q.q_category = #{q_category}
-               <if test="keyword != null and keyword != ''">
-                  <if test="keyfield == 1">
-                     AND q.q_title LIKE '%' || #{keyword} || '%'
-                  </if>
-                  <if test="keyfield == 2">
-                     AND m.mem_name LIKE '%' || #{keyword} || '%' 
-                  </if>
-                  <if test="keyfield == 3">
-                  AND q.q_content LIKE '%' || #{keyword} || '%' 
-                  </if>
-               </if>
+                   <where>
+			      	  <if test="q_category > 0">
+			      	  	q.q_category = #{q_category}
+			      	  </if>	
+				      <if test="keyword != null and keyword != ''">
+				         <if test="keyfield == 1">
+				            AND q.q_title LIKE '%' || #{keyword} || '%'
+				         </if>
+				         <if test="keyfield == 2">
+				            AND m.mem_name LIKE '%' || #{keyword} || '%' 
+				         </if>
+				         <if test="keyfield == 3">
+				            AND q.q_content LIKE '%' || #{keyword} || '%' 
+				         </if>
+				      </if>
+			      </where>
                     ORDER BY q.q_num DESC)a)
        <![CDATA[
        WHERE rnum >= #{start} AND rnum <= #{end}

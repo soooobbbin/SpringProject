@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-body{
-	margin:0 auto;
-	background:#ffffff;
-}
-
 /* [관리자]헤더 */
 .admin-header{
 	background:#f4f9f2;
@@ -47,3 +42,141 @@ body{
 	margin-top:-4px;
 	padding-left: 100px;
 }
+
+.sub-detail p{
+	margin:5px;
+	font-size:13pt;
+	color:gray;
+}
+
+/*-------- 회원관리 --------*/
+.main-content{
+	display: block;
+	justify-content:center;
+	align-items:center;
+}
+
+/* 서브 타이틀 */
+.sub-title{
+	width: 60%;
+	padding: 5% 5% 1%;
+	margin-left: 35%;
+	text-align: left;
+}
+
+.sub_1{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.sub_2{
+	margin: 0 auto;
+	font-size:15px;
+}
+
+/* 검색바 */
+.search{
+	width: 60%;
+	padding: 0.5% 5%;
+	margin-left: 35%;
+	font-size: 15px;
+}
+
+#search_form select{
+	width: 85px;
+	height: 35px;
+	color: #5E5E5E;
+	font-size: 15px;
+	border: 2px solid #BDBDBD;
+	border-radius: 4px;
+}
+
+#search_form input[type=search]{
+	font-size: 15px;
+	width: 180px;
+	height: 35px;
+	border: 2px solid #BDBDBD;
+	border-radius: 4px;
+}
+
+#search_form input[type=submit], input[type=button]{
+	width: 60px;
+	height: 35px;
+	color: white;
+	border: none;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 4px;
+	background-color:#5E5E5E;
+}
+
+#search_form input[type=submit]:hover, input[type=button]:hover{
+	background-color: #8C8C8C;
+}
+
+/* 표 */
+.content-list{
+	width: 60%;
+	padding: 0 auto;
+	margin-left: 36.5%;
+}
+
+table{
+	width: 1000px;
+	margin: auto;
+	text-align: center;
+	border-top: 1px solid gray;
+    border-collapse: collapse;
+}
+
+th{
+	height: 40px;
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+	background-color: darkgray;
+	border-bottom: 1px solid gray;
+}
+
+td {
+	height:40px;
+	font-size: 14px;
+	border-bottom: 1px solid gray;
+}
+
+.page-num{
+	margin: 5px auto;
+	text-align: center;
+	font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +37,13 @@ public class MemberAdminController {
 	@RequestMapping("/admin/admin_list.do")
 	public ModelAndView processAll(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
 								@RequestParam(value="keyfield", defaultValue="")String keyfield,
-								@RequestParam(value="keyword", defaultValue="")String keyword) {
+								@RequestParam(value="keyword", defaultValue="")String keyword,
+								HttpSession session, Model model) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model.addAttribute("admin", admin);
+		
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
@@ -67,8 +74,14 @@ public class MemberAdminController {
 	//탈퇴 회원 조회
 	@RequestMapping("/admin/delete_list.do")
 	public ModelAndView processDel(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
-			@RequestParam(value="keyfield", defaultValue="")String keyfield,
-			@RequestParam(value="keyword", defaultValue="")String keyword) {
+								   @RequestParam(value="keyfield", defaultValue="")String keyfield,
+								   @RequestParam(value="keyword", defaultValue="")String keyword,
+								   HttpSession session, Model model) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model.addAttribute("admin", admin);
+		
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
@@ -99,7 +112,12 @@ public class MemberAdminController {
 	//========회원정보수정=========//
 	//회원정보 조회
 	@GetMapping("/admin/admin_detail.do")
-	public String memDetail(@RequestParam int mem_num,Model model) {
+	public String memDetail(@RequestParam int mem_num,Model model,HttpSession session, Model model_2) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model_2.addAttribute("admin", admin);
+		
 		MemberVO memberVO = memberService.selectMember(mem_num);
 		model.addAttribute("memberVO", memberVO);
 
@@ -108,7 +126,12 @@ public class MemberAdminController {
 
 	//회원정보 수정
 	@GetMapping("/admin/admin_modify.do")
-	public String memModiForm(@RequestParam int mem_num,Model model) {
+	public String memModiForm(@RequestParam int mem_num,Model model,HttpSession session, Model model_2) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model_2.addAttribute("admin", admin);
+
 		MemberVO memberVO = memberService.selectMember(mem_num);
 		model.addAttribute("memberVO", memberVO);
 

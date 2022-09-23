@@ -7,7 +7,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 
 <!-- 내용 시작 -->
-<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
+<div class="sub_menu">
+	<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
+		<jsp:param name="mem_name" value="${admin.mem_name}"/>
+	</jsp:include>
+</div>
+
 <div class="page-main">
 <h2>회원 정보 수정</h2>
 <form:form modelAttribute="memberVO" action="admin_update.do" id="memMdoify_form">

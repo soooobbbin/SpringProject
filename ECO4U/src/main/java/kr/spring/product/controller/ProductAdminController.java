@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.ProductVO;
@@ -34,10 +35,13 @@ public class ProductAdminController {
 	private int rowCount = 10;
 	private int pageCount = 10;
 	
+	@Autowired 
+	private MemberService memberService;
+	
 	@Autowired
 	private ProductService productService;
 	
-	//자바빈(VO) 초기화
+	//자바빈(VO) 초기화	
 	@ModelAttribute
 	public ProductVO initCommand() {
 		return new ProductVO();
@@ -47,7 +51,12 @@ public class ProductAdminController {
 	@RequestMapping("/product/admin_plist.do")
 	public ModelAndView adminList(@RequestParam(value="pageNum",defaultValue="1")int currentPage,
 								  @RequestParam(value="keyfield",defaultValue="")String keyfield,
-								  @RequestParam(value="keyword",defaultValue="")String keyword) {
+								  @RequestParam(value="keyword",defaultValue="")String keyword,
+								  HttpSession session, Model model) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model.addAttribute("admin", admin);
 		
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
@@ -84,7 +93,12 @@ public class ProductAdminController {
 	//==========상품 등록(관리자용)==========//
 	//상품 등록 폼 호출
 	@GetMapping("/product/admin_write.do")
-	public String form() {
+	public String form(HttpSession session, Model model) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model.addAttribute("admin", admin);
+		
 		return "productAdminWrite";
 	}
 	
@@ -100,7 +114,7 @@ public class ProductAdminController {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors())
-			return form();
+			return form(session, model);
 		
 		//상품 등록 처리
 		productService.insertProduct(vo);
@@ -115,7 +129,12 @@ public class ProductAdminController {
 	//==========개별상품 관리(관리자용)==========//
 	//상품 상세
 	@GetMapping("/product/admin_pdetail.do")
-	public String proDetail(@RequestParam int p_num,Model model) {
+	public String proDetail(@RequestParam int p_num,Model model,HttpSession session, Model model_2) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model_2.addAttribute("admin", admin);
+		
 		ProductVO product = productService.selectProduct(p_num);
 		model.addAttribute("product", product);
 		
@@ -142,7 +161,11 @@ public class ProductAdminController {
 	
 	//상품 수정폼
 	@GetMapping("/product/admin_pmodify.do")
-	public String productModify(@RequestParam int p_num, Model model) {
+	public String productModify(@RequestParam int p_num, Model model, HttpSession session, Model model_2) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model_2.addAttribute("admin", admin);	
 		
 		ProductVO productVO = productService.selectProduct(p_num);
 		model.addAttribute("productVO", productVO);

@@ -11,7 +11,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 
 <!-- 내용 시작 -->
-<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
+<div class="sub_menu">
+	<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
+		<jsp:param name="mem_name" value="${admin.mem_name}"/>
+	</jsp:include>
+</div>
+
 <div class="page-main">
 	<ul>
 		<li><a href="admin_plist.do">전체상품 조회</a>
@@ -42,7 +47,12 @@
 	<div class="product-detail">
 		<ul>
 			<li><label>제품번호</label>${product.p_num}</li>
-			<li><label>카테고리</label>${product.p_category}</li>
+			<li>
+				<label>카테고리</label>
+				<c:if test="${product.p_category==1}">Living</c:if>
+				<c:if test="${product.p_category==2}">Beauty</c:if>
+				<c:if test="${product.p_category==3}">Fashion</c:if>
+			</li>
 			<li><label>브랜드</label>${product.p_brand}</li>
 			<li><label>상품명</label>${product.p_name}</li>
 			<li><label>상태</label>${product.p_status}</li>

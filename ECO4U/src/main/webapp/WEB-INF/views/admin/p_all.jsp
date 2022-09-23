@@ -11,7 +11,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 
 <!-- 내용 시작 -->
-<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
+<div class="sub_menu">
+	<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
+		<jsp:param name="mem_name" value="${admin.mem_name}"/>
+	</jsp:include>
+</div>
 
 <h2>전체 상품 조회</h2>
 <div class="sub-menu">

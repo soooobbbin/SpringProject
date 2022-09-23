@@ -21,7 +21,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 
 <!-- 내용 시작 -->
-<div class="sub_menu"><jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"/></div>
+<div class="sub_menu">
+	<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
+		<jsp:param name="mem_name" value="${admin.mem_name}"/>
+	</jsp:include>
+</div>
 
 <div class="page-main">
 	<h2>상품 수정</h2>
@@ -37,9 +41,9 @@
 		<li>
 			<label>카테고리</label>
 			<form:select path="p_category">
-				<option value="1">Living</option>
-				<option value="2">Beauty</option>
-				<option value="3">Fashion</option>
+				<option value="1" <c:if test="${productVO.p_category==1}">selected</c:if>>Living</option>
+				<option value="2" <c:if test="${productVO.p_category==2}">selected</c:if>>Beauty</option>
+				<option value="3" <c:if test="${productVO.p_category==3}">selected</c:if>>Fashion</option>
 			</form:select>
 		</li>
 		

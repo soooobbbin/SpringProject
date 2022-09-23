@@ -19,6 +19,8 @@ public class P_reviewVO {
 	private int p_num; //상품번호
 	private int mem_num; //회원번호
 	
+	private int like_cnt; //추천 수
+	
 	private String id; //회원id
 	
 	// ========이미지 BLOB 처리===============//
@@ -80,10 +82,15 @@ public class P_reviewVO {
 	}
 	
 	
+	public int getLike_cnt() {
+		return like_cnt;
+	}
+	public void setLike_cnt(int like_cnt) {
+		this.like_cnt = like_cnt;
+	}
 	public String getId() {
 		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -94,6 +101,7 @@ public class P_reviewVO {
 	@Override
 	public String toString() {
 		return "P_reviewVO [r_num=" + r_num + ", r_content=" + r_content + ", r_photoname=" + r_photoname
-				+ ", p_num=" + p_num + ", mem_num=" + mem_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", id=" + id + "]";
+				+ ", p_num=" + p_num + ", mem_num=" + mem_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date
+				+ ", like_cnt=" + like_cnt + ", id=" + id + "]";
 	}
 }

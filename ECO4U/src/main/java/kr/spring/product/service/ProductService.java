@@ -31,6 +31,7 @@ public interface ProductService {
 	public void updateReview(P_reviewVO review);
 	public void deleteReview(Integer r_num);
 	public void deleteR_photo(Integer r_num);
+	public void updateFavCount(Integer r_num);
 	
 	//리뷰 좋아요
 	public R_favVO selectFav(R_favVO fav);

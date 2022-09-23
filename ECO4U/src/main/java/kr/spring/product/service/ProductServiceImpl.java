@@ -102,6 +102,11 @@ public class ProductServiceImpl implements ProductService{
 	public void deleteR_photo(Integer r_num) {
 		productMapper.deleteR_photo(r_num);
 	}
+	
+	@Override
+	public void updateFavCount(Integer r_num) {
+		productMapper.updateFavCount(r_num);
+	}
 
 	@Override
 	public R_favVO selectFav(R_favVO fav) {

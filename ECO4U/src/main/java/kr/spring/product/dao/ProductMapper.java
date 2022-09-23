@@ -64,6 +64,10 @@ public interface ProductMapper {
 	public void deleteReviewByP_Num(Integer p_num);
 	@Update("UPDATE p_review SET r_photo='',r_photoname='' WHERE r_num=#{r_num}")
 	public void deleteR_photo(Integer r_num);
+	@Update("UPDATE p_review r SET r.like_cnt = "
+			+ "(select count(r_fav_num) from r_fav where r_num = #{r_num}) "
+			+ "where r.r_num = #{r_num}")
+	public void updateFavCount(Integer r_num);
 	
 	//리뷰 좋아요
 	@Select("SELECT * FROM r_fav WHERE r_num=#{r_num} AND mem_num=#{mem_num}")

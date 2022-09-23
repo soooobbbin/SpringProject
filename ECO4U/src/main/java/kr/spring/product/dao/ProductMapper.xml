@@ -90,7 +90,7 @@
 	</select>
 	
 	<!-- 검색 결과 리스트(관리자) -->
-	<select id="selectProductList" parameterType="map" resultType="productVO">
+	<select id="selectProductList" parameterType="map" resultType="kr.spring.product.vo.ProductVO">
 		SELECT *
 		FROM (SELECT a.*, rownum rnum
 			  FROM (SELECT * FROM product

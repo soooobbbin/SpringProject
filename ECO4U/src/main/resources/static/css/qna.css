@@ -198,6 +198,11 @@ body{
 	padding-left:544px;
 	font-size:11px;
 }
+.box-parent{
+	margin-bottom:-8px;
+    display: flex;
+    width:fit-content;
+}
 /*end qnaWrite.jsp*/
 
 /*qnaView.jsp start*/

@@ -4,13 +4,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishList.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style>
 .page-content02{
 	margin-top: 7%;
@@ -72,29 +69,15 @@
 	<form action="qnamanagementlist.do" id="search_form"  method="get">
 	
 	<!-- 좌측 메뉴바 -->
-	<div class="menu">
-	<div class="mypage-menu">
-	<div class="user2" style="margin-top:42%; margin-bottom:30%; margin-left:24%;">
-		<img src="${pageContext.request.contextPath}/images/faq/management3.png" style="margin-left:-20%; margin-bottom:2%; width:74%; height:72%;">
-		<p>${member.mem_name}</p>
-	</div>
-	<div style="margin-left:23%; margin-top:-5%;">
-	<h3 style="margin-left:-13%; margin-bottom:5%;">회원관리</h3>
-	<p><a href="${pageContext.request.contextPath}/admin/admin_list.do" style="color:darkgray;">- 전체회원</a></p><br>
-	<p><a href="${pageContext.request.contextPath}/admin/delete_list.do" style="color:darkgray;">- 탈퇴회원</a></p><br>
-	<h3 style="margin-left:-13%; margin-bottom:5%;">상품관리</h3>
-	<p><a href="${pageContext.request.contextPath}/product/admin_plist.do" style="color:darkgray;">- 전체상품</a></p><br>
-	<p><a href="${pageContext.request.contextPath}/product/admin_write.do" style="color:darkgray;">- 상품등록</a></p><br>
-	<h3 style="margin-left:-13%; margin-bottom:5%;"><a href="${pageContext.request.contextPath}/faq/qnamanagementlist.do">문의관리</a></h3>
-	</div>
-	</div>
+	<div class="sub_menu">
+	   <jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"><jsp:param name="mem_name" value="${admin.mem_name}"/></jsp:include>
 	</div>
 	<!-- 좌측 메뉴바 종료 -->
 	
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
 		<div style="padding-left: 53px;">
-		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='#'"> > <a href="qnamanagementlist.do" style="font-weight:bold">문의내역</a></span>
+		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='${pageContext.request.contextPath}/admin/admin_list.do'"> > <a href="qnamanagementlist.do" style="font-weight:bold">문의내역</a></span>
 		</div>
 		<div class ="page-content02" style="margin-top:-3px;">
 		<!-- 검색 필드 -->

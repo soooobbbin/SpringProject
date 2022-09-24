@@ -130,5 +130,29 @@ public class OrderServiceImpl implements OrderService{
 	public List<OrderVO> selectListOrder(Map<String, Object> map) {
 		return orderMapper.selectListOrder(map);
 	}
+
+	@Override
+	public void updateOrder(OrderVO order) {
+		orderMapper.updateOrder(order);
+		//관리자에서 주문취소할 때 상품 개수 조정
+		if(order.getStatus() == 5) {
+			List<OrderDetailVO> detailList = orderMapper.selectListOrderDetail(
+															order.getO_num());
+			for(OrderDetailVO vo : detailList) {
+				orderMapper.updateProductQuantity(vo);
+			}
+		}
+		
+	}
+
+	@Override
+	public OrderVO selectOrders(Integer o_num) {
+		return orderMapper.selectOrders(o_num);
+	}
+
+	@Override
+	public List<OrderDetailVO> selectListOrderDetail(Integer o_num) {
+		return orderMapper.selectListOrderDetail(o_num);
+	}
 	
 }

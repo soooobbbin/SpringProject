@@ -16,7 +16,7 @@
 <div class="main-content">
 	<div class="sub-title">
 		<span class="sub_1">주문 목록</span>
-		<span class="sub_2">관리 메뉴에서 <span style="font-weight:bold; color:red">회원등급 수정</span>이 가능합니다.</span>
+		<span class="sub_2">관리 메뉴에서 <span style="font-weight:bold; color:red">배송상태 수정</span>이 가능합니다.</span>
 	</div>
 	
 	<div class="search">
@@ -50,7 +50,7 @@
 		<tr>
 			<td>${order.o_num}</td>
 			<td>${order.id}</td>
-			<td><a href="orderModify.do?o_num=${order.o_num}">${order.o_name}</a></td>
+			<td><a href="admin_modify.do?o_num=${order.o_num}">${order.o_name}</a></td>
 			<td class="align-center"><fmt:formatNumber value="${order.o_total}"/></td>
 			<td class="align-center">${order.reg_date}</td>
 			<td class="align-center">

@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/order-list.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-	<!-- 좌측 메뉴바 -->
-	<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
-		<jsp:param name="mem_name" value="${admin.mem_name}"/>
-	</jsp:include>
-	<!-- 좌측 메뉴바 종료 -->
+<!-- 좌측 메뉴바 -->
+<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
+	<jsp:param name="mem_name" value="${admin.mem_name}"/>
+</jsp:include>
+<!-- 좌측 메뉴바 종료 -->
 <div class="main-content">
 	<div class="sub-title">
 		<span class="sub_1">주문 목록</span>
@@ -34,7 +34,7 @@
 	
 	<div class ="content-list">
 	<c:if test="${count == 0}">
-	<div class="search-result">표시할 주문내역이 없습니다.</div>
+	<div class="result-display">표시할 주문내역이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
 	<table>
@@ -68,6 +68,5 @@
 	</div>
 	</c:if>
 	</div>
-</div>
 </div>
 <!-- 내용 끝 -->

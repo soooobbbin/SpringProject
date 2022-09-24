@@ -38,6 +38,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.CartService;
 import kr.spring.cart.vo.CartVO;
+import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.order.service.OrderService;
 import kr.spring.order.vo.OrderDetailVO;
@@ -61,6 +62,8 @@ public class OrderController {
 	private CartService cartService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private MemberService memberService;
 
 	// 자바빈(VO) 초기화
 	@ModelAttribute
@@ -620,8 +623,14 @@ public class OrderController {
 	// ========== 사용자 주문 목록 ============//
 	@RequestMapping("/order/admin_orderList.do")
 	public ModelAndView adminList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
-			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
-			@RequestParam(value = "keyword", defaultValue = "") String keyword) {
+								  @RequestParam(value = "keyfield", defaultValue = "") String keyfield,
+							  	  @RequestParam(value = "keyword", defaultValue = "") String keyword,
+							   	  HttpSession session, Model model) {
+		
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model.addAttribute("admin", admin);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
@@ -654,8 +663,12 @@ public class OrderController {
 	// ========== 사용자 주문 정보 수정 ============//
 	// 폼 호출
 	@GetMapping("/order/admin_modify.do") 
-	public String formModify(@RequestParam int o_num,Model model) {
-
+	public String formModify(@RequestParam int o_num,Model model, HttpSession session) {
+		//로그인 정보 불러오기
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO admin = memberService.selectMember(user.getMem_num());
+		model.addAttribute("admin", admin);
+		
 		OrderVO order = orderService.selectOrders(o_num);
 
 		List<OrderDetailVO> detailList =

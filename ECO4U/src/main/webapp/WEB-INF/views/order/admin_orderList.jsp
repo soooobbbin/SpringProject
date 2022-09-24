@@ -34,7 +34,7 @@
 	
 	<div class ="content-list">
 	<c:if test="${count == 0}">
-	<div class="result-display">표시할 주문내역이 없습니다.</div>
+	<div class="search-result">표시할 주문내역이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
 	<table>
@@ -47,10 +47,10 @@
 			<th>배송 상태</th>
 		</tr>
 		<c:forEach var="order" items="${list}">
-		<tr>
+		<tr onclick="location.href='admin_modify.do?o_num=${order.o_num}'">
 			<td>${order.o_num}</td>
 			<td>${order.id}</td>
-			<td><a href="admin_modify.do?o_num=${order.o_num}">${order.o_name}</a></td>
+			<td>${order.o_name}</td>
 			<td class="align-center"><fmt:formatNumber value="${order.o_total}"/></td>
 			<td class="align-center">${order.reg_date}</td>
 			<td class="align-center">
@@ -63,8 +63,8 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<div class="align-center">
-		${page}
+	<div class="page-num">
+		< ${page} >
 	</div>
 	</c:if>
 	</div>

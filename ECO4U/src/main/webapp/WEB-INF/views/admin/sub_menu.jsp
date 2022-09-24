@@ -7,29 +7,32 @@
 <!-- 서브메뉴 시작 -->
 <div class="sub-menu">
 	<div class="sub-detail">
-		<div class="user2" 	style="margin-top: 42%; margin-bottom: 30%; margin-left: 24%;">
-			<img src="${pageContext.request.contextPath}/images/faq/management3.png"
-				style="margin-left: -20%; margin-bottom: 2%; width: 74%; height: 72%;">
-			<h2 style="color:gray;">${param.mem_name}</h2>
+		<div class="image-user">
+			<img src="${pageContext.request.contextPath}/images/faq/management3.png">
+			<p>${param.mem_name}<p>
 		</div>
 		
-		<div style="margin-left: 23%; margin-top: -5%;">
-			<h2 style="margin-left: -13%; margin-bottom: 5%;">회원관리</h2>
-			<p><a href="${pageContext.request.contextPath}/admin/admin_list.do" style="color: darkgray;">- 전체회원</a></p>
-			<p><a href="${pageContext.request.contextPath}/admin/delete_list.do" style="color: darkgray;">- 탈퇴/정지회원</a></p>
+		<div class="submenu-title">
+			<div class="subtitle-box">
+				<h2>회원관리</h2>
+				<p><a href="${pageContext.request.contextPath}/admin/admin_list.do" style="color: darkgray;">- 전체회원</a></p>
+				<p><a href="${pageContext.request.contextPath}/admin/delete_list.do" style="color: darkgray;">- 탈퇴/정지회원</a></p>
+			</div>
 			
-			<h2 style="margin-left: -13%; margin-bottom: 5%;">상품관리</h2>
-			<p><a href="${pageContext.request.contextPath}/product/admin_plist.do" style="color: darkgray;">- 전체상품</a></p>			
-			<p><a href="${pageContext.request.contextPath}/product/admin_write.do" style="color: darkgray;">- 상품등록</a></p>
+			<div class="subtitle-box">
+				<h2>상품관리</h2>
+				<p><a href="${pageContext.request.contextPath}/product/admin_plist.do" style="color: darkgray;">- 전체상품</a></p>			
+				<p><a href="${pageContext.request.contextPath}/product/admin_write.do" style="color: darkgray;">- 상품등록</a></p>
+			</div>
 			
-			<h2 style="margin-left: -13%; margin-bottom: 5%;">
-				<a href="${pageContext.request.contextPath}/faq/qnamanagementlist.do">문의관리</a>
-			</h2>
+			<div class="subtitle-box">
+				<h2><a href="${pageContext.request.contextPath}/faq/qnamanagementlist.do">문의관리</a></h2>
+			</div>
 			
-			<h2 style="margin-left: -13%; margin-bottom: 5%;">
-				<a href="${pageContext.request.contextPath}/order/admin_orderList.do">주문관리</a>
-			</h2>		
+			<div class="subtitle-box">
+				<h2><a href="${pageContext.request.contextPath}/order/admin_orderList.do">주문관리</a></h2>
+			</div>
+		</div>
 	</div>
-</div>
 </div>
 <!-- 서브메뉴 끝 -->

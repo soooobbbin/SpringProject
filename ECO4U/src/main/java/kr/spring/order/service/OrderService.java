@@ -35,6 +35,12 @@ public interface OrderService {
 	public int selectOrderCountByMem_num(Map<String,Object> map);
 	//사용자 - 목록/검색글 목록
 	public List<OrderVO> selectListOrderByMem_num(Map<String,Object> map);
+	
+	//관리자 - 전체 글 개수 / 검색글 개수
+	public int selectOrderCount(Map<String,Object> map);
+	//관리자 - 전체 글 / 검색 글
+	public List<OrderVO> selectListOrder(Map<String,Object> map);
+		
 
 }
 

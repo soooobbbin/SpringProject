@@ -27,7 +27,7 @@
 			</h2>
 			
 			<h2 style="margin-left: -13%; margin-bottom: 5%;">
-				<a href="#">주문관리</a>
+				<a href="${pageContext.request.contextPath}/order/admin_orderList.do">주문관리</a>
 			</h2>		
 	</div>
 </div>

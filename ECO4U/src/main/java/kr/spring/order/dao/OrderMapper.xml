@@ -81,17 +81,19 @@
 			  		  *
 			  		FROM orders o JOIN member m
 			  		ON o.mem_num = m.mem_num
+			  		<where>
 				  	<if test="keyword != null and keyword != ''">
 						<if test="keyfield == 1">
-							o_num = #{keyword}
+							 o_num = #{keyword}
 						</if>
 						<if test="keyfield == 2">
-							id LIKE '%' || #{keyword} || '%'
+							 id LIKE '%' || #{keyword} || '%'
 						</if>
 						<if test="keyfield == 3">
-							o_name LIKE '%' || #{keyword} || '%'
+							 o_name LIKE '%' || #{keyword} || '%'
 						</if>
 					</if>
+					</where>
 			  		ORDER BY o_num DESC)a)
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}

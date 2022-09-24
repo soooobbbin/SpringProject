@@ -105,7 +105,8 @@
 					d.mem_email LIKE '%' || #{keyword} || '%'
 				</if>
 			 </if>
-		</where> AND m.auth=0 OR m.auth=3
+			 AND (m.auth=0 OR m.auth=3)
+		</where> 
 	</select>
 </mapper>
 

@@ -99,7 +99,7 @@
 	border-radius: 4px;
 }
 
-#search_form input[type=submit], input[type=button]{
+input[type=submit], input[type=button]{
 	width: 60px;
 	height: 35px;
 	color: white;
@@ -110,7 +110,7 @@
 	background-color:#5E5E5E;
 }
 
-#search_form input[type=submit]:hover, input[type=button]:hover{
+input[type=submit]:hover, input[type=button]:hover{
 	background-color: #8C8C8C;
 }
 
@@ -135,24 +135,29 @@
 	margin-left: 36.5%;
 }
 
-table{
+.content-list table{
 	width: 1000px;
 	margin: auto;
 	text-align: center;
-	border-top: 1px solid gray;
+	border-top: 2px solid gray;
+	border-bottom: 2px solid gray;
     border-collapse: collapse;
 }
 
-th{
+.content-list tr:hover{
+	background-color: #C8D7C4;
+}
+
+.content-list th{
 	height: 40px;
 	font-size: 18px;
 	color: white;
 	font-weight: bold;
-	background-color: darkgray;
+	background-color: #829488;
 	border-bottom: 1px solid gray;
 }
 
-td {
+.content-list td {
 	height:40px;
 	font-size: 14px;
 	border-bottom: 1px solid gray;
@@ -165,14 +170,48 @@ td {
 }
 
 
+/* 회원상세 */
+.mem-data table{
+	margin: auto;
+	width: 900px;
+	text-align: center;
+	border-top: 2px solid gray;
+	border-bottom: 2px solid gray;
+    border-collapse: collapse;
+}
 
+.mem-data th{
+	height: 40px;
+	font-size: 18px;	
+	font-weight: bold;
+	color: white;
+	background-color: #829488;
+	border-bottom: 1px solid white;
+}
 
+.mem-data td {
+	height:40px;
+	font-size: 15px;
+	border-bottom: 1px solid gray;
+}
 
+.action-btn {
+	text-align: right;
+	margin: 10px auto;
+	padding-top: 3%;
+	padding-right: 9%;
+}
 
+/*-------- 상품관리 --------*/
+/* 전체 상품 리스트 */
+.action-btn-2{
+	text-align: right;
+	margin-top: -45px;
+	margin-bottom: 5px;
+	padding-right: 7.25%;
+}
 
-
-
-
+/* 상품등록 */
 
 
 

@@ -41,7 +41,7 @@ function selectAll(selectAll)  {
 		<span class="wish-title-span">총 ${count}개</span>
 		</div>
 	<div class="wish-category">
-		<form action="wishList.do" id="search_form"  method="get">
+		<form action="wishList.do" id="search_form" class="wish-form"  method="get">
 			<ul class="wish-category-ul" id="category" name="category">
 				<li id="all"><input type="button"  value="all"  onclick="location.href='/cart/wishList.do?category=0'"></li>
 				<li id="living"><input type="button" value="living"  onclick="location.href='/cart/wishList.do?category=1'"></li>

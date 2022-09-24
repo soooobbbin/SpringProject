@@ -142,7 +142,7 @@ input[type=submit]:hover, input[type=button]:hover{
 	color: white;
 	width: 400px;
 	height: 100px;
-	padding-top: 6%;
+	padding-top: 7%;
 	margin-top: 15%;
 	margin-left: 30%;
 	text-align: center;
@@ -241,7 +241,7 @@ input[type=submit]:hover, input[type=button]:hover{
 	border: 1px solid #829488;
 }
 
-#pwrite_form{
+#pwrite_form, #pmodify_form{
 	padding: 0 auto;
 	margin-top: -7%;
 	margin-left: 35%;
@@ -361,9 +361,3 @@ input[type=submit]:hover, input[type=button]:hover{
 .action-btn-3 button:hover {
 	background-color: #8C8C8C;
 }
-
-
-/* 상품상세 */
-
-
-

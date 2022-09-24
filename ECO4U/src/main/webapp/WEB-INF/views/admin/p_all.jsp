@@ -59,7 +59,7 @@
 				</tr>
 
 				<c:forEach var="product" items="${list}">
-					<tr>
+					<tr onclick="location.href='admin_pdetail.do?p_num=${product.p_num}'">
 						<td>${product.p_num}</td>
 						<td>
 							<c:if test="${product.p_category == 1}">Living</c:if> 
@@ -67,7 +67,7 @@
 							<c:if test="${product.p_category == 3}">Fashion</c:if>
 						</td>
 						<td>${product.p_brand}</td>
-						<td><a href="admin_pdetail.do?p_num=${product.p_num}">${product.p_name}</a></td>
+						<td>${product.p_name}</td>
 						<td><fmt:formatNumber value="${product.p_price}" /></td>
 						<td><fmt:formatNumber value="${product.p_quantity}" /></td>
 						<td>${product.reg_date}</td>

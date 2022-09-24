@@ -30,7 +30,7 @@
 
 <div class="main-content">
 	<div class="sub-title" style="margin-left:27.5%;">
-		<span class="sub_1">상품 등록</span>
+		<span class="sub_1">상품 정보 등록</span>
 	</div>
 	
 	<form:form action="admin_write.do" enctype="multipart/form-data" id="pwrite_form" modelAttribute="productVO">
@@ -78,8 +78,8 @@
 					<tr>
 						<th>상태</th>
 						<td>
-						<form:radiobutton path="p_status" value="1" id="status1" /><label for="status1">미표시</label>
-						<form:radiobutton path="p_status" value="2" id="status2" checked="checked" /><label for="status2">표시</label>
+						<form:radiobutton path="p_status" value="1" id="status1" /><label for="status1">표시</label>
+						<form:radiobutton path="p_status" value="2" id="status2" checked="checked" /><label for="status2">미표시</label>
 						</td>
 						
 						<th>재고</th>

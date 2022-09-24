@@ -34,3 +34,32 @@ ul.search{
 ul.search li{
     margin:0px 5px;
 }
+.order-status{
+	margin:50px 150px;
+	font-size:12pt;
+}
+.order-status label{
+	font-size:15pt;
+	margin-bottom:20px;
+	
+}
+.order-status input{
+	font-size:14pt;
+	margin-top:20px;
+	
+}
+
+#order_modify input[type=submit], input[type=button]{
+	width: 80px;
+	height: 35px;
+	color: white;
+	border: none;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 4px;
+	background-color:#5E5E5E;
+}
+
+#order_modify input[type=submit]:hover, input[type=button]:hover{
+	background-color: #8C8C8C;
+}

@@ -21,102 +21,116 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 
 <!-- 내용 시작 -->
-<div class="sub_menu">
-	<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
-		<jsp:param name="mem_name" value="${admin.mem_name}"/>
-	</jsp:include>
-</div>
+<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
+	<jsp:param name="mem_name" value="${admin.mem_name}" />
+</jsp:include>
 
-<div class="page-main">
-	<h2>상품 수정</h2>
-	<form:form action="admin_pmodify.do" enctype="multipart/form-data" id="pmodify_form" modelAttribute="productVO">
-	<form:hidden path="p_num"/>
-	<ul>
-		<li>
-			<label>상품 표시 여부</label>
-			<form:radiobutton path="p_status" value="1" id="status1"/>미표시
-			<form:radiobutton path="p_status" value="2" id="status2" checked="checked"/>표시
-		</li>
-		
-		<li>
-			<label>카테고리</label>
-			<form:select path="p_category">
-				<option value="1" <c:if test="${productVO.p_category==1}">selected</c:if>>Living</option>
-				<option value="2" <c:if test="${productVO.p_category==2}">selected</c:if>>Beauty</option>
-				<option value="3" <c:if test="${productVO.p_category==3}">selected</c:if>>Fashion</option>
-			</form:select>
-		</li>
-		
-		<li>
-			<label for="p_name">상품명</label>
-			<form:input path="p_name"/>
-			<form:errors path="p_name" cssClass="error-color"/>
-		</li>
-		
-		<li>
-			<label for="p_price">가격</label>
-			<form:input path="p_price"/>
-			<form:errors path="p_price" cssClass="error-color"/>
-		</li>
-		
-		<li>
-			<label for="p_dprice">배송비</label>
-			<form:input path="p_dprice"/>
-			<form:errors path="p_dprice" cssClass="error-color"/>
-		</li>
-		
-		<li>
-			<label for="p_quantity">수량</label>
-			<form:input path="p_quantity"/>
-			<form:errors path="p_quantity" cssClass="error-color"/>
-		</li>
-		
-		<li>
-			<label for="p_brand">브랜드</label>
-			<form:input path="p_brand"/>
-			<form:errors path="p_brand" cssClass="error-color"/>
-		</li>
-		
-		<li>
-			<label for="upload">상품사진</label>
-			<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg">
-			<form:errors path="upload" cssClass="error-color"/>
-			<br>
-			<img src="imageView.do?p_num=${productVO.p_num}" width="70" height="70" id="p_photo" class="p_photo">
-		</li>
-		
-		<li>
-			<label for="p_cont1">제품특징</label>
-			<form:textarea path="p_cont1"/>
-			<form:errors path="p_cont1" cssClass="error-color"/>
-		</li>
-		
-		<li>제품상세</li>
-		<li>
-			<form:textarea path="p_cont2"/>
-			<form:errors path="p_cont2" cssClass="error-color"/>
-			<script>
-				 function MyCustomUploadAdapterPlugin(editor) {
-					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-					        return new UploadAdapter(loader);
-					    }
-					}
-				 
-				 ClassicEditor.create( document.querySelector('#p_cont2' ),{
-			           	extraPlugins: [MyCustomUploadAdapterPlugin]
-			           }).then( editor => {
-						window.editor = editor;
-					} ).catch( error => {
-			               console.error( error );
-			           });
-			 </script>               
-			</li>
-	</ul>
-	<div class="align-center">
-		<form:button>저장</form:button>
-		<input type="button" value="목록" onclick="location.href='admin_plist.do'">
+<div class="main-content">	
+	<div class="sub-title" style="margin-left:27.5%;">
+		<span class="sub_1">상품 정보 수정</span>
 	</div>
+	
+	<form:form action="admin_pmodify.do" enctype="multipart/form-data" id="pmodify_form" modelAttribute="productVO">
+		<form:hidden path="p_num"/>
+		
+		<div class="action-btn-3">
+			<form:button>저장</form:button>
+			<input type="button" value="목록" onclick="location.href='admin_plist.do'">
+		</div>
+		
+		<div class="product">
+			<div class="product-image">
+				<img src="imageView.do?p_num=${productVO.p_num}" class="p_photo">
+				<input type="file" name="upload" id="upload" accept="image/gif,image/png,image/jpeg">			
+				<form:errors path="upload" cssClass="error-color"/>
+			</div>
+			
+			<div class="product-detail">
+				<table>
+					<tr>
+						<th>상품명</th>
+						<td colspan="3">
+							<form:input path="p_name" /><br>
+							<form:errors path="p_name" cssClass="error-color" />
+						</td>
+					</tr>
+					<tr>
+						<th>카테고리</th>
+						<td>
+							<form:select path="p_category">
+								<option value="1" <c:if test="${productVO.p_category==1}">selected</c:if>>Living</option>
+								<option value="2" <c:if test="${productVO.p_category==2}">selected</c:if>>Beauty</option>
+								<option value="3" <c:if test="${productVO.p_category==3}">selected</c:if>>Fashion</option>
+							</form:select>
+						</td>
+						<th>브랜드</th>
+						<td>
+							<form:input path="p_brand"/><br>
+							<form:errors path="p_brand" cssClass="error-color"/>
+						</td>
+					</tr>
+					<tr>
+						<th>상태</th>
+						<td>
+						<form:radiobutton path="p_status" value="1" id="status1"/><label for="status1">표시</label>
+						<form:radiobutton path="p_status" value="2" id="status2"/><label for="status2">미표시</label>
+						</td>
+						
+						<th>재고</th>
+						<td>
+							<form:input path="p_quantity"/><br>
+							<form:errors path="p_quantity" cssClass="error-color"/>
+						</td>
+					</tr>
+					
+					<tr>
+						<th>가격</th>
+						<td>
+							<form:input path="p_price"/>
+							<br><form:errors path="p_price" cssClass="error-color"/>
+						</td>
+						<th>배송비</th>
+						<td>
+							<form:input path="p_dprice"/>
+							<br><form:errors path="p_dprice" cssClass="error-color"/>
+						</td>
+					</tr>
+					
+					<tr>
+						<th colspan="4">상품특징</th>
+					</tr>				
+					<tr>
+						<td colspan="4">
+							<form:textarea path="p_cont1"/><br>
+							<form:errors path="p_cont1" cssClass="error-color"/>
+						</td>
+					</tr>
+					
+					<tr>
+						<th colspan="4">상품상세</th>
+					</tr>				
+					<tr>
+						<td colspan="4">
+							<form:textarea path="p_cont2"/>
+							<form:errors path="p_cont2" cssClass="error-color"/>
+							<script>
+								 function MyCustomUploadAdapterPlugin(editor) {
+									    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+									        return new UploadAdapter(loader);
+									    }
+									}
+								 ClassicEditor.create( document.querySelector('#p_cont2' ),{
+							           	extraPlugins: [MyCustomUploadAdapterPlugin]
+							           }).then( editor => {
+										window.editor = editor;
+									} ).catch( error => {
+							               console.error( error ); });
+							 </script>               
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
 	</form:form>
 </div>
-
 <!-- 내용 끝 -->

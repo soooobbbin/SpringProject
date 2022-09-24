@@ -38,7 +38,7 @@
 	</div>
 	
 	<div class="product" style="margin-left:13%">
-		<div class="product-image" style="margin:15px;">
+		<div class="product-image" style="margin:0 15px auto;">
 			<img src="${pageContext.request.contextPath}/product/imageView.do?p_num=${product.p_num}" class="p_photo">
 		</div>
 		
@@ -62,7 +62,10 @@
 				</tr>
 				<tr>
 					<th>상태</th>
-					<td>${product.p_status}</td>
+					<td>
+						<c:if test="${product.p_status==1}">표시</c:if>
+						<c:if test="${product.p_status==2}">미표시</c:if>
+					</td>
 	
 					<th>재고</th>
 					<td>${product.p_quantity}</td>

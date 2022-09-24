@@ -54,7 +54,28 @@ public interface OrderMapper {
 	//장바구니에서 주문상품 삭제
 	public void deleteCartItem(Map<String,Object> order);
 
+	//사용자 - 전체글 개수/검색글 개수
+	public int selectOrderCountByMem_num(Map<String,Object> map);
+	//사용자 - 목록/검색글 목록
+	public List<OrderVO> selectListOrderByMem_num(Map<String,Object> map);
 
+	//관리자 - 전체 글 개수 / 검색글 개수
+	public int selectOrderCount(Map<String,Object> map);
+	//관리자 - 전체 글 / 검색 글
+	public List<OrderVO> selectListOrder(Map<String,Object> map);
+	//관리자/사용자 - 전체 주문 정보
+	@Select("SELECT * FROM orders WHERE o_num=#{o_num}")
+	public OrderVO selectOrders(Integer o_num);
+	//관리자/사용자 - 개별 주문 정보
+	@Select("SELECT * FROM order_detail WHERE o_num=#{o_num} "
+			+ "ORDER BY item_num DESC")
+	public List<OrderDetailVO> selectListOrderDetail(Integer o_num);
+	//관리자/사용자 - 주문 수정
+	public void updateOrder(OrderVO order);
+	//관리자/사용자 - 주문 취소 시 상품 수량 업데이트
+	@Update("UPDATE  SET product p_quantity=p_quantity + #{od_quantity} "
+			+ "WHERE p_num=#{item_num}")
+	public void updateProductQuantity(OrderDetailVO orderDetailVO);
 }
 
 

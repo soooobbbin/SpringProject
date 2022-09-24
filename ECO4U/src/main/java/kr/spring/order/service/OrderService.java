@@ -3,6 +3,8 @@ package kr.spring.order.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Select;
+
 import kr.spring.order.vo.OrderDetailVO;
 import kr.spring.order.vo.OrderVO;
 import kr.spring.zipcode.vo.ZipcodeVO;
@@ -31,6 +33,22 @@ public interface OrderService {
 	public void insertOrder(Map<String,Object> order,List<OrderDetailVO> list);
 	public void insertOrder2(Map<String,Object> order);
 
+	//사용자 - 전체글 개수/검색글 개수
+	public int selectOrderCountByMem_num(Map<String,Object> map);
+	//사용자 - 목록/검색글 목록
+	public List<OrderVO> selectListOrderByMem_num(Map<String,Object> map);
+	
+	//관리자 - 전체 글 개수 / 검색글 개수
+	public int selectOrderCount(Map<String,Object> map);
+	//관리자 - 전체 글 / 검색 글
+	public List<OrderVO> selectListOrder(Map<String,Object> map);
+	//관리자/사용자 - 주문 수정
+	public void updateOrder(OrderVO order);
+	//관리자/사용자 - 전체 주문 정보
+	public OrderVO selectOrders(Integer o_num);
+	//관리자/사용자 - 개별 주문 정보
+	public List<OrderDetailVO> selectListOrderDetail(Integer o_num);
+		
 
 }
 

@@ -12,6 +12,110 @@
 				</foreach>
 			</where>
   	</delete>
+  	
+  	<select id="selectOrderCountByMem_num" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM orders
+		WHERE mem_num = #{mem_num}
+		<if test="keyword != null and keyword != ''">
+			<if test="keyfield == 1">
+				AND o_num = #{keyword}
+			</if>
+			<if test="keyfield == 2">
+				AND o_name LIKE '%' || #{keyword} || '%'
+			</if>
+		</if>
+	</select>
+	
+	<select id="selectListOrderByMem_num" parameterType="map" resultType="orderVO">
+		SELECT 
+		  *
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		  *
+			  		FROM orders
+			  		WHERE mem_num=#{mem_num}
+			  		<if test="keyword != null and keyword != ''">
+						<if test="keyfield == 1">
+							AND o_num = #{keyword}
+						</if>
+						<if test="keyfield == 2">
+							AND o_name LIKE '%' || #{keyword} || '%'
+						</if>
+					</if>
+			  		ORDER BY o_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	<select id="selectOrderCount" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM orders o JOIN member m
+		ON o.mem_num = m.mem_num
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					o_num = #{keyword}
+				</if>
+				<if test="keyfield == 2">
+					id LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					o_name LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectListOrder" parameterType="map" resultType="orderVO">
+		SELECT 
+		  *
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		  *
+			  		FROM orders o JOIN member m
+			  		ON o.mem_num = m.mem_num
+			  		<where>
+				  	<if test="keyword != null and keyword != ''">
+						<if test="keyfield == 1">
+							 o_num = #{keyword}
+						</if>
+						<if test="keyfield == 2">
+							 id LIKE '%' || #{keyword} || '%'
+						</if>
+						<if test="keyfield == 3">
+							 o_name LIKE '%' || #{keyword} || '%'
+						</if>
+					</if>
+					</where>
+			  		ORDER BY o_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
+	
+	<update id="updateOrder" parameterType="orderVO">
+		UPDATE orders
+		SET
+			<!-- <if test="status == 1">
+			receive_name=#{receive_name},
+			receive_post=#{receive_post},
+			receive_address1=#{receive_address1},
+			receive_address2=#{receive_address2},
+			receive_phone=#{receive_phone},
+			notice=#{notice},
+			</if> -->
+			status=#{status},
+			modify_date=SYSDATE
+		WHERE o_num=#{o_num}
+	</update>
+	
 </mapper>
 
 

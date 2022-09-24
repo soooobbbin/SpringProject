@@ -65,7 +65,7 @@ function selectAll(selectAll)  {
 		
 		<!-- 찜 목록에 상품이 담긴 경우 -->
 		<c:if test="${count > 0}">
-		<form action="addWishToCart.do" method="post">
+		<form action="addWishToCart.do" method="post" class="wish-form">
 		<ul class="wish-list-ul">
 			<c:forEach var="wish" items="${list}">
 			<li class="wish-list-li">

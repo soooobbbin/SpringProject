@@ -5,8 +5,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <div class="page-main" style="height: 775px;">
 <div class="menu">
@@ -17,7 +15,7 @@
 		<p>${member.mem_name}</p>
 		<p>${member.id}</p>
 	</div>
-	<a href="#" id="all"><h3>전체 주문 내역</h3></a>
+	<a href="${pageContext.request.contextPath}/order/orderList.do" id="all"><h3>전체 주문 내역</h3></a>
 	<a href="${pageContext.request.contextPath}/cart/wishList.do" id="all">
 	<h3>나의 관심</h3></a>
 	<h3>내가 쓴 글</h3>

@@ -31,6 +31,10 @@ public interface OrderService {
 	public void insertOrder(Map<String,Object> order,List<OrderDetailVO> list);
 	public void insertOrder2(Map<String,Object> order);
 
+	//사용자 - 전체글 개수/검색글 개수
+	public int selectOrderCountByMem_num(Map<String,Object> map);
+	//사용자 - 목록/검색글 목록
+	public List<OrderVO> selectListOrderByMem_num(Map<String,Object> map);
 
 }
 

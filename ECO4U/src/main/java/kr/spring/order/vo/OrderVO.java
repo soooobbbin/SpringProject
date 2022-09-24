@@ -10,9 +10,8 @@ public class OrderVO {
 	private String notice;
 	private Date reg_date;
 	private Date modify_date;
-	private int p_num;
 	private int mem_num;
-	private int zip_num;
+	private int status;
 	
 	public int getO_num() {
 		return o_num;
@@ -56,30 +55,26 @@ public class OrderVO {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
 	}
-	public int getP_num() {
-		return p_num;
-	}
-	public void setP_num(int p_num) {
-		this.p_num = p_num;
-	}
 	public int getMem_num() {
 		return mem_num;
 	}
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	public int getZip_num() {
-		return zip_num;
+	public int getStatus() {
+		return status;
 	}
-	public void setZip_num(int zip_num) {
-		this.zip_num = zip_num;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	@Override
 	public String toString() {
 		return "OrderVO [o_num=" + o_num + ", o_name=" + o_name + ", o_total=" + o_total + ", payment=" + payment
-				+ ", notice=" + notice + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", p_num=" + p_num
-				+ ", mem_num=" + mem_num + ", zip_num=" + zip_num + "]";
+				+ ", notice=" + notice + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", mem_num="
+				+ mem_num + ", status=" + status + "]";
 	}
+	
+	
 
 }

@@ -52,6 +52,7 @@ public class OrderController {
 	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 	
 	private int rowCount = 5;
+	private int rowCount2 = 10;
 	private int pageCount = 10;
 	
 	@Autowired
@@ -596,6 +597,48 @@ public class OrderController {
 		orderService.insertOrder2(order);
 			
 		return "{\"result\":\"NO\"}";	
+	}
+	
+	//========== 사용자 주문 목록 ============//
+	@RequestMapping("/order/orderList.do")
+	public ModelAndView orderList(@RequestParam(value="pageNum",defaultValue="1")
+								   int currentPage,
+								   @RequestParam(value="keyfield",defaultValue="")
+	   							   String keyfield,
+	   							   @RequestParam(value="keyword",defaultValue="")
+								   String keyword,
+								   HttpSession session) {
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		map.put("mem_num", user.getMem_num());
+		
+		//총글의 개수 또는 검색된 글의 개수
+		int count = orderService.selectOrderCountByMem_num(map);
+		
+		logger.debug("<<count>> : " + count);
+		
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,
+										count,rowCount2,pageCount,"orderList.do");
+		List<OrderVO> list = null;
+		if(count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			list = orderService.selectListOrderByMem_num(map);
+			
+			logger.debug("<<list>> : " + list);
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("orderList");
+		mav.addObject("count",count);
+		mav.addObject("list",list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
 	}
 	
 }	

@@ -1,0 +1,36 @@
+
+.orderList{
+	padding-top:30px; 
+	margin-left:100px;
+	width:45%;
+	float:left; 
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.page-content{
+	margin-left:100px;
+	
+}
+
+.page-main table{
+	width:100%;
+	margin:5px auto;
+	border:1px solid #000;
+	border-collapse:collapse;
+	font-size:12pt;
+}
+.page-main table td, .page-main table th{
+	border:1px solid #000;
+	padding:5px;
+}
+#search_form{
+	width:100%;
+}
+ul.search{
+	 display: flex;
+    margin: 30px;
+    float: right;
+}
+ul.search li{
+    margin:0px 5px;
+}

@@ -54,6 +54,10 @@ public interface OrderMapper {
 	//장바구니에서 주문상품 삭제
 	public void deleteCartItem(Map<String,Object> order);
 
+	//사용자 - 전체글 개수/검색글 개수
+	public int selectOrderCountByMem_num(Map<String,Object> map);
+	//사용자 - 목록/검색글 목록
+	public List<OrderVO> selectListOrderByMem_num(Map<String,Object> map);
 
 }
 

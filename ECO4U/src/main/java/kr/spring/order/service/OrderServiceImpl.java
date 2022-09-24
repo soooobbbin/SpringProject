@@ -110,5 +110,15 @@ public class OrderServiceImpl implements OrderService{
 		orderMapper.updateQuantity2(order);
 			
 	}
+
+	@Override
+	public int selectOrderCountByMem_num(Map<String, Object> map) {
+		return orderMapper.selectOrderCountByMem_num(map);
+	}
+
+	@Override
+	public List<OrderVO> selectListOrderByMem_num(Map<String, Object> map) {
+		return orderMapper.selectListOrderByMem_num(map);
+	}
 	
 }

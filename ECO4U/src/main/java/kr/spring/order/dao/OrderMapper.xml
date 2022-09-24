@@ -12,6 +12,45 @@
 				</foreach>
 			</where>
   	</delete>
+  	
+  	<select id="selectOrderCountByMem_num" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM orders
+		WHERE mem_num = #{mem_num}
+		<if test="keyword != null and keyword != ''">
+			<if test="keyfield == 1">
+				AND o_num = #{keyword}
+			</if>
+			<if test="keyfield == 2">
+				AND o_name LIKE '%' || #{keyword} || '%'
+			</if>
+		</if>
+	</select>
+	
+	<select id="selectListOrderByMem_num" parameterType="map" resultType="orderVO">
+		SELECT 
+		  *
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  		  *
+			  		FROM orders
+			  		WHERE mem_num=#{mem_num}
+			  		<if test="keyword != null and keyword != ''">
+						<if test="keyfield == 1">
+							AND o_num = #{keyword}
+						</if>
+						<if test="keyfield == 2">
+							AND o_name LIKE '%' || #{keyword} || '%'
+						</if>
+					</if>
+			  		ORDER BY o_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>
+	</select>
 </mapper>
 
 

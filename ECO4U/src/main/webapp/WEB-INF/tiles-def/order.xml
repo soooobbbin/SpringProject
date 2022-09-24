@@ -11,5 +11,9 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/cart/orders.jsp"/>                   
     </definition>
-
+    
+	 <definition name="orderList" extends="main">
+       <put-attribute name="title" value="주문목록"/>
+       <put-attribute name="body" value="/WEB-INF/views/order/user_orderList.jsp"/>
+    </definition>
 </tiles-definitions>

@@ -50,15 +50,15 @@ public class QnAMNController {
 	
 	//===========문의 글 목록============//
 	@RequestMapping("/faq/qnamanagementlist.do")
-	public ModelAndView process(
-			HttpSession session,
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam (value="q_category",defaultValue="") String q_category) {
+	public ModelAndView process(HttpSession session, Model model,
+								@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+								@RequestParam(value="keyfield",defaultValue="") String keyfield,
+								@RequestParam(value="keyword",defaultValue="") String keyword,
+								@RequestParam (value="q_category",defaultValue="") String q_category) {
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		MemberVO member = memberService.selectMember(user.getMem_num());
+		model.addAttribute("admin", member);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);

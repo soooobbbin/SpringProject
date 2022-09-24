@@ -11,8 +11,7 @@ body{
  	float:left; 
  	width: 675px;
  	height: 100%;
- 	position: absolute;
- 	z-index: -1;
+ 	position: fixed;
  	background-color:#fafafa;
 	margin-top:-10px;
 }
@@ -20,7 +19,7 @@ body{
 .sub-detail{
 	float: right;
 	width: 370px;
- 	height: 785px;
+ 	height: 100%;
  	margin: 0 auto;
  	background-color:white;
 	box-shadow: 2px 2px 7px lightgray;
@@ -244,14 +243,14 @@ input[type=submit]:hover, input[type=button]:hover{
 
 #pwrite_form{
 	padding: 0 auto;
+	margin-top: -7%;
 	margin-left: 35%;
 	width: 900px;
-	
-	/* border: 1px solid blue; */
 }
 
 .product{
 	display: flex;
+	margin-bottom: 5%;
 }
 
 .product-image {
@@ -364,9 +363,7 @@ input[type=submit]:hover, input[type=button]:hover{
 }
 
 
-
-
-
+/* 상품상세 */
 
 
 

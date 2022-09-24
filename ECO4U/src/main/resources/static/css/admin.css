@@ -476,7 +476,11 @@ input[type=submit]:hover, input[type=button]:hover{
 }
 
 
-
+/*-------- 주문관리 --------*/
+/* 배송정보수정 */
+ul {
+	list-style:none;
+}
 
 
 

@@ -13,6 +13,8 @@ public class OrderVO {
 	private int mem_num;
 	private int status;
 	
+	private String id; //주문자 id
+	
 	public int getO_num() {
 		return o_num;
 	}
@@ -68,12 +70,21 @@ public class OrderVO {
 		this.status = status;
 	}
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	@Override
 	public String toString() {
 		return "OrderVO [o_num=" + o_num + ", o_name=" + o_name + ", o_total=" + o_total + ", payment=" + payment
 				+ ", notice=" + notice + ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", mem_num="
-				+ mem_num + ", status=" + status + "]";
+				+ mem_num + ", status=" + status + ", id=" + id + "]";
 	}
+	
+	
 	
 	
 

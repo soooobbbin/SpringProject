@@ -52,6 +52,8 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/intro/storeRegister.do")
 				.addPathPatterns("/intro/update.do")
 				.addPathPatterns("/intro/delete.do")
+				.addPathPatterns("/admin/admin_List.do")
+				.addPathPatterns("/order/admin_orderList.do")
 				.addPathPatterns("/community/update.do");
 		registry.addInterceptor(interceptor)
         .addPathPatterns("/community/update.do")

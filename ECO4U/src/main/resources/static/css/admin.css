@@ -54,14 +54,14 @@
 	display: block;
 	justify-content:center;
 	align-items:center;
+	width: 65%;
+    padding-left: 35%;
 }
 
 /* 서브 타이틀 */
 .sub-title{
-	width: 60%;
-	padding: 5% 5% 1%;
-	margin-left: 35%;
-	text-align: left;
+	padding:50px 0px 30px 190px;
+	font-size:12pt;
 }
 
 .sub_1{
@@ -76,9 +76,8 @@
 
 /* 검색바 */
 .search{
-	width: 60%;
-	padding: 0.5% 5%;
-	margin-left: 35%;
+	text-align:right;
+	margin: 0px 160px 30px 0px;
 	font-size: 15px;
 }
 
@@ -130,13 +129,12 @@
 
 /* 표 */
 .content-list{
-	width: 60%;
 	padding: 0 auto;
-	margin-left: 36.5%;
+	margin-left: 35px;
 }
 
 table{
-	width: 1000px;
+	width: 900px;
 	margin: auto;
 	text-align: center;
 	border-top: 1px solid gray;

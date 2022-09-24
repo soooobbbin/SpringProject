@@ -120,5 +120,15 @@ public class OrderServiceImpl implements OrderService{
 	public List<OrderVO> selectListOrderByMem_num(Map<String, Object> map) {
 		return orderMapper.selectListOrderByMem_num(map);
 	}
+
+	@Override
+	public int selectOrderCount(Map<String, Object> map) {
+		return orderMapper.selectOrderCount(map);
+	}
+
+	@Override
+	public List<OrderVO> selectListOrder(Map<String, Object> map) {
+		return orderMapper.selectListOrder(map);
+	}
 	
 }

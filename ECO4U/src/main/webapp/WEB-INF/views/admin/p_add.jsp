@@ -29,7 +29,10 @@
 </jsp:include>
 
 <div class="main-content">
-	<br>
+	<div class="sub-title" style="margin-left:27.5%;">
+		<span class="sub_1">상품 등록</span>
+	</div>
+	
 	<form:form action="admin_write.do" enctype="multipart/form-data" id="pwrite_form" modelAttribute="productVO">
 		<div class="action-btn-3">
 			<form:button>등록</form:button>

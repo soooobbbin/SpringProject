@@ -70,14 +70,17 @@
 		WHERE p_status > #{p_status}
   		<if test="keyword !=null and keyword!=''">
   			<if test="keyfield == 1">
-  				<if test="keyword=='living' || keyword=='Living' || keyword=='LIVING'">
+  				<if test="keyword.equalsIgnoreCase('living')">
   					AND p_category = 1
   				</if>
-  				<if test="keyword=='beauty' || keyword=='Beauty' || keyword=='BEAUTY'">
+  				<if test="keyword.equalsIgnoreCase('beauty')">
   					AND p_category = 2
   				</if>
-  				<if test="keyword=='fashion' || keyword=='Fashion' || keyword=='FASHION'">
+  				<if test="keyword.equalsIgnoreCase('fashion')">
   					AND p_category = 3
+  				</if>
+  				<if test="!keyword.equalsIgnoreCase('living') and !keyword.equalsIgnoreCase('beauty') and !keyword.equalsIgnoreCase('fashion')">
+  					AND p_category = 0
   				</if>
   			</if>
   			<if test="keyfield == 2">
@@ -97,15 +100,18 @@
 			  WHERE p_status > #{p_status}
 			  <if test="keyword != null and keyword != ''">
 				 <if test="keyfield == 1">
-				  	<if test="keyword=='living' || keyword=='Living' || keyword=='LIVING'">
+				  	<if test="keyword.equalsIgnoreCase('living')">
 	  					AND p_category = 1
 	  				</if>
-	  				<if test="keyword=='beauty' || keyword=='Beauty' || keyword=='BEAUTY'">
+	  				<if test="keyword.equalsIgnoreCase('beauty')">
 	  					AND p_category = 2
 	  				</if>
-	  				<if test="keyword=='fashion' || keyword=='Fashion' || keyword=='FASHION'">
+	  				<if test="keyword.equalsIgnoreCase('fashion')">
 	  					AND p_category = 3
 	  				</if>
+	  				<if test="!keyword.equalsIgnoreCase('living') and !keyword.equalsIgnoreCase('beauty') and !keyword.equalsIgnoreCase('fashion')">
+  						AND p_category = 0
+  					</if>
 			  	</if>
 			  	<if test="keyfield == 2">
 			  		AND p_name LIKE '%' || #{keyword} || '%'

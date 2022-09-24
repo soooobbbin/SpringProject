@@ -23,14 +23,14 @@
 	
 	<div class="search">
 		<form action="admin_list.do" id="search_form" method="get">
-				<select name="keyfield">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>ID</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>이름</option>
-					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>이메일</option>
-					<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>전체</option>
-				</select>
-				<input type="search" name="keyword" id="keyword" value="${param.keyword}">
-				<input type="submit" value="찾기"> <input type="button" value="목록" onclick="location.href='admin_list.do'">
+			<select name="keyfield">
+				<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>ID</option>
+				<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>이름</option>
+				<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>이메일</option>
+				<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>전체</option>
+			</select>
+			<input type="search" name="keyword" id="keyword" value="${param.keyword}">
+			<input type="submit" value="찾기"> <input type="button" value="목록" onclick="location.href='admin_list.do'">
 		</form>
 	</div>
 	
@@ -40,7 +40,7 @@
 			<div class="search-result">표시할 회원 정보가 없습니다.</div>
 		</c:if>
 		
-		<!-- 회원 수가 0명 이상일 경우 -->
+		<!-- 회원 수가 1명 이상일 경우 -->
 		<c:if test="${count > 0}">
 		<table>
 			<tr>
@@ -53,10 +53,10 @@
 			</tr>
 
 			<c:forEach var="member" items="${list}">
-				<tr>
+				<tr <c:if test="${member.auth!=0}">onclick="location.href='admin_detail.do?mem_num=${member.mem_num}'"</c:if>>
 					<td><c:if test="${member.auth==0}"><span style="color:#BDBDBD;">${member.id}</span></c:if> 
 					<c:if test="${member.auth > 0}">
-							<a href="admin_detail.do?mem_num=${member.mem_num}">${member.id}</a>
+							${member.id}
 					</c:if></td>
 					<td>${member.mem_name}</td>
 					<td>${member.mem_email}</td>
@@ -66,6 +66,7 @@
 						<c:if test="${member.auth==0}">탈퇴</c:if>
 						<c:if test="${member.auth==1}">일반</c:if> 
 						<c:if test="${member.auth==2}">관리자</c:if>
+						<c:if test="${member.auth==3}">정지</c:if>
 					</td>
 				</tr>
 			</c:forEach>

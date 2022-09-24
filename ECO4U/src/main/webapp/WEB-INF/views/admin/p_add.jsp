@@ -4,6 +4,7 @@
 
 <!-- include libraries(jquery,bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
@@ -18,13 +19,19 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/product.control.js"></script>
 
 <!-- css 삽입 -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+
+
 
 <!-- 내용 시작 -->
-<div class="sub_menu">
-	<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
-		<jsp:param name="mem_name" value="${admin.mem_name}"/>
-	</jsp:include>
+<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
+	<jsp:param name="mem_name" value="${admin.mem_name}"/>
+</jsp:include>
+
+
+
+
+<%-- <div class="sub_menu">
+	
 </div>
 <div class="page-main">
 	<h2>상품 등록</h2>
@@ -113,6 +120,6 @@
 		<input type="button" value="목록" onclick="location.href='admin_plist.do'">
 	</div>
 	</form:form>
-</div>
+</div> --%>
 
 <!-- 내용 끝 -->

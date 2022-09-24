@@ -38,8 +38,6 @@ body{
 }
 
 .image-user img{
-	/* margin-left: -20%;
-	margin-bottom: 2%; */
 	width: 150px;
 	height: 150px;
 }
@@ -361,3 +359,146 @@ input[type=submit]:hover, input[type=button]:hover{
 .action-btn-3 button:hover {
 	background-color: #8C8C8C;
 }
+
+
+/*-------- 문의관리 --------*/
+/* 아이콘 > 문의내역 */
+.top-menu{
+	width: 900px;
+	margin-left: 15%;
+	font-size:13px;
+	text-align: right;
+}
+
+#qna_home{
+	margin-bottom:-3px;
+	width:17px;
+	height:17px;
+	cursor:pointer;
+}
+
+/* 검색 및 카테고리 */
+.search-from {
+	width: 900px;
+	margin-top: 5px;
+	margin-left: 15%;
+}
+
+.search-content{
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+}
+
+.category input[type=button]{
+	width: 75px;
+	height: 30px;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	background-color: #829488;
+	border-radius: 1px;
+	border: none;
+	margin-bottom: -10%;
+}
+
+.category input[type=button]:hover {
+	background-color: #C8D7C4;
+}
+
+.search-q select, .search-q #keyfeild, .search-q #keyword {
+	height: 28px;
+	margin-bottom: 2px;
+}
+
+.search-q input[type="submit"]{
+	width:25px;
+	height:25px;
+	background-image:url("../images/faq/enter1.png");
+	background-size:100%;
+	background-repeat:no-repeat;
+	border: none;
+	background-color:#f4f9f2;
+	cursor:pointer;
+	padding-top: -55%;
+}
+
+/* QnA 리스트 */
+.qna-list table {
+	width: 900px;
+	text-align: center;
+	border-top: 2px solid #829488;
+	border-bottom: 2px solid #829488;
+    border-collapse: collapse;
+}
+
+.qna-list tr:hover{
+	background-color: #C8D7C4;
+    cursor: pointer;
+}
+
+.qna-list td{
+	height: 80px;
+	color: #829488;
+	font-size: 15px;
+	font-weight: bold;
+	padding-top: 5px;
+	border-bottom: 1px solid gray;
+}
+
+#qna-photo{
+	width:80px;
+	height:80px;
+}
+
+.qna-box {
+	margin: 0 2% auto;
+}
+
+.qna-boxtitle {
+	font-size:15px;
+	font-weight:bold;
+	text-align: left;
+	color: black;
+}
+
+.qna-boxcontent {
+	color: black;
+	font-size: 13px;
+	font-weight: normal;
+	margin-left: -10%;
+}
+
+.qna-boxdate {
+	text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

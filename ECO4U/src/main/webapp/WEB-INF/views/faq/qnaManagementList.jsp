@@ -6,150 +6,98 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/qna.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishList.css">
-<style>
-.page-content02{
-	margin-top: 7%;
-}
-.box-parent{
-	margin-bottom:-5px;
-    display: flex;
-    width:fit-content;
-}
-.mypage-div02{
-	padding-top:3%; 
-	margin-left:50px;
-	width:47%;
-	float:left; 
-	font-family: 'Noto Sans KR', sans-serif;
-}
-.qnalist-image01{
-	margin-top:6px;
-	margin-right:15px;
-	margin-left:1px;
-}
-.qnalist-span01{
-	margin:9px;
-}
-.search{
-	float: right;
-	margin-top:10px;
-	margin-right:6%;
-}
-.search input[type="submit"]{
-	margin-bottom:-4px;
-	background-image:url("../images/faq/enter1.png");
-	background-size:20px;
-	background-repeat:no-repeat;
-	border: none;
-	background-color:#f4f9f2;
-	width:22px;
-	height:20px;
-	cursor:pointer;
-	
-}
-.qnalist-ul{
-	margin-top:-15px;
-	margin-left: 20px;
-}
-#keyfield{
-	margin-right:-1px;
-	border: 1px solid lightgray;
-}
-#keyword{
-	margin-right:1px;
-	width:140px;
-	height:19px;
-	border: 1px solid lightgray;
-	font-size:11px;
-}
-</style>
-<div class="page" style="height: 775px;">
-	<form action="qnamanagementlist.do" id="search_form"  method="get">
-	
-	<!-- 좌측 메뉴바 -->
-	<div class="sub_menu">
-	   <jsp:include page="/WEB-INF/views/admin/sub_menu.jsp"><jsp:param name="mem_name" value="${admin.mem_name}"/></jsp:include>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+
+<jsp:include page="/WEB-INF/views/admin/sub_menu.jsp">
+	<jsp:param name="mem_name" value="${admin.mem_name}"/>
+</jsp:include>
+
+<div class="main-content">
+	<div class="sub-title" style="margin-left: 2.5%;">
+		<span class="sub_1">문의 관리</span>
 	</div>
-	<!-- 좌측 메뉴바 종료 -->
+
+	<div class="top-menu">
+		<img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='${pageContext.request.contextPath}/admin/admin_list.do'">
+		<span style="font-weight:bold;"> > </span><a href="qnamanagementlist.do" style="font-weight: bold">문의내역</a>
+	</div>
 	
-	<!-- 문의 내역 폼 시작 -->
-	<div class="mypage-div02">
-		<div style="padding-left: 53px;">
-		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='${pageContext.request.contextPath}/admin/admin_list.do'"> > <a href="qnamanagementlist.do" style="font-weight:bold">문의내역</a></span>
-		</div>
-		<div class ="page-content02" style="margin-top:-3px;">
-		<!-- 검색 필드 -->
+	<form action="qnamanagementlist.do" id="search_form"  method="get" class="search-from">		
+		<!-- 검색 -->
 		<input type="hidden" name="q_category" value="${param.q_category}">
-		<ul class="search">
-         <li>
-         <select name="keyfield" id="keyfield">
-            <option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
-            <option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>작성자</option>
-            <option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
-         </select>
-            <input type="search" name="keyword" id="keyword" value="${param.keyword}">
-            <input type="submit" value="">
-         </li>
-      	</ul>
-      	<!-- 카테고리 -->
-		<ul class="category-ul" id="category">
-			<li class="myqna_btn01">
-				<input type="button" value="   전체   " onclick="location.href='/faq/qnamanagementlist.do'">
-				<input type="button" value="   회원   " onclick="location.href='/faq/qnamanagementlist.do?q_category=1'">
-				<input type="button" value="   상품/배송   "  onclick="location.href='/faq/qnamanagementlist.do?q_category=2'">
-				<input type="button" value="   기타   "  onclick="location.href='/faq/qnamanagementlist.do?q_category=3'">
-			</li>
-			</ul>
-		<c:if test="${count == 0}">
-		<div class="no-wish">문의 내역이 없습니다.</div>
-		</c:if>
-		<c:if test="${count > 0}">
-		<ul class="qnalist-ul">
-			<c:forEach var="qna" items="${list}">
-			<li class="qnalist-list">
-				<div class="box-parent">
-					<input type="hidden" value="${qna.mem_num}">
-					<div style="margin-left:2%; margin-top:34px; width:85px;">
-					<c:if test="${qna.q_category == 1}">&nbsp;&nbsp;&nbsp;회원</c:if>
-					<c:if test="${qna.q_category == 2}">상품/배송</c:if>
-					<c:if test="${qna.q_category == 3}">&nbsp;&nbsp;&nbsp;기타</c:if>
-					</div>
-					<div class="qnalist-image01">
-						<img id="qnalist-image02" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='admindetail.do?q_num=${qna.q_num}'">
-					</div>
-					<div class="qnalist-span01">
-						<div class="box-title"><a href="admindetail.do?q_num=${qna.q_num}">${qna.q_title}</a></div><br><br>
-						<div class="box-content">
-						<img src="../images/faq/reply00.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-2px">
-						<c:choose>
-				        <c:when test="${fn:length(qna.q_content) gt 40}">
-				        <c:out value="${fn:substring(qna.q_content, 0, 39)}">
-				        </c:out><a href="admindetail.do?q_num=${qna.q_num}" style="font-size:11px; font-weight:bold; color:#999999;">... 더보기</a>
-				        </c:when>
-				        <c:otherwise>
-				        <c:out value="${qna.q_content}">
-				        </c:out>
-				        </c:otherwise>
-						</c:choose>
-						</div>
-						<div class="align-right" style="width:570px; margin-top:-20px; margin-bottom:10px;">${qna.mem_name}</div>
-						<span class="box-date">${qna.reg_date}</span>
-						<span class="box-comment" style="font-size:5px">
-						<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">
-						(${qna.com_cnt})
-						</span>
-					</div>
-				</div>
-			</li>
-			</c:forEach>
-		</ul>
-		</c:if>
-		<div class="page align-center" style="margin-left:5%; margin-top:-15px;">${page}</div>
+		<div class="search-content">
+			<!-- 카테고리 -->
+			<div class="category">
+				<input type="button" value="전체" onclick="location.href='/faq/qnamanagementlist.do'">
+				<input type="button" value="회원" onclick="location.href='/faq/qnamanagementlist.do?q_category=1'">
+				<input type="button" value="상품/배송"  onclick="location.href='/faq/qnamanagementlist.do?q_category=2'">
+				<input type="button" value="기타"  onclick="location.href='/faq/qnamanagementlist.do?q_category=3'">
+			</div>
+			
+			<!-- 검색 필드 -->
+			<div class="search-q">
+				<select name="keyfield" id="keyfield">
+		            <option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
+		            <option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>작성자</option>
+		            <option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
+	        	</select>
+	            <input type="search" name="keyword" id="keyword" value="${param.keyword}">
+	            <input type="submit" value="">
+			</div>
 		</div>
-	</div>
-	<!-- 문의 내역 폼 끝 -->
-	</form>
+		
+		<div class="qna-list">
+			<!-- 검색 결과가 없을 경우 -->
+			<c:if test="${count == 0}">
+				<div class="search-result">표시할 회원 정보가 없습니다.</div>
+			</c:if>
+			
+			<c:if test="${count > 0}">
+				<table>
+					<c:forEach var="qna" items="${list}"><input type="hidden" value="${qna.mem_num}">
+					<tr onclick="location.href='admindetail.do?q_num=${qna.q_num}'">
+						<td style="width:12%;">
+							<c:if test="${qna.q_category == 1}">회원</c:if>
+							<c:if test="${qna.q_category == 2}">상품/배송</c:if>
+							<c:if test="${qna.q_category == 3}">기타</c:if>
+						</td>
+						
+						<td>
+							<img id="qna-photo" src="imageView.do?q_num=${qna.q_num}" onerror="this.src='../images/faq/backcolor.png'">	
+						</td>
+						
+						<td>
+							<div class="qna-box">
+								<div class="qna-boxtitle">${qna.q_title}</div>
+								<div class="qna-boxcontent">
+									<img src="../images/faq/reply00.png" width="15px" height="15px" style="">
+									<c:choose>
+								    	<c:when test="${fn:length(qna.q_content) gt 40}">
+											<c:out value="${fn:substring(qna.q_content, 0, 35)}"></c:out>
+											<span style="font-size:11px; font-weight:bold; color:#999999;">... 더보기</span>
+								    	</c:when>
+								    	<c:otherwise>
+								    		<c:out value="${qna.q_content}"></c:out>
+								    	</c:otherwise>
+									</c:choose>
+								</div>
+								<div class="qna-boxdate">
+									<span style="font-size:9px;">${qna.reg_date}</span>
+									<span style="font-size:5px;">
+										<img src="../images/faq/comment.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">
+										(${qna.com_cnt})
+									</span>
+								</div>
+							</div>
+						</td>
+						
+						<td style="width:15%; color:black">${qna.mem_name}</td>
+					</tr>
+					</c:forEach>
+				</table>
+				<div class="page-num">< ${page} ></div>
+			</c:if>
+		</div>
+	</form>	
 </div>
 <!-- 내용 끝 -->

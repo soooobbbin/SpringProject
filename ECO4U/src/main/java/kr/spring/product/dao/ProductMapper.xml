@@ -24,37 +24,41 @@
 	</select>
 	
 	<select id="selectList" parameterType="map" resultType="kr.spring.product.vo.ProductVO">
-		SELECT
+SELECT
   		   *
   		FROM (SELECT
   		        a.*,
   		        rownum rnum
   		      FROM (SELECT
-  		              p_num,
-					  p_name,
-					  p_price,
-					  p_dprice,
-					  p_quantity,
-					  p_category,
-					  p_brand,
-					  p_photoname,
-					  reg_date,
-					  modify_date
+  		              product.p_num,
+					  product.p_name,
+					  product.p_price,
+					  product.p_dprice,
+					  product.p_quantity,
+					  product.p_category,
+					  product.p_brand,
+					  product.p_photoname,
+					  product.reg_date,
+					  <if test="order == 'review'">
+					  NVL(b.r_count,0) as r_count,
+					  </if>
+					  product.modify_date
 		            FROM product
 					<where>
-						
+						<if test="order != 'review'">
 							<if test="category == 0">
-								p_category = 1 OR p_category = 2 OR p_category = 3 
+								product.p_category = 1 OR product.p_category = 2 OR product.p_category = 3 
 							</if>
 							<if test="category == 1">
-								p_category = 1
+								product.p_category = 1
 							</if>
 							<if test="category == 2">
-								p_category = 2
+								product.p_category = 2
 							</if>
 							<if test="category == 3">
-								p_category = 3
+								product.p_category = 3
 							</if>
+						</if>
 					</where>
 					<if test="order == 'new'">
 						ORDER BY reg_date DESC)a)
@@ -65,6 +69,27 @@
 					<if test="order == 'lowPrice'">
 						ORDER BY p_price ASC)a)
 					</if>
+					<if test="order == 'review'">
+						left outer join 
+                    		(SELECT p_num, COUNT(*) as r_count FROM p_review group by p_num) b 
+                    	on product.p_num = b.p_num
+                    	<where>
+                    	<if test="category == 0">
+								product.p_category = 1 OR product.p_category = 2 OR product.p_category = 3 
+							</if>
+							<if test="category == 1">
+								product.p_category = 1
+							</if>
+							<if test="category == 2">
+								product.p_category = 2
+							</if>
+							<if test="category == 3">
+								product.p_category = 3
+							</if>
+						</where>
+                    	order by r_count desc)a)
+					</if>
+
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>

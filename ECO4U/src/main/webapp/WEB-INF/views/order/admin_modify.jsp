@@ -87,7 +87,7 @@
 				<input type="radio" name="status" id="status5" value="5" <c:if test="${order.status == 5}">checked</c:if>>주문 취소
 			</li>
 		</ul>
-		<div class="align-center">
+		<div class="align-right btn">
 			<c:if test="${order.status != 5}">
 			<input type="submit" value="수정">
 			</c:if>

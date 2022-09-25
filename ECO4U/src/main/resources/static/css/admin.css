@@ -262,6 +262,9 @@ input[type=submit]:hover, input[type=button]:hover{
 
 .product-detail table{
 	width: 650px;
+	height: auto;
+	word-break: break-all;
+	table-layout: fixed;
 	border-top: 3px solid #829488;
 	border-bottom: 3px solid #829488;
 }
@@ -482,3 +485,8 @@ ul {
 	list-style:none;
 }
 
+
+img {
+	 height: auto; 
+	 max-width: 100%;
+}

@@ -16,10 +16,12 @@
 	position: relative;
 	left: 400px;
 	bottom: 40px;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 div#detail-div{
 	margin: 10px 0;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 hr.hr{
@@ -29,17 +31,21 @@ hr.hr{
 span.title{
 	font-size: 25px;
 	font-weight: bold;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 span.price{
 	font-size: 20px;
 	font-weight: 600;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 label.text{
 	font-weight: 600;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 label.count{
 	width: 330px;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 input.numBox{
@@ -49,6 +55,7 @@ input.numBox{
     text-align: center;
     font-weight: bold;
     padding-left: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 button.minus{
 	background-color: transparent;
@@ -56,6 +63,7 @@ button.minus{
     border-width: thin;
     border-color: #839589;
     padding: 2px 8px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 button.plus{
 	background-color: transparent;
@@ -63,6 +71,7 @@ button.plus{
     border-width: thin;
     border-color: #839589;
     padding: 2px 8px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .button{
@@ -73,6 +82,7 @@ button.plus{
 	color: white;
 	font-size: 14px;
 	font-weight: bold;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 /*본문*/
@@ -82,6 +92,7 @@ button.plus{
 	border:2px solid #797979;
 	 border-collapse: collapse;
 	text-align:center;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 .product-category td{
 	border: 1px solid #839589;
@@ -89,6 +100,7 @@ button.plus{
     background-color: #fcfffb;
     color: #37403a;
     font-weight: bold;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 /*리뷰*/
@@ -96,53 +108,64 @@ div#target2{
 	position: relative;
     left: 100px;
     margin-bottom: 100px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 textarea#r_content{
 	width: 800px;
     position: relative;
     left: -200px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 textarea#mr_content{
 	width: 800px;
     position: relative;
     left: -200px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 input.r_submit {
     position: relative;
     left: 155px;
     bottom: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 div#mr_second{
 	position: relative;
     left: 155px;
     bottom: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 span.re-letter-count {
     position: relative;
     left: 450px;
     top: 8px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 span.letter-count{
 	position: relative;
     left: 500px;
     top: 9px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 span.re-name{
 	position: relative;
-    left: 35px
+    left: 35px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 span.modify-date{
 	position: relative;
     left: 820px;
     bottom: 68px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 input.delete-btn {
     position: relative;
     left: 730px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 input.modify-btn {
     position: relative;
     left: 730px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 /*

@@ -4,11 +4,14 @@ body{
 	background:#f4f9f2;
 	
 }
+a{
+	font-family: 'Noto Sans KR', sans-serif;
+}
 div#main{
 	width:100%;
 	margin:0 auto;
 	font-size:10pt;
-	font-family: "맑은 고딕";
+	font-family: 'Noto Sans KR', sans-serif;
 }
 #main_header{
 	background:white;

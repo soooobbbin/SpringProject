@@ -129,7 +129,7 @@
 		<td id="detail">
 			<a href="#target1" class="scroll">상세 설명</a></td>
 		<td id="review">
-			<a href="#target1" class="scroll">구매 후기(${product.review_count})</a></td>
+			<a href="#target2" class="scroll">구매 후기(${product.review_count})</a></td>
 		</tr>
 	</table>
 	<div id="target1">
@@ -141,7 +141,7 @@
 	<br>
 	<!-- 상품 본문 끝 -->
 	<!-- 리뷰 시작 -->
-	<div id="target1">
+	<div id="target2">
 		<h4>후기 (${product.review_count}건)</h4>
 		<!-- 리뷰 등록 버튼 -->
 		<div id="review_div">

@@ -85,42 +85,47 @@ public class ProductAjaxController {
 	}
 
 	// ==========리뷰 목록==========//
-	@RequestMapping(value="/product/listReview.do",method=RequestMethod.GET)
-	public ModelAndView list(
-			HttpSession session,
-			@RequestParam(value="pageNum",defaultValue="1") 
-			int currentPage,
-			@RequestParam(value="keyfield",defaultValue="")
-			String keyfield,
-			@RequestParam(value="category",defaultValue="")
-			String category) {
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("mem_num",user.getMem_num());
+	@RequestMapping("/product/listReview.do")
+	@ResponseBody
+	public Map<String, Object> getList(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
+			@RequestParam int p_num, HttpSession session) {
 
-		// 찜 목록의 총 개수(검색된 목록 개수)
+		logger.debug("<<currentPage>> : " + currentPage);
+		logger.debug("<<p_num>> : " + p_num);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("p_num", p_num);
+		
+		// 총 글의 개수
 		int count = productService.selectRowCountReview(map);
+		
+		//상품에 들어가면 리뷰 수 업데이트
+		productService.updateReviewCount(p_num);
 
-		logger.debug("<<count>> : " + count);
+		PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, null);
 
-		// 페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, category, currentPage, count, rowCount, pageCount, "wishList.do");
+		map.put("start", page.getStartRow());
+		map.put("end", page.getEndRow());
+
 		List<P_reviewVO> list = null;
 		if (count > 0) {
-			map.put("start", page.getStartRow());
-			map.put("end", page.getEndRow());
-
 			list = productService.selectListReview(map);
+		} else {
+			list = Collections.emptyList();
 		}
 
-		ModelAndView mav = new ModelAndView();
-		// 뷰이름.jsp
-		mav.setViewName("listReview");
-		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("page", page.getPage());
+		Map<String, Object> mapAjax = new HashMap<String, Object>();
+		mapAjax.put("count", count);
+		mapAjax.put("rowCount", rowCount);
+		mapAjax.put("list", list);
+		
+		//로그인 한 회원정보 셋팅
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		if (user != null) {
+			mapAjax.put("user_num", user.getMem_num());
+		}
 
-		return mav;
+		return mapAjax;
 	}
 	
 	// ========리뷰 상세===========//

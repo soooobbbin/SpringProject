@@ -154,6 +154,7 @@
 		WHERE p_num=#{p_num}
 	</update>
 	
+
 	<!--리뷰 목록 -->
 	<select id="selectListReview" parameterType="map" resultType="kr.spring.product.vo.P_reviewVO">
 		SELECT
@@ -163,15 +164,18 @@
 			  rownum rnum
 			FROM (SELECT
 				  r_num,
-				  r_content,
+				  <![CDATA[
+  		          REPLACE(REPLACE(r_content,'<','&lt;'),'>','&gt;') r_content,
+  		          ]]>
 				  r_photoname,
 				  reg_date,
 				  modify_date,
 				  p_num,
 				  mem_num,
-				  like_cnt
+				  id
 				FROM p_review
-				WHERE mem_num=#{mem_num}
+				JOIN member USING(mem_num)
+				WHERE p_num = #{p_num} 
 				ORDER BY r_num DESC)a)
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

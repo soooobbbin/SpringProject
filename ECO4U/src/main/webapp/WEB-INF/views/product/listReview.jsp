@@ -50,7 +50,7 @@ function selectAll(selectAll)  {
 		<p>${member.mem_name}</p>
 		<p>${user.id}</p>
 	</div>
-	<h3><a href="#" id="all">전체 주문 내역</a></h3>
+	<h3><a href="${pageContext.request.contextPath}/order/orderList.do" id="all">전체 주문 내역</a></h3>
 	<h3><a href="${pageContext.request.contextPath}/cart/wishList.do" id="all">나의 관심</a></h3>
 	<h3>내가 쓴 글</h3>
 	<p><a href="${pageContext.request.contextPath}/faq/qnalist.do" style="color:darkgray;">- 문의/답변</a></p><br>

@@ -97,11 +97,12 @@
 				</c:if>
 
 
-				<c:if
-					test="${!empty user && user.mem_num == community.mem_num || user.auth == 2 }">
+				<c:if test="${!empty user && user.mem_num == community.mem_num}">
 					<input type="button" value="수정" id="update_btn"
 						onclick="location.href='update.do?c_num=${community.c_num}'">
-
+				</c:if>
+				<c:if
+					test="${!empty user && user.mem_num == community.mem_num || user.auth == 2 }">
 					<input type="button" value="삭제" id="delete_btn">
 					<script type="text/javascript">
 						let delete_btn = document.getElementById('delete_btn');
@@ -117,15 +118,15 @@
 				</c:if>
 				<c:if test="${community.c_category==1}">
 					<input type="button" value="목록" id="list_btn"
-					onclick="location.href='list.do?c_category=1'">
+						onclick="location.href='list.do?c_category=1'">
 				</c:if>
 				<c:if test="${community.c_category==2}">
 					<<input type="button" value="목록" id="list_btn"
-					onclick="location.href='list.do?c_category=2'">
+						onclick="location.href='list.do?c_category=2'">
 				</c:if>
 				<c:if test="${community.c_category==3}">
 					<input type="button" value="목록" id="list_btn"
-					onclick="location.href='list.do?c_category=3'">
+						onclick="location.href='list.do?c_category=3'">
 				</c:if>
 			</div>
 
@@ -147,23 +148,23 @@
 				width="100" height="100">
 		</div>
 		<!-- 댓글 UI 끝 -->
-		</div></div>
-		
-		<form id="com_form">
-			<input type="hidden" name="c_num" value="${community.c_num}"
-				id="c_num">
-			<textarea rows="3" cols="100" name="com_content" id="com_content"
-				class="comm-content" placeholder="댓글을 입력하세요."
-				onfocus="this.placeholder=''"
-				onblur="this.placeholder = '댓글을 입력하세요.'" autocomplete="off"
-				<c:if test="${empty user}">disabled="disabled"</c:if>><c:if
-					test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
-			<c:if test="${!empty user}">
-				<div id="com_second" class="submit-co-div">
-					<input type="submit" value="전송" id="submit_btn">
-				</div>
-			</c:if>
-		</form>
+	</div>
+</div>
+
+<form id="com_form">
+	<input type="hidden" name="c_num" value="${community.c_num}" id="c_num">
+	<textarea rows="3" cols="100" name="com_content" id="com_content"
+		class="comm-content" placeholder="댓글을 입력하세요."
+		onfocus="this.placeholder=''" onblur="this.placeholder = '댓글을 입력하세요.'"
+		autocomplete="off"
+		<c:if test="${empty user}">disabled="disabled"</c:if>><c:if
+			test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+	<c:if test="${!empty user}">
+		<div id="com_second" class="submit-co-div">
+			<input type="submit" value="전송" id="submit_btn">
+		</div>
+	</c:if>
+</form>
 
 
 <!-- 내용 끝 -->

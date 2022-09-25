@@ -122,7 +122,7 @@ public class CommunityAjaxController {
 			mapJson.put("count", communityService.selectLikeCount(
 					                     like.getC_num()));
 		}else {//로그인 된 경우
-			like.setC_num(user.getMem_num());
+			like.setMem_num(user.getMem_num());
 			
 			//등록된 좋아요 정보 읽기
 			CommunityLikeVO communityLike = communityService.selectLike(like);

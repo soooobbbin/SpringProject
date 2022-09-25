@@ -56,6 +56,7 @@ public class MainController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("start", 1);
 		map.put("end", 8);
+		map.put("order", "new");
 
 		List<ProductVO> list = productService.selectList(map);
 		

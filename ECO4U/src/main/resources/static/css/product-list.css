@@ -22,6 +22,7 @@ input[type="button"]{
 	background-color: transparent;
 	border: 0;
 	margin-right: 23px;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 input[type="button"]:active, input[type="button"]:visited, input[type="button"]:hover{
@@ -46,21 +47,27 @@ hr.bhr{
 
 .order{
 	position:relative;
-	left:790px;
+	left:780px;
 }
 
 .p_name{
 	font-size: 14px;
 	font-weight: bold;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .price{
 	font-size: 12px;
 	margin:100px 0;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
+a.dropdown-toggle {
+    font-family: 'Noto Sans KR', sans-serif;
+}
 .dropdown-item{
 	font-size: 12px;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .page{

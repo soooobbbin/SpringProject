@@ -8,7 +8,6 @@ div#main{
 	width:100%;
 	margin:0 auto;
 	font-size:10pt;
-	font-family: "맑은 고딕";
 }
 #main_header{
 	background:white;
@@ -111,6 +110,7 @@ div#main_footer{
 a#eco4u, a#store, a#fashion, a#beauty, a#living, a#communication, a#QnA   {
 	font-size:15pt;
 	font-weight:lighter;
+	
 }
 /*----------*/
 

@@ -28,7 +28,6 @@ import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.P_reviewVO;
 import kr.spring.product.vo.ProductVO;
 import kr.spring.product.vo.R_favVO;
-import kr.spring.faq.vo.QnAVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
@@ -46,8 +45,7 @@ public class ProductAjaxController {
 	@Autowired
 	private ProductService productService;
 	
-	@Autowired
-	private MemberService memberService;
+	
 	
 	// 자바빈(VO) 초기화
 	@ModelAttribute
@@ -293,47 +291,6 @@ public class ProductAjaxController {
 			}
 		}
 		return mapJson;		
-	}
-	
-	//===========마이페이지 상품평 목록============//
-	@RequestMapping("/product/mypageReview.do")
-	public ModelAndView process(
-			HttpSession session,
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="category",defaultValue="") String category) {
-		
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		MemberVO member = memberService.selectMember(user.getMem_num());
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("keyfield", keyfield);
-		map.put("category", category);
-		map.put("mem_num",user.getMem_num());
-		
-		//글의 총개수(검색된 글의 개수)
-		int count = productService.selectMypageReviewRowCount(map);
-		logger.debug("<<count>> : " + count);
-		
-		//페이지 처리
-		PagingUtil page = new PagingUtil(keyfield,category,currentPage,count,rowCount,pageCount,"mypageReview.do");
-		
-		List<P_reviewVO> list = null;
-		if(count > 0) {
-			map.put("start", page.getStartRow());
-			map.put("end", page.getEndRow());
-			
-			list = productService.selectMypageReviewList(map);
-		}
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypageReview");
-		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("page", page.getPage());
-		mav.addObject("member", member);
-		
-		return mav;
 	}
 		
 		

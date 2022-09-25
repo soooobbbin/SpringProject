@@ -23,6 +23,6 @@
 	<definition name="mypageReview" extends="main">
     	<put-attribute name="title" value="리뷰목록"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/product/mypageReview.jsp"/>                   
+    	  value="/WEB-INF/views/product/listReview.jsp"/>                   
     </definition>
 </tiles-definitions>

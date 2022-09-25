@@ -7,6 +7,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.spring.product.vo.ProductVO;
+
 public class P_reviewVO {
 
 	private int r_num; //리뷰id
@@ -22,6 +24,8 @@ public class P_reviewVO {
 	private int like_cnt; //추천 수
 	
 	private String id; //회원id
+	
+	private ProductVO productVO;
 	
 	// ========이미지 BLOB 처리===============//
 	// (주의) 폼에서 파일업로드 파라미터네임은 반드시 upload로 지정해야 함
@@ -95,6 +99,12 @@ public class P_reviewVO {
 		this.id = id;
 	}
 
+	public ProductVO getProductVO() {
+		return productVO;
+	}
+	public void setProductVO(ProductVO productVO) {
+		this.productVO = productVO;
+	}
 	
 
 	//byte[] 타입의 프로퍼티 제외
@@ -102,6 +112,6 @@ public class P_reviewVO {
 	public String toString() {
 		return "P_reviewVO [r_num=" + r_num + ", r_content=" + r_content + ", r_photoname=" + r_photoname
 				+ ", p_num=" + p_num + ", mem_num=" + mem_num + ", reg_date=" + reg_date + ", modify_date=" + modify_date
-				+ ", like_cnt=" + like_cnt + ", id=" + id + "]";
+				+ ", like_cnt=" + like_cnt + ", id=" + id + ", productVO=" + productVO + "]";
 	}
 }

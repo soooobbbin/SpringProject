@@ -55,9 +55,16 @@
 							<if test="category == 3">
 								p_category = 3
 							</if>
-						
 					</where>
-					ORDER BY p_num DESC)a)
+					<if test="order == 'new'">
+						ORDER BY reg_date DESC)a)
+					</if>
+					<if test="order == 'hignPrice'">
+						ORDER BY p_price DESC)a)
+					</if>
+					<if test="order == 'lowPrice'">
+						ORDER BY p_price ASC)a)
+					</if>
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>

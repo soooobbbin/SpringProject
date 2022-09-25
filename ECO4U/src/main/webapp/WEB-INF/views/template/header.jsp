@@ -34,7 +34,7 @@ $(function(){
 </a>
 <div class="align-center" id="header_center">
    <a href="${pageContext.request.contextPath}/intro/eco4u.do" id="intro">Intro</a>
-   <a href="${pageContext.request.contextPath}/product/list.do?p_category=0" id="product">Product</a> 
+   <a href="${pageContext.request.contextPath}/product/list.do?category=0" id="product">Product</a> 
    <a href="${pageContext.request.contextPath}/community/list.do?c_category=1" id="community">Community</a>
    <div id="header-menu" class="header-menu">
       <div class="intro2">

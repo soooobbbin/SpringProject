@@ -52,7 +52,8 @@
   		              p_category,
   		              p_photo,
   		              p_photoname,
-  		              p_brand
+  		              p_brand,
+  		              p.p_num
   		            FROM wish w JOIN product p
   		            ON w.p_num = p.p_num AND w.mem_num=#{mem_num}
   		           <where>

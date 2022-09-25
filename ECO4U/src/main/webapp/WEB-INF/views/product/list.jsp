@@ -64,7 +64,7 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li><a class="dropdown-item"
-						href="/product/list.do?p_category=${p_category}&order=new">신상품순</a></li>
+						href="/product/list.do?p_category=${category}&order=new">신상품순</a></li>
 					<li><a class="dropdown-item"
 						href="/product/list.do?p_category=${p_category}&order=hignPrice">높은가격순</a></li>
 					<li><a class="dropdown-item"

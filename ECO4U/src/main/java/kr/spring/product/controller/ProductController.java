@@ -78,7 +78,9 @@ public class ProductController {
 		
 		return "common/resultView";
 	}
+
 	
+	private String category1;
 	//===========상품 목록============//
 	@RequestMapping("/product/list.do")
 	public ModelAndView process(
@@ -86,17 +88,32 @@ public class ProductController {
 			int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")
 			String keyfield,
-			@RequestParam(value="category",defaultValue="")
-			String category) {
+			@RequestParam(value="category",defaultValue="100") //category코드가 비어 있을시 기존의 category1을 대신 사용(코드100)
+			String category,
+			@RequestParam(value="order",defaultValue="new") // order 코드 받음
+			String order) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("category", category);
-
+		map.put("order", order);
+		//파라미터 category을 바로 if 절에 쓰면 에러 발생 원인 불명
+		int category2 = Integer.parseInt(category);
+		//category의 값 조건 체크
+		if(category2 == 0 || category2 == 1 || category2 == 2 || category2 == 3) {
+			//category의 값을 정상적으로 받으면 category1에 값 저장
+			category1 = category;
+		} else if(category2 == 100) {
+			//category의 값이 없을 경우 기존에 있던 category1의 값을 사용
+			category = category1;
+			map.put("category", category);
+		}
+		
 		//상품의 총개수(검색된 상품의 개수)
 		int count = productService.selectRowCount(map);
 
 		logger.debug("<<count>> : " + count);
+		
 		
 		// 페이지 처리
 		PagingUtil page = new PagingUtil(keyfield, category, 

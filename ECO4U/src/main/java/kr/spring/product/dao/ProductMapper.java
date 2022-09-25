@@ -71,7 +71,7 @@ public interface ProductMapper {
 	
 	//리뷰 좋아요
 	@Select("SELECT * FROM r_fav WHERE r_num=#{r_num} AND mem_num=#{mem_num}")
-	public R_favVO selectFav(R_favVO fav);
+	public R_favVO selectFav(R_favVO fav); //좋아요 눌렀는지 안 눌렀는지
 	@Select("SELECT COUNT(*) FROM r_fav "
 			+ "WHERE r_num=#{r_num}")
 	public int selectFavCount(Integer r_num);

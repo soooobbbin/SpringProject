@@ -28,8 +28,6 @@ import kr.spring.product.service.ProductService;
 import kr.spring.product.vo.P_reviewVO;
 import kr.spring.product.vo.ProductVO;
 import kr.spring.product.vo.R_favVO;
-import kr.spring.cart.vo.CartVO;
-import kr.spring.cart.vo.WishVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
@@ -46,9 +44,6 @@ public class ProductAjaxController {
 	
 	@Autowired
 	private ProductService productService;
-	
-	@Autowired
-	private MemberService memberService;
 	
 	// 자바빈(VO) 초기화
 	@ModelAttribute
@@ -223,6 +218,41 @@ public class ProductAjaxController {
 		return mapAjax;
 	}
 	
+	// 상품평 좋아요 등록
+	@RequestMapping("/product/writeFav.do")
+	@ResponseBody
+	public Map<String, Object> writeFav(R_favVO fav, HttpSession session) {
+		logger.debug("<<상품평 좋아요 등록>> : " + fav);
+
+		Map<String, Object> mapJson = new HashMap<String, Object>();
+
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		if (user == null) {
+			mapJson.put("result", "logout");
+		} else {
+			// 로그인된 회원번호 셋팅
+			fav.setMem_num(user.getMem_num());
+
+			// 기존에 등록된 좋아요 확인
+			R_favVO rFav = productService.selectFav(fav);
+
+			if (rFav != null) {// 등록된 좋아요 정보가 있는 경우
+				productService.deleteFav(rFav.getR_fav_num());
+
+				mapJson.put("result", "success");
+				mapJson.put("status", "noFav");
+				mapJson.put("count", productService.selectFavCount(fav.getR_num()));
+
+			} else {// 등록된 좋아요 정보가 없는 경우
+				productService.insertFav(fav);
+
+				mapJson.put("result", "success");
+				mapJson.put("status", "yesFav");
+				mapJson.put("count", productService.selectFavCount(fav.getR_num()));
+			}
+		}
+		return mapJson;
+	}
 
 	//리뷰 좋아요 읽기
 	@RequestMapping("/product/getFav.do")

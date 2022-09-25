@@ -44,6 +44,12 @@ $(function(){
 						output += '<span class="modify-date">' + item.reg_date + '</span>';
 					}
 					
+					//좋아요
+					/*
+					output += '<img id="output_fav" src="${pageContext.request.contextPath}/images/product/like.png" width="40">';
+					<span id="output_fcount"></span>
+					*/
+					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
 						output += ' <input type="button" data-num="'+ item.re_num +'" value="수정" class="modify-btn">';
@@ -151,12 +157,11 @@ $(function(){
 		let modifyUI = '<form id="mr_form">';
 		modifyUI += '<input type="hidden" name="r_num" id="mr_num" value="'+ r_num +'">';
 		modifyUI += '<textarea rows="3" cols="50" name="r_content" id="mr_content" class="rep-content">'+ content +'</textarea>';
-		modifyUI += '<div id="mr_first"><span class="letter-count">300/300</span></div>';
+		modifyUI += '<div id="mr_first"><span class="re-letter-count">300/300</span></div>';
 		modifyUI += '<div id="mr_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
+		modifyUI += '<input type="submit" value="수정" class="re-modify">';
 		modifyUI += ' <input type="button" value="취소" class="re-reset">';
 		modifyUI += '</div>';
-		modifyUI += '<hr size="1" noshade width="96%">';
 		modifyUI += '</form>';
 		
 		//이전에 이미 수정하는 리뷰가 있을 경우 수정 버튼을

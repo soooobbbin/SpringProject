@@ -32,11 +32,11 @@ $(function(){
 <a href="${pageContext.request.contextPath}/main/main.do"> 
    <img src="${pageContext.request.contextPath}/images/main_logo.png" class="main_logo">
 </a>
-<div class="align-center" id="header_center" style="font-family: 'Noto Sans KR', sans-serif;">
+<div class="align-center" id="header_center">
    <a href="${pageContext.request.contextPath}/intro/eco4u.do" id="intro">Intro</a>
    <a href="${pageContext.request.contextPath}/product/list.do?category=0" id="product">Product</a> 
    <a href="${pageContext.request.contextPath}/community/list.do?c_category=1" id="community">Community</a>
-   <div id="header-menu" class="header-menu" style="font-family: 'Noto Sans KR', sans-serif;">
+   <div id="header-menu" class="header-menu">
       <div class="intro2">
          <a href="${pageContext.request.contextPath}/intro/eco4u.do" id="eco4u">ECO4U</a>
          <br><br><br> 

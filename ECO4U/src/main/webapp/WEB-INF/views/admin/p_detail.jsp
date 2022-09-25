@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- 자바스크립트 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.number.min.js"></script>
@@ -89,7 +91,9 @@
 					<th colspan="4">상품상세</th>
 				</tr>
 				<tr>
-					<td colspan="4">${product.p_cont2}</td>
+					<td colspan="4">
+						${product.p_cont2}
+					</td>
 				</tr>
 				
 				<tr>

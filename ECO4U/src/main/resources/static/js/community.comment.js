@@ -34,17 +34,22 @@ $(function(){
 					let output = '<div class="item">';
 					output += '<h4>';
 									
-					output += item.id + '</h4>';
+					output += item.id + '</h4>' ;
+					
+					if(item.modify_date){
+							output += '<span id="com-date">';
+						 output += item.modify_date +'</span>' ;
+						
+					}else{
+						output += '<span id="com-date">';
+						output += item.reg_date +'</span>';
+						
+					}
 										
 					output += '<div class="sub-item">';
 					output += '<p>' + item.com_content.replace(/\r\n/g,'<br>') + '</p>';
 					
 					
-					if(item.modify_date){
-						 output += '최근 수정일 : ' + item.modify_date ;
-					}else{
-						output += '등록일 : ' + item.reg_date ;
-					}
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
@@ -153,7 +158,7 @@ $(function(){
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mcom_form">';
 		modifyUI += '<input type="hidden" name="com_num" id="mcom_num" value="'+ com_num +'">';
-		modifyUI += '<textarea rows="3" cols="65" name="com_content" id="mcom_content" class="comm-content">'+ content +'</textarea>';
+		modifyUI += '<textarea rows="3" cols="85" name="com_content" id="mcom_content" class="comm-content">'+ content +'</textarea>';
 		modifyUI += '<div id="mcom_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mcom_second" class="align-right">';
 		modifyUI += '<input type="submit" value="수정">';

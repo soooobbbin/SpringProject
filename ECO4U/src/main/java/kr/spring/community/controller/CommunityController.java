@@ -86,7 +86,7 @@ public class CommunityController {
 		return "common/resultView";
 	}
 	
-	
+	private String c_category1;
 	//===========게시판 글 목록============//
 	@RequestMapping("/community/list.do")
 	public ModelAndView process(
@@ -96,15 +96,28 @@ public class CommunityController {
 			String keyfield,
 			@RequestParam(value="keyword",defaultValue="")
 			String keyword,
-			@RequestParam (value="c_category",defaultValue="") 
-			String c_category){
+			@RequestParam (value="c_category",defaultValue="100") 
+			String c_category,
+			@RequestParam (value="sort",defaultValue="1") 
+			String sort){
 		
 		Map<String,Object> map = 
 				    new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
 		map.put("c_category", c_category);
-		
+		map.put("sort", sort);
+		//파라미터 category을 바로 if 절에 쓰면 에러 발생 원인 불명
+		int c_category2 = Integer.parseInt(c_category);
+		//category의 값 조건 체크
+		if(c_category2 == 1 || c_category2 == 2 || c_category2 == 3) {
+			//category의 값을 정상적으로 받으면 category1에 값 저장
+			c_category1 = c_category;
+		} else if(c_category2 == 100) {
+			//category의 값이 없을 경우 기존에 있던 category1의 값을 사용
+			c_category = c_category1;
+			map.put("c_category", c_category);
+		}
 		
 		//글의 총개수(검색된 글의 개수)
 		int count = communityService.selectRowCount(map);

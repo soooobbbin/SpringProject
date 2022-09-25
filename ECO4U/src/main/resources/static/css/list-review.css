@@ -1,0 +1,121 @@
+/*reviewList 페이지*/
+body{
+	background:#f4f9f2;
+}
+/* reviewlist start */
+.reviewlist-list{
+	width:94%;
+	padding: 10px 0;
+	border-top: 1px solid gray;
+}
+.page-content02 li{
+	list-style: none;
+	
+}
+.myreview_btn01 input[type="button"]{
+	margin-top:12px;
+	margin-right:-5px;
+	background: #f4f9f2;
+	cursor:pointer;
+	border-radius:1px;
+	border-top:1px solid gray;
+	border-left:1px solid gray;
+	border-right:1px solid gray;
+	border-bottom:3px solid #f4f9f2;
+	font-weight:bold;
+	font-size:14px;
+}
+.myreview_btn01 input[type="button"]:hover{
+	margin-top:12px;
+	margin-right:-5px;
+	background: #7c8f83;
+	cursor:pointer;
+	border-radius:1px;
+	border-top:1px solid #7c8f83;
+	border-left:1px solid #7c8f83;
+	border-right:1px solid #7c8f83;
+	border-bottom:2px solid #7c8f83;
+	font-weight:bold;
+	font-size:14px;
+	color:white;
+}
+.category-ul{
+	margin-left:16px;
+}
+.mypage-div02{
+	padding-top:3%; 
+	margin-left:103px;
+	width:40%;
+	float:left; 
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.reviewlist-ul{
+	margin-top:-15px;
+	margin-left: 20px;
+}
+.reviewlistspanbottom{
+	margin-top:-4px;
+	margin-bottom: 14px;
+	margin-left: 56px;
+	color:gray;
+	font-size:8px;
+}
+.reviewlist-image01{
+	margin-top:6px;
+	margin-right:15px;
+	margin-left:15px;
+}
+#reviewlist-image02{
+	width:80px;
+	height:80px;
+	cursor:pointer;
+}
+.reviewlist-span01{
+	margin:9px;
+}
+.box-title{
+	margin-top:4px;
+	font-size:15px;
+	font-weight:bold;
+}
+.box-content{
+	margin-top:-13px;
+	margin-bottom:6px;
+	font-size: 11px;
+}
+.box-date{
+	font-size:9px;
+}
+#review_home{
+	margin-bottom:-3px;
+	width:17px;
+	height:17px;
+	cursor:pointer;
+}
+#reviewcb{
+	margin-top:-22px;
+	margin-right:6%;
+	float:right;
+	font-size:11px;
+}
+
+#reviewcb input[type="button"]{
+	font-size:11px;
+	border:none;
+	background:none;
+	cursor:pointer;
+}
+#reviewcb input[type="checkbox"]{
+	width:12px;
+	height:13px;
+	cursor:pointer;
+	font-size: 11px;
+}
+.reviewcheck-box input[type="checkbox"]{
+	margin-right:-5px;
+	margin-top:6px;
+	width:12px;
+	height:13px;
+	cursor:pointer;
+}
+/* end of reviewlist */

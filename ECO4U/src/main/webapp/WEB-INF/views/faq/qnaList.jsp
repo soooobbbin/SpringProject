@@ -51,7 +51,7 @@ function selectAll(selectAll)  {
 	<h3><a href="${pageContext.request.contextPath}/cart/wishList.do" id="all">나의 관심</a></h3>
 	<h3>내가 쓴 글</h3>
 	<p><a href="${pageContext.request.contextPath}/faq/qnalist.do" style="color:darkgray;">- 문의/답변</a></p><br>
-	<p><a href="#" style="color:darkgray;">- 상품평</a></p>
+	<p><a href="${pageContext.request.contextPath}/product/mypageReview.do" style="color:darkgray;">- 상품평</a></p>
 	</div>
 	</div>
 	<!-- 좌측 메뉴바 종료 -->

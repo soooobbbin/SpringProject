@@ -71,7 +71,6 @@
 							b.c_content LIKE '%' || #{keyword} || '%')
 						</if>
 					</if>
-					 
 					<if test="sort == 1">
 						ORDER BY b.reg_date DESC)a)
 					</if>
@@ -84,7 +83,7 @@
 					<if test="sort == 4">
 						ORDER BY b.com_cnt DESC)a)
 					</if>
-				
+
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>

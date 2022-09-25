@@ -57,6 +57,7 @@ public class MainController {
 		map.put("start", 1);
 		map.put("end", 8);
 		map.put("order", "new");
+		map.put("sort", "1");
 
 		List<ProductVO> list = productService.selectList(map);
 		

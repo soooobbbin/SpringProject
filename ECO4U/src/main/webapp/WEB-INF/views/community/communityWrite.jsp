@@ -4,12 +4,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- include libraries(jquery,bootstrap) -->
+<!-- 
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/community.css">
 <style>
 .ck-editor__editable_inline {
 	min-height: 250px;
@@ -29,34 +32,41 @@
 	<div class="align-center">
 		<h2 onclick="location.href='list.do?c_category=1'">Community</h2>
 	</div>
+	
+	<div class="co-content-detail">
 	<form:form action="write.do" modelAttribute="communityVO"
 		id="register_form" enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color" />
-		<ul>
-			<li><c:if test="${user.auth == 2}">
-					<label for="c_auth">공지</label>
-					<form:hidden path="c_auth" value='0' id="c_auth_hidden" />
-					<form:checkbox path="c_auth" name="c_auth" value='1' id="c_auth" /> 공지로 지정합니다.
-		</c:if><br>
-			<br></li>
+		<table>
+			<tr>
+			<c:if test="${user.auth == 2}">
+					<td><b>공지</b></td>
+					<td><form:hidden path="c_auth" value='0' id="c_auth_hidden" /></td>
+					<td><form:checkbox path="c_auth" name="c_auth" value='1' id="c_auth" /> 공지로 지정합니다.</td>
+		</c:if></tr>
 
-			<li><label for="c_category">카테고리</label> <select
-				name="c_category" id="c_category">
+			<tr>
+			<td><b>카테고리</b></td> 
+			<td><select
+				name="c_category" id="c_category" class="write-cate">
 					<option value="1" <c:if test="${c_category == 1}">selected</c:if>>TIP</option>
 					<option value="2" <c:if test="${c_category == 2}">selected</c:if>>함께해요</option>
 					<c:if test="${user.auth == 2}">
 						<option value="3" <c:if test="${c_category == 3}">selected</c:if>>친환경
 							소식</option>
 					</c:if>
-			</select><br>
-			<br></li>
-
-			<li><label for="c_title">제목</label> <form:input path="c_title"
-					id="c_title" style="width:485px;" /> <form:errors path="c_title"
+			</select></td>
+			
+			</tr>
+				<tr>
+			<td><b>제목</b></td> 
+			<td><form:input path="c_title" id="c_title" /> </td>
+			<td><form:errors path="c_title"
 					cssClass="error-color" /><br>
-			<br></li>
-			<li><b>내용</b></li>
-			<li><form:textarea path="c_content" /> <form:errors
+			<br></td></tr>
+			<tr>
+			<td><b>내용</b></td>
+			<td><form:textarea path="c_content" /> <form:errors
 					path="c_content" cssClass="error-color" /> <script>
 					 function MyCustomUploadAdapterPlugin(editor) {
 						    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -75,28 +85,34 @@
 			                console.error( error );
 			            } );
 				 </script> <%-- 목록 이미지 등록 --%>
-				<div class="photoUpload">
-					<ul>
-						<li><c:if test="${empty community.filename}">
+				 
+				 </td></tr>
+				 <tr>
+				
+						<td><b>썸네일 이미지 등록</b></td>
+						<td  rowspan="2">
+						<c:if test="${empty community.filename}">
 								<img
 									src="${pageContext.request.contextPath}/images/no_image.png"
-									width="100" height="70" class="com-photo">
+									width="100" height="70" class="com-photo" id="upload-btn">
 							</c:if> <c:if test="${!empty community.filename}">
 								<img
 									src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}"
-									width="100" height="70" class="com-photo">
-							</c:if></li>
-						<li><label for="upload">파일업로드</label> <input type="file"
-							name="upload" id="upload"> <input type="button"
-							value="취소" id="photo_reset"></li>
-					</ul>
-				</div>
-		</ul>
+									width="100" height="70" class="com-photo" id="upload-btn">
+							</c:if>
+							<input type="file" name="upload" id="upload">
+					<input type="button" value="취소" id="photo_reset"></td>
+										
+					</tr>
+					
+				
+		</table>
 		<div class="align-center">
-			<form:button>등록</form:button>
+		<br>
+			<form:button id="submit-btn">등록</form:button>
 		</div>
 	</form:form>
-
+</div>
 </div>
 
 

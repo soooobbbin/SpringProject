@@ -1,107 +1,295 @@
 
 /* 커뮤니티 목록 페이지*/
-.page-main{
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+
+.page-main {
 	margin: 0 auto;
-	width:70%;
-}
-.align-center h2{
-	margin:130px 0px 80px 0px;
-	font-size:20pt;
-}
-.community-category-ul{
-	width:40%;
-    float:left;
-    padding-left:80px;
-}
-.community-category-ul li{
-	display:inline;
-	font-size: 13pt;
-	font-weight:bold;
-    margin: 0px 20px;
-}
-#search_form{
-	width:45%;
-    margin: 0 auto;
-    border: none;
-    float:left;
-    text-align:right;
-}
-.search li{
-    display:inline;
-}
-#writeBtn{
-	background-color:darkgreen;
-	color:white;
-	width:70px;
-	height:30px;
-	border:none;
-}
-.tip1 a:hover, .tip2 a:hover, .tip3 a:hover{
-	font-weight:bold;
-	font-size:12pt;
-	border: 7px solid #7c8f83;
-	background-color:#7c8f83;
-    color: white;
-    text-decoration:none;
+	width: 70%;
 }
 
-/* 커뮤니티 목록 내용*/
-.content{
-	padding: 50px;
-	margin: 50px auto;
-	background-color:white;
-	width:90%;
-	height:auto;
+.align-center h2 {
+	margin: 130px 0px 80px 0px;
+	font-size: 20pt;
 }
 
+.dp-btn{
+	text-align:right;
+	float:right;
+}
 .dropdown {
-  position: relative;
-  display: inline-block;
+	position: relative;
+	display: inline-block;
+	
 }
 
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 150px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 120px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 }
 
 .dropdown-menu a {
-  color: black;
-  padding: 5px 5px;
-  text-decoration: none;
-  display: block;
+	color: black;
+	padding: 10px;
+	display: block;
 }
 
-.dropdown-menu a:hover {background-color: #ddd;}
-.dropdown:hover .dropdown-menu {display: block;}
+.dropdown-menu a:hover {
+	background-color: rgb(232, 242, 217);
+}
 
-.dropdown-item{
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.dropdown-item {
 	font-size: 12px;
-}
-#c_title{
-	width:300px;
-}
-.commu-photo{ 
-	 display: flex;
-  justify-content: space-between;
+	text-align: left;
+	background-color: white;
 }
 
-.notice-icon{
-	font-weight:bold;
-	font-size:12pt;
-	border: 4px solid #7c8f83;
-	background-color:#7c8f83;
-    color: white;
-    text-decoration:none;
-    margin-left:50px;
+.community-list-header{
+	padding-bottom: 20px;
+	width:95%;
 }
-.row{
+.community-category-ul {
+	float: left;
+	padding-left: 80px;
+}
+
+.community-category-ul li {
+	display: inline;
+	font-size: 13pt;
+	font-weight: bold;
+	margin: 0px 20px;
+}
+
+.tip1 a:hover, .tip2 a:hover, .tip3 a:hover {
+	font-weight: bold;
+	font-size: 12pt;
+	color:rgb(22, 160, 133);
+	text-decoration-thickness: 6px !important;
+	text-decoration: underline rgba(110, 131, 118, 0.85); 
+	text-underline-position:under;
+}
+
+#keyfield, #keyword{
+	height:25px;
+}
+
+#search_form {
+	width: 45%;
+	height:100px;
+	margin-right:30px;
+	border: none;
+	float: right;
+	text-align: right;
+}
+
+.search li {
+	display: inline;
+}
+
+#writeBtn {
+	background-color: rgba(110, 131, 118, 0.85);
+	color: white;
+	width: 70px;
+	height: 30px;
+	border: none;
+}
+
+#searchBtn, .dropbtn, #update_btn, #delete_btn, #list_btn, #submit_btn, #submit-btn, #photo_reset, #upload-btn {
+	background-color: rgba(110, 131, 118, 0.85);
+	color: white;
+	width: 50px;
+	height: 30px;
+	border: none;
+}
+.commulist-list{
+
+    position: relative;
+    padding: 13px 0 18px;
+}
+#commu-photo{
+	text-align:right;
+	display:block;
+	margin-right: 50px;
+}
+
+
+.cate-detail{
+    text-align: right;
+}
+.co-content-detail{
+	padding: 50px;
+	margin: 0px 80px auto auto;
+	background-color: white;
+	width: 80%;
+	height: auto;
+}
+
+.co-title{
+	padding: 0px 30px 10px 30px;
+	font-size:16px;
+
+	}
+.co-content{
+padding: 60px 30px 30px 30px;
+
+}
+
+.like-comment{
+	padding-left:30px;
+	padding-bottom:20px;
+}
+.detail-info{
+	float: right;
+}
+#com-date {
+	color: rgb(51, 51, 51);
+	float: right;
+}
+
+#com-content{
+	float: left;
+	margin-right: -13%;
+	margin-bottom: 25px;
+	width:75%;
+	border:none;
+	border-bottom:1px solid black;
+}
+
+
+
+/*공지버튼*/
+#notice_btn {
+	background-color: rgba(110, 131, 118, 0.85);
+	color: white;
+	width: 70px;
+	height: 30px;
+	border: none;
+}
+
+/*댓글 수정, 삭제버튼*/
+.delete-btn, .modify-btn {
+	background-color: rgb(193, 193, 193);
+	color: white;
+	width: 50px;
+	height: 30px;
+	border: none;
+}
+
+.outputs {
+	margin-top:20px;
+	padding:20px;
+	background-color: rgb(244, 244, 244);
+	
+}
+
+.page-right{
+	float:right;
+}
+.item {
+	background-color: none;
+}
+
+#com_form{
+	 position: relative;
+	 text-align:center;
+}
+#com_form, #mcom_form{
+	border: none;
+	
+}
+
+/* 커뮤니티 목록 내용*/
+.content {
+	padding: 50px;
+	margin: 60px auto;
+	background-color: white;
+	width: 80%;
+	height: auto;
+}
+
+
+
+.co-list-title{
+	vertical-align: middle;
+	font-size: 14pt;
+	font-weight: bold;
+	padding: 10px;
+}
+/*
+.commu-list{
+		margin-left: 20px;
+		padding:7px auto 7px 5px;
+}*/
+
+
+.write-padding{
+	padding-bottom:10px;
+	margin-bottom:20px;
+}
+.write-cate{
+	height :25px;
+	width: 120px;
+	
+}
+#c_title {
+	width: 600px;
+	height :25px;
+}
+
+.notice-icon {
+	font-weight: bold;
+	font-size: 12pt;
+	border: 7px solid #7c8f83;
+	background-color: #7c8f83;
+	color: white;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+.notice-margin {
+	margin-top: 10px;
+	margin-bottom: 15px;
+	padding: 7px;
+}
+
+.notice-font {
+	font-size: 13pt;
+	font-weight: bold;
+	color: rgba(110, 131, 118, 0.85);
+
+}
+
+.hlc{
+	color: rgba(110, 131, 118, 0.85)
+}
+
+.co-td{
+	width:100px;
+}
+
+/*친환경 소식 폼*/
+.row {
 	margin-bottom: 50px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 }
 
+.co-mod-tb{
+	width:1000px;
+}
+.co-mod-btn{
+	text-align:right;
+}
 
+/*글쓰기*/
+#register_form, #update_form{
+	border:none;
+	width:1000px;
+}

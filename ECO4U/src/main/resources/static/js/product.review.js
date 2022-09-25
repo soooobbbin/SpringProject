@@ -86,9 +86,9 @@ $(function(){
 	
 	//댓글 등록
 	$('#re_form').submit(function(event){
-		if($('#re_content').val().trim()==''){
+		if($('#r_content').val().trim()==''){
 			alert('내용을 입력하세요');
-			$('#re_content').val('').focus();
+			$('#r_content').val('').focus();
 			return false;
 		}
 		

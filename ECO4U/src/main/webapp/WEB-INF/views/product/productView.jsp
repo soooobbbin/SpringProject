@@ -150,7 +150,7 @@
 				<input type="hidden" name="p_num"
 				   value="${product.p_num}" id="p_num">
 				<textarea rows="3" cols="50" 
-				  name="re_content" id="re_content"
+				  name="r_content" id="r_content"
 				  class="rep-content"
 				  <c:if test="${empty user}">disabled="disabled"</c:if>
 				  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>

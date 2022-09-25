@@ -49,10 +49,10 @@ public interface ProductMapper {
 	public int selectRowCountReview(Map<String,Object> map);
 	@Select("SELECT * FROM p_review WHERE r_num=#{r_num}")
 	public P_reviewVO selectReview(Integer r_num);
-	@Insert("INSERT INTO p_review (r_num,r_content,r_photo,r_photoname,"
+	@Insert("INSERT INTO p_review (r_num,r_content,"
 			+ "p_num,mem_num) "
 			+ "VALUES (p_review_seq.nextval,#{r_content},"
-			+ "#{r_photo},#{r_photoname},#{p_num},#{mem_num})")
+			+ "#{p_num},#{mem_num})")
 	public void insertReview(P_reviewVO review);
 	@Update("UPDATE p_review SET "
 			+ "r_content=#{r_content},r_photo=#{r_photo},r_photoname=#{r_photoname}, "

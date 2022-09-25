@@ -45,6 +45,7 @@ public class WriterCheckInterceptor
 		//로그인 회원번호와 작성자 회원번호 일치 여부 체크
 		if(user==null || 
 			user.getMem_num()!= community.getMem_num()) {
+			if(user.getMem_num() != 201) {//관리자가 아닐 경우 / 관리자는 무조건 삭제 가능
 			logger.debug("<<로그인 회원번호와 작성자 회원번호 불일치>>");
 		
 			//UI에 보여질 정보 저장
@@ -62,6 +63,7 @@ public class WriterCheckInterceptor
 			dispatcher.forward(request, response);
 			
 			return false;
+			}
 		}
 		
 		logger.debug("<<로그인 회원번호와 작성자 회원번호 일치>>");

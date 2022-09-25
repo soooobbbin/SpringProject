@@ -46,14 +46,14 @@
 					  b.c_hit,
 					  b.filename,
 					  b.c_auth,
-					  com_cnt,
-					  like_cnt,
+					  b.com_cnt,
+					  b.like_cnt,
 					  b.reg_date,
 					  b.reg_date2,
 					  b.modify_date,
-					  m.id					  
+					  m.id				  
 		            FROM community b JOIN member m
-		            ON b.mem_num = m.mem_num 
+  		            ON b.mem_num = m.mem_num
 					WHERE b.c_category = #{c_category}
 				
 					<if test="keyword != null and keyword != ''">
@@ -71,20 +71,19 @@
 							b.c_content LIKE '%' || #{keyword} || '%')
 						</if>
 					</if>
-					
-					ORDER BY b.c_num DESC)a)
-					<if test="sort == '1'">
+					<if test="sort == 1">
 						ORDER BY b.reg_date DESC)a)
 					</if>
-					<if test="sort == '2'">
+					<if test="sort == 2">
 						ORDER BY b.c_hit DESC)a)
 					</if>
-					<if test="sort == '3'">
+					<if test="sort == 3">
 						ORDER BY b.like_cnt DESC)a)
 					</if>
-					<if test="sort == '4'">
+					<if test="sort == 4">
 						ORDER BY b.com_cnt DESC)a)
 					</if>
+
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>

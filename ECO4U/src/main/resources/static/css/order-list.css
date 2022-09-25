@@ -34,21 +34,28 @@ ul.search{
 ul.search li{
     margin:0px 5px;
 }
+#order_modify{
+	border:1px solid black;
+	width:60%;	
+	margin-left:100px;
+}
 .order-status{
-	margin:50px 150px;
-	font-size:12pt;
+	margin:50px;
+	font-size:13pt;
 }
 .order-status label{
 	font-size:15pt;
+	font-weight:bold;
 	margin-bottom:20px;
 	
 }
 .order-status input{
 	font-size:14pt;
 	margin-top:20px;
-	
 }
-
+.btn{
+	margin:0px 50px 50px 0px;
+}
 #order_modify input[type=submit], input[type=button]{
 	width: 80px;
 	height: 35px;
@@ -58,6 +65,7 @@ ul.search li{
 	font-weight: bold;
 	border-radius: 4px;
 	background-color:#5E5E5E;
+	margin:0px 5px;
 }
 
 #order_modify input[type=submit]:hover, input[type=button]:hover{

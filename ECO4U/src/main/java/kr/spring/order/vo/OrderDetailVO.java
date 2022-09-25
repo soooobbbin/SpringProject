@@ -9,6 +9,7 @@ public class OrderDetailVO {
 	private int od_quantity; //개별상품구매수량
 	private int o_num; //주문번호
 	
+	private int p_num; //상품번호
 	
 	public int getOd_num() {
 		return od_num;
@@ -53,11 +54,20 @@ public class OrderDetailVO {
 		this.o_num = o_num;
 	}
 	
+	public int getP_num() {
+		return p_num;
+	}
+	public void setP_num(int p_num) {
+		this.p_num = p_num;
+	}
+	
 	@Override
 	public String toString() {
 		return "OrderDetailVO [od_num=" + od_num + ", item_num=" + item_num + ", item_name=" + item_name
 				+ ", item_price=" + item_price + ", item_total=" + item_total + ", od_quantity=" + od_quantity
-				+ ", o_num=" + o_num + "]";
+				+ ", o_num=" + o_num + ", p_num=" + p_num + "]";
 	}
+	
+	
 	
 }

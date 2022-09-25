@@ -91,6 +91,60 @@ button.plus{
     font-weight: bold;
 }
 
+/*리뷰*/
+div#target2{
+	position: relative;
+    left: 100px;
+    margin-bottom: 100px;
+}
+textarea#re_content{
+	width: 800px;
+    position: relative;
+    left: -200px;
+}
+textarea#mr_content{
+	width: 800px;
+    position: relative;
+    left: -200px;
+}
+input.r_submit {
+    position: relative;
+    left: 155px;
+    bottom: 10px;
+}
+div#mr_second{
+	position: relative;
+    left: 155px;
+    bottom: 10px;
+}
+span.re-letter-count {
+    position: relative;
+    left: 450px;
+    top: 8px;
+}
+span.letter-count{
+	position: relative;
+    left: 500px;
+    top: 9px;
+}
+span.re-name{
+	position: relative;
+    left: 35px
+}
+span.modify-date{
+	position: relative;
+    left: 820px;
+    bottom: 68px;
+}
+input.delete-btn {
+    position: relative;
+    left: 730px;
+}
+input.modify-btn {
+    position: relative;
+    left: 730px;
+}
+
 /*
 .detail, .review{
 	clear:both;

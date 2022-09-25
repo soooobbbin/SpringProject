@@ -129,7 +129,7 @@
 		<td id="detail">
 			<a href="#target1" class="scroll">상세 설명</a></td>
 		<td id="review">
-			<a href="#target2" class="scroll">구매 후기(${product.review_count})</a></td>
+			<a href="#target2" class="scroll">상품평(${product.review_count})</a></td>
 		</tr>
 	</table>
 	<div id="target1">
@@ -142,7 +142,7 @@
 	<!-- 상품 본문 끝 -->
 	<!-- 리뷰 시작 -->
 	<div id="target2">
-		<h4>후기 (${product.review_count}건)</h4>
+		<h4>상품평 (${product.review_count}건)</h4>
 		<!-- 리뷰 등록 버튼 -->
 		<div id="review_div">
 			<span class="re-name">상품평 달기</span>
@@ -159,7 +159,7 @@
 					<span class="letter-count">300/300</span>
 				</div>
 				<div id="re_second" class="align-right">
-					<input type="submit" value="등록">
+					<input type="submit" class="r_submit" value="등록">
 				</div>
 				</c:if>
 			</form>
@@ -167,7 +167,7 @@
 		<!-- 리뷰 등록 버튼 끝-->
 		<div id="output"></div>
 		<div class="paging-button" style="display:none;">
-			<input type="button" value="다음 리뷰 보기">
+			<input type="button" value="다음 상품평 보기">
 		</div>
 	</div>
 	<!-- 리뷰 끝 -->

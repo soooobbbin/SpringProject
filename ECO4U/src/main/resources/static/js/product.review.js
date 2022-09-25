@@ -136,7 +136,7 @@ $(function(){
 			//남은 글자수 구하기
 			let remain = 300 - inputLength;
 			remain += '/300';
-			if($(this).attr('id')=='re_content'){
+			if($(this).attr('id')=='r_content'){
 				//등록 폼 글자수
 				$('#re_first .letter-count').text(remain);
 			}else{

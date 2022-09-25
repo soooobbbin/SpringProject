@@ -56,7 +56,7 @@ $(function(){
 		$.ajax({
 			url:'addWishToCart.do',
 			type:'post',
-			data:form_data,
+			data:{p_num:$(this).attr('data-pnum')},
 			dataType:'json',
 			cache:false,
 			timeout:30000,

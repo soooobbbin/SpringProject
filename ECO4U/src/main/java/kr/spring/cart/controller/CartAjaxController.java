@@ -2,6 +2,7 @@ package kr.spring.cart.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -94,8 +95,11 @@ public class CartAjaxController {
 	//=======장바구니 등록 =======//
    @RequestMapping("/cart/addWishToCart.do")
    @ResponseBody
-   public Map<String,String> submit(CartVO cartVO, HttpSession session){
+   public Map<String,String> submit(CartVO cartVO, HttpSession session, HttpServletRequest request){
+	   
       logger.debug("<<CartVO>> : " + cartVO);
+      cartVO.setP_num(Integer.parseInt(request.getParameter("p_num")));
+      cartVO.setOrder_quantity(1);
       
       Map<String,String> mapAjax = new HashMap<String,String>();
       MemberVO user = (MemberVO)session.getAttribute("user");

@@ -94,6 +94,7 @@ function selectAll(selectAll)  {
 					<div class="product-button"> 
 				        <div class="wishTocart-btn">
 				        	<input type="button" id="addCart_btn" class="wishButton" data-pnum="${wish.p_num}" value="장바구니">
+				        	<input type="hidden" value="${wish.p_num}" name="p_num">
 				        </div>
 				        <div class="delete_btn">
 				        	<input type="button" class="delete-pro wishButton" data-wishnum="${wish.w_num}" value="삭제">

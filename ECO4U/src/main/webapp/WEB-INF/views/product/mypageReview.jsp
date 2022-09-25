@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 <div class="page" style="height: 775px;">
-	<form action="listReview.do" id="search_form"  method="get">
+	<form action="mypageReview.do" id="search_form"  method="get">
 	
 	<!-- 좌측 메뉴바 -->
 	<div class="menu">
@@ -26,19 +26,19 @@
 	<h3><a href="${pageContext.request.contextPath}/cart/wishList.do" id="all">나의 관심</a></h3>
 	<h3>내가 쓴 글</h3>
 	<p><a href="${pageContext.request.contextPath}/faq/qnalist.do" style="color:darkgray;">- 문의/답변</a></p><br>
-	<p><a href="${pageContext.request.contextPath}/product/listReview.do" style="color:darkgray;">- 상품평</a></p>
+	<p><a href="${pageContext.request.contextPath}/product/mypageReview.do" style="color:darkgray;">- 상품평</a></p>
 	</div>
 	</div>
 	<!-- 좌측 메뉴바 종료 -->
 	<!-- 문의 내역 폼 시작 -->
 	<div class="mypage-div02">
 		<div style="padding-left: 53px;">
-		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/member/myPage.do'"> > <a href="/product/listReview.do" style="font-weight:bold">상품평</a></span>
+		<span style="font-size:13px"><img id="qna_home" alt="마이페이지이동" src="../images/home.png" onclick="location.href='/member/myPage.do'"> > <a href="/product/mypageReview.do" style="font-weight:bold">상품평</a></span>
 		</div>
 		<div class ="page-content02">
 			<ul class="category-ul" id="category" name="category">
 			<li class="myqna_btn01">
-				<input type="button" value="   전체   " onclick="location.href='/product/listReview.do'">
+				<input type="button" value="   전체   " onclick="location.href='/product/mypageReview.do'">
 			</li>
 			</ul>
 		<c:if test="${count == 0}">

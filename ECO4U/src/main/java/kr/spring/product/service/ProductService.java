@@ -32,6 +32,8 @@ public interface ProductService {
 	public void deleteReview(Integer r_num);
 	public void deleteR_photo(Integer r_num);
 	public void updateFavCount(Integer r_num);
+	public List<P_reviewVO> selectMypageReviewList(Map<String,Object>map);
+	public int selectMypageReviewRowCount(Map<String,Object> map);
 	
 	//리뷰 좋아요
 	public R_favVO selectFav(R_favVO fav);

@@ -69,12 +69,22 @@ public class ProductServiceImpl implements ProductService{
 	public List<P_reviewVO> selectListReview(Map<String,Object>map) {
 		return productMapper.selectListReview(map);
 	}
+	
+	@Override
+	public List<P_reviewVO> selectMypageReviewList(Map<String,Object>map) {
+		return productMapper.selectMypageReviewList(map);
+	}
 
 	@Override
 	public int selectRowCountReview(Map<String, Object> map) {
 		return productMapper.selectRowCountReview(map);
 	}
-
+	
+	@Override
+	public int selectMypageReviewRowCount(Map<String, Object> map) {
+		return productMapper.selectMypageReviewRowCount(map);
+	}
+	
 	@Override
 	public P_reviewVO selectReview(Integer r_num) {
 		return productMapper.selectReview(r_num);

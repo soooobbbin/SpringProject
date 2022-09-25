@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.faq.vo.QnAVO;
 import kr.spring.product.vo.P_reviewVO;
 import kr.spring.product.vo.ProductVO;
 import kr.spring.product.vo.R_favVO;
@@ -68,6 +69,9 @@ public interface ProductMapper {
 			+ "(select count(r_fav_num) from r_fav where r_num = #{r_num}) "
 			+ "where r.r_num = #{r_num}")
 	public void updateFavCount(Integer r_num);
+	//마이페이지 상품평 목록
+	public List<P_reviewVO> selectMypageReviewList(Map<String,Object> map);
+	public int selectMypageReviewRowCount(Map<String,Object> map);
 	
 	//리뷰 좋아요
 	@Select("SELECT * FROM r_fav WHERE r_num=#{r_num} AND mem_num=#{mem_num}")

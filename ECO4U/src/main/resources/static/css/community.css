@@ -122,7 +122,6 @@
 #commu-photo{
 	text-align:right;
 	display:block;
-	margin-right: 50px;
 }
 
 
@@ -233,13 +232,10 @@ textarea#com-content{
 
 .co-list-title{
 	display:flex;
-}
-
-.coco{
-	margin:auto 0;
-	font-size: 14pt;
+	font-size:13.5pt;
+	margin:25px 0px 15px 10px;
 	font-weight: bold;
-	padding: 10px;
+	
 }
 
 

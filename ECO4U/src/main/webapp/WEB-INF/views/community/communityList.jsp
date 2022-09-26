@@ -122,7 +122,8 @@ text-align:center;
 			<c:forEach var="community" items="${list}">
 				<c:if
 					test="${community.c_auth==0 && community.c_category==1 || community.c_category==2}">
-
+					
+					
 					<table>
 						<tr>
 							<td>${community.id}· ${community.reg_date}</td>
@@ -133,11 +134,11 @@ text-align:center;
 									</c:if>
 								</span></td>
 							</tr>
-							<tr> <td class="co-list-title" width="85%"><a href="detail.do?c_num=${community.c_num}">${community.c_title}
+							<tr> <td class="co-list-title" width="100%"><a href="detail.do?c_num=${community.c_num}">${community.c_title}
 							</a></td></tr>
 							
 						<tr>
-						<td class="hlc"><img
+						<td class="hlc" width="85%"><img
 							src="${pageContext.request.contextPath}/images/community/hit.png"
 							width="20" height="20"> ${community.c_hit} <img
 							src="${pageContext.request.contextPath}/images/community/like03.png"

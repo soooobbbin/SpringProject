@@ -7,6 +7,7 @@
 	width: 70%;
 }
 
+
 .align-center h2 {
 	margin: 130px 0px 80px 0px;
 	font-size: 20pt;
@@ -101,7 +102,7 @@
 	border: none;
 }
 
-#searchBtn, .dropbtn, #update_btn, #delete_btn, #list_btn, #submit_btn, #submit-btn, #photo_reset, #upload-btn {
+#searchBtn, .dropbtn, #update_btn, #delete_btn, #list_btn, #submit_btn, #submit-btn, #co-mod-submit-btn, #co-mod-list-btn {
 	background-color: rgba(110, 131, 118, 0.85);
 	color: white;
 	width: 50px;
@@ -129,12 +130,13 @@
 }
 .co-content-detail{
 	padding: 50px;
-	margin: 0px 80px auto auto;
+	margin: 0px 80px 80px auto;
 	background-color: white;
 	width: 80%;
 	height: auto;
+	
 }
-
+/*목록 제목*/
 .co-title{
 	padding: 0px 30px 10px 30px;
 	font-size:16px;
@@ -160,7 +162,8 @@ padding: 60px 30px 30px 30px;
 textarea#com-content{
 	width: 800px;
     position: relative;
-    left: -200px;
+    left: -100px;
+    margin-right:200px;
 }
 
 
@@ -172,6 +175,11 @@ textarea#com-content{
 	width: 70px;
 	height: 30px;
 	border: none;
+}
+
+.page-main-co{
+	width: 70%;
+	margin: auto;
 }
 
 /*댓글 수정, 삭제버튼*/
@@ -201,6 +209,7 @@ textarea#com-content{
 	 position: relative;
 	 text-align:center;
 	 margin-bottom:30px;
+	 margin-top:30px;
 }
 #com_form, #mcom_form{
 	border: none;
@@ -224,11 +233,6 @@ textarea#com-content{
 	font-weight: bold;
 	padding: 10px;
 }
-/*
-.commu-list{
-		margin-left: 20px;
-		padding:7px auto 7px 5px;
-}*/
 
 
 .write-padding{
@@ -240,8 +244,9 @@ textarea#com-content{
 	width: 120px;
 	
 }
+/*글쓰기페이지 제목 입력란*/
 #c_title {
-	width: 600px;
+	width:97%;
 	height :25px;
 }
 
@@ -288,10 +293,12 @@ textarea#com-content{
 }
 .co-mod-btn{
 	text-align:right;
+	padding-right: 300px;
 }
 
 /*글쓰기*/
 #register_form, #update_form{
 	border:none;
 	width:1000px;
+	padding:80px;
 }

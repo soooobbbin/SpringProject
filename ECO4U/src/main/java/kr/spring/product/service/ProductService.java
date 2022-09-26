@@ -28,6 +28,7 @@ public interface ProductService {
 	public int selectRowCountReview(Map<String,Object> map);
 	public int selectRowCountOrder(Map<String,Object> map);
 	public P_reviewVO selectReview(Integer r_num);
+	public List<P_reviewVO> selectReviewByP_num(Integer p_num);
 	public void insertReview(P_reviewVO review);
 	public void updateReview(P_reviewVO review);
 	public void deleteReview(Integer r_num);

@@ -17,7 +17,7 @@
 .ck-editor__editable_inline {
 	min-height: 250px;
 }
-
+table{border-spacing:20px;}
 </style>
 
 
@@ -70,7 +70,7 @@
 			<tr>
 
 				<td class="co-td"><b>내용</b></td>
-				<td><form:textarea path="c_content" class="coco"/> <form:errors
+				<td  width="70%"><form:textarea path="c_content"/> <form:errors
 						path="c_content" cssClass="error-color" /> <script>
 				 function MyCustomUploadAdapterPlugin(editor) {
 					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -143,12 +143,14 @@
 			</c:if></td>
 			
 			</tr>
-			
 			<tr>
-			<td class="co-mod-btn" colspan="3">
-			<hr size="1" width="100%">
+		<td><hr size="1" width="100%"></td>
+		</tr>
+			<tr>
+			<td class="co-mod-btn" colspan="2">
+			
 			<form:button id="co-mod-submit-btn">전송</form:button>
-				<input type="button" value="목록" id="co-mod-list-btn"
+			<input type="button" value="목록" id="co-mod-list-btn"
 					onclick="location.href='list.do?c_category=1'">
 			</td>
 			</tr>

@@ -27,6 +27,11 @@ padding-right:45px;
 
 }
 
+.card{
+text-align:center;
+}
+
+
 </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -151,9 +156,9 @@ padding-right:45px;
 				<c:forEach var="community" items="${list}">
 					<c:if test="${community.c_category==3}">
 
-						<div class="news2" style="margin-top: 15px; padding: 0px 50px;">
+						<div class="news2" style="margin-top: 30px; padding: 5px 25px;">
 
-							<div class="card" style="border: 0px;">
+							<div class="card" style="border: 0px;" >
 								<a href="detail.do?c_num=${community.c_num}"> <c:if
 										test="${!empty community.filename}">
 										<img src="imageView.do?&c_num=${community.c_num}" width="300"

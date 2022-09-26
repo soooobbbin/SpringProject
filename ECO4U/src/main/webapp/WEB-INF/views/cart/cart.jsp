@@ -171,7 +171,7 @@ function selectAll(selectAll)  {
 				<table class="order-info-table">
 					<tr>
 						<td>상품수</td>
-						<td class="td-right">${count}개</td>
+						<td class="td-right td-count">${count}개</td>
 					</tr>
 					<tr>
 						<td>상품금액</td>

@@ -141,12 +141,12 @@
 			</tr>
 			
 			<tr>
-			<th class="co-mod-btn" colspan="3">
+			<td class="co-mod-btn" colspan="3">
 			<hr size="1" width="100%">
 			<form:button id="co-mod-submit-btn">전송</form:button>
 				<input type="button" value="목록" id="co-mod-list-btn"
 					onclick="location.href='list.do?c_category=1'">
-			</th>
+			</td>
 			</tr>
 		
 </table>

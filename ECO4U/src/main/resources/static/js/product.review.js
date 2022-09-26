@@ -52,8 +52,8 @@ $(function(){
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.r_num +'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-num="'+ item.r_num +'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-num="'+ item.re_num +'" value="수정" class="modify-btn">';
+						output += ' <input type="button" data-num="'+ item.re_num +'" value="삭제" class="delete-btn">';
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';

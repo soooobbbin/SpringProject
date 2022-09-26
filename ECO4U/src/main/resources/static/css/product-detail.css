@@ -150,6 +150,7 @@ input.r_submit {
     left: 155px;
     bottom: 10px;
     font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 5px;
 }
 div#mr_second{
 	position: relative;
@@ -165,6 +166,19 @@ span.re-letter-count {
     font-family: 'Noto Sans KR', sans-serif;
 }
 */
+p{
+	width: 700px;
+}
+input.paging-button {
+    width: 120px;
+    height: 30px;
+    border: 0px;
+    background-color: #839589;
+    color: white;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 5px;
+}
 span.letter-count{
 	position: relative;
     left: -200px;
@@ -193,6 +207,7 @@ input.delete-btn {
     color: white;
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 5px;
 }
 input.modify-btn {
     position: relative;
@@ -205,6 +220,7 @@ input.modify-btn {
     color: white;
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 5px;
 }
 input.re-modify{
     font-family: 'Noto Sans KR', sans-serif;
@@ -215,6 +231,7 @@ input.re-modify{
     color: white;
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 5px;
 }
 input.re-reset{
     font-family: 'Noto Sans KR', sans-serif;
@@ -225,6 +242,7 @@ input.re-reset{
     color: white;
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 5px;
 }
 
 /*

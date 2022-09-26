@@ -171,7 +171,7 @@
 		<!-- 리뷰 등록 버튼 끝-->
 		<div id="output"></div>
 		<div class="paging-button" style="display:none;">
-			<input type="button" value="다음 상품평 보기">
+			<input type="button" value="다음 상품평 보기" class="paging-button">
 		</div>
 	</div>
 	<!-- 리뷰 끝 -->

@@ -88,10 +88,9 @@
   	<select id="selectRowCount" parameterType="map"
   	                    resultType="integer">
 		SELECT
-		  COUNT(*)
-		FROM cart c JOIN product p
-		ON c.p_num = p.p_num 
-		WHERE c.mem_num = #{mem_num}
+		  SUM(order_quantity)
+		FROM cart 
+		WHERE mem_num = #{mem_num}
 		
   	</select>
   	<select id="selectTotalByMem_numCart_num" parameterType="map"

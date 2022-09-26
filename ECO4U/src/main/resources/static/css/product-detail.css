@@ -157,16 +157,18 @@ div#mr_second{
     bottom: 10px;
     font-family: 'Noto Sans KR', sans-serif;
 }
+/*
 span.re-letter-count {
     position: relative;
     left: 450px;
     top: 13px;
     font-family: 'Noto Sans KR', sans-serif;
 }
+*/
 span.letter-count{
 	position: relative;
-    left: 500px;
-    top: 13px;
+    left: -200px;
+    /*top: 13px;*/
     font-family: 'Noto Sans KR', sans-serif;
 }
 span.re-name{

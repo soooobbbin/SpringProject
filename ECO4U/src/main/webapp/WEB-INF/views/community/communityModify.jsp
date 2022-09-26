@@ -27,7 +27,7 @@
 	src="${pageContext.request.contextPath}/js/community.js"></script>
 
 
-<div class="page-main">
+<div class="page-main-co">
 	<div class="align-center">
 		<h2 onclick="location.href='list.do?c_category=1'">Community</h2>
 	</div>
@@ -89,18 +89,17 @@
 			<%-- 목록 이미지 등록 --%>
 			<tr>
 
-				<td class="co-td"><b>썸네일 이미지 등록</b></td>
-				<td rowspan="2"><c:if test="${empty community.filename}">
+				<td class="co-td" rowspan="2"><b>썸네일 이미지 등록</b></td>
+				<td><c:if test="${empty community.filename}">
 						<img src="${pageContext.request.contextPath}/images/no_image.png"
 							width="100" height="70" class="com-photo">
 					</c:if> <c:if test="${!empty community.filename}">
 						<img
 							src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}"
 							width="100" height="70" class="com-photo">
-					</c:if></td>
-					</tr>
-					<tr>
-			<td><input type="file" name="upload" id="upload">
+					</c:if>
+					
+			<input type="file" name="upload" id="upload">
 			<c:if test="${!empty communityVO.filename}">
 				<div id="file_detail">
 					(${communityVO.filename})파일 등록
@@ -140,8 +139,10 @@
 			</c:if></td>
 			
 			</tr>
+			
 			<tr>
 			<th class="co-mod-btn" colspan="3">
+			<hr size="1" width="100%">
 			<form:button id="co-mod-submit-btn">전송</form:button>
 				<input type="button" value="목록" id="co-mod-list-btn"
 					onclick="location.href='list.do?c_category=1'">
@@ -149,7 +150,6 @@
 			</tr>
 		
 </table>
-
 			
 	</form:form></div>
 </div>

@@ -102,6 +102,7 @@
 	border: none;
 }
 
+
 #searchBtn, .dropbtn, #update_btn, #delete_btn, #list_btn, #submit_btn, #submit-btn, #co-mod-submit-btn, #co-mod-list-btn {
 	background-color: rgba(110, 131, 118, 0.85);
 	color: white;
@@ -178,12 +179,12 @@ textarea#com-content{
 }
 
 .page-main-co{
-	width: 70%;
+	width: 65%;
 	margin: auto;
 }
 
 /*댓글 수정, 삭제버튼*/
-.delete-btn, .modify-btn {
+.delete-btn, .modify-btn, #sub-btn-1{
 	background-color: rgb(193, 193, 193);
 	color: white;
 	width: 50px;
@@ -214,6 +215,10 @@ textarea#com-content{
 #com_form, #mcom_form{
 	border: none;
 	
+}
+
+#com_first{
+	margin-right:650px;
 }
 
 /* 커뮤니티 목록 내용*/
@@ -293,7 +298,7 @@ textarea#com-content{
 }
 .co-mod-btn{
 	text-align:right;
-	padding-right: 300px;
+	
 }
 
 /*글쓰기*/

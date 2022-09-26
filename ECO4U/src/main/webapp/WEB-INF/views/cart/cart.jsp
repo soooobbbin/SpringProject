@@ -67,7 +67,7 @@ function selectAll(selectAll)  {
 					<div class="div1">
 						<div class="check-box">
 							<input type="checkbox" class="select-product" name="select_product" 
-							 onclick="checkSelectAll(); productSum()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}" 
+							 onclick="checkSelectAll()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}" 
 							 data-price="${cart.productVO.p_price * cart.order_quantity}" checked="checked">
 						 </div>
 						<div class="box-brand">[${cart.productVO.p_brand}]</div>
@@ -161,6 +161,7 @@ function selectAll(selectAll)  {
 				let num = $(this).parent('div').find('.quantity-width').val();
 				$(this).parent('div').find('.quantity-width').val(++num);
 			});
+			
 		</script> 
 		
 		<div class="content2">

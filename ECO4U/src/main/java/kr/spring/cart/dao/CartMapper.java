@@ -49,4 +49,9 @@ public interface CartMapper {
 	@Insert("INSERT INTO cart (cart_num,order_quantity,mem_num,p_num) "
 		  + "VALUES(cart_seq.nextval,#{order_quantity},#{mem_num},#{p_num})")
 	public void addCart(CartVO cart);
+	
+	
+	@Select("SELECT sum(order_quantity) FROM cart WHERE mem_num=#{mem_num}")
+	public int selectOrder_quantity(int mem_num);
+	
 }

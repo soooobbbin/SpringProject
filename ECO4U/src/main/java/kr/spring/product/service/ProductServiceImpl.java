@@ -109,6 +109,16 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
+	public void deleteReviewChecked(String del_review) {
+		String[] ajaxMsg = del_review.split(",");
+		
+		for(int i=0; i<ajaxMsg.length; i++) {
+			productMapper.deleteFav(Integer.parseInt(ajaxMsg[i]));
+			productMapper.deleteReview(Integer.parseInt(ajaxMsg[i]));
+		}
+	}
+	
+	@Override
 	public void deleteR_photo(Integer r_num) {
 		productMapper.deleteR_photo(r_num);
 	}

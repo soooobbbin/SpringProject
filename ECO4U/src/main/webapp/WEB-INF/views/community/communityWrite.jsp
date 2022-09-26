@@ -18,9 +18,15 @@
 	min-height: 250px;
 }
 
-   
+  
 table{
-	width:900px;
+	
+	border-spacing:20px;
+}
+
+.submit-btn{
+
+text-align:center;
 }
 </style>
 <!-- include ckeditor js -->
@@ -40,12 +46,6 @@ table{
 	
 	
 	<div class="co-content-detail">
-		
-			<div class="cate-detail">
-				<b> 글쓰기 </b>
-			</div>
-		
-		
 		
 	<form:form action="write.do" modelAttribute="communityVO"
 		id="register_form" enctype="multipart/form-data">
@@ -116,16 +116,15 @@ table{
 									<input type="file" name="upload" id="upload" class="upload-btn">
 									<input type="button" value="취소" id="photo_reset"></td>
 				</tr>
-					 				
-					
+				<tr><td><hr size="1" width="100%"></td></tr>	 				
+				<tr><td colspan="2" class="co-mod-btn"><form:button id="submit-btn">등록</form:button>
+				<input type="button" value="목록" id="co-mod-list-btn"
+					onclick="location.href='list.do?c_category=1'"></td></tr>	
 					
 				
 		</table>
-		<hr size="1" width="100%">
-		<div class="align-center">
-		<br>
-			<form:button id="submit-btn">등록</form:button>
-		</div>
+		
+		
 	</form:form>
 </div>
 </div>

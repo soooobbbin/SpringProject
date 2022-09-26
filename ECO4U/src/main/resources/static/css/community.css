@@ -130,7 +130,7 @@
     text-align: right;
 }
 .co-content-detail{
-	padding: 50px;
+	padding: 0px 30px 0px 30px;
 	margin: 0px 80px 80px auto;
 	background-color: white;
 	width: 80%;
@@ -235,7 +235,6 @@ textarea#com-content{
 	font-size:12pt;
 	margin:25px 0px 15px 10px;
 	font-weight: bold;
-	
 }
 
 
@@ -304,5 +303,6 @@ textarea#com-content{
 #register_form, #update_form{
 	border:none;
 	width:1000px;
-	padding:80px;
+	padding:50px;
+	font-size: 11pt;
 }

@@ -154,7 +154,7 @@ input.r_submit {
 }
 div#mr_second{
 	position: relative;
-    left: 155px;
+    left: 135px;
     bottom: 10px;
     font-family: 'Noto Sans KR', sans-serif;
 }
@@ -192,13 +192,13 @@ span.re-name{
 }
 span.modify-date{
 	position: relative;
-    left: 830px;
     bottom: 68px;
     font-family: 'Noto Sans KR', sans-serif;
+    float:right;
 }
 input.delete-btn {
     position: relative;
-    left: 745px;
+    left: 810px;
     font-family: 'Noto Sans KR', sans-serif;
     width: 40px;
     height: 30px;
@@ -211,7 +211,7 @@ input.delete-btn {
 }
 input.modify-btn {
     position: relative;
-    left: 745px;
+    left: 805px;
     font-family: 'Noto Sans KR', sans-serif;
     width: 40px;
     height: 30px;

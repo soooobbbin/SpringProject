@@ -26,9 +26,9 @@ $(function(){
 			return;
 		}
 		//파일 용량 체크
-		if(com_photo.size > 1024*1024){
+		if(com_photo.size > 2048*2048){
 			alert(Math.round(com_photo.size/1024) + 
-							'kbytes(1024kbytes까지만 업로드 가능)');
+							'kbytes(2048kbytes까지만 업로드 가능)');
 			//원래 이미지로 교체
 			$('.com-photo').attr('src', photo_path);
 			$(this).val(''); //파일명 지우기

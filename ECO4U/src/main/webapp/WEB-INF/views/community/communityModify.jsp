@@ -17,7 +17,10 @@
 .ck-editor__editable_inline {
 	min-height: 250px;
 }
+
 </style>
+
+
 <!-- include ckeditor js -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
@@ -67,7 +70,7 @@
 			<tr>
 
 				<td class="co-td"><b>내용</b></td>
-				<td><form:textarea path="c_content" /> <form:errors
+				<td><form:textarea path="c_content" class="coco"/> <form:errors
 						path="c_content" cssClass="error-color" /> <script>
 				 function MyCustomUploadAdapterPlugin(editor) {
 					    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {

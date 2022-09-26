@@ -1,5 +1,7 @@
 package kr.spring.interceptor;
 
+import java.util.Set;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +29,6 @@ public class WriterCheckInterceptor
 			           HttpServletResponse response,
 			           Object handler)throws Exception {
 		logger.debug("<<로그인 회원번호와 작성자 회원번호 일치 여부 체크>>");
-		
 		//작성자의 회원번호 구하기
 		int c_num = Integer.parseInt(
 				request.getParameter("c_num")); 

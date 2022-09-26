@@ -157,7 +157,7 @@ public class ProductController {
 		map.put("p_num", p_num);
 		map.put("mem_num", user.getMem_num());
 		
-		count = productService.selectRowCountReview(map);
+		count = productService.selectRowCountOrder(map);
 		}
 		
 		ModelAndView mav = new ModelAndView();

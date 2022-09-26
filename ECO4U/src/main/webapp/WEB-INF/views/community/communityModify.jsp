@@ -34,6 +34,7 @@
 <div class="co-content-detail">
 	<form:form action="update.do" modelAttribute="communityVO"
 		id="update_form" enctype="multipart/form-data">
+		<form:hidden path="c_num"/>
 		<form:errors element="div" cssClass="error-color" />
 		<table class="co-mod-tb">
 			<tr>

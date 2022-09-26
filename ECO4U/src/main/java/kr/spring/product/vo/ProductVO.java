@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProductVO {
 
 	private int p_num; //상품id
+	private int r_num; //리뷰id
 	@NotEmpty
 	private String p_name; //상품명
 	@Range(min=1,max=99999999)
@@ -142,12 +143,21 @@ public class ProductVO {
 	}
 	
 	
+	public int getR_num() {
+		return r_num;
+	}
+	public void setR_num(int r_num) {
+		this.r_num = r_num;
+	}
+	
 	@Override
 	public String toString() {
-		return "ProductVO [p_num=" + p_num + ", p_name=" + p_name + ", p_price=" + p_price + ", p_dprice=" + p_dprice
-				+ ", p_quantity=" + p_quantity + ", p_brand=" + p_brand + ", upload=" + upload 
-				+ ", p_photoname=" + p_photoname + ", p_cont1=" + p_cont1 + ", p_cont2=" + p_cont2 
-				+ ", p_status=" + p_status + ", p_category=" + p_category
-				+ ", reg_date=" + reg_date + ", modify_date=" + modify_date + ", review_count=" + review_count + "]";
+		return "ProductVO [p_num=" + p_num + ", r_num=" + r_num + ", p_name=" + p_name + ", p_price=" + p_price
+				+ ", p_dprice=" + p_dprice + ", p_quantity=" + p_quantity + ", p_brand=" + p_brand + ", upload="
+				+ upload + ", p_photoname=" + p_photoname + ", p_cont1=" + p_cont1 + ", p_cont2=" + p_cont2
+				+ ", p_status=" + p_status + ", p_category=" + p_category + ", reg_date=" + reg_date + ", modify_date="
+				+ modify_date + ", review_count=" + review_count + "]";
 	}
+
+	
 }

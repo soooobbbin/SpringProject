@@ -20,6 +20,13 @@
 height:180px;
 max-width:100%;
 }
+
+table{
+padding-left:45px;
+padding-right:45px;
+
+}
+
 </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -111,30 +118,29 @@ max-width:100%;
 				<c:if
 					test="${community.c_auth==0 && community.c_category==1 || community.c_category==2}">
 
-					<ul class="commu-list">
-						<li>
-						<div class="commulist-list">
-							<div>${community.id}· ${community.reg_date}</div>
-							<div class="co-list-title"><a href="detail.do?c_num=${community.c_num}"><div class="coco">${community.c_title}</div>
-							
-							<span id="commu-photo" class="commu-photo">
+					<table>
+						<tr>
+							<td>${community.id}· ${community.reg_date}</td>
+							<td rowspan="3" width="15%"><span id="commu-photo" class="commu-photo">
 									<c:if test="${!empty community.filename}">
 											<img src="imageView.do?&c_num=${community.c_num}" width="200"
 											height="150" class="com-photo" id="com-photo-1">
 									</c:if>
-								</span></a></div></div>
-						
-						<div class="hlc"><img
+								</span></td>
+							</tr>
+							<tr> <td class="co-list-title" width="85%"><a href="detail.do?c_num=${community.c_num}">${community.c_title}
+							</a></td></tr>
+							
+						<tr>
+						<td class="hlc"><img
 							src="${pageContext.request.contextPath}/images/community/hit.png"
 							width="20" height="20"> ${community.c_hit} <img
 							src="${pageContext.request.contextPath}/images/community/like03.png"
 							width="20" height="20"> ${community.like_cnt} <img
 							src="${pageContext.request.contextPath}/images/community/comment.png"
-							width="20" height="20"> ${community.com_cnt}</div>
+							width="20" height="20"> ${community.com_cnt}</td></tr>
 							
-							</li>
-
-					</ul>
+					</table>
 					<hr>
 				</c:if>
 			</c:forEach>

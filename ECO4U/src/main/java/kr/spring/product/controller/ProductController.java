@@ -139,11 +139,28 @@ public class ProductController {
 	
 	//========상품 상세===========//
 	@RequestMapping("/product/detail.do")
-	public ModelAndView detail(@RequestParam int p_num) {
+	public ModelAndView detail(@RequestParam int p_num,HttpSession session) {
 		
 		logger.debug("<<p_num>> : " + p_num);
 		
 		ProductVO product = productService.selectProduct(p_num);
+				
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		MemberVO user = 
+				(MemberVO)session.getAttribute("user");	
+		
+		int count = 0;
+		
+		if(user != null) {
+				
+		map.put("p_num", p_num);
+		map.put("mem_num", user.getMem_num());
+		
+		count = productService.selectRowCountReview(map);
+		}
+		
+		ModelAndView mav = new ModelAndView();
 		
 		/*
 		//제목에 태그를 허용하지 않음
@@ -156,8 +173,11 @@ public class ProductController {
 		 StringUtil.useBrNoHtml(board.getContent()));
 		*/
 		
-		                          //뷰 이름      속성명    속성값
-		return new ModelAndView("productView","product",product);
+		mav.setViewName("productView");
+		mav.addObject("product", product);
+		mav.addObject("count", count);
+		
+		return mav;
 	}
 	
 	// =========이미지 출력=========//

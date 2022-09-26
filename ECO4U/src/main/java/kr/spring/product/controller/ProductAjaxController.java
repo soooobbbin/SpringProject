@@ -60,7 +60,8 @@ public class ProductAjaxController {
 	public Map<String,String> writeReply(
 			  P_reviewVO reviewVO,
 			  HttpSession session,
-			  HttpServletRequest request){
+			  HttpServletRequest request,
+			  @RequestParam(value = "p_num", defaultValue = "1") int p_num){
 		
 		logger.debug("<<상품평 등록>> : " + reviewVO);
 		
@@ -69,8 +70,18 @@ public class ProductAjaxController {
 		
 		MemberVO user = 
 			(MemberVO)session.getAttribute("user");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("p_num", p_num);
+		map.put("mem_num", user.getMem_num());
+		
+		int count = productService.selectRowCountReview(map);
+		
 		if(user==null) {//로그인 안 됨
 			mapAjax.put("result", "logout");
+		}else if(count<0) {//노 구매 회원
+			mapAjax.put("result", "nopay");
 		}else {//로그인 됨
 			//회원번호 등록
 			reviewVO.setMem_num(
@@ -80,6 +91,7 @@ public class ProductAjaxController {
 			mapAjax.put("result","success");
 		}
 		return mapAjax;
+		
 	}
 
 	// ==========리뷰 목록==========//

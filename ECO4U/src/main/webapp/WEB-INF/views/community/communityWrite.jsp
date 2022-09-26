@@ -40,9 +40,18 @@ table{
 	
 	
 	<div class="co-content-detail">
+		
+			<div class="cate-detail">
+				<b> 글쓰기 </b>
+			</div>
+		
+		
+		
 	<form:form action="write.do" modelAttribute="communityVO"
 		id="register_form" enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color" />
+		
+		
 		<table>
 		
 			<tr>
@@ -103,9 +112,9 @@ table{
 								<img
 									src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}"
 									width="100" height="70" class="com-photo" id="upload-btn">
-							</c:if><input type="file" name="upload" id="upload" class="upload-btn">
-				<input type="button" value="취소" id="photo_reset"></td>
-						
+							</c:if>
+									<input type="file" name="upload" id="upload" class="upload-btn">
+									<input type="button" value="취소" id="photo_reset"></td>
 				</tr>
 					 				
 					

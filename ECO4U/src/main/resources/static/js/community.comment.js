@@ -158,11 +158,11 @@ $(function(){
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mcom_form">';
 		modifyUI += '<input type="hidden" name="com_num" id="mcom_num" value="'+ com_num +'">';
-		modifyUI += '<textarea rows="3" cols="85" name="com_content" id="mcom_content" class="comm-content">'+ content +'</textarea>';
+		modifyUI += '<textarea rows="3" cols="120" name="com_content" id="mcom_content" class="comm-content">'+ content +'</textarea>';
 		modifyUI += '<div id="mcom_first"><span class="letter-count">300/300</span></div>';
-		modifyUI += '<div id="mcom_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
-		modifyUI += ' <input type="button" value="취소" class="com-reset">';
+		modifyUI += '<div id="mcom_second" class="updel-btn">';
+		modifyUI += '<input type="submit" value="수정" id="sub-btn-1">';
+		modifyUI += ' <input type="button" value="취소" class="com-reset" id="sub-btn-1">';
 		modifyUI += '</div>';
 		modifyUI += '</form>';
 		

@@ -166,6 +166,9 @@ ul{
 		<c:if test="${empty user}">disabled="disabled"</c:if>><c:if
 			test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 	<c:if test="${!empty user}">
+	<div id="com_first" >
+				<span class="letter-count">300/300</span>
+			</div>
 		<div id="com_second" class="submit-co-div">
 			<input type="submit" value="전송" id="submit_btn">
 		</div>

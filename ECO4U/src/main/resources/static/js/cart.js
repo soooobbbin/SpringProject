@@ -115,4 +115,13 @@ $(function(){
 		}
 	});
 	
+	//===========장바구니 상품 선택 시 수량/금액 변경==========//
+	$('.select-product').on('click',function(){
+		if($(".select-product:checked") == false){
+			
+		}
+		
+		
+	});
+	
 });

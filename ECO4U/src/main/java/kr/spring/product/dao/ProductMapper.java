@@ -55,7 +55,7 @@ public interface ProductMapper {
 			+ "#{p_num},#{mem_num})")
 	public void insertReview(P_reviewVO review);
 	@Update("UPDATE p_review SET "
-			+ "r_content=#{r_content},r_photo=#{r_photo},r_photoname=#{r_photoname}, "
+			+ "r_content=#{r_content}, "
 			+ "modify_date=SYSDATE WHERE r_num=#{r_num}")
 	public void updateReview(P_reviewVO review);
 	@Delete("DELETE FROM p_review WHERE r_num=#{r_num}")

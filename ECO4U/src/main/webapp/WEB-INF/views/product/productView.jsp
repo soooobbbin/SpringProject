@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 내용 시작 -->
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/review.fav.js"></script>
@@ -134,7 +136,9 @@
 	</table>
 	<div id="target1">
 		<div class="product-detail align-center">
+			<div class="cont-image">
 			${product.p_cont2}
+			</div>
 		</div>
 	</div>
 	<br>

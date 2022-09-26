@@ -52,8 +52,8 @@ $(function(){
 					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.re_num +'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-num="'+ item.re_num +'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-num="'+ item.r_num +'" value="수정" class="modify-btn">';
+						output += ' <input type="button" data-num="'+ item.r_num +'" value="삭제" class="delete-btn">';
 					}
 					output += '<hr size="1" noshade>';
 					output += '</div>';
@@ -84,7 +84,7 @@ $(function(){
 		selectList(currentPage + 1);
 	});
 	
-	//댓글 등록
+	//상품평 등록
 	$('#re_form').submit(function(event){
 		if($('#r_content').val().trim()==''){
 			alert('내용을 입력하세요');
@@ -107,7 +107,7 @@ $(function(){
 				}else if(param.result=='success'){
 					//폼 초기화
 					initForm();
-					//댓글 작성이 성공하면 새로 삽입한 글을
+					//상품평 작성이 성공하면 새로 삽입한 글을
 					//포함해서 첫번째 페이지의 게시글을 다시 
 					//호출
 					selectList(1);
@@ -120,7 +120,7 @@ $(function(){
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
-	//댓글 작성 폼 초기화
+	//상품평 작성 폼 초기화
 	function initForm(){
 		$('textarea').val('');
 		$('#re_first .letter-count').text('300/300');
@@ -146,14 +146,14 @@ $(function(){
 		}
 	});
 
-	//리뷰 수정 버튼 클릭시 수정 폼 노출
+	//상품평 수정 버튼 클릭시 수정 폼 노출
 	$(document).on('click','.modify-btn',function(){
-		//리뷰 번호
+		//상품평 번호
 		let r_num = $(this).attr('data-num');
-		//리뷰 내용
+		//상품평 내용
 		let content = $(this).parent().find('p').html().replace(/<br>/g,'\r\n');
 		
-		//리뷰 수정폼 UI
+		//상품평 수정폼 UI
 		let modifyUI = '<form id="mr_form">';
 		modifyUI += '<input type="hidden" name="r_num" id="mr_num" value="'+ r_num +'">';
 		modifyUI += '<textarea rows="3" cols="50" name="r_content" id="mr_content" class="rep-content">'+ content +'</textarea>';
@@ -164,7 +164,7 @@ $(function(){
 		modifyUI += '</div>';
 		modifyUI += '</form>';
 		
-		//이전에 이미 수정하는 리뷰가 있을 경우 수정 버튼을
+		//이전에 이미 수정하는 상품평이 있을 경우 수정 버튼을
 		//클릭하면 숨김 sub-item을 환원시키고 수정폼을 초기화
 		initModifyForm();
 		
@@ -192,7 +192,7 @@ $(function(){
 		$('.sub-item').show();
 		$('#mr_form').remove();
 	}
-	//리뷰 수정
+	//상품평 수정
 	$(document).on('submit','#mr_form',function(event){
 		if($('#mr_content').val().trim()==''){
 			alert('내용을 입력하세요!');
@@ -217,7 +217,7 @@ $(function(){
 				}else if(param.result=='success'){
 					$('#mr_form').parent()
 					              .find('p')
-                                  .html($('#mr_content').val()
+                                  .html($('#r_content').val()
                                          .replace(/</g,'&lt;')
                                          .replace(/>/g,'&gt;')
                                          .replace(/\r\n/g,'<br>')

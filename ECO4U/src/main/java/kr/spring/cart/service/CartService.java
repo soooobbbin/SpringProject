@@ -24,4 +24,6 @@ public interface CartService {
 	public void deleteCart(Integer cart_num);
 	public void deleteCartChecked(String del_product);
 	public void addCart(CartVO cart);
+	
+	public int selectOrder_quantity(int mem_num);
 }

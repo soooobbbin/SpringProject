@@ -641,7 +641,7 @@ public class OrderController {
 
 		logger.debug("<<count>> : " + count);
 
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount2, pageCount, "orderList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount2, pageCount, "admin_orderList.do");
 		List<OrderVO> list = null;
 		if (count > 0) {
 			map.put("start", page.getStartRow());

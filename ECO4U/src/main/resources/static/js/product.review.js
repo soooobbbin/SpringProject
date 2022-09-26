@@ -157,7 +157,7 @@ $(function(){
 		let modifyUI = '<form id="mr_form">';
 		modifyUI += '<input type="hidden" name="r_num" id="mr_num" value="'+ r_num +'">';
 		modifyUI += '<textarea rows="3" cols="50" name="r_content" id="mr_content" class="rep-content">'+ content +'</textarea>';
-		modifyUI += '<div id="mr_first"><span class="re-letter-count">300/300</span></div>';
+		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mr_second" class="align-right">';
 		modifyUI += '<input type="submit" value="수정" class="re-modify">';
 		modifyUI += ' <input type="button" value="취소" class="re-reset">';
@@ -180,7 +180,7 @@ $(function(){
 		remain += '/300';
 		
 		//문서 객체에 반영
-		$('#mr_first .letter-count').text(remain);
+		$('#mre_first .letter-count').text(remain);
 		
 	});
 	//수정 폼에서 취소 버튼 클릭시 수정 폼 초기화
@@ -217,7 +217,7 @@ $(function(){
 				}else if(param.result=='success'){
 					$('#mr_form').parent()
 					              .find('p')
-                                  .html($('#r_content').val()
+                                  .html($('#mr_content').val()
                                          .replace(/</g,'&lt;')
                                          .replace(/>/g,'&gt;')
                                          .replace(/\r\n/g,'<br>')

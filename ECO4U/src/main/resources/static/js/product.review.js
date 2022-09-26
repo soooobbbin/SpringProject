@@ -85,14 +85,13 @@ $(function(){
 		selectList(currentPage + 1);
 	});
 	
-		$(function(){
 	//좋아요 읽기
 	//좋아요 선택 여부와 선택한 총개수 표시
 	function selectData(r_num){
 		$.ajax({
 			url:'getFav.do',
 			type:'post',
-			data:{r_num:r_num},
+			data:{r_num:$('#r_num').val()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -142,7 +141,7 @@ $(function(){
 		$('#output_fav').attr('src',output);
 		$('#output_fcount').text(param.count);
 	}//좋아요 표시 끝
-});
+
 	
 	//상품평 등록
 	$('#re_form').submit(function(event){

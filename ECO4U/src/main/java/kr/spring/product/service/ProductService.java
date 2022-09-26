@@ -26,6 +26,7 @@ public interface ProductService {
 	//리뷰
 	public List<P_reviewVO> selectListReview(Map<String,Object>map);
 	public int selectRowCountReview(Map<String,Object> map);
+	public int selectRowCountOrder(Map<String,Object> map);
 	public P_reviewVO selectReview(Integer r_num);
 	public void insertReview(P_reviewVO review);
 	public void updateReview(P_reviewVO review);
@@ -40,4 +41,5 @@ public interface ProductService {
 	public int selectFavCount(Integer r_num);
 	public void insertFav(R_favVO fav);
 	public void deleteFav(Integer r_fav_num);
+	
 }

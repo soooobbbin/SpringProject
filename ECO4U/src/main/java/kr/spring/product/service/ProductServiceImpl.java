@@ -148,4 +148,10 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> selectProductList(Map<String, Object> map) {
 		return productMapper.selectProductList(map);
 	}
+
+	@Override
+	public int selectRowCountOrder(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return productMapper.selectRowCountOrder(map);
+	}
 }

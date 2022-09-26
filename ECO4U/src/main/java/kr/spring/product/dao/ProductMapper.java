@@ -47,6 +47,8 @@ public interface ProductMapper {
 			+ "JOIN member m ON r.mem_num=m.mem_num "
 			+ "WHERE p_num=#{p_num}")
 	public int selectRowCountReview(Map<String,Object> map);
+	@Select("SELECT COUNT(*) FROM order_detail od JOIN orders o ON od.o_num=o.o_num join member m on o.mem_num = m.mem_num WHERE item_num=#{p_num} AND m.mem_num = #{mem_num}")
+	public int selectRowCountOrder(Map<String,Object> map);
 	@Select("SELECT * FROM p_review WHERE r_num=#{r_num}")
 	public P_reviewVO selectReview(Integer r_num);
 	@Insert("INSERT INTO p_review (r_num,r_content,"

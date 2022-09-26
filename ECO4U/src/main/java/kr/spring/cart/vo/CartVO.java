@@ -1,7 +1,6 @@
 package kr.spring.cart.vo;
 
 import java.sql.Date;
-import java.util.Arrays;
 
 import kr.spring.product.vo.ProductVO;
 
@@ -23,6 +22,8 @@ public class CartVO {
 //	private String p_photoname;
 //	private int p_category;
 //	private String p_brand;
+	
+	private WishVO wishVO;
 	
 	private ProductVO productVO;
 
@@ -77,13 +78,19 @@ public class CartVO {
 	}
 	
 	
+	public WishVO getWishVO() {
+		return wishVO;
+	}
+	public void setWishVO(WishVO wishVO) {
+		this.wishVO = wishVO;
+	}
 	@Override
 	public String toString() {
 		return "CartVO [cart_num=" + cart_num + ", order_quantity=" + order_quantity + ", reg_date=" + reg_date
 				+ ", modify_date=" + modify_date + ", mem_num=" + mem_num + ", p_num=" + p_num + ", cart_total="
-				+ cart_total + ", productVO=" + productVO + "]";
+				+ cart_total + ", wishVO=" + wishVO + ", productVO=" + productVO + "]";
 	}
-	 
+	
 
 	
 }

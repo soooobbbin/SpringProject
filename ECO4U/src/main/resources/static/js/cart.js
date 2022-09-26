@@ -28,7 +28,7 @@ $(function(){
 				if(param.result=='logout'){
 					alert('로그인해야 삭제할 수 있습니다.');
 				}else if(param.result=='success'){
-					alert('삭제 완료!');
+					alert('상품이 삭제되었습니다.');
 					location.href='/cart/cart.do';
 				}else{
 					alert('장바구니 삭제시 오류 발생');

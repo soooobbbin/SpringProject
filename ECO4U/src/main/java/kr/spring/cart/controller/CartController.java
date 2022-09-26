@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.service.CartService;
 import kr.spring.cart.vo.CartVO;
@@ -80,7 +82,7 @@ public class CartController {
       }
       return mapAjax;
    }
-
+   
 	//=======장바구니 목록=======//
 	@RequestMapping("/cart/cart.do")
 	public String list(HttpSession session, Model model,CartVO cartVO) {
@@ -91,6 +93,7 @@ public class CartController {
 		
 		//회원번호별 총 구매액
 		int all_total = cartService.selectTotalByMem_num(user.getMem_num());
+		//int cart_total = cartService.selectTotalByMem_numCart_num(map);
 		
 		List<CartVO> list = null;
 		
@@ -101,9 +104,11 @@ public class CartController {
 		
 		//찜 목록의 총 개수(검색된 목록 개수)
 		int count = cartService.selectRowCount(map);
+		//int count = cart_numArray.length;
 		
 		logger.debug("<<count>> : " + count);
 		logger.debug("<<cartVO>> : " + cartVO);
+		
 		
 		model.addAttribute("cartVO", cartVO);
 		model.addAttribute("count", count);
@@ -111,6 +116,55 @@ public class CartController {
 		model.addAttribute("list", list);
 		return "cart";
 	}
+	
+   
+   /*
+	
+   //=======장바구니 목록=======//
+   @RequestMapping("/cart/cart.do")
+   public ModelAndView cartList(HttpSession session,
+		   						CartVO cartvo,HttpServletRequest request,
+		   						Model model, HttpServletResponse response,
+		   						@RequestParam(value = "cart_num", defaultValue = "") String[] cart_numArray) {
+	// session에 저장된 정보 읽기
+	MemberVO user = (MemberVO) session.getAttribute("user");
+	   
+	Map<String, Object> map = new HashMap<String, Object>();
+	map.put("mem_num", user.getMem_num());
+	// int pcount = cartService.selectRowCount(map);
+	// 넘어온 파라미터값의 갯수를 이용
+	int pcount = cart_numArray.length;
+	
+	// map total에 cart_num을 넣어서 mapper에서 구하기 위해
+	Map<String, Object> total = new HashMap<String, Object>();
+	total.put("cart_numArray", cart_numArray);
+	total.put("mem_num", user.getMem_num());
+	logger.debug("<<total>> : " + total);
+
+	int all_total = cartService.selectTotalByMem_numCart_num(total);
+	logger.debug("<<all_total>> : " + all_total);
+	// int all_total = cartService.selectTotalByMem_num(user.getMem_num());
+	
+	ModelAndView mav = new ModelAndView();
+
+	if (all_total <= 0) {
+		model.addAttribute("message", "정상적인 주문이 아니거나 상품의 수량이 부족합니다.");
+		model.addAttribute("url", request.getContextPath() + "/product/list.do");
+		mav.setViewName("common/resultView");
+		return mav;
+	}
+	
+	// List<CartVO> cartList = cartService.selectList(user.getMem_num());
+	List<CartVO> cartList = cartService.selectOrderList(total);
+	logger.debug("<<cart>> : " + cartList);
+
+	   
+	   
+	   
+	return mav;
+}
+*/
+   
 	
 	//==========장바구니 개별 상품 삭제==========//
 	@RequestMapping("/cart/delete.do")
@@ -125,7 +179,7 @@ public class CartController {
 		cartService.deleteCart(cart_num);
 		
 		//View에 표시할 메시지
-		model.addAttribute("message", "선택 상품 삭제");
+		model.addAttribute("message", "상품이 삭제되었습니다.");
 		model.addAttribute("url", 
 				request.getContextPath()+"/cart/cart.do");
 		

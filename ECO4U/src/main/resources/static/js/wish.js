@@ -45,8 +45,6 @@ $(function(){
 	
 	//========= 장바구니에 상품 담기 =========//
 	$(document).on('click','#addCart_btn',function(){
-	
-		alert('버튼눌림');
 		
 		var check = confirm('상품을 장바구니에 추가하시겠습니까?');
 		

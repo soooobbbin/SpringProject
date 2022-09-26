@@ -176,13 +176,13 @@ span.re-name{
 }
 span.modify-date{
 	position: relative;
-    left: 800px;
+    left: 830px;
     bottom: 68px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 input.delete-btn {
     position: relative;
-    left: 710px;
+    left: 745px;
     font-family: 'Noto Sans KR', sans-serif;
     width: 40px;
     height: 30px;
@@ -194,7 +194,7 @@ input.delete-btn {
 }
 input.modify-btn {
     position: relative;
-    left: 710px;
+    left: 745px;
     font-family: 'Noto Sans KR', sans-serif;
     width: 40px;
     height: 30px;

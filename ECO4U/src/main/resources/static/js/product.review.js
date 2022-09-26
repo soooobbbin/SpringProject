@@ -104,6 +104,8 @@ $(function(){
 			success:function(param){
 				if(param.result=='logout'){
 					alert('로그인해야 작성할 수 있습니다.');
+				}else if(param.result=='nopay'){
+					alert('구매자만 작성할 수 있습니다.');
 				}else if(param.result=='success'){
 					//폼 초기화
 					initForm();

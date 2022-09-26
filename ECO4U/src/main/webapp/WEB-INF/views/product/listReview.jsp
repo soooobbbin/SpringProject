@@ -4,8 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/list-review.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/list-review.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wishList.css">
@@ -88,7 +87,7 @@ function selectAll(selectAll)  {
 					<!-- 선택 체크박스 -->
 					<div class="reviewcheck-box">
 						<input type="checkbox" class="select-review" name="select_review" 
-						 onclick="checkSelectAll()" data-cartnum="${review.r_num}" value="${review.r_num}">
+						 onclick="checkSelectAll()" data-reviewnum="${review.r_num}" value="${review.r_num}">
 					</div>
 					<!-- 선택 체크박스 끝 -->
 					<div class="reviewlist-image01">

@@ -92,11 +92,11 @@ function selectAll(selectAll)  {
 					</div>
 					<!-- 선택 체크박스 끝 -->
 					<div class="reviewlist-image01">
-						<img id="reviewlist-image02" src="imageView.do?p_num=${review.p_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="/product/detail.do?p_num=${review.p_num}'">
+						<img id="reviewlist-image02" src="imageView.do?p_num=${review.p_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="location.href='detail.do?p_num=${review.p_num}'">
 					</div>
 					
 					<div class="reviewlist-span01">
-						<img src="../images/faq/reply00.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-2px">${review.productVO.p_name}<br>
+						<img src="../images/faq/reply00.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-2px"><a href="/product/detail.do?p_num=${review.p_num}">${review.productVO.p_name}</a></a><br>
 						<div class="box-title"><a href="/product/detail.do?p_num=${review.p_num}">${review.r_content}</a></div><br><br>
 						<span class="box-date">${review.reg_date}</span>
 						<span class="box-comment" style="font-size:5px">

@@ -233,6 +233,24 @@ public class ProductAjaxController {
 		return mapAjax;
 	}
 	
+	//==========문의글 선택 삭제=============//
+	@RequestMapping("/product/selectDeleteReview.do")
+	@ResponseBody
+	public Map<String, String> processFile(@RequestParam String del_review, HttpSession session,
+			HttpServletRequest request) {
+		Map<String, String> mapJson = new HashMap<String, String>();
+
+		MemberVO user = (MemberVO) session.getAttribute("user");
+
+		if (user == null) {
+			mapJson.put("result", "logout");
+		} else {
+			productService.deleteReviewChecked(del_review);
+			mapJson.put("result", "success");
+		}
+		return mapJson;
+	}
+	
 	// 상품평 좋아요 등록
 	@RequestMapping("/product/writeFav.do")
 	@ResponseBody

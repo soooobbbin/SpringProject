@@ -60,7 +60,8 @@ ul.carousel-indicators{
 }
 /*메인 두번째 화면*/
 #section2 h2{
-	margin:10px auto;
+	margin:30px auto;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 body{
 	overflow-x:hidden;
@@ -75,10 +76,24 @@ body{
 .p_name{
 	font-size: 13px;
 	font-weight: bold;
+	font-family: 'Noto Sans KR', sans-serif;
 }
-
 .price{
 	font-size: 13px;
 	margin:100px 0;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
+/*메인 세번째 화면*/
+h2.align-center.c_main {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.c_title{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.c_rdate{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.align-center {
+    margin-bottom: 20px;
+}

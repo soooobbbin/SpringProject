@@ -6,6 +6,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+
 <!-- 내용 시작 -->
 <script>
 $(function(){
@@ -102,7 +105,7 @@ $(function(){
 		</div>
 	</div>
     <div class="section" id="section2">
-    	<h2 class="align-center">The Latest Product</h2>
+    	<h2 class="align-center p_main">The Latest Product</h2>
     	<hr style="border: solid 1px #999;" width="70%" >
     	<div class="row cardmargin">
 				<c:forEach var="product" items="${list}" varStatus="status">
@@ -128,7 +131,7 @@ $(function(){
     </div>
    
     <div class="section" id="section3">
-    	<h2 class="align-center">친환경 소식</h2>
+    	<h2 class="align-center c_main">친환경 소식</h2>
     	<hr style="border: solid 1px #999;" width="70%" >
     	<div class="row cardmargin">
 			<c:forEach var="community" items="${list2}">
@@ -143,9 +146,9 @@ $(function(){
 									style="width: 300px; height: 250px; position: relative; top: 0px; left: 0px; z-index: 100; opacity: 1; transition: opacity 500ms linear 0s;">
 									<div class="align-center">
 									<br>
-										<span style="font-weight:bold;">${community.c_title}</span>
+										<span style="font-weight:bold;" class="c_title">${community.c_title}</span>
 										<br>
-										<span>${community.reg_date2}</span>
+										<span class="c_rdate">${community.reg_date2}</span>
 									</div>
 								</c:if> 
 								<c:if test="${empty community.filename}">

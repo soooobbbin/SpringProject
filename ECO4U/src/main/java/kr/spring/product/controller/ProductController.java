@@ -139,7 +139,7 @@ public class ProductController {
 	
 	//========상품 상세===========//
 	@RequestMapping("/product/detail.do")
-	public ModelAndView detail(@RequestParam int p_num,HttpSession session) {
+	public ModelAndView detail(@RequestParam int p_num, HttpSession session) {
 		
 		logger.debug("<<p_num>> : " + p_num);
 		
@@ -160,6 +160,15 @@ public class ProductController {
 		count = productService.selectRowCountOrder(map);
 		}
 		
+		/*
+		List<P_reviewVO> review = null;
+		if (count > 0) {
+
+			review = productService.selectReviewByP_num(p_num);
+
+		}
+		*/
+		
 		ModelAndView mav = new ModelAndView();
 		
 		/*
@@ -175,6 +184,7 @@ public class ProductController {
 		
 		mav.setViewName("productView");
 		mav.addObject("product", product);
+		/*mav.addObject("review", review);*/
 		mav.addObject("count", count);
 		
 		return mav;

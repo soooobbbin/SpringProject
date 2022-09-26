@@ -91,7 +91,7 @@ $(function(){
 		$.ajax({
 			url:'getFav.do',
 			type:'post',
-			data:{r_num:$('#r_num').val()},
+			data:{r_num:r_num},
 			dataType:'json',
 			cache:false,
 			timeout:30000,

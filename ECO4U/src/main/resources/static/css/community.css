@@ -115,7 +115,7 @@
 	margin-left:625px;
 }
 .commulist-list{
-
+	
     position: relative;
     padding: 13px 0 18px;
 }
@@ -124,6 +124,7 @@
 	display:block;
 	margin-right: 50px;
 }
+
 
 
 .cate-detail{
@@ -230,10 +231,12 @@ textarea#com-content{
 	height: auto;
 }
 
-
-
 .co-list-title{
-	vertical-align: middle;
+	display:flex;
+}
+
+.coco{
+	margin:auto 0;
 	font-size: 14pt;
 	font-weight: bold;
 	padding: 10px;

@@ -20,8 +20,13 @@ ul{
    list-style:none;
    }
 
+img{
+height:auto;
+max-width:100%;
+}
 </style>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div class="page-main-co">
 	<div class="align-center">

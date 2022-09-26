@@ -14,7 +14,15 @@
 	src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/community.css">
+<style>
 
+#compt{
+height:180px;
+max-width:100%;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 내용 시작 -->
 <div class="page-main">
 	<div class="align-center">
@@ -107,15 +115,15 @@
 						<li>
 						<div class="commulist-list">
 							<div>${community.id}· ${community.reg_date}</div>
-							<div class="co-list-title"><a href="detail.do?c_num=${community.c_num}">${community.c_title}
+							<div class="co-list-title"><a href="detail.do?c_num=${community.c_num}"><div class="coco">${community.c_title}</div>
 							
 							<span id="commu-photo" class="commu-photo">
 									<c:if test="${!empty community.filename}">
 											<img src="imageView.do?&c_num=${community.c_num}" width="200"
 											height="150" class="com-photo" id="com-photo-1">
 									</c:if>
-								</span></a></div>
-						</div>
+								</span></a></div></div>
+						
 						<div class="hlc"><img
 							src="${pageContext.request.contextPath}/images/community/hit.png"
 							width="20" height="20"> ${community.c_hit} <img
@@ -143,7 +151,7 @@
 								<a href="detail.do?c_num=${community.c_num}"> <c:if
 										test="${!empty community.filename}">
 										<img src="imageView.do?&c_num=${community.c_num}" width="300"
-											height="240" class="com-photo">
+											height="240" class="com-photo" id="compt">
 										<br>
 										<span>${community.c_title}</span>
 										<br>
@@ -151,7 +159,7 @@
 									</c:if> <c:if test="${empty community.filename}">
 										<img
 											src="${pageContext.request.contextPath}/images/no_image.png"
-											width="300" height="240">
+											width="300" height="240" id="compt">
 										<br>
 										<span>${community.c_title}</span>
 										<br>

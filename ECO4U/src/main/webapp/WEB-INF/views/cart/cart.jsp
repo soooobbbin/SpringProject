@@ -67,7 +67,8 @@ function selectAll(selectAll)  {
 					<div class="div1">
 						<div class="check-box">
 							<input type="checkbox" class="select-product" name="select_product" 
-							 onclick="checkSelectAll()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}" checked="checked">
+							 onclick="checkSelectAll(); productSum()" data-cartnum="${cart.cart_num}" value="${cart.cart_num}" 
+							 data-price="${cart.productVO.p_price * cart.order_quantity}" checked="checked">
 						 </div>
 						<div class="box-brand">[${cart.productVO.p_brand}]</div>
 					</div>
@@ -161,11 +162,6 @@ function selectAll(selectAll)  {
 				$(this).parent('div').find('.quantity-width').val(++num);
 			});
 		</script> 
-		<script type="text/javascript">
-			
-			
-			
-		</script>
 		
 		<div class="content2">
 			<span class="content2-span">결제정보</span>
@@ -202,10 +198,10 @@ function selectAll(selectAll)  {
 						<tr>
 							<td class="order-bottom">총 결제금액</td>
 							<c:if test="${all_total >= 30000}">
-							<td class="order-bottom-total"><fmt:formatNumber value="${all_total}"/>원</td>
+							<td class="order-bottom-total all_total"><fmt:formatNumber value="${all_total}"/>원</td>
 							</c:if>
 							<c:if test="${all_total < 30000}">
-							<td class="order-bottom-total"><fmt:formatNumber value="${all_total + 2500}"/>원</td>
+							<td class="order-bottom-total all_total"><fmt:formatNumber value="${all_total + 2500}"/>원</td>
 							</c:if>
 							
 						</tr>

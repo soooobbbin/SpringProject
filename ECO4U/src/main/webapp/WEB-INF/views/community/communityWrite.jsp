@@ -17,6 +17,11 @@
 .ck-editor__editable_inline {
 	min-height: 250px;
 }
+
+   
+table{
+	width:900px;
+}
 </style>
 <!-- include ckeditor js -->
 <script type="text/javascript"
@@ -28,21 +33,31 @@
 
 
 
-<div class="page-main">
+<div class="page-main-co">
 	<div class="align-center">
 		<h2 onclick="location.href='list.do?c_category=1'">Community</h2>
 	</div>
 	
+	
 	<div class="co-content-detail">
+		
+			<div class="cate-detail">
+				<b> 글쓰기 </b>
+			</div>
+		
+		
+		
 	<form:form action="write.do" modelAttribute="communityVO"
 		id="register_form" enctype="multipart/form-data">
 		<form:errors element="div" cssClass="error-color" />
+		
+		
 		<table>
+		
 			<tr>
 			<c:if test="${user.auth == 2}">
 					<td><b>공지</b></td>
-					<td><form:hidden path="c_auth" value='0' id="c_auth_hidden" /></td>
-					<td><form:checkbox path="c_auth" name="c_auth" value='1' id="c_auth" /> 공지로 지정합니다.</td>
+					<td><form:hidden path="c_auth" value='0' id="c_auth_hidden" /><form:checkbox path="c_auth" name="c_auth" value='1' id="c_auth" /> 공지로 지정합니다.</td>
 		</c:if></tr>
 
 			<tr>
@@ -88,10 +103,8 @@
 				 
 				 </td></tr>
 				 <tr>
-				
-						<td><b>썸네일 이미지 등록</b></td>
-						<td  rowspan="2">
-						<c:if test="${empty community.filename}">
+						<td rowspan="2"><b>썸네일 이미지 등록</b></td>
+						<td><c:if test="${empty community.filename}">
 								<img
 									src="${pageContext.request.contextPath}/images/no_image.png"
 									width="100" height="70" class="com-photo" id="upload-btn">
@@ -100,13 +113,15 @@
 									src="${pageContext.request.contextPath}/image_upload/${community.uploadfile}"
 									width="100" height="70" class="com-photo" id="upload-btn">
 							</c:if>
-							<input type="file" name="upload" id="upload">
-					<input type="button" value="취소" id="photo_reset"></td>
-										
-					</tr>
+									<input type="file" name="upload" id="upload" class="upload-btn">
+									<input type="button" value="취소" id="photo_reset"></td>
+				</tr>
+					 				
+					
 					
 				
 		</table>
+		<hr size="1" width="100%">
 		<div class="align-center">
 		<br>
 			<form:button id="submit-btn">등록</form:button>

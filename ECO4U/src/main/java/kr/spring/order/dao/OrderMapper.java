@@ -73,7 +73,7 @@ public interface OrderMapper {
 	//관리자/사용자 - 주문 수정
 	public void updateOrder(OrderVO order);
 	//관리자/사용자 - 주문 취소 시 상품 수량 업데이트
-	@Update("UPDATE  SET product p_quantity=p_quantity + #{od_quantity} "
+	@Update("UPDATE product SET p_quantity=p_quantity + #{od_quantity} "
 			+ "WHERE p_num=#{item_num}")
 	public void updateProductQuantity(OrderDetailVO orderDetailVO);
 }

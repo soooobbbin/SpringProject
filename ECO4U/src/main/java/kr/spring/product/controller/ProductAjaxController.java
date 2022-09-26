@@ -39,13 +39,14 @@ public class ProductAjaxController {
 	private static final Logger logger =
 			LoggerFactory.getLogger(ProductAjaxController.class);
 	
-	private int rowCount = 10;
+	private int rowCount = 4;
 	private int pageCount = 10;
 	
 	@Autowired
 	private ProductService productService;
 	
-	
+	@Autowired
+	private MemberService memberService;
 	
 	// 자바빈(VO) 초기화
 	@ModelAttribute
@@ -59,7 +60,8 @@ public class ProductAjaxController {
 	public Map<String,String> writeReply(
 			  P_reviewVO reviewVO,
 			  HttpSession session,
-			  HttpServletRequest request){
+			  HttpServletRequest request,
+			  @RequestParam(value = "p_num", defaultValue = "1") int p_num){
 		
 		logger.debug("<<상품평 등록>> : " + reviewVO);
 		
@@ -68,8 +70,18 @@ public class ProductAjaxController {
 		
 		MemberVO user = 
 			(MemberVO)session.getAttribute("user");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("p_num", p_num);
+		map.put("mem_num", user.getMem_num());
+		
+		int count = productService.selectRowCountReview(map);
+		
 		if(user==null) {//로그인 안 됨
 			mapAjax.put("result", "logout");
+		}else if(count<0) {//노 구매 회원
+			mapAjax.put("result", "nopay");
 		}else {//로그인 됨
 			//회원번호 등록
 			reviewVO.setMem_num(
@@ -79,6 +91,7 @@ public class ProductAjaxController {
 			mapAjax.put("result","success");
 		}
 		return mapAjax;
+		
 	}
 
 	// ==========리뷰 목록==========//
@@ -293,5 +306,44 @@ public class ProductAjaxController {
 		return mapJson;		
 	}
 		
-		
+	// ===========마이페이지 상품평 목록============//
+	@RequestMapping("/product/mypageReview.do")
+	public ModelAndView process(HttpSession session,
+			@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
+			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
+			@RequestParam(value = "category", defaultValue = "") String category) {
+
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		MemberVO member = memberService.selectMember(user.getMem_num());
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("category", category);
+		map.put("mem_num", user.getMem_num());
+
+		// 글의 총개수(검색된 글의 개수)
+		int count = productService.selectMypageReviewRowCount(map);
+		logger.debug("<<count>> : " + count);
+
+		// 페이지 처리
+		PagingUtil page = new PagingUtil(keyfield, category, currentPage, count, rowCount, pageCount,
+				"mypageReview.do");
+
+		List<P_reviewVO> list = null;
+		if (count > 0) {
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+
+			list = productService.selectMypageReviewList(map);
+		}
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("mypageReview");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		mav.addObject("member", member);
+
+		return mav;
+	}
 }

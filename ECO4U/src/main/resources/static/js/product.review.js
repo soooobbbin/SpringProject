@@ -104,6 +104,8 @@ $(function(){
 			success:function(param){
 				if(param.result=='logout'){
 					alert('로그인해야 작성할 수 있습니다.');
+				}else if(param.result=='nopay'){
+					alert('구매자만 작성할 수 있습니다.');
 				}else if(param.result=='success'){
 					//폼 초기화
 					initForm();
@@ -157,7 +159,7 @@ $(function(){
 		let modifyUI = '<form id="mr_form">';
 		modifyUI += '<input type="hidden" name="r_num" id="mr_num" value="'+ r_num +'">';
 		modifyUI += '<textarea rows="3" cols="50" name="r_content" id="mr_content" class="rep-content">'+ content +'</textarea>';
-		modifyUI += '<div id="mr_first"><span class="re-letter-count">300/300</span></div>';
+		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mr_second" class="align-right">';
 		modifyUI += '<input type="submit" value="수정" class="re-modify">';
 		modifyUI += ' <input type="button" value="취소" class="re-reset">';
@@ -180,7 +182,7 @@ $(function(){
 		remain += '/300';
 		
 		//문서 객체에 반영
-		$('#mr_first .letter-count').text(remain);
+		$('#mre_first .letter-count').text(remain);
 		
 	});
 	//수정 폼에서 취소 버튼 클릭시 수정 폼 초기화
@@ -217,7 +219,7 @@ $(function(){
 				}else if(param.result=='success'){
 					$('#mr_form').parent()
 					              .find('p')
-                                  .html($('#r_content').val()
+                                  .html($('#mr_content').val()
                                          .replace(/</g,'&lt;')
                                          .replace(/>/g,'&gt;')
                                          .replace(/\r\n/g,'<br>')
@@ -271,6 +273,48 @@ $(function(){
 			}
 		});
 		
+	});
+	
+	//상품평 선택 삭제
+	$(document).on('click','#reviewdelete_btn',function(){
+		
+		if($(".select-review:checked").length == 0){
+			alert('삭제할 항목을 선택해 주세요.');
+			return;
+		}
+		
+		var check = confirm('상품평을 삭제하시겠습니까?');
+		
+		if(check){
+			var checkArr = [];
+			
+			$(".select-review:checked").each(function(index,item){
+				checkArr.push($(this).attr("data-num"));
+			});
+			
+			$.ajax({
+			url:'deleteReview.do',
+			type:'post',
+			data:{del_qna : checkArr.toString()},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result=='logout'){
+					alert('로그인해야 삭제할 수 있습니다.');
+				}else if(param.result=='success'){
+					alert('삭제 완료!');
+					location.href='/product/mypageReview.do';
+				}else{
+					alert('상품평 삭제시 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생(체크)');
+			}
+		});
+			
+		}
 	});
 
 	//초기 데이터(목록) 호출

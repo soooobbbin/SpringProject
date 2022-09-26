@@ -95,8 +95,19 @@ function selectAll(selectAll)  {
 						<img id="reviewlist-image02" src="imageView.do?p_num=${review.p_num}" onerror="this.src='../images/faq/backcolor.png'" onclick="/product/detail.do?p_num=${review.p_num}'">
 					</div>
 					<div class="reviewlist-span01">
-						<div class="box-title"><a href="/product/detail.do?p_num=${review.p_num}">${review.r_content}</a></div><br><br>
-						<%-- <img src="../images/faq/reply00.png" width="15px" height="15px" style="margin-right:4px; margin-bottom:-2px">${review.productVO.p_name}<br> --%>
+						${review.productVO.p_name}<br>
+						<div class="box-title">
+							<c:choose>
+					        <c:when test="${fn:length(review.r_content) gt 45}">
+					        <c:out value="${fn:substring(review.r_content, 0, 44)}">
+					        </c:out><a href="/product/detail.do?p_num=${review.p_num}" style="font-size:11px; font-weight:bold; color:#999999;">... 더보기</a>
+					        </c:when>
+					        <c:otherwise>
+					        <c:out value="${review.r_content}">
+					        </c:out>
+					        </c:otherwise>
+							</c:choose>
+						</div><br><br>
 						<span class="box-date">${review.reg_date}</span>
 						<span class="box-comment" style="font-size:5px">
 						<img src="../images/product/like.png" width="16px" height="16px" style="margin-left:10px; margin-bottom:-5px">

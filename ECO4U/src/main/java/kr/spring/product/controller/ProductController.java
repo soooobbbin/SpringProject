@@ -38,8 +38,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@Autowired
-	private MemberService memberService;
+	
 	
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -140,11 +139,28 @@ public class ProductController {
 	
 	//========상품 상세===========//
 	@RequestMapping("/product/detail.do")
-	public ModelAndView detail(@RequestParam int p_num) {
+	public ModelAndView detail(@RequestParam int p_num,HttpSession session) {
 		
 		logger.debug("<<p_num>> : " + p_num);
 		
 		ProductVO product = productService.selectProduct(p_num);
+				
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		MemberVO user = 
+				(MemberVO)session.getAttribute("user");	
+		
+		int count = 0;
+		
+		if(user != null) {
+				
+		map.put("p_num", p_num);
+		map.put("mem_num", user.getMem_num());
+		
+		count = productService.selectRowCountReview(map);
+		}
+		
+		ModelAndView mav = new ModelAndView();
 		
 		/*
 		//제목에 태그를 허용하지 않음
@@ -157,8 +173,11 @@ public class ProductController {
 		 StringUtil.useBrNoHtml(board.getContent()));
 		*/
 		
-		                          //뷰 이름      속성명    속성값
-		return new ModelAndView("productView","product",product);
+		mav.setViewName("productView");
+		mav.addObject("product", product);
+		mav.addObject("count", count);
+		
+		return mav;
 	}
 	
 	// =========이미지 출력=========//
@@ -230,46 +249,7 @@ public class ProductController {
 		return "common/resultView";
 	}
 	
-	// ===========마이페이지 상품평 목록============//
-	@RequestMapping("/product/mypageReview.do")
-	public ModelAndView process(HttpSession session,
-			@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
-			@RequestParam(value = "keyfield", defaultValue = "") String keyfield,
-			@RequestParam(value = "category", defaultValue = "") String category) {
 
-		MemberVO user = (MemberVO) session.getAttribute("user");
-		MemberVO member = memberService.selectMember(user.getMem_num());
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("category", category);
-		map.put("mem_num", user.getMem_num());
-
-		// 글의 총개수(검색된 글의 개수)
-		int count = productService.selectMypageReviewRowCount(map);
-		logger.debug("<<count>> : " + count);
-
-		// 페이지 처리
-		PagingUtil page = new PagingUtil(keyfield, category, currentPage, count, rowCount, pageCount,
-				"mypageReview.do");
-
-		List<P_reviewVO> list = null;
-		if (count > 0) {
-			map.put("start", page.getStartRow());
-			map.put("end", page.getEndRow());
-
-			list = productService.selectMypageReviewList(map);
-		}
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mypageReview");
-		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("page", page.getPage());
-		mav.addObject("member", member);
-
-		return mav;
-	}
 }
 
 

@@ -53,7 +53,19 @@ $(function(){
 	});
 	
 	
-	
-	
+	//게시글 등록 유효성 체크
+	$('#register_form').submit(function(event){
+		if($('#c_title').val().trim()==''){
+			alert('제목을 입력하세요');
+			$('#c_title').val('').focus();
+			return false;
+		}else if($('#c_content').val().trim()==''){
+			alert('내용을 입력하세요');
+			$('#c_content').val('').focus();
+			return false;
+		}
+		
+		
+	});
 
 });

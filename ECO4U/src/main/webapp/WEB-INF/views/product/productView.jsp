@@ -156,9 +156,9 @@
 				<textarea rows="3" cols="50" 
 				  name="r_content" id="r_content"
 				  class="rep-content"
-				  <c:if test="${empty user}">disabled="disabled"</c:if>
-				  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
-				<c:if test="${!empty user}">
+				  <c:if test="${empty user}">disabled="disabled"</c:if><c:if test="${!empty user && count <1}">disabled="disabled"</c:if>
+				  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if><c:if test="${!empty user && count <1}">상품을 구매하신 회원만 작성할 수 있습니다.</c:if></textarea>
+				<c:if test="${!empty user && count > 0}">
 				<div id="re_first">
 					<span class="letter-count">300/300</span>
 				</div>
@@ -171,7 +171,7 @@
 		<!-- 리뷰 등록 버튼 끝-->
 		<div id="output"></div>
 		<div class="paging-button" style="display:none;">
-			<input type="button" value="다음 상품평 보기">
+			<input type="button" value="다음 상품평 보기" class="paging-button">
 		</div>
 	</div>
 	<!-- 리뷰 끝 -->

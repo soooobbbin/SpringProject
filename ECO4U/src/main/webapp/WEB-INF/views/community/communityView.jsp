@@ -15,8 +15,15 @@
 	src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/community.css">
+<style>
+ul{
+   list-style:none;
+   }
 
-<div class="page-main">
+</style>
+
+
+<div class="page-main-co">
 	<div class="align-center">
 		<h2 onclick="location.href='list.do?c_category=1'">Community</h2>
 
@@ -121,7 +128,7 @@
 						onclick="location.href='list.do?c_category=1'">
 				</c:if>
 				<c:if test="${community.c_category==2}">
-					<<input type="button" value="목록" id="list_btn"
+					<input type="button" value="목록" id="list_btn"
 						onclick="location.href='list.do?c_category=2'">
 				</c:if>
 				<c:if test="${community.c_category==3}">
@@ -138,7 +145,7 @@
 		<!-- 댓글 목록 출력 -->
 		<div class="outputs">
 			<div id="output"></div>
-		</div>
+		
 		<div class="paging-button" style="display: none;">
 			<input type="button" value="다음글 보기">
 		</div>
@@ -149,22 +156,24 @@
 		</div>
 		<!-- 댓글 UI 끝 -->
 	</div>
-</div>
 
 <form id="com_form">
 	<input type="hidden" name="c_num" value="${community.c_num}" id="c_num">
-	<textarea rows="3" cols="100" name="com_content" id="com_content"
+	<textarea rows="5" cols="100" name="com_content" id="com_content"
 		class="comm-content" placeholder="댓글을 입력하세요."
 		onfocus="this.placeholder=''" onblur="this.placeholder = '댓글을 입력하세요.'"
 		autocomplete="off"
 		<c:if test="${empty user}">disabled="disabled"</c:if>><c:if
 			test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
 	<c:if test="${!empty user}">
+	<div id="com_first" >
+				<span class="letter-count">300/300</span>
+			</div>
 		<div id="com_second" class="submit-co-div">
 			<input type="submit" value="전송" id="submit_btn">
 		</div>
 	</c:if>
 </form>
-
+</div></div>
 
 <!-- 내용 끝 -->

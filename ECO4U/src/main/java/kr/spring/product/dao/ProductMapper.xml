@@ -3,6 +3,19 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.spring.product.dao.ProductMapper">
+	
+	<resultMap type="kr.spring.product.vo.P_reviewVO" id="reviewMap">
+	<result property="productVO.p_name" column="p_name"/>
+	<result property="productVO.p_status" column="p_status"/>
+	<result property="productVO.p_price" column="p_price"/>
+	<result property="productVO.p_dprice" column="p_dprice"/>
+	<result property="productVO.p_quantity" column="p_quantity"/>
+	<result property="productVO.p_category" column="p_category"/>
+	<result property="productVO.p_photo" column="p_photo"/>
+	<result property="productVO.p_photoname" column="p_photoname"/>
+	<result property="productVO.p_brand" column="p_brand"/>
+	</resultMap>
+
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
 		 COUNT(*)
@@ -216,7 +229,7 @@ SELECT
 	
 	
 	<!--리뷰 목록 -->
-	<select id="selectMypageReviewList" parameterType="map" resultType="kr.spring.product.vo.P_reviewVO">
+	<select id="selectMypageReviewList" parameterType="map" resultMap="reviewMap">
 		SELECT
 		 *
 		FROM (SELECT
@@ -232,11 +245,11 @@ SELECT
 				  r.reg_date,
 				  r.modify_date,
 				  r.p_num,
-				  r.mem_num,
+				  p.p_name,
 				  like_cnt
 				FROM p_review r
-				JOIN member m 
-				ON r.mem_num = m.mem_num AND r.mem_num=#{mem_num}
+				JOIN product p
+				ON r.p_num=p.p_num
 				ORDER BY r_num DESC)a)
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}

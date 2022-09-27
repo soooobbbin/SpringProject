@@ -9,6 +9,8 @@ $(function(){
 			}
 			});
 			
+	
+			
 	//===== 사진 처리 ======//
 	//확인 버튼 처리
 	$('#photo_btn').click(function(){
@@ -55,6 +57,9 @@ $(function(){
 	
 	//게시글 등록 유효성 체크
 	$('#register_form').submit(function(event){
+		if($('.check:checked')==true){
+			alert("하나만 선택하세요.");
+		}
 		if($('#c_title').val().trim()==''){
 			alert('제목을 입력하세요');
 			$('#c_title').val('').focus();
@@ -64,7 +69,6 @@ $(function(){
 			$('#c_content').val('').focus();
 			return false;
 		}
-		
 		
 	});
 

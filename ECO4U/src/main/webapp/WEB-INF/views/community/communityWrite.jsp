@@ -13,6 +13,14 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/community.css">
+<!-- include ckeditor js -->
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/community.js"></script>
+	
 <style>
 .ck-editor__editable_inline {
 	min-height: 250px;
@@ -29,14 +37,6 @@ table{
 text-align:center;
 }
 </style>
-<!-- include ckeditor js -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/community.js"></script>
-
 
 
 <div class="page-main-co">
@@ -52,14 +52,18 @@ text-align:center;
 		<form:hidden path="c_num"/>
 		<form:errors element="div" cssClass="error-color" />
 		
-		<form:hidden path="c_auth" value='0' id="c_auth_hidden" />
+		
 		<table>
 		
 			<tr>
 			<c:if test="${user.auth == 2}">
 					<td><b>공지</b></td>
 					<td>
-					<form:checkbox path="c_auth" name="c_auth" value='1' id="c_auth" /> 공지로 지정합니다.</td>
+					
+					<form:checkbox path="c_auth" value='0' class="check" id="c_auth1" />일반 글
+					<form:checkbox path="c_auth" name="c_auth" value='1' class="check" id="c_auth2" /> 공지 지정</td>
+				
+					
 		</c:if></tr>
 
 			<tr>

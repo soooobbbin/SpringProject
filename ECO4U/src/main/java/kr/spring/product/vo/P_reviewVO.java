@@ -22,6 +22,7 @@ public class P_reviewVO {
 	private int mem_num; //회원번호
 	
 	private int like_cnt; //추천 수
+	private int click_num; //추천 회원 번호
 	
 	private String id; //회원id
 	
@@ -106,6 +107,13 @@ public class P_reviewVO {
 		this.productVO = productVO;
 	}
 	
+	public int getClick_num() {
+		return click_num;
+	}
+
+	public void setClick_num(int click_num) {
+		this.click_num = click_num;
+	}
 
 	//byte[] 타입의 프로퍼티 제외
 	@Override

@@ -160,31 +160,10 @@ public class ProductController {
 		count = productService.selectRowCountOrder(map);
 		}
 		
-		/*
-		List<P_reviewVO> review = null;
-		if (count > 0) {
-
-			review = productService.selectReviewByP_num(p_num);
-
-		}
-		*/
-		
 		ModelAndView mav = new ModelAndView();
-		
-		/*
-		//제목에 태그를 허용하지 않음
-		board.setTitle(
-			 StringUtil.useNoHtml(board.getTitle()));
-		//내용에 줄바꿈 처리하면서 태그를 허용하지 않음
-		//ckeditor 사용시 아래 코드 주석 처리
-		/*
-		board.setContent(
-		 StringUtil.useBrNoHtml(board.getContent()));
-		*/
 		
 		mav.setViewName("productView");
 		mav.addObject("product", product);
-		/*mav.addObject("review", review);*/
 		mav.addObject("count", count);
 		
 		return mav;

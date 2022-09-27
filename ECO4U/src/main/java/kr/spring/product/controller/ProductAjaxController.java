@@ -114,9 +114,14 @@ public class ProductAjaxController {
 
 		PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, null);
 
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
 		map.put("start", page.getStartRow());
 		map.put("end", page.getEndRow());
-
+		if(user!=null) {
+			map.put("mem_num", user.getMem_num());			
+		}
+	
 		List<P_reviewVO> list = null;
 		if (count > 0) {
 			list = productService.selectListReview(map);
@@ -130,7 +135,6 @@ public class ProductAjaxController {
 		mapAjax.put("list", list);
 		
 		//로그인 한 회원정보 셋팅
-		MemberVO user = (MemberVO) session.getAttribute("user");
 		if (user != null) {
 			mapAjax.put("user_num", user.getMem_num());
 		}

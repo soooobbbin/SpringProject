@@ -97,7 +97,7 @@
 		from cart
 		WHERE mem_num = #{mem_num}
 		-->
-		
+	
   	</select>
   	<select id="selectTotalByMem_numCart_num" parameterType="map"
   	                    resultType="integer">

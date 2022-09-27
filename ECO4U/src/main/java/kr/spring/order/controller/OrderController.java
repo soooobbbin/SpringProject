@@ -395,7 +395,8 @@ public class OrderController {
 
 	// ================대표 배송지 변경====================//
 	@GetMapping("/cart/updateauth.do")
-	public String zipAuth(HttpSession session, @RequestParam(value = "zip_num", defaultValue = "") int zip_num,
+	public String zipAuth(HttpSession session, @RequestParam(value = "zip_num", defaultValue = "") int zip_num, 
+			@RequestParam(value = "cart_num", defaultValue = "") int cart_num,
 			Model model, HttpServletRequest request) {
 
 		MemberVO user = (MemberVO) session.getAttribute("user");
@@ -407,7 +408,7 @@ public class OrderController {
 		orderService.updateAuth(user.getMem_num(), zip_num);
 
 		model.addAttribute("message", "대표 배송지가 변경되었습니다.");
-		model.addAttribute("url", request.getContextPath() + "/cart/orders.do");
+		model.addAttribute("url", request.getContextPath() + "/cart/orders.do?cart_num="+cart_num);
 
 		return "common/resultView";
 	}

@@ -35,7 +35,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 선택 삭제 오류 발생');
 			}
 		});
 			
@@ -84,7 +84,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 장바구니 수량 변경 오류 발생');
 			}
 		});
 	});
@@ -132,31 +132,36 @@ $(function(){
 				}
 			}
 			
+			const td_b = 2500;
+			const td_b1 = 0;
+			
 			$.ajax({
 			url:'modifyCartQuautityPrice.do',
 			type:'post',
-			data:{cart_numArray:checkArrnum},
+			data:{checkArrnum:checkArrnum},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(param){
-				if(param.result=='logout'){
-					alert('로그인 후 사용해주세요');
-				}else if(param.result=='noSale'){
-					alert('판매 중지 되었습니다.');
-					location.href='cart.do';
-				}else if(param.result=='noQuantity'){
-					alert('상품의 수량이 부족합니다.');
-					location.href='cart.do'
-				}else if(param.result=='success'){
-					alert('상품 개수가 수정되었습니다.');
-					location.href='cart.do';
+				if(param.result=='success'){			
+					/*const cn1 = param.all_total.toLocaleString('ko-KR'); // 배송비 없는 총 금액*/
+					var all_total = param.all_total;
+					if(all_total > 30000 || param.count == 0){
+						$('.td_b').text(td_b1);
+					}else {
+						all_total = all_total + td_b;
+						$('.td_b').text(td_b);
+					}
+					$('.td_count').text(param.count);
+					$('.td_all_total').text(param.all_total);
+					$('.td_all').text(all_total);
+					
 				}else{
 					alert('수정시 오류 발생');
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('네트워크 상품 재고 오류 발생');
 			}
 		});
 			

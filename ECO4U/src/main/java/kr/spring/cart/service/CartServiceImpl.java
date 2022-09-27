@@ -93,7 +93,6 @@ public class CartServiceImpl implements CartService{
 		
 	}
 
-	
 	@Override
 	public int selectOrder_quantity(int mem_num) {
 		return cartMapper.selectOrder_quantity(mem_num);

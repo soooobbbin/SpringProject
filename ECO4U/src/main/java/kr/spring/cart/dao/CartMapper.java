@@ -53,5 +53,5 @@ public interface CartMapper {
 	
 	@Select("SELECT sum(order_quantity) FROM cart WHERE mem_num=#{mem_num}")
 	public int selectOrder_quantity(int mem_num);
-	
+
 }

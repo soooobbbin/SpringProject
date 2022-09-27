@@ -91,11 +91,6 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public List<P_reviewVO> selectReviewByP_num(Integer p_num) {
-		return productMapper.selectReviewByP_num(p_num);
-	}
-
-	@Override
 	public void insertReview(P_reviewVO review) {
 		productMapper.insertReview(review);
 	}

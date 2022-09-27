@@ -222,6 +222,18 @@ SELECT
 				JOIN member USING(mem_num)
 				WHERE p_num = #{p_num} 
 				ORDER BY r_num DESC)a)
+				LEFT OUTER JOIN 
+				<if test="mem_num!=null">
+				(SELECT * FROM (SELECT r_num, count(*) like_cnt 
+				 FROM r_fav group by r_num)a 
+				 LEFT OUTER JOIN 
+				 (SELECT r_fav_num,r_num,mem_num click_num FROM r_fav where mem_num=#{mem_num}) b
+				 USING(r_num))
+				</if>
+				<if test="mem_num==null">
+				(SELECT r_num, COUNT(*) like_cnt FROM r_fav GROUP BY r_num) r
+                </if>
+				USING(r_num)
 		<![CDATA[
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>

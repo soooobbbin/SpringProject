@@ -152,7 +152,6 @@
 			<span class="re-name">상품평 달기</span>
 			<form id="re_form">
 				<input type="hidden" name="p_num" value="${product.p_num}" id="p_num">
-				<input type="hidden" name="r_num" value="${review.r_num}" id="r_num">
 				<textarea rows="3" cols="50" 
 				  name="r_content" id="r_content"
 				  class="rep-content"

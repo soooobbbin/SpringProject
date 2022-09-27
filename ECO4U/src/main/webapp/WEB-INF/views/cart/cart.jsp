@@ -172,11 +172,11 @@ function selectAll(selectAll)  {
 				<table class="order-info-table">
 					<tr>
 						<td>상품수</td>
-						<td class="td-right td-count">${count}개</td>
+						<td class="td-right td-count"><span class="td_count" id="td_count">${count}</span></td>
 					</tr>
 					<tr>
 						<td>상품금액</td>
-						<td class="td-right"><fmt:formatNumber value="${all_total}"/>원</td>
+						<td class="td-right"><span class="td_all_total" id="td_all_total"><fmt:formatNumber value="${all_total}"/></span>원</td>
 					</tr>
 					<tr>
 						<td>할인금액</td>
@@ -185,10 +185,10 @@ function selectAll(selectAll)  {
 					<tr>
 						<td>배송비</td>
 						<c:if test="${all_total >= 30000}">
-						<td class="td-right">0원</td>
+						<td class="td-right"><span class="td_b" id="td_b"><fmt:formatNumber value="0"/></span>원</td>
 						</c:if>
 						<c:if test="${all_total < 30000}">
-						<td class="td-right"><fmt:formatNumber value="2500"/>원</td>
+						<td class="td-right"><span class="td_b" id="td_b"><fmt:formatNumber value="2500"/></span>원</td>
 						</c:if>
 						<!-- <td class="td-right"><fmt:formatNumber value="${cart.productVO.p_dprice}"/>원</td> -->
 					</tr>
@@ -199,10 +199,10 @@ function selectAll(selectAll)  {
 						<tr>
 							<td class="order-bottom">총 결제금액</td>
 							<c:if test="${all_total >= 30000}">
-							<td class="order-bottom-total all_total"><fmt:formatNumber value="${all_total}"/>원</td>
+							<td class="order-bottom-total all_total"><span class="td_all" id="td_all"><fmt:formatNumber value="${all_total}"/></span>원</td>
 							</c:if>
 							<c:if test="${all_total < 30000}">
-							<td class="order-bottom-total all_total"><fmt:formatNumber value="${all_total + 2500}"/>원</td>
+							<td class="order-bottom-total all_total"><span class="td_all" id="td_all"><fmt:formatNumber value="${all_total+2500}"/></span>원</td>
 							</c:if>
 							
 						</tr>

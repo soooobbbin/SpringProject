@@ -36,6 +36,41 @@ public class CartAjaxController {
 	private ProductService productService;
 
 	
+	//장바구니 리스트 뿌려주기
+	@RequestMapping("/cart/modifyCartQuautityPrice.do")
+	@ResponseBody
+	public Map<String,Object> modifyCartQuautityPrice(@RequestParam(value = "checkArrnum", defaultValue = "100") String[] checkArrnum,
+													  HttpSession session,
+													  HttpServletRequest request){
+
+		Map<String,Object> mapJson = new HashMap<String,Object>();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		Map<String, Object> total = new HashMap<String, Object>();
+		total.put("mem_num", user.getMem_num()); //고객번호
+		total.put("cart_numArray", checkArrnum); //카트넘버
+		//총금액
+		int all_total = cartService.selectTotalByMem_numCart_num(total);
+		//상품 개수
+		int count = checkArrnum.length;
+		
+		if(all_total == 0) {
+			count = 0;
+		}
+		
+		logger.debug("<<all_total>> : " + all_total);
+		logger.debug("<<count>> : " + count);
+		
+
+		
+		mapJson.put("result", "success");
+		mapJson.put("all_total", all_total);
+		mapJson.put("count", count);
+		
+		
+		return mapJson;
+	}
+	
 	//==========장바구니 선택 삭제=============//
 	@RequestMapping("/cart/deleteCart.do")
 	@ResponseBody

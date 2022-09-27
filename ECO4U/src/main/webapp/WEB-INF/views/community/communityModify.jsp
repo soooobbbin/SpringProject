@@ -39,13 +39,13 @@ table{border-spacing:20px;}
 		id="update_form" enctype="multipart/form-data">
 		<form:hidden path="c_num"/>
 		<form:errors element="div" cssClass="error-color" />
+		
 		<table class="co-mod-tb">
 			<tr>
 				<c:if test="${user.auth == 2}">
 					<td><b>공지</b></td>
-					<td><form:hidden path="c_auth" value='0' id="c_auth_hidden" />
-					<form:checkbox path="c_auth" name="c_auth" value='1'
-							id="c_auth" /> 공지로 지정합니다.</td>
+					<td><form:checkbox path="c_auth" value='0' class="check" id="c_auth1" />일반 글
+					<form:checkbox path="c_auth" name="c_auth" value='1' class="check" id="c_auth2" /> 공지 지정</td>
 				</c:if>
 			</tr>
 

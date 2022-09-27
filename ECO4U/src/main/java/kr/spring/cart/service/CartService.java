@@ -26,4 +26,5 @@ public interface CartService {
 	public void addCart(CartVO cart);
 	
 	public int selectOrder_quantity(int mem_num);
+	
 }

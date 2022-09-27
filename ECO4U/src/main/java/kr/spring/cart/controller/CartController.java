@@ -105,8 +105,8 @@ public class CartController {
 		//map.put("order_quantity", order_quantity);
 		
 		//찜 목록의 총 개수(검색된 목록 개수)
-		//int count = cartService.selectRowCount(map);
-		int count = cartService.selectOrder_quantity(user.getMem_num());
+		int count = cartService.selectRowCount(map);
+		//int count = cartService.selectOrder_quantity(user.getMem_num());
 		
 		//logger.debug("<<order_quantity>> : " + order_quantity);
 		logger.debug("<<count>> : " + count);

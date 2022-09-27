@@ -186,7 +186,16 @@ public class OrderController {
 		orderVO.setMem_num(user.getMem_num());
 
 		// orderService.insertOrder(orderVO, orderDetailList);
-
+		
+		String cart_numArrays = "";
+		for(int i=0; i<=cart_numArray.length-1; i++) {
+			if(i==cart_numArray.length-1) {
+				cart_numArrays += cart_numArray[i];
+			}else {
+				cart_numArrays += cart_numArray[i] +",";
+			}
+		}
+		
 		mav.setViewName("orders");
 
 		// 대표 배송지 정보 가져오기
@@ -199,6 +208,7 @@ public class OrderController {
 		mav.addObject("count", zip_count);
 		mav.addObject("zip_list", zip_list);
 		mav.addObject("cartList", cartList);
+		mav.addObject("cart_numArrays",cart_numArrays);
 		mav.addObject("page", page.getPage());
 
 		return mav;
@@ -395,9 +405,19 @@ public class OrderController {
 
 	// ================대표 배송지 변경====================//
 	@GetMapping("/cart/updateauth.do")
-	public String zipAuth(HttpSession session, @RequestParam(value = "zip_num", defaultValue = "") int zip_num,
+	public String zipAuth(HttpSession session, @RequestParam(value = "zip_num", defaultValue = "") int zip_num, 
+			@RequestParam(value = "cart_num", defaultValue = "") String[] cart_num,
 			Model model, HttpServletRequest request) {
-
+		
+		String cart_numArrays = "";
+		for(int i=0; i<=cart_num.length-1; i++) {
+			if(i==cart_num.length-1) {
+				cart_numArrays += cart_num[i];
+			}else {
+				cart_numArrays += cart_num[i] +",";
+			}
+		}
+		
 		MemberVO user = (MemberVO) session.getAttribute("user");
 
 		logger.debug("<<대표 배송지 변경>> : " + user.getMem_num() + " , " + zip_num);
@@ -407,7 +427,7 @@ public class OrderController {
 		orderService.updateAuth(user.getMem_num(), zip_num);
 
 		model.addAttribute("message", "대표 배송지가 변경되었습니다.");
-		model.addAttribute("url", request.getContextPath() + "/cart/orders.do");
+		model.addAttribute("url", request.getContextPath() + "/cart/orders.do?cart_num="+cart_numArrays);
 
 		return "common/resultView";
 	}

@@ -9,7 +9,6 @@
 <!-- 내용 시작 -->
 <div class="page-main">
 <form id="main_form" style="width:100%; border:none;">
-<input type="hidden" value="${cart_num}" name="cart_num" id="cart_num">
 	<div class="header">
 		<div class="header-left">
 			주문결제
@@ -39,7 +38,7 @@
 									</div>
 									<div class="pop_content2">
 										<input type="button" value="배송지 내용 수정" id="btn-modify" onclick="location.href='/cart/zipcodeUpdate.do?zip_num=${zip.zip_num}'">
-										<input type="button" value="대표 배송지 선택" id="btn-check" onclick="location.href='/cart/updateauth.do?zip_num=${zip.zip_num}&cart_num=645'">
+										<input type="button" value="대표 배송지 선택" id="btn-check" onclick="location.href='/cart/updateauth.do?zip_num=${zip.zip_num}&cart_num=${cart_numArrays}'">
 									</div>
 							 	</c:forEach>
 							 </div>

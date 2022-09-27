@@ -98,6 +98,6 @@ public class CartServiceImpl implements CartService{
 	public int selectOrder_quantity(int mem_num) {
 		return cartMapper.selectOrder_quantity(mem_num);
 	}
-	
+
 
 }

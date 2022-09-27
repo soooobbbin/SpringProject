@@ -115,7 +115,52 @@ $(function(){
 		}
 	});
 	
-	
+	//========선택 상품 재고 변경===========//
+	$('.select-product').on('click',function(){
+		
+		const checkArr = [];	
+			$(".select-product:checked").each(function(index,item){
+				checkArr.push($(this).attr("data-cartnum"));
+			});
+			
+			var checkArrnum = "";
+			for(var i=0; i<=(checkArr.length)-1; i++){
+				if(i==(checkArr.length)-1){
+					checkArrnum += checkArr[i];
+				}else{
+					checkArrnum += checkArr[i]+',';
+				}
+			}
+			
+			$.ajax({
+			url:'modifyCartQuautityPrice.do',
+			type:'post',
+			data:{cart_numArray:checkArrnum},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result=='logout'){
+					alert('로그인 후 사용해주세요');
+				}else if(param.result=='noSale'){
+					alert('판매 중지 되었습니다.');
+					location.href='cart.do';
+				}else if(param.result=='noQuantity'){
+					alert('상품의 수량이 부족합니다.');
+					location.href='cart.do'
+				}else if(param.result=='success'){
+					alert('상품 개수가 수정되었습니다.');
+					location.href='cart.do';
+				}else{
+					alert('수정시 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+			
+	});
 });
 
 

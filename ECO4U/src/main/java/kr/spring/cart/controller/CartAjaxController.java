@@ -132,8 +132,7 @@ public class CartAjaxController {
       }
       return mapAjax;
    }
-		    
-	
+		
 	
 }
 
